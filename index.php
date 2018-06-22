@@ -11,6 +11,11 @@
         crossorigin="anonymous">
 
     <title>Upload</title>
+    <style>
+        #preview {
+            display: none;
+        }
+    </style>
 </head>
 
 <body>
@@ -18,60 +23,96 @@
         <div class="row">
             <div class="col-md-6">
                 <h1>Upload banner</h1>
-                <form action="upload.php" method="POST" enctype="multipart/form-data">
-                    <div class="input-group mb-3">
-                        <select class="custom-select">
+                <div class="input-group mb-3">
+                        <select id="selectType" class="custom-select" name="tipo">
                             <option selected>Selecione o tipo do banner</option>
                             <option value="1">Capa</option>
                             <option value="2">Post</option>
                         </select>
                     </div>
+                <form id="formUpload" name="formUpload" action="" method="POST" enctype="multipart/form-data">
+                    <div class="input-group mb-3">
+                        <div class="custom-file">
+                            <input type="file" required name="arquivo" class="custom-file-input">
+                            <label class="custom-file-label">Escolher arquivo</label>
+                        </div>
+                    </div>
+                </form>
+                <div class="mb-3">
+                    <img id="preview" src="" alt="preview">
+                </div>
+                <div class="d-none">
                     <div class="input-group mb-3">
                         <input type="text" class="form-control" name="nome" placeholder="Nome" aria-label="Nome" aria-describedby="basic-addon1">
                     </div>
                     <div class="input-group mb-3">
-                        <div class="custom-file">
-                            <input type="file" required name="imagem" class="custom-file-input">
-                            <label class="custom-file-label">Escolher arquivo</label>
-                        </div>
+                        <input type="text" class="form-control" name="posNome" placeholder="Posição Nome" aria-label="posNome" aria-describedby="basic-addon1">
                     </div>
-                        <div>
-                            <img src="./upload/<?php echo $_GET['caminho'] ?>" width="400" alt="preview">
-                        </div>
-                    <div class="d-none">
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control" name="posNome" placeholder="Posição Nome" aria-label="posNome" aria-describedby="basic-addon1">
-                        </div>
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control" name="posLogo" placeholder="Posição Logomarca" aria-label="posLogo" aria-describedby="basic-addon1">
-                        </div>
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control" name="posPromocao" placeholder="Posição Promoção" aria-label="posPromocao" aria-describedby="basic-addon1">
-                        </div>
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control" name="posFacebook" placeholder="Posição Facebook" aria-label="posFacebook" aria-describedby="basic-addon1">
-                        </div>
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control" name="posTelefone" placeholder="Posição Telefone" aria-label="posTelefone" aria-describedby="basic-addon1">
-                        </div>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" name="posLogo" placeholder="Posição Logomarca" aria-label="posLogo" aria-describedby="basic-addon1">
+                    </div>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" name="posPromocao" placeholder="Posição Promoção" aria-label="posPromocao" aria-describedby="basic-addon1">
+                    </div>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" name="posFacebook" placeholder="Posição Facebook" aria-label="posFacebook" aria-describedby="basic-addon1">
+                    </div>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" name="posTelefone" placeholder="Posição Telefone" aria-label="posTelefone" aria-describedby="basic-addon1">
                     </div>
                     <div class="input-group">
-                        <button class="btn btn-primary" type="submit">Salvar</button>
+                        <button id="save" class="btn btn-primary" type="button">Salvar</button>
                     </div>
-                </form>
+                </div>
+                <div class="input-group">
+                    <button id="btnPreview" class="btn btn-primary" type="button">Preview</button>
+                </div>
             </div>
         </div>
     </div>
 
-
-    <!-- JavaScript (Opcional) -->
-    <!-- jQuery primeiro, depois Popper.js, depois Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-        crossorigin="anonymous"></script>
+    <!-- jQuery primeiro depois Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
         crossorigin="anonymous"></script>
+
+    <script>
+    $(document).ready(function() {
+    
+        $('#btnPreview').click(function() {   
+            var formdata = new FormData($("form[name='formUpload']")[0]);
+            $.ajax({
+                type: 'POST',
+                url: 'preview.php',
+                data: formdata,
+                processData: false,
+                contentType: false,
+                success: function(response) {
+                    var response = JSON.parse(response);
+                    var tipo = $('#selectType').val();
+                    if(tipo == 1) {
+                        $('#preview').css({
+                            'width':'800px',
+                            'height':'312px'
+                        });
+                    } else {
+                        $('#preview').css({
+                            'width':'800px',
+                            'height':'800px'
+                        });
+                    }
+                    $('#preview').css('display','block').prop('src', 'upload/' + response.arquivo);
+                    console.log('Upload realizado com sucesso...');
+                },
+                error: function(e) {
+                    console.log('Erro:' + e);
+                }
+            });
+
+        return false;
+        });
+    });
+    </script>
 </body>
 
 </html>
