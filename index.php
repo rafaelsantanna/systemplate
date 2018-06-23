@@ -33,7 +33,7 @@
                 <form id="formUpload" name="formUpload" action="" method="POST" enctype="multipart/form-data">
                     <div class="input-group mb-3">
                         <div class="custom-file">
-                            <input type="file" required name="arquivo" class="custom-file-input">
+                            <input type="file" required name="file" class="custom-file-input">
                             <label class="custom-file-label">Escolher arquivo</label>
                         </div>
                     </div>
@@ -101,7 +101,7 @@
                             'height':'800px'
                         });
                     }
-                    $('#preview').css('display','block').prop('src', 'upload/' + response.arquivo);
+                    $('#preview').css('display','block').prop('src', response.file);
                     console.log('Upload realizado com sucesso...');
                 },
                 error: function(e) {

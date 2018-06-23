@@ -1,13 +1,24 @@
 <?php
-  include("conexao.php");
-  $extensao = strtolower(substr($_FILES['arquivo']['name'], -4));
-  $nomeArquivo = md5(time()) . $extensao;
-  $tamanho = $_FILES['arquivo']['size']; //Para validar tamanho do arquivo
-  $diretorio = "upload/";
-  if (move_uploaded_file($_FILES['arquivo']['tmp_name'], $diretorio.$nomeArquivo)) {
+
+  //Functions Lib GD
+
+  $uploadedfile = $_FILES['file']['tmp_name'];
+  $src = imagecreatefromjpeg($uploadedfile);
+  list($width, $height) = getimagesize($uploadedfile);
+
+  $tmp = imagecreatetruecolor(800, 312);
+  
+  $extension = strtolower(substr($_FILES['file']['name'], -4));
+  $hashName = md5(time()) . $extension;
+  $filename = 'upload/' . $hashName;
+
+  imagecopyresampled($tmp, $src, 0, 0, 0, 0, 800, 600, $width, $height);
+  imagejpeg($tmp, $filename, 100);
+  
+  if ($uploadedfile) {
     $response = array(
       "success" => true,
-      "arquivo" => $nomeArquivo
+      "file" => $filename
     );
     echo json_encode((object)$response);
   } else {
