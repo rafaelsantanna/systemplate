@@ -23,14 +23,15 @@
         <div class="row">
             <div class="col-md-6">
                 <h1>Upload banner</h1>
-                <div class="input-group mb-3">
-                        <select id="selectType" class="custom-select" name="tipo">
+
+                <form id="formUpload" name="formUpload" action="" method="POST" enctype="multipart/form-data">
+                    <div class="input-group mb-3">
+                        <select id="selectType" class="custom-select" name="type_template">
                             <option selected>Selecione o tipo do banner</option>
                             <option value="1">Capa</option>
                             <option value="2">Post</option>
                         </select>
                     </div>
-                <form id="formUpload" name="formUpload" action="" method="POST" enctype="multipart/form-data">
                     <div class="input-group mb-3">
                         <div class="custom-file">
                             <input type="file" required name="file" class="custom-file-input">
@@ -89,8 +90,8 @@
                 contentType: false,
                 success: function(response) {
                     var response = JSON.parse(response);
-                    var tipo = $('#selectType').val();
-                    if(tipo == 1) {
+                    var type_template = $('#selectType').val();
+                    if(type_template == 1) {
                         $('#preview').css({
                             'width':'800px',
                             'height':'312px'
