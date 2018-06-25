@@ -68,6 +68,15 @@ var app = new Vue({
             axios.post('saveTemplate.php', data)
             .then(function (response) {
                 console.log(response)
+                vm.nameTemplate = ''
+                vm.previewImage = ''
+                vm.typeTemplate = 0
+                vm.objStyleSvgLogo = {}
+                vm.objStyleSvgTexto = {}
+                vm.objStyleSvgFacebook = {}
+                vm.objStyleSvgTelefone = {}
+                vm.displayFieldsImage = false
+                alert('mensagem de sucesso!!!')
             })
         },
         onFileChanged(event) {

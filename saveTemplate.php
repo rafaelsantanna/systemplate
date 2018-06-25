@@ -1,5 +1,5 @@
 <?php
-    include("conn.php");
+    require_once "conn.php";
 
     $nametemplate = $_POST['nameTemplate'];
     $file_path = $_POST['file_path'];
