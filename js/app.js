@@ -8,6 +8,7 @@ var app = new Vue({
         displayFieldsImage: false,
         
         nameTemplate: '',
+        nameField: '',
         selectFields: 0,
         optionFields: [
             {

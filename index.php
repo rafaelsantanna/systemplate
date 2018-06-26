@@ -61,14 +61,15 @@
                     <input type="text" class="form-control" v-model="nameTemplate" placeholder="Nome do template">
                 </div>
                 <div class="input-group mb-3">
+                    <input type="text" class="form-control" v-model="nameField" placeholder="Nome do campo">
                     <button @click="addTextField" class="btn btn-primary" type="button">Add Texto</button>
-                    <!-- <button type="button" class="btn btn-primary" @click="addImageField">Add Imagem</button> -->
+                    <button type="button" class="btn btn-primary" @click="addImageField">Add Imagem</button>
                 </div>
-                <!-- <select class="custom-select mb-3" v-model="selectFields">
+                <select class="custom-select mb-3" v-model="selectFields">
                     <option v-for="option in optionFields" v-bind:value="option.value">
                         {{option.name}}
                     </option>
-                </select> -->
+                </select>
 
                 <div class="input-group mt-3">
                     <button @click="submitTemplate" class="btn btn-primary" type="button">Salvar</button>
