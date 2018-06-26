@@ -49,18 +49,9 @@
 
                 <div class="previewImage" class="mb-3" v-if="previewImage != ''">
                     <img width="800" :style="{height: heightTemplate + 'px'}" :src="previewImage" alt="preview-image">
-                    <svg :style="objStyleSvgLogo">
+                    <!-- <svg :style="objLogo">
                         <rect width="100%" height="100%" style="fill:#047FFF" />
-                    </svg>
-                    <svg :style="objStyleSvgTexto">
-                        <rect width="100%" height="100%" style="fill:#03E832" />
-                    </svg>
-                    <svg :style="objStyleSvgFacebook">
-                        <rect width="100%" height="100%" style="fill:#FFE309" />
-                    </svg>
-                    <svg :style="objStyleSvgTelefone">
-                        <rect width="100%" height="100%" style="fill:#E84E02" />
-                    </svg>
+                    </svg> -->
                 </div>
             </div>
 
@@ -69,70 +60,16 @@
                 <div class="input-group mb-3">
                     <input type="text" class="form-control" v-model="nameTemplate" placeholder="Nome do template">
                 </div>
-                <select class="custom-select mb-3" @change="onPositionChanged" v-model="selectPosicao">
-                    <option value="0">Selectione um campo</option>
-                    <option value="1">Logo marca</option>
-                    <option value="2">Texto</option>
-                    <option value="3">Facebook</option>
-                    <option value="4">Telefone</option>
-                </select>
-                <div :style="{backgroundColor:colorElementPosition}" style="width:20px; height:20px;"></div>
-                <div class="input-group" v-show="fieldPositionLogoMarca">
-                    <div class="mb-2">
-                        <label for="">Posição X:</label>
-                        <input type="number" v-model="objStyleSvgLogo.left" class="form-control">
-                        <label for="">Posição Y:</label>
-                        <input type="number" v-model="objStyleSvgLogo.top" class="form-control">
-                    </div>
-                    <div class="mb-2">
-                        <label for="">Largura</label>
-                        <input type="number" class="form-control" v-model="objStyleSvgLogo.width">
-                        <label for="">Altura</label>
-                        <input type="number" class="form-control" v-model="objStyleSvgLogo.height">
-                    </div>
+                <div class="input-group mb-3">
+                    <button @click="addTextField" class="btn btn-primary" type="button">Add Texto</button>
+                    <!-- <button type="button" class="btn btn-primary" @click="addImageField">Add Imagem</button> -->
                 </div>
-                <div class="input-group" v-show="fieldPositionTexto">
-                    <div class="mb-2">
-                        <label for="">Posição X:</label>
-                        <input type="number" v-model="objStyleSvgTexto.left" class="form-control">
-                        <label for="">Posição Y:</label>
-                        <input type="number" v-model="objStyleSvgTexto.top" class="form-control">
-                    </div>
-                    <div class="mb-2">
-                        <label for="">Largura:</label>
-                        <input type="number" class="form-control" v-model="objStyleSvgTexto.width">
-                        <label for="">Altura:</label>
-                        <input type="number" class="form-control" v-model="objStyleSvgTexto.height">
-                    </div>
-                </div>
-                <div class="input-group" v-show="fieldPositionFacebook">
-                    <div class="mb-2">
-                        <label for="">Posição X:</label>
-                        <input type="number" v-model="objStyleSvgFacebook.left" class="form-control">
-                        <label for="">Posição Y:</label>
-                        <input type="number" v-model="objStyleSvgFacebook.top" class="form-control">
-                    </div>
-                    <div class="mb-2">
-                        <label for="">Largura</label>
-                        <input type="number" class="form-control" v-model="objStyleSvgFacebook.width">
-                        <label for="">Altura</label>
-                        <input type="number" class="form-control" v-model="objStyleSvgFacebook.height">
-                    </div>
-                </div>
-                <div class="input-group" v-show="fieldPositionTelefone">
-                    <div class="mb-2">
-                        <label for="">Posição X:</label>
-                        <input type="number" v-model="objStyleSvgTelefone.left" class="form-control">
-                        <label for="">Posição Y:</label>
-                        <input type="number" v-model="objStyleSvgTelefone.top" class="form-control">
-                    </div>
-                    <div class="mb-2">
-                        <label for="">Largura:</label>
-                        <input type="number" class="form-control" v-model="objStyleSvgTelefone.width">
-                        <label for="">Altura:</label>
-                        <input type="number" class="form-control" v-model="objStyleSvgTelefone.height">
-                    </div>
-                </div>
+                <!-- <select class="custom-select mb-3" v-model="selectFields">
+                    <option v-for="option in optionFields" v-bind:value="option.value">
+                        {{option.name}}
+                    </option>
+                </select> -->
+
                 <div class="input-group mt-3">
                     <button @click="submitTemplate" class="btn btn-primary" type="button">Salvar</button>
                 </div>

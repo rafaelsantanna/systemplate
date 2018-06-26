@@ -6,64 +6,57 @@ var app = new Vue({
         previewImage: '',
         heightTemplate: '',
         displayFieldsImage: false,
-        selectPosicao: 0,
+        
         nameTemplate: '',
-        colorElementPosition: '',
+        selectFields: 0,
+        optionFields: [
+            {
+                name: 'Selecione um elemento',
+                value: 0
+            }
+        ],
 
-        fieldPositionLogoMarca: false,
-        fieldPositionTexto: false,
-        fieldPositionFacebook: false,
-        fieldPositionTelefone: false,
+        arrayObjText: [],
+        arrayObjImage: [],
 
-        objStyleSvgLogo: {
+        objText: {
+            name: '',
             top: '0',
             left: '0',
             width: '50',
-            height: '50'
+            height: '50',
+            fontSize: '14',
+            color: '#000',
+            rotate: '0',
+            fontFamily: '',
+            colorSvg: ''
         },
-        objStyleSvgTexto: {
+        objImage: {
+            name: '',
             top: '0',
             left: '0',
             width: '50',
-            height: '50'
+            height: '50',
+            rotate: '',
+            colorSvg: ''
         },
-        objStyleSvgFacebook: {
-            top: '0',
-            left: '0',
-            width: '50',
-            height: '50'
-        },
-        objStyleSvgTelefone: {
-            top: '0',
-            left: '0',
-            width: '50',
-            height: '50'
-        }
 
     },
     methods: {
-        submitTemplate(){
+        submitTemplate: function(){
             let vm = this
             let nameTemplate = vm.nameTemplate
             let filepath = vm.previewImage
             let typeTemplate = vm.typeTemplate
-            let objLogo = vm.objStyleSvgLogo
-            let objTexto = vm.objStyleSvgTexto
-            let objFacebook = vm.objStyleSvgFacebook
-            let objTelefone = vm.objStyleSvgTelefone
-            let objPositions = {
-                logo: objLogo,
-                texto: objTexto,
-                facebook: objFacebook,
-                telefone: objTelefone
-            }
-            let positions = JSON.stringify(objPositions)
+            let objText = vm.objText
+            let objImage = vm.objImage
 
             const data = new URLSearchParams();
             data.append('nameTemplate', nameTemplate);
             data.append('file_path', filepath);
             data.append('type_template', typeTemplate);
-            data.append('positions', positions);
+            data.append('obj_text', objText);
+            data.append('obj_image', objImage);
 
             axios.post('saveTemplate.php', data)
             .then(function (response) {
@@ -71,15 +64,11 @@ var app = new Vue({
                 vm.nameTemplate = ''
                 vm.previewImage = ''
                 vm.typeTemplate = 0
-                vm.objStyleSvgLogo = {}
-                vm.objStyleSvgTexto = {}
-                vm.objStyleSvgFacebook = {}
-                vm.objStyleSvgTelefone = {}
                 vm.displayFieldsImage = false
                 alert('mensagem de sucesso!!!')
             })
         },
-        onFileChanged(event) {
+        onFileChanged: function(event) {
             let vm = this
             this.selectedFile = event.target.files[0]
             const data = new FormData()
@@ -97,33 +86,15 @@ var app = new Vue({
                 vm.previewImage = response.data.file
             })
         },
-        onPositionChanged(event) {
-            let vm = this
-
-            //reset fields on change
-            vm.fieldPositionLogoMarca = false
-            vm.fieldPositionTexto = false
-            vm.fieldPositionFacebook = false
-            vm.fieldPositionTelefone = false
-
-            //1 - Logo, 2 - Promoção, 3 - Facebook, 4 - Telefone
-            if (vm.selectPosicao == 1) {
-                vm.positionLogoMarca = ''
-                vm.fieldPositionLogoMarca = true
-                vm.colorElementPosition = '#047FFF'
-            } else if (vm.selectPosicao == 2) {
-                vm.positionTexto = ''
-                vm.fieldPositionTexto = true
-                vm.colorElementPosition = '#03E832'
-            } else if (vm.selectPosicao == 3) {
-                vm.positionFacebook = ''
-                vm.fieldPositionFacebook = true
-                vm.colorElementPosition = '#FFE309'
-            } else if (vm.selectPosicao == 4) {
-                vm.positionTelefone = ''
-                vm.fieldPositionTelefone = true
-                vm.colorElementPosition = '#E84E02'
-            }
+        onSelectChanged: function() {
+            
+        },
+        addTextField: function() {
+            console.log('')
+        },
+        addImageField: function() {
+            console.log('')
         }
     }
+
 })
