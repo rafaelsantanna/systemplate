@@ -8,36 +8,23 @@ var app = new Vue({
         displayFieldsImage: false,
         
         nameTemplate: '',
-        nameField: '',
         selectFields: 0,
         optionFields: [{
-            name: 'Selecione um campo'
+            name_field: 'Selecione um campo'
         }],
-
+        
         arrayObjField: [],
-        objField: {
-            name: '',
-            type: 'texto',
-            top: '0',
-            left: '0',
-            width: '50',
-            height: '50',
-            rotate: '0',
-            fontSize: '14',
-            fontFamily: '',
-            color: '#000',
-            colorBlockSvg: ''
-        },
-
-        inputLeft: '',
-        inputTop: '',
-        inputWidth: '',
-        inputHeight: '',
-        inputRotate: '',
-        inputFontSize: '',
+        
+        nameField: '',
+        inputX: 0,
+        inputY: 0,
+        inputWidth: 0,
+        inputHeight: 0,
+        inputRotate: 0,
+        inputFontSize: 0,
         inputFontFamily: '',
         inputColor: '',
-        inputColorBlockSvg: '',
+        inputColorBlock: '',
 
 
     },
@@ -47,13 +34,11 @@ var app = new Vue({
             let nameTemplate = vm.nameTemplate
             let filepath = vm.previewImage
             let typeTemplate = vm.typeTemplate
-            let objField = vm.objField
 
             const data = new URLSearchParams();
             data.append('nameTemplate', nameTemplate);
             data.append('file_path', filepath);
             data.append('type_template', typeTemplate);
-            data.append('obj_field', objField);
 
             axios.post('saveTemplate.php', data)
             .then(function (response) {
@@ -85,18 +70,43 @@ var app = new Vue({
         },
         onSelectChanged: function() {
             let vm = this
-            alert(this.selectFields)
+            let valueArray = vm.selectFields - 1
+            
+            if(vm.arrayObjField[valueArray -1] !== 'undefined'){
+                vm.inputX = vm.arrayObjField[valueArray].pos_x
+                vm.inputY = vm.arrayObjField[valueArray].pos_y
+                vm.inputWidth = vm.arrayObjField[valueArray].width
+                vm.inputHeight = vm.arrayObjField[valueArray].height
+                vm.nameField = vm.arrayObjField[valueArray].name_field
+                vm.inputRotate = vm.arrayObjField[valueArray].rotate
+                vm.inputFontSize = vm.arrayObjField[valueArray].font_size
+                vm.inputFontFamily = vm.arrayObjField[valueArray].font_family
+                vm.inputColor = vm.arrayObjField[valueArray].color
+                vm.inputColorBlock = vm.arrayObjField[valueArray].color_block
+            }
+
         },
         addField: function() {
             let vm = this
-            let objField = vm.objField
-            objField.nameField = vm.nameField
-            vm.arrayObjField.push(objField)
-            vm.optionFields.push({name:objField.nameField})
+            vm.arrayObjField.push({name_field:vm.nameField})
+            vm.optionFields.push({name_field:vm.nameField})
             vm.nameField = ''
         },
         saveFields: function() {
-            alert('')
+            let vm = this
+            
+            vm.arrayObjField[vm.selectFields - 1] = {
+                name_field: vm.nameField,
+                pos_x: vm.inputX,
+                pos_y: vm.inputY,
+                width: vm.inputWidth,
+                height: vm.inputHeight,
+                rotate: vm.inputRotate,
+                font_size: vm.inputFontSize,
+                font_family: vm.inputFontFamily,
+                color: vm.inputColor,
+                color_block: inputColorBlock 
+            }
         }
     }
 

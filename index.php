@@ -31,18 +31,33 @@
             <div class="col-md-9">
                 <h1>Upload banner</h1>
 
-                <div class="col-6">
-                    <div class="input-group mb-3">
-                        <select class="custom-select" v-model="typeTemplate" name="type_template">
-                            <option value="0">Selecione o tipo do banner</option>
-                            <option value="1">Capa</option>
-                            <option value="2">Post</option>
-                        </select>
+                <div class="row">
+                    <div class="col-6 mb-3">
+                        <div class="input-group mb-3">
+                            <select class="custom-select" v-model="typeTemplate" name="type_template">
+                                <option value="0">Selecione o tipo do banner</option>
+                                <option value="1">Capa</option>
+                                <option value="2">Post</option>
+                            </select>
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="custom-file">
+                                <input @change="onFileChanged" type="file" required name="file" class="custom-file-input">
+                                <label class="custom-file-label">Escolher arquivo</label>
+                            </div>
+                        </div>
                     </div>
-                    <div class="input-group mb-3">
-                        <div class="custom-file">
-                            <input @change="onFileChanged" type="file" required name="file" class="custom-file-input">
-                            <label class="custom-file-label">Escolher arquivo</label>
+                </div>
+
+                <div class="row mb-2" v-if="previewImage != ''">
+                    <div class="col-6">
+                        <div class="input-group">
+                            <input type="text" class="form-control" v-model="nameTemplate" placeholder="Nome do template">
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="input-group">
+                            <button @click="submitTemplate" class="btn btn-primary" type="button">Salvar Template</button>
                         </div>
                     </div>
                 </div>
@@ -55,11 +70,9 @@
                 </div>
             </div>
 
-            <div v-show="displayFieldsImage" class="mb-2 col-md-3 pt-5" style="position:fixed;right:50px">
+            <div v-show="displayFieldsImage" class="mb-2 col-md-3" style="position:fixed;right:50px">
                 <h3>Configuração Template</h3>
-                <div class="input-group mb-5">
-                    <input type="text" class="form-control" v-model="nameTemplate" placeholder="Nome do template">
-                </div>
+
                 <div class="input-group mb-2">
                     <input type="text" class="form-control" v-model="nameField" placeholder="Nome do campo">
                     <div class="input-group-append">
@@ -68,52 +81,93 @@
                 </div>
                 <select class="custom-select mb-3" v-model="selectFields" @change="onSelectChanged">
                     <option v-for="(option, index) in optionFields" v-bind:value="index">
-                        {{option.name}}
+                        {{option.name_field}}
                     </option>
                 </select>
 
-                <div class="input-group">
-                    <label for="">X:</label>
-                    <input type="text" class="form-control" v-model="inputLeft">
-                    <label for="">Y:</label>
-                    <input type="text" class="form-control" v-model="inputTop">
+                <div class="row">
+                    <div class="col-6">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">X</span>
+                            </div>
+                            <input type="number" class="form-control" v-model="inputX">
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Y</span>
+                            </div>
+                            <input type="number" class="form-control" v-model="inputY">
+                        </div>
+                    </div>
+
+                    <div class="col-6">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Largura</span>
+                            </div>
+                            <input type="number" class="form-control" v-model="inputWidth">
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Altura</span>
+                            </div>
+                            <input type="number" class="form-control" v-model="inputHeight">
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Rotacionar</span>
+                            </div>
+                            <input type="number" class="form-control" v-model="inputRotate">
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Tamanho Fonte</span>
+                            </div>
+                            <input type="number" class="form-control" v-model="inputFontSize">
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Fonte</span>
+                            </div>
+                            <input type="text" class="form-control" v-model="inputFontFamily">
+                        </div>
+                    </div>
+
+                    <div class="col-6">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Cor</span>
+                            </div>
+                            <input type="text" class="form-control" v-model="inputColor">
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Cor Bloco</span>
+                            </div>
+                            <input type="text" class="form-control" v-model="inputColorBlock">
+                        </div>
+                    </div>
                 </div>
 
-                <div class="input-group">
-                    <label for="">Largura:</label>
-                    <input type="text" class="form-control" v-model="inputWidth">
-                    <label for="">Altura:</label>
-                    <input type="text" class="form-control" v-model="inputHeight">
+                <div class="input-group mt-1">
+                    <button @click="saveFields" class="btn btn-success" type="button">Salvar Campo</button>
                 </div>
 
-                <div class="input-group">
-                    <label for="">Rotacionar:</label>
-                    <input type="text" class="form-control" v-model="inputRotate">
-                </div>
-                <div class="input-group">
-                    <label for="">Tamanho Fonte:</label>
-                    <input type="text" class="form-control" v-model="inputFontSize">
-                    <label for="">Fonte:</label>
-                    <input type="text" class="form-control" v-model="inputFontFamily">
-                </div>
-
-                <div class="input-group">
-                    <label for="">Cor:</label>
-                    <input type="text" class="form-control" v-model="inputColor">
-                    <label for="">Cor Bloco:</label>
-                    <input type="text" class="form-control" v-model="inputColorBlockSvg">
-                </div>
-
-
-                <div class="input-group mt-2 mt-3">
-                    <button @click="saveFields" class="btn btn-success" type="button">Salvar Campo</button>    
-                </div>
-
-                <p>Mostrar campos que foram salvos no array como badges</p>
-
-                <div class="input-group mt-3">
-                    <button @click="submitTemplate" class="btn btn-primary" type="button">Salvar Template</button>
-                </div>
             </div>
 
         </div>
