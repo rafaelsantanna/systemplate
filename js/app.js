@@ -24,8 +24,7 @@ var app = new Vue({
         inputFontSize: 0,
         inputFontFamily: '',
         inputColor: '',
-        inputColorBlock: '',
-
+        inputColorBlock: ''
 
     },
     methods: {
@@ -84,7 +83,6 @@ var app = new Vue({
                 vm.inputColor = vm.arrayObjField[valueArray].color
                 vm.inputColorBlock = vm.arrayObjField[valueArray].color_block
             }
-
         },
         addField: function() {
             let vm = this
@@ -105,8 +103,20 @@ var app = new Vue({
                 font_size: vm.inputFontSize,
                 font_family: vm.inputFontFamily,
                 color: vm.inputColor,
-                color_block: inputColorBlock 
+                color_block: vm.inputColorBlock 
             }
+
+            vm.selectFields = 0
+            vm.nameField = ''
+            vm.inputX = 0
+            vm.inputY = 0
+            vm.inputWidth = 0
+            vm.inputHeight = 0
+            vm.inputRotate = 0
+            vm.inputFontSize = 0
+            vm.inputFontFamily = ''
+            vm.inputColor = ''
+            vm.inputColorBlock = ''
         }
     }
 
