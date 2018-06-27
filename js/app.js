@@ -10,37 +10,35 @@ var app = new Vue({
         nameTemplate: '',
         nameField: '',
         selectFields: 0,
-        optionFields: [
-            {
-                name: 'Selecione um elemento',
-                value: 0
-            }
-        ],
+        optionFields: [{
+            name: 'Selecione um campo'
+        }],
 
-        arrayObjText: [],
-        arrayObjImage: [],
-
-        objText: {
+        arrayObjField: [],
+        objField: {
             name: '',
+            type: 'texto',
             top: '0',
             left: '0',
             width: '50',
             height: '50',
-            fontSize: '14',
-            color: '#000',
             rotate: '0',
+            fontSize: '14',
             fontFamily: '',
-            colorSvg: ''
+            color: '#000',
+            colorBlockSvg: ''
         },
-        objImage: {
-            name: '',
-            top: '0',
-            left: '0',
-            width: '50',
-            height: '50',
-            rotate: '',
-            colorSvg: ''
-        },
+
+        inputLeft: '',
+        inputTop: '',
+        inputWidth: '',
+        inputHeight: '',
+        inputRotate: '',
+        inputFontSize: '',
+        inputFontFamily: '',
+        inputColor: '',
+        inputColorBlockSvg: '',
+
 
     },
     methods: {
@@ -49,15 +47,13 @@ var app = new Vue({
             let nameTemplate = vm.nameTemplate
             let filepath = vm.previewImage
             let typeTemplate = vm.typeTemplate
-            let objText = vm.objText
-            let objImage = vm.objImage
+            let objField = vm.objField
 
             const data = new URLSearchParams();
             data.append('nameTemplate', nameTemplate);
             data.append('file_path', filepath);
             data.append('type_template', typeTemplate);
-            data.append('obj_text', objText);
-            data.append('obj_image', objImage);
+            data.append('obj_field', objField);
 
             axios.post('saveTemplate.php', data)
             .then(function (response) {
@@ -88,13 +84,19 @@ var app = new Vue({
             })
         },
         onSelectChanged: function() {
-            
+            let vm = this
+            alert(this.selectFields)
         },
-        addTextField: function() {
-            console.log('')
+        addField: function() {
+            let vm = this
+            let objField = vm.objField
+            objField.nameField = vm.nameField
+            vm.arrayObjField.push(objField)
+            vm.optionFields.push({name:objField.nameField})
+            vm.nameField = ''
         },
-        addImageField: function() {
-            console.log('')
+        saveFields: function() {
+            alert('')
         }
     }
 
