@@ -17,22 +17,20 @@
             position: relative;
         }
 
-        .previewImage svg {
+        .previewImage div  {
             position: absolute;
-            top: 0;
-            left: 0;
         }
     </style>
 </head>
 
 <body>
-    <div id="app" class="container mt-3">
+    <div id="app" class="container-fluid mt-3 pl-5 pr-5">
         <div class="row">
-            <div class="col-md-9">
+            <div class="col-md-8">
                 <h1>Upload banner</h1>
 
                 <div class="row">
-                    <div class="col-6 mb-3">
+                    <div class="col-6">
                         <div class="input-group mb-3">
                             <select class="custom-select" v-model="typeTemplate" name="type_template">
                                 <option value="0">Selecione o tipo do banner</option>
@@ -64,13 +62,14 @@
 
                 <div class="previewImage" class="mb-3" v-if="previewImage != ''">
                     <img width="800" :style="{height: heightTemplate + 'px'}" :src="previewImage" alt="preview-image">
-                    <!-- <svg :style="objLogo">
-                        <rect width="100%" height="100%" style="fill:#047FFF" />
-                    </svg> -->
+                    <div v-for="(style, index) in arrayObjField" 
+                        :style="{left:style.pos_x + 'px', top:style.pos_y + 'px', width:style.width + 'px', height:style.height + 'px',
+                                transform:'rotate(' + style.rotate + 'deg)', backgroundColor: '#' + style.color_block}">
+                    </div>
                 </div>
             </div>
 
-            <div v-show="displayFieldsImage" class="mb-2 col-md-3" style="position:fixed;right:50px">
+            <div v-show="displayFieldsImage" class="mb-2 col-md-4" style="position:fixed;right:50px">
                 <h3>Configuração Template</h3>
 
                 <div class="input-group mb-2">

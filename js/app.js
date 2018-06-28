@@ -33,11 +33,13 @@ var app = new Vue({
             let nameTemplate = vm.nameTemplate
             let filepath = vm.previewImage
             let typeTemplate = vm.typeTemplate
+            let arrayObjField = vm.arrayObjField
 
             const data = new URLSearchParams();
             data.append('nameTemplate', nameTemplate);
             data.append('file_path', filepath);
             data.append('type_template', typeTemplate);
+            data.append('obj_fields', arrayObjField)
 
             axios.post('saveTemplate.php', data)
             .then(function (response) {
@@ -117,7 +119,7 @@ var app = new Vue({
             vm.inputFontFamily = ''
             vm.inputColor = ''
             vm.inputColorBlock = ''
-        }
+        },
     }
 
 })
