@@ -141,7 +141,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text">URL fonte</span>
                             </div>
-                            <input type="number" class="form-control" v-model="inputFontUrl" @keyup.down="reactiveField" @keyup.up="reactiveField">
+                            <input type="text" class="form-control" v-model="inputFontUrl" @keyup.down="reactiveField" @keyup.up="reactiveField">
                         </div>
                     </div>
 

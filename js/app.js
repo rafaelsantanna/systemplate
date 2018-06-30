@@ -34,7 +34,7 @@ var app = new Vue({
             let nameTemplate = vm.nameTemplate
             let filepath = vm.previewImage
             let typeTemplate = vm.typeTemplate
-            let arrayObjField = vm.arrayObjField
+            let arrayObjField = JSON.stringify(vm.arrayObjField)
 
             const data = new URLSearchParams();
             data.append('nameTemplate', nameTemplate);
@@ -48,6 +48,7 @@ var app = new Vue({
                 vm.nameTemplate = ''
                 vm.previewImage = ''
                 vm.typeTemplate = 0
+                vm.arrayObjField = []
                 vm.displayFieldsImage = false
                 alert('mensagem de sucesso!!!')
             })
