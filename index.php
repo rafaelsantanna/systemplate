@@ -90,7 +90,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text">X</span>
                             </div>
-                            <input type="number" class="form-control" v-model="inputX">
+                            <input type="number" class="form-control" v-model="inputX" @keyup.down="reactiveField" @keyup.up="reactiveField">
                         </div>
                     </div>
                     <div class="col-6">
@@ -98,7 +98,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text">Y</span>
                             </div>
-                            <input type="number" class="form-control" v-model="inputY">
+                            <input type="number" class="form-control" v-model="inputY" @keyup.down="reactiveField" @keyup.up="reactiveField">
                         </div>
                     </div>
 
@@ -107,7 +107,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text">Largura</span>
                             </div>
-                            <input type="number" class="form-control" v-model="inputWidth">
+                            <input type="number" class="form-control" v-model="inputWidth" @keyup.down="reactiveField" @keyup.up="reactiveField">
                         </div>
                     </div>
                     <div class="col-6">
@@ -115,7 +115,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text">Altura</span>
                             </div>
-                            <input type="number" class="form-control" v-model="inputHeight">
+                            <input type="number" class="form-control" v-model="inputHeight" @keyup.down="reactiveField" @keyup.up="reactiveField">
                         </div>
                     </div>
 
@@ -124,7 +124,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text">Rotacionar</span>
                             </div>
-                            <input type="number" class="form-control" v-model="inputRotate">
+                            <input type="number" class="form-control" v-model="inputRotate" @keyup.down="reactiveField" @keyup.up="reactiveField">
                         </div>
                     </div>
 
@@ -133,7 +133,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text">Tamanho Fonte</span>
                             </div>
-                            <input type="number" class="form-control" v-model="inputFontSize">
+                            <input type="number" class="form-control" v-model="inputFontSize" @keyup.down="reactiveField" @keyup.up="reactiveField">
                         </div>
                     </div>
                     <div class="col-12">

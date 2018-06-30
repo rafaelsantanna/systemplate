@@ -86,9 +86,37 @@ var app = new Vue({
                 vm.inputColorBlock = vm.arrayObjField[valueArray].color_block
             }
         },
+        reactiveField: function() {
+            let vm = this
+            vm.arrayObjField[vm.selectFields - 1] = {
+                pos_x: vm.inputX,
+                pos_y: vm.inputY,
+                width: vm.inputWidth,
+                height: vm.inputHeight,
+                rotate: vm.inputRotate,
+                font_size: vm.inputFontSize,
+                font_family: vm.inputFontFamily,
+                color: vm.inputColor,
+                color_block: vm.inputColorBlock 
+            }
+        },
         addField: function() {
             let vm = this
-            vm.arrayObjField.push({name_field:vm.nameField})
+            vm.arrayObjField.push(
+                {
+                    name_field:vm.nameField,
+                    pos_x: 0,
+                    pos_y: 0,
+                    width: 50,
+                    height: 50,
+                    rotate: 0,
+                    font_size: 14,
+                    font_family: 'Arial',
+                    color: '000000',
+                    color_block: '000000'
+
+                }
+            )
             vm.optionFields.push({name_field:vm.nameField})
             vm.nameField = ''
         },
