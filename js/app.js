@@ -23,6 +23,7 @@ var app = new Vue({
         inputRotate: 0,
         inputFontSize: 0,
         inputFontFamily: '',
+        inputFontUrl: '',
         inputColor: '',
         inputColorBlock: ''
 
@@ -82,6 +83,7 @@ var app = new Vue({
                 vm.inputRotate = vm.arrayObjField[valueArray].rotate
                 vm.inputFontSize = vm.arrayObjField[valueArray].font_size
                 vm.inputFontFamily = vm.arrayObjField[valueArray].font_family
+                vm.inputFontUrl = vm.arrayObjField[valueArray].font_url
                 vm.inputColor = vm.arrayObjField[valueArray].color
                 vm.inputColorBlock = vm.arrayObjField[valueArray].color_block
             }
@@ -96,6 +98,7 @@ var app = new Vue({
                 rotate: vm.inputRotate,
                 font_size: vm.inputFontSize,
                 font_family: vm.inputFontFamily,
+                font_url: vm.inputFontUrl,
                 color: vm.inputColor,
                 color_block: vm.inputColorBlock 
             }
@@ -111,7 +114,8 @@ var app = new Vue({
                     height: 50,
                     rotate: 0,
                     font_size: 14,
-                    font_family: 'Arial',
+                    font_family: 'arial',
+                    font_url: '',
                     color: '000000',
                     color_block: '000000'
 
@@ -132,6 +136,7 @@ var app = new Vue({
                 rotate: vm.inputRotate,
                 font_size: vm.inputFontSize,
                 font_family: vm.inputFontFamily,
+                font_url: vm.inputFontUrl,
                 color: vm.inputColor,
                 color_block: vm.inputColorBlock 
             }
@@ -147,6 +152,7 @@ var app = new Vue({
             vm.inputFontFamily = ''
             vm.inputColor = ''
             vm.inputColorBlock = ''
+            vm.inputFontUrl = ''
         },
     }
 
