@@ -42,6 +42,31 @@ var mountjpg = new Vue({
             let val = document.getElementById('input' + id).value
             document.getElementById('field' + id).innerHTML = val
         },
+        renderImage: function(file, id) {
+            // generate a new FileReader object
+            var reader = new FileReader();
+
+            // inject an image with the src url
+            reader.onload = function (event) {
+                the_url = event.target.result
+                $('#field' + id).html("<img width='100%' src='" + the_url + "' />")
+            }
+
+            // when the file is read it triggers the onload event above.
+            reader.readAsDataURL(file);
+        },
+        listenImageField: function(event) {
+            //valor do field-id
+            let fieldId = event.target.attributes[2].value
+            this.renderImage(event.target.files[0], fieldId)
+        },
+        
+        // snapshot of element and show to download
+        // snapshot: function() {
+        //     html2canvas(document.getElementById('example')).then(function(canvas) {
+        //         document.body.appendChild(canvas);
+        //     });
+        // },
         generateJpg: function() {
 
         }

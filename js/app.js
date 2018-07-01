@@ -25,7 +25,8 @@ var app = new Vue({
         inputFontFamily: '',
         inputFontUrl: '',
         inputColor: '',
-        inputColorBlock: ''
+        inputColorBlock: '',
+        isImage: false
 
     },
     methods: {
@@ -76,22 +77,26 @@ var app = new Vue({
             let valueArray = vm.selectFields - 1
             
             if(vm.arrayObjField[valueArray -1] !== 'undefined'){
+                vm.nameField = vm.arrayObjField[valueArray].name_field
+                vm.isImage = vm.arrayObjField[valueArray].is_image
                 vm.inputX = vm.arrayObjField[valueArray].pos_x
                 vm.inputY = vm.arrayObjField[valueArray].pos_y
                 vm.inputWidth = vm.arrayObjField[valueArray].width
                 vm.inputHeight = vm.arrayObjField[valueArray].height
-                vm.nameField = vm.arrayObjField[valueArray].name_field
                 vm.inputRotate = vm.arrayObjField[valueArray].rotate
                 vm.inputFontSize = vm.arrayObjField[valueArray].font_size
                 vm.inputFontFamily = vm.arrayObjField[valueArray].font_family
                 vm.inputFontUrl = vm.arrayObjField[valueArray].font_url
                 vm.inputColor = vm.arrayObjField[valueArray].color
                 vm.inputColorBlock = vm.arrayObjField[valueArray].color_block
+                vm.isImage = vm.arrayObjField[valueArray].is_image
             }
         },
         reactiveField: function() {
             let vm = this
+            let is_image = vm.isImage ? 1 : 0
             vm.arrayObjField[vm.selectFields - 1] = {
+                is_image: vm.isImage,
                 pos_x: vm.inputX,
                 pos_y: vm.inputY,
                 width: vm.inputWidth,
@@ -101,7 +106,8 @@ var app = new Vue({
                 font_family: vm.inputFontFamily,
                 font_url: vm.inputFontUrl,
                 color: vm.inputColor,
-                color_block: vm.inputColorBlock 
+                color_block: vm.inputColorBlock,
+                is_image: is_image
             }
         },
         addField: function() {
@@ -119,8 +125,8 @@ var app = new Vue({
                     font_family: 'arial',
                     font_url: '',
                     color: '000000',
-                    color_block: color_block
-
+                    color_block: color_block,
+                    is_image: 0
                 }
             )
             vm.optionFields.push({name_field:vm.nameField})
@@ -128,6 +134,7 @@ var app = new Vue({
         },
         saveFields: function() {
             let vm = this
+            let is_image = vm.isImage ? 1 : 0
             
             vm.arrayObjField[vm.selectFields - 1] = {
                 name_field: vm.nameField,
@@ -140,7 +147,8 @@ var app = new Vue({
                 font_family: vm.inputFontFamily,
                 font_url: vm.inputFontUrl,
                 color: vm.inputColor,
-                color_block: vm.inputColorBlock 
+                color_block: vm.inputColorBlock,
+                is_image: is_image
             }
 
             vm.selectFields = 0
@@ -155,6 +163,7 @@ var app = new Vue({
             vm.inputColor = ''
             vm.inputColorBlock = ''
             vm.inputFontUrl = ''
+            vm.isImage = false
         },
         getRandomColor: function(){
             var letters = '0123456789ABCDEF'.split('')

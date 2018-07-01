@@ -85,6 +85,12 @@
                 </select>
 
                 <div class="row">
+                    <div class="col-12">
+                        <div class="input-group mb-2 align-items-center">
+                            <label for="isImage" style="margin-bottom:0">É imagem?: &nbsp;</label>
+                            <input id="isImage" type="checkbox" v-model="isImage">
+                        </div>
+                    </div>
                     <div class="col-6">
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
@@ -119,7 +125,7 @@
                         </div>
                     </div>
 
-                    <div class="col-6">
+                    <div class="col-6" v-show="isImage == false">
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
                                 <span class="input-group-text">Tamanho Fonte</span>
@@ -127,7 +133,7 @@
                             <input type="number" class="form-control" v-model="inputFontSize" @keyup.down="reactiveField" @keyup.up="reactiveField">
                         </div>
                     </div>
-                    <div class="col-6">
+                    <div class="col-6" v-show="isImage == false">
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
                                 <span class="input-group-text">Nome fonte</span>
@@ -136,7 +142,7 @@
                         </div>
                     </div>
 
-                    <div class="col-12">
+                    <div class="col-12" v-show="isImage == false">
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
                                 <span class="input-group-text">URL fonte</span>
@@ -154,7 +160,7 @@
                         </div>
                     </div>
 
-                    <div class="col-6">
+                    <div class="col-5" v-show="isImage == false">
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
                                 <span class="input-group-text">Cor</span>
@@ -162,7 +168,7 @@
                             <input type="text" class="form-control" v-model="inputColor">
                         </div>
                     </div>
-                    <div class="col-6">
+                    <div class="col-7">
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
                                 <span class="input-group-text">Cor Bloco</span>

@@ -34,12 +34,14 @@
             <div class="row mb-3">
                 <div class="col-md-12 position-relative">
                     <img :src="renderTemplate" alt="" :show="renderTemplate != ''">
-                <div v-for="fields in objFields">
-                <div v-for="(item, index) in fields" :id="'field' + index" 
-                    :style="{wordWrap: 'break-word',position: 'absolute',top:item.pos_y + 'px',
-                     left:item.pos_x + 'px',width:item.width + 'px', height:item.height + 'px',
-                     transform:'rotate(' + item.rotate + 'deg)', fontSize:item.font_size + 'px',
-                     fontFamily:item.font_family, color:'#' + item.color}">
+                    <div v-for="fields in objFields">
+                        <div v-for="(item, index) in fields" :id="'field' + index" 
+                            :style="{wordWrap: 'break-word',position: 'absolute',top:item.pos_y + 'px',
+                            left:item.pos_x + 'px',width:item.width + 'px', height:item.height + 'px',
+                            transform:'rotate(' + item.rotate + 'deg)', fontSize:item.font_size + 'px',
+                            fontFamily:item.font_family, color:'#' + item.color}">
+                        </div>
+                    </div>
                 </div>
             </div>
             
@@ -47,11 +49,17 @@
                 <div class="col-md-8">
                     <div class="row" v-for="fields in objFields">
                         <div class="col-md-6" v-for="(input, index) in fields">
-                            <div class="input-group mb-3">
+                            <div v-if="input.is_image == 0" class="input-group mb-3">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">{{input.name_field}}</span>
                                 </div>
                                 <input :id="'input' + index" type="text" class="form-control" @keyup="setValueField(index)">
+                            </div>
+                            <div v-else class="input-group mb-3">
+                                <div class="custom-file">
+                                    <input :id="'input' + index" type="file" class="custom-file-input" :field-id="index" @change="listenImageField">
+                                    <label class="custom-file-label">{{input.name_field}}</label>
+                                </div>
                             </div>
                         </div>
                     </div>
