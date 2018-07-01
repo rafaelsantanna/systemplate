@@ -21,7 +21,7 @@
         <div class="col-md-12">
             <h1>Montar template</h1>
             <div class="input-group mb-3">
-            <select class="custom-select" v-model="selectedTemplate">
+            <select class="custom-select" v-model="selectedTemplate" @change="getSpecificTemplate">
                 <option v-for="option in optionsTemplate" v-bind:value="option.id">{{option.name_template}}</option>
             </select>
         </div>
