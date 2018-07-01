@@ -42,7 +42,7 @@ var app = new Vue({
             data.append('type_template', typeTemplate);
             data.append('obj_fields', arrayObjField)
 
-            axios.post('saveTemplate.php', data)
+            axios.post('save_template.php', data)
             .then(function (response) {
                 console.log(response)
                 vm.nameTemplate = ''
