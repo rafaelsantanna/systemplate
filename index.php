@@ -64,7 +64,7 @@
                     <img width="800" :style="{height: heightTemplate + 'px'}" :src="previewImage" alt="preview-image">
                     <div v-for="(style, index) in arrayObjField" 
                         :style="{left:style.pos_x + 'px', top:style.pos_y + 'px', width:style.width + 'px', height:style.height + 'px',
-                                transform:'rotate(' + style.rotate + 'deg)', backgroundColor: '#' + style.color_block}">
+                                transform:'rotate(' + style.rotate + 'deg)', backgroundColor: style.color_block}">
                     </div>
                 </div>
             </div>

@@ -9,6 +9,9 @@ var mountjpg = new Vue({
             }
         ],
 
+        renderTemplate: '',
+        renderFields: [],
+        objFields: []
     },
     mounted: function () {
         this.getTemplates()
@@ -29,8 +32,18 @@ var mountjpg = new Vue({
             let idTemplate = vm.selectedTemplate
             axios.get('template_models.php?type_of_query=2&id=' + idTemplate)
             .then(function (response) {
-                console.log(response)                
+                vm.renderTemplate = response.data[0].file_path
+                vm.objFields = []
+                let obj = JSON.parse(response.data[0].obj_fields)
+                vm.objFields.push(obj)
             })
+        },
+        setValueField: function(id) {
+            let val = document.getElementById('input' + id).value
+            document.getElementById('field' + id).innerHTML = val
+        },
+        generateJpg: function() {
+
         }
     }
 })

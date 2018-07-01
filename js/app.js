@@ -106,6 +106,7 @@ var app = new Vue({
         },
         addField: function() {
             let vm = this
+            var color_block = this.getRandomColor()
             vm.arrayObjField.push(
                 {
                     name_field:vm.nameField,
@@ -118,7 +119,7 @@ var app = new Vue({
                     font_family: 'arial',
                     font_url: '',
                     color: '000000',
-                    color_block: '000000'
+                    color_block: color_block
 
                 }
             )
@@ -155,6 +156,14 @@ var app = new Vue({
             vm.inputColorBlock = ''
             vm.inputFontUrl = ''
         },
+        getRandomColor: function(){
+            var letters = '0123456789ABCDEF'.split('')
+            var color = '#'
+            for (var i = 0; i < 6; i++ ) {
+            color += letters[Math.round(Math.random() * 15)]
+            }
+            return color
+        }
     }
 
 })
