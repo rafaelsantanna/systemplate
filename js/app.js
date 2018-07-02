@@ -172,6 +172,11 @@ var app = new Vue({
             color += letters[Math.round(Math.random() * 15)]
             }
             return color
+        },
+        setTextField: function(event) {
+            let vm = this
+            let index = vm.selectFields - 1
+            document.getElementById('field' + index).innerHTML = event.target.value
         }
     }
 
