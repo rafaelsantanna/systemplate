@@ -32,16 +32,21 @@
             </div>
 
             <div class="row mb-3">
-                <div class="col-md-12 position-relative">
-                    <img :src="renderTemplate" alt="" :show="renderTemplate != ''">
-                    <div v-for="fields in objFields">
-                        <div v-for="(item, index) in fields" :id="'field' + index" 
+                <div class="col-md-9 position-relative">
+                    <div id="imagem_template" style="width:800px">
+                        <img :src="renderTemplate" alt="" :show="renderTemplate != ''">
+                        <div v-for="fields in objFields">
+                            <div v-for="(item, index) in fields" :id="'field' + index" 
                             :style="{wordWrap: 'break-word',position: 'absolute',top:item.pos_y + 'px',
-                            left:item.pos_x + 'px',width:item.width + 'px', height:item.height + 'px',
-                            transform:'rotate(' + item.rotate + 'deg)', fontSize:item.font_size + 'px',
-                            fontFamily:item.font_family, color:'#' + item.color}">
+                                left:item.pos_x + 'px',width:item.width + 'px', height:item.height + 'px',
+                                transform:'rotate(' + item.rotate + 'deg)', fontSize:item.font_size + 'px',
+                                fontFamily:item.font_family, color:'#' + item.color}">
+                            </div>
                         </div>
-                    </div>
+                    </div>    
+                </div>
+                <div class="col-md-3">
+                    <button class="btn btn-primary" @click="generateJpg">Gerar Imagem</button>
                 </div>
             </div>
             
@@ -78,41 +83,6 @@
     <script src="./js/html2canvas.min.js"></script>
     <script src="https://unpkg.com/vue/dist/vue.js"></script>
     <script src="./js/mountjpg.js"></script>
-    <script>
-
-        // <input id="file" type="file">
-        // <div id="example"></div>
-
-        // render the image in our view
-        function renderImage(file) {
-
-            // generate a new FileReader object
-            var reader = new FileReader();
-
-            // inject an image with the src url
-            reader.onload = function (event) {
-                the_url = event.target.result
-                $('#example').html("<img src='" + the_url + "' />")
-            }
-
-            // when the file is read it triggers the onload event above.
-            reader.readAsDataURL(file);
-        }
-
-        // handle input changes
-        $("#file").change(function () {
-            console.log(this.files)
-
-            // grab the first image in the FileList object and pass it to the function
-            renderImage(this.files[0])
-        });
-
-        // snapshot of element and show to download
-        function snapshot() {
-            html2canvas(document.getElementById('example')).then(function(canvas) {
-             document.body.appendChild(canvas);
-            });
-        }
     </script>
 </body>
 </html>

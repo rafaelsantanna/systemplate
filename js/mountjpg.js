@@ -56,19 +56,23 @@ var mountjpg = new Vue({
             reader.readAsDataURL(file);
         },
         listenImageField: function(event) {
-            //valor do field-id
+            //value of field-id
             let fieldId = event.target.attributes[2].value
             this.renderImage(event.target.files[0], fieldId)
         },
         
-        // snapshot of element and show to download
-        // snapshot: function() {
-        //     html2canvas(document.getElementById('example')).then(function(canvas) {
-        //         document.body.appendChild(canvas);
-        //     });
-        // },
+        //snapshot html and generate image
         generateJpg: function() {
-
+            html2canvas(document.getElementById('imagem_template')).then(function(canvas) {
+                canvas.style.width = '800px'
+                let url_image = canvas.toDataURL('image/jpg')
+                let img = $("<a>")
+                    .attr("href", url_image)
+                    .attr("download", "banner.png")
+                    .appendTo("body");
+                img[0].click();
+                img.remove();
+            });
         }
     }
 })
