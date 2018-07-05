@@ -17,6 +17,7 @@
 <body>
 
 <div id="mountjpg" class="container">
+<div id="url_fonts"></div>
     <div class="row">
         <div class="col-md-12">
             <h1>Montar template</h1>

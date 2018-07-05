@@ -11,7 +11,8 @@ var mountjpg = new Vue({
 
         renderTemplate: '',
         renderFields: [],
-        objFields: []
+        objFields: [],
+        urlFonts: []
     },
     mounted: function () {
         this.getTemplates()
@@ -36,6 +37,11 @@ var mountjpg = new Vue({
                 vm.objFields = []
                 let obj = JSON.parse(response.data[0].obj_fields)
                 vm.objFields.push(obj)
+                let stringLinks = ''
+                for(let i = 0; i < vm.objFields[0].length; i++){
+                    stringLinks +='<link href="https://fonts.googleapis.com/css?family='+ vm.objFields[0][i].font_url +'" rel="stylesheet">'
+                }
+                document.getElementById('url_fonts').innerHTML = stringLinks
             })
         },
         setValueField: function(id) {

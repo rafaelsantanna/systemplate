@@ -132,7 +132,17 @@
                             <input type="number" class="form-control" v-model="inputFontSize" @keyup.down="reactiveField" @keyup.up="reactiveField">
                         </div>
                     </div>
-                    <div class="col-6" v-show="isImage == false">
+                    
+                    <div class="col-6">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Rotacionar</span>
+                            </div>
+                            <input type="number" class="form-control" v-model="inputRotate" @keyup.down="reactiveField" @keyup.up="reactiveField">
+                        </div>
+                    </div>
+
+                    <div class="col-12" v-show="isImage == false">
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
                                 <span class="input-group-text">Nome fonte</span>
@@ -147,15 +157,6 @@
                                 <span class="input-group-text">URL fonte</span>
                             </div>
                             <input type="text" class="form-control" v-model="inputFontUrl" @keyup.down="reactiveField" @keyup.up="reactiveField">
-                        </div>
-                    </div>
-
-                    <div class="col-12">
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">Rotacionar</span>
-                            </div>
-                            <input type="number" class="form-control" v-model="inputRotate" @keyup.down="reactiveField" @keyup.up="reactiveField">
                         </div>
                     </div>
 
