@@ -95,7 +95,8 @@ var app = new Vue({
         reactiveField: function() {
             let vm = this
             let is_image = vm.isImage ? 1 : 0
-            vm.arrayObjField[vm.selectFields - 1] = {
+            //Vue.set torna reativo a alteração no array
+            Vue.set(vm.arrayObjField,vm.selectFields - 1, {
                 is_image: vm.isImage,
                 pos_x: vm.inputX,
                 pos_y: vm.inputY,
@@ -108,7 +109,7 @@ var app = new Vue({
                 color: vm.inputColor,
                 color_block: vm.inputColorBlock,
                 is_image: is_image
-            }
+            })
         },
         addField: function() {
             let vm = this

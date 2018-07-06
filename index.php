@@ -86,7 +86,7 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="input-group mb-2 align-items-center">
-                            <label for="isImage" style="margin-bottom:0">É imagem?: &nbsp;</label>
+                            <label for="isImage" style="margin-bottom:0">É imagem? &nbsp;</label>
                             <input id="isImage" type="checkbox" v-model="isImage">
                         </div>
                     </div>
@@ -95,7 +95,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text">X</span>
                             </div>
-                            <input type="number" class="form-control" v-model="inputX" @keyup.down="reactiveField" @keyup.up="reactiveField">
+                            <input type="number" class="form-control" v-model="inputX" @keyup="reactiveField">
                         </div>
                     </div>
                     <div class="col-6">
@@ -103,7 +103,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text">Y</span>
                             </div>
-                            <input type="number" class="form-control" v-model="inputY" @keyup.down="reactiveField" @keyup.up="reactiveField">
+                            <input type="number" class="form-control" v-model="inputY" @keyup="reactiveField">
                         </div>
                     </div>
 
@@ -112,7 +112,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text">Largura</span>
                             </div>
-                            <input type="number" class="form-control" v-model="inputWidth" @keyup.down="reactiveField" @keyup.up="reactiveField">
+                            <input type="number" class="form-control" v-model="inputWidth" @keyup="reactiveField">
                         </div>
                     </div>
                     <div class="col-6">
@@ -120,7 +120,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text">Altura</span>
                             </div>
-                            <input type="number" class="form-control" v-model="inputHeight" @keyup.down="reactiveField" @keyup.up="reactiveField">
+                            <input type="number" class="form-control" v-model="inputHeight" @keyup="reactiveField">
                         </div>
                     </div>
 
@@ -129,7 +129,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text">Tamanho Fonte</span>
                             </div>
-                            <input type="number" class="form-control" v-model="inputFontSize" @keyup.down="reactiveField" @keyup.up="reactiveField">
+                            <input type="number" class="form-control" v-model="inputFontSize" @keyup="reactiveField">
                         </div>
                     </div>
                     
@@ -138,7 +138,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text">Rotacionar</span>
                             </div>
-                            <input type="number" class="form-control" v-model="inputRotate" @keyup.down="reactiveField" @keyup.up="reactiveField">
+                            <input type="number" class="form-control" v-model="inputRotate" @keyup="reactiveField">
                         </div>
                     </div>
 
@@ -156,7 +156,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text">URL fonte</span>
                             </div>
-                            <input type="text" class="form-control" v-model="inputFontUrl" @keyup.down="reactiveField" @keyup.up="reactiveField">
+                            <input type="text" class="form-control" v-model="inputFontUrl">
                         </div>
                     </div>
 
@@ -165,7 +165,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text">Cor</span>
                             </div>
-                            <input type="text" class="form-control" v-model="inputColor">
+                            <input type="text" class="form-control" v-model="inputColor" @keyup="reactiveField">
                         </div>
                     </div>
                     <div class="col-7">
@@ -173,7 +173,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text">Cor Bloco</span>
                             </div>
-                            <input type="text" class="form-control" v-model="inputColorBlock">
+                            <input type="text" class="form-control" v-model="inputColorBlock" @keyup="reactiveField">
                         </div>
                     </div>
 
