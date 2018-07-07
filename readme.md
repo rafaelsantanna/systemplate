@@ -1,9 +1,8 @@
 Download w/ Canvas:
-https://jsfiddle.net/AbdiasSoftware/7PRNN/
-
-https://bitbucket.org/joseph0xfff/supertests/src/master/
 
 http://html2canvas.hertzen.com/documentation
+
+OBS: o sistema somente aceita JPG como template
 
 Exemplo inputando font:
 
@@ -11,3 +10,6 @@ Exemplo inputando font:
 Open+Sans
 // No campo nome da fonte coloque o valor de font-family sem as aspas e sem o ponto e virgula:
 Open Sans, sans-serif
+
+//Solução para resize com javascript
+http://vikhyat.net/code/resize_large_images_js/

@@ -26,8 +26,13 @@ var app = new Vue({
         inputFontUrl: '',
         inputColor: '',
         inputColorBlock: '',
-        isImage: false
+        isImage: false,
 
+        listTemplates: []
+
+    },
+    mounted: function(){
+        this.getTemplates()
     },
     methods: {
         submitTemplate: function(){
@@ -178,7 +183,19 @@ var app = new Vue({
             let vm = this
             let index = vm.selectFields - 1
             document.getElementById('field' + index).innerHTML = event.target.value
-        }
+        },
+        getTemplates: function() {
+            let vm = this
+            axios.get('template_dels.php?type_of_query=1')
+            .then(function (response) {
+                let length = Object.keys(response.data).length
+                for(let i=0; i<length;i++){
+                    vm.listTemplates.push(response.data[i])
+                }
+
+                console.log(vm.listTemplates)
+            })
+        },
     }
 
 })

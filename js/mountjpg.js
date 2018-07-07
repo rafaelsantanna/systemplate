@@ -55,7 +55,7 @@ var mountjpg = new Vue({
             // inject an image with the src url
             reader.onload = function (event) {
                 the_url = event.target.result
-                $('#field' + id).html("<img width='100%' src='" + the_url + "' />")
+                $('#field' + id).html("<img style='width:100%;height:inherit' src='" + the_url + "' />")
             }
 
             // when the file is read it triggers the onload event above.
