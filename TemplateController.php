@@ -1,6 +1,13 @@
 <?php
 require_once "conn.php";
 
+/*
+    type_of_query
+    1 - Select all
+    2 - Select Where
+    3 - Delete
+*/
+
 if($_GET["type_of_query"] == 1) {
     $sql = "SELECT * FROM template";
 
@@ -21,6 +28,7 @@ if($_GET["type_of_query"] == 1) {
     }
     echo json_encode((object)$response);
 }
+
 if($_GET["type_of_query"] == 2) {
     $id = $_GET["id"];
     $sql = "SELECT * FROM template WHERE id = $id";
@@ -41,6 +49,23 @@ if($_GET["type_of_query"] == 2) {
         $response = array(
             "error" => true
         );
+    }
+    echo json_encode((object)$response);
+}
+
+if(isset($_POST["type_of_query"]) == 3) {
+    $id = $_POST["id"];
+    $sql = "DELETE FROM template WHERE id = $id";
+    $response = [];
+    
+    if($mysqli->query($sql) === TRUE){
+        array_push($response, [
+            "success" => true
+        ]);
+    } else {
+        array_push($response, [
+            "error" => true
+        ]);
     }
     echo json_encode((object)$response);
 }

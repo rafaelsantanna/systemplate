@@ -47,16 +47,19 @@
                     </div>
                 </div>
                 
-                <div class="row">
+                <!-- <div v-if="listTemplates.length > 0" class="row">
                     <div class="col-6">
                         <ul class="list-group">
-                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                                Cras justo odio
-                                <img src="./icons/trash-solid.svg" alt="icon trash" width="20" height="20">
+                            <li v-for="item in listTemplates" class="list-group-item d-flex justify-content-between align-items-center">
+                                {{item.name_template}}
+                                <br>
+                                <a href="" @click="deleteTemplate(item.id)">
+                                    <img src="./icons/trash-solid.svg" alt="icon trash" width="20" height="20">
+                                </a>
                             </li>
                         </ul>
                     </div>
-                </div>
+                </div> -->
 
                 <div class="row mb-2" v-if="previewImage != ''">
                     <div class="col-6">

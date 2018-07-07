@@ -186,16 +186,26 @@ var app = new Vue({
         },
         getTemplates: function() {
             let vm = this
-            axios.get('template_dels.php?type_of_query=1')
+            axios.get('TemplateController.php?type_of_query=1')
             .then(function (response) {
                 let length = Object.keys(response.data).length
                 for(let i=0; i<length;i++){
                     vm.listTemplates.push(response.data[i])
                 }
-
                 console.log(vm.listTemplates)
+                console.log(response.data)
             })
         },
+        deleteTemplate: function(id) {
+            let vm = this
+            const data = new URLSearchParams();
+            data.append('id', id);
+            data.append('type_of_query', 3)
+            axios.post('TemplateController.php', data)
+            .then(function(response) {
+                alert('Atualizar Lista')
+            })
+        }
     }
 
 })
