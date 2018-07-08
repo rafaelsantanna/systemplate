@@ -47,8 +47,9 @@ var app = new Vue({
             data.append('file_path', filepath);
             data.append('type_template', typeTemplate);
             data.append('obj_fields', arrayObjField)
+            data.append('type_of_query', 4)
 
-            axios.post('save_template.php', data)
+            axios.post('TemplateController.php', data)
             .then(function (response) {
                 console.log(response)
                 vm.nameTemplate = ''
@@ -189,6 +190,7 @@ var app = new Vue({
             axios.get('TemplateController.php?type_of_query=1')
             .then(function (response) {
                 if (response.data.error) {
+                    vm.listTemplates = []
                     return
                 }
                 let length = Object.keys(response.data).length
