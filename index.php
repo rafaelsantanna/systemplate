@@ -20,6 +20,12 @@
         .previewImage div  {
             position: absolute;
         }
+
+        #alert-message {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
     </style>
 </head>
 
@@ -204,9 +210,7 @@
                 <div class="input-group mt-1">
                     <button @click="saveFields" class="btn btn-success" type="button">Salvar Campo</button>
                 </div>
-
             </div>
-
         </div>
     </div>
 

@@ -57,7 +57,7 @@ var app = new Vue({
                 vm.typeTemplate = 0
                 vm.arrayObjField = []
                 vm.displayFieldsImage = false
-                alert('mensagem de sucesso!!!')
+                vm.showAlert('Template criado com sucesso!', 'alert-success')
             })
         },
         onFileChanged: function(event) {
@@ -208,6 +208,11 @@ var app = new Vue({
             .then(function(response) {
                 alert('Atualizar Lista')
             })
+        },
+        showAlert: function(message, type) {
+            $('body').append('<div id="alert-message" class="alert '+ type +'">'+message+'</div>')
+            $('#alert-message').css('display', 'none').fadeIn(1000)
+            setTimeout(function(){ $('#alert-message').fadeOut(1000); }, 3000)
         }
     }
 
