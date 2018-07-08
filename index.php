@@ -47,7 +47,7 @@
                     </div>
                 </div>
                 
-                <!-- <div v-if="listTemplates.length > 0" class="row">
+                <div v-if="listTemplates.length > 0 && previewImage == ''" class="row">
                     <div class="col-6">
                         <ul class="list-group">
                             <li v-for="item in listTemplates" class="list-group-item d-flex justify-content-between align-items-center">
@@ -59,7 +59,7 @@
                             </li>
                         </ul>
                     </div>
-                </div> -->
+                </div>
 
                 <div class="row mb-2" v-if="previewImage != ''">
                     <div class="col-6">

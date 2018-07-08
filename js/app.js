@@ -188,12 +188,13 @@ var app = new Vue({
             let vm = this
             axios.get('TemplateController.php?type_of_query=1')
             .then(function (response) {
+                if (response.data.error) {
+                    return
+                }
                 let length = Object.keys(response.data).length
                 for(let i=0; i<length;i++){
                     vm.listTemplates.push(response.data[i])
                 }
-                console.log(vm.listTemplates)
-                console.log(response.data)
             })
         },
         deleteTemplate: function(id) {
