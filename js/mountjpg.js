@@ -70,7 +70,7 @@ var mountjpg = new Vue({
         //snapshot html and generate image
         generateJpg: function() {
             html2canvas(document.getElementById('imagem_template')).then(function(canvas) {
-                canvas.style.width = '800px'
+                canvas.style.width = '828px'
                 let url_image = canvas.toDataURL('image/jpg')
                 let img = $("<a>")
                     .attr("href", url_image)

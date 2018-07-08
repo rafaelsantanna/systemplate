@@ -5,6 +5,7 @@ var app = new Vue({
         typeTemplate: 0,
         previewImage: '',
         heightTemplate: '',
+        widthTemplate: '',
         displayFieldsImage: false,
         
         nameTemplate: '',
@@ -74,8 +75,10 @@ var app = new Vue({
             axios.post('preview.php', data)
             .then(function (response) {
                 if (vm.typeTemplate == 1) {
-                    vm.heightTemplate = '312'
+                    vm.widthTemplate = '828'
+                    vm.heightTemplate = '475'
                 } else {
+                    vm.widthTemplate = '800'
                     vm.heightTemplate = '800'
                 }
                 vm.displayFieldsImage = true;

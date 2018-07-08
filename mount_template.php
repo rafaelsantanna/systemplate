@@ -12,6 +12,11 @@
     <title>Montar JPG</title>
 
     <style>
+        #imagem_template{
+            width: -webkit-fit-content;
+            width: -moz-fit-content;
+            width: fit-content;
+        }
     </style>
 </head>
 <body>
@@ -34,7 +39,7 @@
 
             <div class="row mb-3">
                 <div class="col-md-9 position-relative">
-                    <div id="imagem_template" style="width:800px">
+                    <div id="imagem_template">
                         <img :src="renderTemplate" alt="" :show="renderTemplate != ''">
                         <div v-for="fields in objFields">
                             <div v-for="(item, index) in fields" :id="'field' + index" 

@@ -7,8 +7,8 @@
   list($width, $height) = getimagesize($uploadedfile); // get width and height from image upload
 
   if($type_template == 1) {
-    $width_type_template = 800;
-    $height_type_template = 312;
+    $width_type_template = 828;
+    $height_type_template = 475;
   } else {
     $width_type_template = 800;
     $height_type_template = 800;

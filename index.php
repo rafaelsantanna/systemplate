@@ -30,7 +30,7 @@
 </head>
 
 <body>
-    <div id="app" class="container-fluid mt-3 pl-5 pr-5">
+    <div id="app" class="container-fluid mt-3 mb-3 pl-4 pr-4">
         <div class="row">
             <div class="col-md-8">
                 <h1>Upload banner</h1>
@@ -81,7 +81,7 @@
                 </div>
 
                 <div class="previewImage" class="mb-3" v-if="previewImage != ''">
-                    <img width="800" :style="{height: heightTemplate + 'px'}" :src="previewImage" alt="preview-image">
+                    <img :style="{width: widthTemplate + 'px',height: heightTemplate + 'px'}" :src="previewImage" alt="preview-image">
                     <div v-for="(style, index) in arrayObjField" :id="'field' + index"
                         :style="{wordWrap: 'break-word', left:style.pos_x + 'px', top:style.pos_y + 'px', width:style.width + 'px', height:style.height + 'px', transform:'rotate(' + style.rotate + 'deg)', backgroundColor: style.color_block,fontSize:style.font_size + 'px', fontFamily:style.font_family, color:'#' + style.color}">
                     </div>
@@ -165,7 +165,7 @@
                     <div class="col-12" v-show="isImage == false">
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
-                                <span class="input-group-text">Nome fonte</span>
+                                <span class="input-group-text">CSS da font</span>
                             </div>
                             <input type="text" class="form-control" v-model="inputFontFamily">
                         </div>
