@@ -28,7 +28,9 @@ var app = new Vue({
         inputColorBlock: '',
         isImage: false,
 
-        listTemplates: []
+        listTemplates: [],
+
+        paramDelete: 0
 
     },
     mounted: function(){
@@ -51,12 +53,14 @@ var app = new Vue({
 
             axios.post('TemplateController.php', data)
             .then(function (response) {
-                console.log(response)
                 vm.nameTemplate = ''
                 vm.previewImage = ''
                 vm.typeTemplate = 0
                 vm.arrayObjField = []
                 vm.displayFieldsImage = false
+                vm.listTemplates = []
+                vm.getTemplates()
+                document.getElementById('inputFile').value = ''
                 vm.showAlert('Template criado com sucesso!', 'alert-success')
             })
         },
@@ -199,20 +203,29 @@ var app = new Vue({
                 }
             })
         },
-        deleteTemplate: function(id) {
+        showModalDelete: function(id) {
+            $('#modal-delete').modal('show')
+            this.paramDelete = id
+        },
+        deleteTemplate: function() {
             let vm = this
+            let id = this.paramDelete
             const data = new URLSearchParams();
             data.append('id', id);
             data.append('type_of_query', 3)
             axios.post('TemplateController.php', data)
             .then(function(response) {
-                alert('Atualizar Lista')
+                $('#modal-delete').modal('hide')
+                vm.showAlert('Template deletado com sucesso!', 'alert-success')
+                vm.paramDelete = 0
+                vm.listTemplates = []
+                vm.getTemplates()
             })
         },
         showAlert: function(message, type) {
             $('body').append('<div id="alert-message" class="alert '+ type +'">'+message+'</div>')
             $('#alert-message').css('display', 'none').fadeIn(1000)
-            setTimeout(function(){ $('#alert-message').fadeOut(1000); }, 3000)
+            setTimeout(function(){ $('#alert-message').fadeOut(1000,function() {$(this).remove()}) }, 2000)
         }
     }
 

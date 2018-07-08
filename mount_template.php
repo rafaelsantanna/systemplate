@@ -46,7 +46,7 @@
                         </div>
                     </div>    
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-3" v-if="selectedTemplate > 0">
                     <button class="btn btn-primary" @click="generateJpg">Gerar Imagem</button>
                 </div>
             </div>

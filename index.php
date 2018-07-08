@@ -46,7 +46,7 @@
                         </div>
                         <div class="input-group mb-3">
                             <div class="custom-file">
-                                <input @change="onFileChanged" type="file" required name="file" class="custom-file-input">
+                                <input id="inputFile" @change="onFileChanged" type="file" required name="file" class="custom-file-input">
                                 <label class="custom-file-label">Escolher arquivo</label>
                             </div>
                         </div>
@@ -59,7 +59,7 @@
                             <li v-for="item in listTemplates" class="list-group-item d-flex justify-content-between align-items-center">
                                 {{item.name_template}}
                                 <br>
-                                <a href="" @click="deleteTemplate(item.id)">
+                                <a href="" v-on:click.stop.prevent="showModalDelete(item.id)">
                                     <img src="./icons/trash-solid.svg" alt="icon trash" width="20" height="20">
                                 </a>
                             </li>
@@ -75,7 +75,7 @@
                     </div>
                     <div class="col-6">
                         <div class="input-group">
-                            <button @click="submitTemplate" class="btn btn-primary" type="button">Salvar Template</button>
+                            <button @click="submitTemplate" :disabled="nameTemplate == ''" class="btn btn-primary" type="button">Salvar Template</button>
                         </div>
                     </div>
                 </div>
@@ -94,7 +94,7 @@
                 <div class="input-group mb-2">
                     <input type="text" class="form-control" v-model="nameField" placeholder="Nome do campo">
                     <div class="input-group-append">
-                        <button @click="addField" class="btn btn-success" type="button">Adicionar campo</button>
+                        <button @click="addField" :disabled="nameField == ''" class="btn btn-success" type="button">Adicionar campo</button>
                     </div>
                 </div>
                 <select class="custom-select mb-3" v-model="selectFields" @change="onSelectChanged">
@@ -208,11 +208,31 @@
                 </div>
 
                 <div class="input-group mt-1">
-                    <button @click="saveFields" class="btn btn-success" type="button">Salvar Campo</button>
+                    <button @click="saveFields" :disabled="selectFields == 0" class="btn btn-success" type="button">Salvar Campo</button>
                 </div>
             </div>
         </div>
+        <div id="modal-delete" class="modal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Deletar Template</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <p>Tem certeza?</p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" @click="deleteTemplate" class="btn btn-danger">Deletar</button>
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+        </div>
     </div>
+
 
     <!-- jQuery primeiro depois Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
