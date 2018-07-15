@@ -58,10 +58,14 @@
                         <ul class="list-group">
                             <li v-for="item in listTemplates" class="list-group-item d-flex justify-content-between align-items-center">
                                 {{item.name_template}}
-                                <br>
-                                <a href="" v-on:click.stop.prevent="showModalDelete(item.id)">
-                                    <img src="./icons/trash-solid.svg" alt="icon trash" width="20" height="20">
-                                </a>
+                                <div>
+                                    <a class="mr-2" href="" v-on:click.stop.prevent="updateTemplate(item.id)">
+                                        <img src="./icons/edit-solid.svg" alt="icon edit" width="20" height="20">
+                                    </a>
+                                    <a href="" v-on:click.stop.prevent="showModalDelete(item.id)">
+                                        <img src="./icons/trash-solid.svg" alt="icon trash" width="20" height="20">
+                                    </a>
+                                </div>
                             </li>
                         </ul>
                     </div>
@@ -83,7 +87,7 @@
                 <div class="previewImage" class="mb-3" v-if="previewImage != ''">
                     <img :style="{width: widthTemplate + 'px',height: heightTemplate + 'px'}" :src="previewImage" alt="preview-image">
                     <div v-for="(style, index) in arrayObjField" :id="'field' + index"
-                        :style="{wordWrap: 'break-word', left:style.pos_x + 'px', top:style.pos_y + 'px', width:style.width + 'px', height:style.height + 'px', transform:'rotate(' + style.rotate + 'deg)', backgroundColor: style.color_block,fontSize:style.font_size + 'px', fontFamily:style.font_family, color:'#' + style.color}">
+                        :style="{wordWrap: 'break-word', left:style.pos_x + 'px', top:style.pos_y + 'px', width:style.width + 'px', height:style.height + 'px', transform:'rotate(' + style.rotate + 'deg)', backgroundColor: '#' + style.color_block,fontSize:style.font_size + 'px', fontFamily:style.font_family, color:'#' + style.color}">
                     </div>
                 </div>
             </div>
@@ -202,7 +206,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text">Preview Texto</span>
                             </div>
-                            <input type="text" class="form-control" @keyup="setTextField">
+                            <input id="preview-text" type="text" class="form-control" @keyup="setTextField">
                         </div>
                     </div>
                 </div>

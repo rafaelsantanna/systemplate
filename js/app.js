@@ -31,7 +31,8 @@ var app = new Vue({
 
         listTemplates: [],
 
-        paramDelete: 0
+        paramDelete: 0,
+        paramUpdate: 0
 
     },
     mounted: function(){
@@ -48,9 +49,14 @@ var app = new Vue({
             const data = new URLSearchParams();
             data.append('nameTemplate', nameTemplate);
             data.append('file_path', filepath);
-            data.append('type_template', typeTemplate);
             data.append('obj_fields', arrayObjField)
-            data.append('type_of_query', 4)
+            data.append('type_template', typeTemplate);
+            if(vm.paramUpdate > 0) {
+                data.append('type_of_query', 5) //Update
+                data.append('id', vm.paramUpdate)
+            } else {
+                data.append('type_of_query', 4) //Insert
+            }
 
             axios.post('TemplateController.php', data)
             .then(function (response) {
@@ -60,6 +66,7 @@ var app = new Vue({
                 vm.arrayObjField = []
                 vm.displayFieldsImage = false
                 vm.listTemplates = []
+                vm.paramUpdate = 0
                 vm.getTemplates()
                 document.getElementById('inputFile').value = ''
                 vm.showAlert('Template criado com sucesso!', 'alert-success')
@@ -178,12 +185,13 @@ var app = new Vue({
             vm.inputColorBlock = ''
             vm.inputFontUrl = ''
             vm.isImage = false
+            document.getElementById('preview-text').value = ''
         },
         getRandomColor: function(){
             var letters = '0123456789ABCDEF'.split('')
-            var color = '#'
+            var color = ''
             for (var i = 0; i < 6; i++ ) {
-            color += letters[Math.round(Math.random() * 15)]
+                color += letters[Math.round(Math.random() * 15)]
             }
             return color
         },
@@ -223,6 +231,28 @@ var app = new Vue({
                 vm.paramDelete = 0
                 vm.listTemplates = []
                 vm.getTemplates()
+            })
+        },
+        updateTemplate: function(id) {
+            let vm = this
+            axios.get('TemplateController.php?type_of_query=2&id=' + id)
+            .then(function (response) {
+                let data = response.data[0]
+                if(data.type_template == 1){
+                    vm.widthTemplate = '828'
+                    vm.heightTemplate = '475'
+                } else {
+                    vm.widthTemplate = '800'
+                    vm.heightTemplate = '800'
+                }
+                vm.nameTemplate = data.name_template
+                vm.previewImage = data.file_path
+                vm.displayFieldsImage = true
+                vm.arrayObjField = JSON.parse(data.obj_fields)
+                JSON.parse(data.obj_fields).map(function(item) {
+                    vm.optionFields.push({name_field:item.name_field})
+                })
+                vm.paramUpdate = id
             })
         },
         showAlert: function(message, type) {
