@@ -53,11 +53,11 @@ var app = new Vue({
             data.append('file_path', filepath);
             data.append('obj_fields', arrayObjField)
             data.append('type_template', typeTemplate);
-            if(vm.paramUpdate > 0) {
-                data.append('type_of_query', 5) //Update
-                data.append('id', vm.paramUpdate)
-            } else {
+            if(vm.paramUpdate == 0) {
                 data.append('type_of_query', 4) //Insert
+            } else {
+                data.append('id', vm.paramUpdate)
+                data.append('type_of_query', 5) //Update
             }
 
             axios.post('TemplateController.php', data)
@@ -258,6 +258,7 @@ var app = new Vue({
                     vm.widthTemplate = '800'
                     vm.heightTemplate = '800'
                 }
+                vm.typeTemplate = data.type_template
                 vm.nameTemplate = data.name_template
                 vm.previewImage = data.file_path
                 vm.displayFieldsImage = true
