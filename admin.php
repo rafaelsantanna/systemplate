@@ -202,16 +202,20 @@
                     </div>
 
                     <div class="col-12" v-show="isImage == false">
+                    <div class="input-group align-items-center">
+                            <label for="hasBlockText" style="margin-bottom:0">Bloquear texto? &nbsp;</label>
+                            <input id="hasBlockText" type="checkbox" v-model="hasBlockText">
+                        </div>
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
                                 <span class="input-group-text">Preview Texto</span>
                             </div>
-                            <input id="preview-text" type="text" class="form-control" @keyup="setTextField">
+                            <input v-model="inputPreview" id="preview-text" type="text" class="form-control" @keyup="setTextField">
                         </div>
                     </div>
                 </div>
 
-                <div class="input-group mt-1">
+                <div class="input-group">
                     <button @click="saveFields" :disabled="selectFields == 0" class="btn btn-success" type="button">Salvar Campo</button>
                 </div>
             </div>

@@ -27,6 +27,8 @@ var app = new Vue({
         inputFontUrl: '',
         inputColor: '',
         inputColorBlock: '',
+        inputPreview: '',
+        hasBlockText: false,
         isImage: false,
 
         listTemplates: [],
@@ -109,15 +111,16 @@ var app = new Vue({
                 vm.inputFontUrl = vm.arrayObjField[valueArray].font_url
                 vm.inputColor = vm.arrayObjField[valueArray].color
                 vm.inputColorBlock = vm.arrayObjField[valueArray].color_block
-                vm.isImage = vm.arrayObjField[valueArray].is_image
+                vm.inputPreview = vm.arrayObjField[valueArray].text
+                vm.hasBlockText = vm.arrayObjField[valueArray].has_block_text
             }
         },
         reactiveField: function() {
             let vm = this
             let is_image = vm.isImage ? 1 : 0
+            let has_block_text = vm.hasBlockText ? 1 : 0
             //Vue.set torna reativo a alteração no array
             Vue.set(vm.arrayObjField,vm.selectFields - 1, {
-                is_image: vm.isImage,
                 pos_x: vm.inputX,
                 pos_y: vm.inputY,
                 width: vm.inputWidth,
@@ -128,7 +131,10 @@ var app = new Vue({
                 font_url: vm.inputFontUrl,
                 color: vm.inputColor,
                 color_block: vm.inputColorBlock,
-                is_image: is_image
+                text: vm.inputPreview,
+                has_block_text: has_block_text,
+                is_image: is_image,
+                
             })
         },
         addField: function() {
@@ -147,7 +153,8 @@ var app = new Vue({
                     font_url: '',
                     color: '000000',
                     color_block: color_block,
-                    is_image: 0
+                    is_image: 0,
+                    has_block_text: 0
                 }
             )
             vm.optionFields.push({name_field:vm.nameField})
@@ -156,6 +163,7 @@ var app = new Vue({
         saveFields: function() {
             let vm = this
             let is_image = vm.isImage ? 1 : 0
+            let has_block_text = vm.hasBlockText ? 1 : 0
             
             vm.arrayObjField[vm.selectFields - 1] = {
                 name_field: vm.nameField,
@@ -169,6 +177,8 @@ var app = new Vue({
                 font_url: vm.inputFontUrl,
                 color: vm.inputColor,
                 color_block: vm.inputColorBlock,
+                text: vm.inputPreview,
+                has_block_text: has_block_text,
                 is_image: is_image
             }
 
@@ -184,6 +194,8 @@ var app = new Vue({
             vm.inputColor = ''
             vm.inputColorBlock = ''
             vm.inputFontUrl = ''
+            vm.inputPreview = ''
+            vm.hasBlockText = false
             vm.isImage = false
             document.getElementById('preview-text').value = ''
         },

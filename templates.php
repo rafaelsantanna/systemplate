@@ -47,6 +47,7 @@
                                 left:item.pos_x + 'px',width:item.width + 'px', height:item.height + 'px',
                                 transform:'rotate(' + item.rotate + 'deg)', fontSize:item.font_size + 'px',
                                 fontFamily:item.font_family, color:'#' + item.color}">
+                                {{item.text}}
                             </div>
                         </div>
                     </div>    
@@ -64,7 +65,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">{{input.name_field}}</span>
                                 </div>
-                                <input :id="'input' + index" type="text" class="form-control" @keyup="setValueField(index)">
+                                <input :id="'input' + index" :disabled="input.has_block_text == 1" :value="input.text" type="text" class="form-control" @keyup="setValueField(index)">
                             </div>
                             <div v-else class="input-group mb-3">
                                 <div class="custom-file">

@@ -10,11 +10,12 @@ require_once "conn.php";
     5 - Update
 */
 
-$type_get = $_GET["type_of_query"];
+$type_get = isset($_GET["type_of_query"]) ? $_GET["type_of_query"] : 0;
 $type_post = isset($_POST["type_of_query"]);
 
-$type_of_query = isset($type_get) && $type_get != NULL ? $type_get : $type_post;
+$type_of_query = $type_get != 0 ? $type_get : $type_post;
 
+//Select all
 if($type_of_query == 1) {
     $sql = "SELECT * FROM template";
     
@@ -37,6 +38,7 @@ if($type_of_query == 1) {
     echo json_encode((object)$response);
 }
 
+//Select Where
 if($type_of_query == 2) {
     $id = $_GET["id"];
     $sql = "SELECT * FROM template WHERE id = $id";
@@ -62,6 +64,7 @@ if($type_of_query == 2) {
     echo json_encode((object)$response);
 }
 
+//Delete
 if($type_of_query == 3) {
     $id = $_POST["id"];
     $sql = "DELETE FROM template WHERE id = $id";
@@ -79,11 +82,12 @@ if($type_of_query == 3) {
     echo json_encode((object)$response);
 }
 
+//Insert
 if($type_of_query == 4) {
-    $nametemplate = $_POST['nameTemplate'];
-    $file_path = $_POST['file_path'];
-    $type_template = $_POST['type_template'];
-    $obj_fields = $_POST['obj_fields'];
+    $nametemplate = $_POST["nameTemplate"];
+    $file_path = $_POST["file_path"];
+    $type_template = $_POST["type_template"];
+    $obj_fields = $_POST["obj_fields"];
 
     $sql = "INSERT INTO template (name_template, file_path, type_template, obj_fields) VALUES('$nametemplate','$file_path',$type_template, '$obj_fields')";
 
@@ -93,7 +97,8 @@ if($type_of_query == 4) {
         "nametemplate" => $nametemplate,
         "file_path" => $file_path,
         "type_template" => $type_template,
-        "obj_fields" => $obj_fields
+        "obj_fields" => $obj_fields,
+        "insert" => true
       );
     } else {
       $response = array(
@@ -103,20 +108,23 @@ if($type_of_query == 4) {
     echo json_encode((object)$response);
 }
 
+//Update
 if($type_of_query == 5) {
-    $nametemplate = $_POST['nameTemplate'];
-    $file_path = $_POST['file_path'];
-    $obj_fields = $_POST['obj_fields'];
-    $id = $_POST['id'];
+    $nametemplate = $_POST["nameTemplate"];
+    $file_path = $_POST["file_path"];
+    $type_template = $_POST["type_template"];
+    $obj_fields = $_POST["obj_fields"];
+    $id = $_POST["id"];
 
-    $sql = "UPDATE template SET name_template = '$nametemplate', file_path = '$file_path', obj_fields = '$obj_fields' WHERE id = $id";
-
+    $sql = "UPDATE template SET name_template = '$nametemplate', file_path = '$file_path', type_template = $type_template, obj_fields = '$obj_fields' WHERE id = $id";
+    
     if($mysqli->query($sql)){
       $response = array(
         "success" => true,
         "nametemplate" => $nametemplate,
         "file_path" => $file_path,
-        "obj_fields" => $obj_fields
+        "obj_fields" => $obj_fields,
+        "updated" => true
       );
     } else {
       $response = array(
@@ -126,4 +134,5 @@ if($type_of_query == 5) {
     echo json_encode((object)$response);
 }
 
+unset($type_of_query);
 $mysqli->close();
