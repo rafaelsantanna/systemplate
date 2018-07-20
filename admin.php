@@ -59,6 +59,9 @@
                             <li v-for="item in listTemplates" class="list-group-item d-flex justify-content-between align-items-center">
                                 {{item.name_template}}
                                 <div>
+                                    <a class="mr-2" href="" v-on:click.stop.prevent="duplicateTemplate(item.id)">
+                                        <img src="./icons/copy-solid.svg" alt="icon copy" width="20" height="20">
+                                    </a>
                                     <a class="mr-2" href="" v-on:click.stop.prevent="updateTemplate(item.id)">
                                         <img src="./icons/edit-solid.svg" alt="icon edit" width="20" height="20">
                                     </a>

@@ -269,6 +269,15 @@ var app = new Vue({
                 vm.paramUpdate = id
             })
         },
+        duplicateTemplate: function(id) {
+            let vm = this
+            axios.get('TemplateController.php?type_of_query=6&id=' + id)
+            .then(function (response) {
+                vm.listTemplates = []
+                vm.getTemplates()
+                vm.showAlert('Template duplicado com sucesso!', 'alert-success')
+            })
+        },
         showAlert: function(message, type) {
             $('body').append('<div id="alert-message" class="alert '+ type +'">'+message+'</div>')
             $('#alert-message').css('display', 'none').fadeIn(1000)

@@ -8,6 +8,7 @@ require_once "conn.php";
     3 - Delete
     4 - Insert
     5 - Update
+    6 - Duplicate Template
 */
 
 $type_get = isset($_GET["type_of_query"]) ? $_GET["type_of_query"] : 0;
@@ -130,6 +131,24 @@ if($type_of_query == 5) {
       $response = array(
         "error" => true
       );
+    }
+    echo json_encode((object)$response);
+}
+
+if($type_of_query == 6) {
+    $id = $_GET["id"];
+
+    $sql = "INSERT INTO template(name_template, file_path, type_template, obj_fields) SELECT name_template, file_path, type_template,obj_fields FROM template WHERE id = $id";
+
+    if($mysqli->query($sql)) {
+        $response = array(
+            "success" => true,
+            "duplicated" => true
+        );
+    } else {
+        $response = array(
+            "error" => true
+        );
     }
     echo json_encode((object)$response);
 }
