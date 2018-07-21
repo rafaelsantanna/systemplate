@@ -30,6 +30,7 @@ var mountjpg = new Vue({
         getSpecificTemplate: function() {
             let vm = this
             let idTemplate = vm.selectedTemplate
+            vm.objFields = []
             axios.get('TemplateController.php?type_of_query=2&id=' + idTemplate)
             .then(function (response) {
                 vm.renderTemplate = response.data[0].file_path
@@ -89,6 +90,6 @@ var mountjpg = new Vue({
             $('body').append('<div id="alert-message" class="alert '+ type +'">'+message+'</div>')
             $('#alert-message').css('display', 'none').fadeIn(1000)
             setTimeout(function(){ $('#alert-message').fadeOut(1000,function() {$(this).remove()}) }, 2000)
-        }
+        },
     }
 })
