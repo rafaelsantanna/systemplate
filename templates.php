@@ -17,6 +17,12 @@
             width: -moz-fit-content;
             width: fit-content;
         }
+
+        #alert-message {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
     </style>
 </head>
 <body>

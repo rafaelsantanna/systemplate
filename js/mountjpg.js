@@ -10,7 +10,6 @@ var mountjpg = new Vue({
         ],
 
         renderTemplate: '',
-        renderFields: [],
         objFields: [],
         urlFonts: []
     },
@@ -69,6 +68,7 @@ var mountjpg = new Vue({
         
         //snapshot html and generate image
         generateJpg: function() {
+            let vm = this
             html2canvas(document.getElementById('imagem_template')).then(function(canvas) {
                 canvas.style.width = '828px'
                 let url_image = canvas.toDataURL('image/jpg')
@@ -78,7 +78,17 @@ var mountjpg = new Vue({
                     .appendTo("body");
                 img[0].click();
                 img.remove();
+
+                vm.renderTemplate = ''
+                vm.selectedTemplate = 0
+                vm.objFields = []
+                vm.showAlert('Template gerado com sucesso!', 'alert-success')
             });
+        },
+        showAlert: function(message, type) {
+            $('body').append('<div id="alert-message" class="alert '+ type +'">'+message+'</div>')
+            $('#alert-message').css('display', 'none').fadeIn(1000)
+            setTimeout(function(){ $('#alert-message').fadeOut(1000,function() {$(this).remove()}) }, 2000)
         }
     }
 })
