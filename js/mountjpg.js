@@ -1,37 +1,38 @@
 var mountjpg = new Vue({
     el: '#mountjpg',
     data: {
-        selectedTemplate: 0,
-        optionsTemplate: [
-            {
-                id: 0,
-                name_template: 'Selecione um template'
-            }
-        ],
-
+        search: '',
+        templates: [],
         renderTemplate: '',
         objFields: [],
-        urlFonts: []
+        urlFonts: [],
+        hasTemplateSelected: false 
     },
     mounted: function () {
         this.getTemplates()
+    },
+    computed: {
+        filterTemplates: function() {
+            var vm = this;
+            return this.templates.filter(function(item){return item.name_template.toLowerCase().indexOf(vm.search.toLowerCase())>=0;});
+        }
     },
     methods: {
         getTemplates: function() {
             let vm = this
             axios.get('TemplateController.php?type_of_query=1')
             .then(function (response) {
+                console.log(response)
                 let length = Object.keys(response.data).length
                 for(let i=0; i<length;i++){
-                    vm.optionsTemplate.push(response.data[i])
+                    vm.templates.push(response.data[i])
                 }
             })
         },
-        getSpecificTemplate: function() {
+        getSpecificTemplate: function(id) {
             let vm = this
-            let idTemplate = vm.selectedTemplate
             vm.objFields = []
-            axios.get('TemplateController.php?type_of_query=2&id=' + idTemplate)
+            axios.get('TemplateController.php?type_of_query=2&id=' + id)
             .then(function (response) {
                 vm.renderTemplate = response.data[0].file_path
                 vm.objFields = []
@@ -42,6 +43,7 @@ var mountjpg = new Vue({
                     stringLinks +='<link href="https://fonts.googleapis.com/css?family='+ vm.objFields[0][i].font_url +'" rel="stylesheet">'
                 }
                 document.getElementById('url_fonts').innerHTML = stringLinks
+                vm.hasTemplateSelected = true
             })
         },
         setValueField: function(id) {
@@ -81,7 +83,6 @@ var mountjpg = new Vue({
                 img.remove();
 
                 vm.renderTemplate = ''
-                vm.selectedTemplate = 0
                 vm.objFields = []
                 vm.showAlert('Template gerado com sucesso!', 'alert-success')
             });

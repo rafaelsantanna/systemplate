@@ -27,7 +27,10 @@ if($type_of_query == 1) {
         while($row = $result->fetch_assoc()) {
             array_push($response, [
                 "id" => $row["id"],
-                "name_template" => $row["name_template"]
+                "name_template" => $row["name_template"],
+                "file_path" => $row["file_path"],
+                "type_template" => $row["type_template"],
+                "obj_fields" => $row["obj_fields"]
             ]);
         }
     } else {

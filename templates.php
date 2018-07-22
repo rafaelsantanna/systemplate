@@ -23,6 +23,22 @@
             top: 20px;
             right: 20px;
         }
+
+        #list_templates li {
+            cursor: pointer;
+        }
+
+        #list_templates img {
+            width: 50px;
+            height: auto;
+            transition: width 1s;
+        }
+
+        #list_templates img:hover {
+            width:300px;
+            height:auto;
+            transition: width 1s;
+        }
     </style>
 </head>
 <body>
@@ -31,15 +47,35 @@
 <div id="url_fonts"></div>
     <div class="row">
         <div class="col-md-12">
-            <h1>Montar template</h1>
-
             <div class="row">
-                <div class="md-col-6">
-                    <div class="input-group mb-3">
-                        <select class="custom-select" v-model="selectedTemplate" @change="getSpecificTemplate">
-                            <option v-for="option in optionsTemplate" v-bind:value="option.id">{{option.name_template}}</option>
-                        </select>
+                <div class="col-md-4">
+                    <h1>Montar template</h1>
+                </div>
+                <div v-if="hasTemplateSelected" class="col-md-1 d-flex align-items-center">
+                    <a class="mr-2" href="/systemplate/templates.php">
+                        <img src="./icons/home-solid.svg" alt="icon copy" width="30" height="30">
+                    </a>
+                </div>
+            </div>
+
+            <div class="row mb-3" v-if="!hasTemplateSelected">
+                <div class="col-6">
+                    <div class="input-group">
+                        <input type="text" class="form-control" v-model="search" placeholder="Buscar template">
                     </div>
+                </div>
+            </div>
+
+            <div class="row" id="list_templates" v-if="!hasTemplateSelected">
+                <div class="col-6">
+                    <ul class="list-group">
+                        <li v-for="item in filterTemplates" class="list-group-item d-flex justify-content-between align-items-center" @click="getSpecificTemplate(item.id)">
+                            {{item.name_template}}
+                            <div>
+                                <img :src="item.file_path" alt="">
+                            </div>
+                        </li>
+                    </ul>
                 </div>
             </div>
 
@@ -58,7 +94,7 @@
                         </div>
                     </div>    
                 </div>
-                <div class="col-md-3" v-if="selectedTemplate > 0">
+                <div class="col-md-3" v-if="hasTemplateSelected">
                     <button class="btn btn-primary" @click="generateJpg">Gerar Imagem</button>
                 </div>
             </div>

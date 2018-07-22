@@ -99,7 +99,10 @@
                 <div class="previewImage" class="mb-3" v-if="previewImage != ''">
                     <img :style="{width: widthTemplate + 'px',height: heightTemplate + 'px'}" :src="previewImage" alt="preview-image">
                     <div v-for="(style, index) in arrayObjField" :id="'field' + index"
-                        :style="{wordWrap: 'break-word', left:style.pos_x + 'px', top:style.pos_y + 'px', width:style.width + 'px', height:style.height + 'px', transform:'rotate(' + style.rotate + 'deg)', backgroundColor: '#' + style.color_block,fontSize:style.font_size + 'px', fontFamily:style.font_family, color:'#' + style.color, textAlign: style.text_align}">
+                        :style="{wordWrap: 'break-word', left:style.pos_x + 'px', top:style.pos_y + 'px',
+                            width:style.width + 'px', height:style.height + 'px', transform:'rotate(' + style.rotate + 'deg)',
+                            backgroundColor: '#' + style.color_block,fontSize:style.font_size + 'px', fontFamily:style.font_family,
+                            color:'#' + style.color, textAlign: style.text_align}">
                     </div>
                 </div>
             </div>
