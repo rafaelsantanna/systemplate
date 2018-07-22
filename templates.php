@@ -79,7 +79,7 @@
                 </div>
             </div>
 
-            <div class="row mb-3">
+            <div class="row mb-3 no-gutters">
                 <div class="col-md-9 position-relative">
                     <div id="imagem_template">
                         <img :src="renderTemplate" alt="" :show="renderTemplate != ''">
