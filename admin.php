@@ -99,7 +99,7 @@
                 <div class="previewImage" class="mb-3" v-if="previewImage != ''">
                     <img :style="{width: widthTemplate + 'px',height: heightTemplate + 'px'}" :src="previewImage" alt="preview-image">
                     <div v-for="(style, index) in arrayObjField" :id="'field' + index"
-                        :style="{wordWrap: 'break-word', left:style.pos_x + 'px', top:style.pos_y + 'px', width:style.width + 'px', height:style.height + 'px', transform:'rotate(' + style.rotate + 'deg)', backgroundColor: '#' + style.color_block,fontSize:style.font_size + 'px', fontFamily:style.font_family, color:'#' + style.color}">
+                        :style="{wordWrap: 'break-word', left:style.pos_x + 'px', top:style.pos_y + 'px', width:style.width + 'px', height:style.height + 'px', transform:'rotate(' + style.rotate + 'deg)', backgroundColor: '#' + style.color_block,fontSize:style.font_size + 'px', fontFamily:style.font_family, color:'#' + style.color, textAlign: style.text_align}">
                     </div>
                 </div>
             </div>
@@ -113,7 +113,7 @@
                         <button @click="addField" :disabled="nameField == ''" class="btn btn-success" type="button">Adicionar campo</button>
                     </div>
                 </div>
-                <select class="custom-select mb-3" v-model="selectFields" @change="onSelectChanged">
+                <select class="custom-select mb-2" v-model="selectFields" @change="onSelectChanged">
                     <option v-for="(option, index) in optionFields" v-bind:value="index">
                         {{option.name_field}}
                     </option>
@@ -214,9 +214,20 @@
                     </div>
 
                     <div class="col-12" v-show="isImage == false">
-                    <div class="input-group align-items-center">
+                        <div class="input-group align-items-center mb-1">
                             <label for="hasBlockText" style="margin-bottom:0">Bloquear texto? &nbsp;</label>
                             <input id="hasBlockText" type="checkbox" v-model="hasBlockText">
+                            <div class="ml-auto">
+                                <a href="" v-on:click.stop.prevent="setAlignText(1)">
+                                    <img src="./icons/align-left-solid.svg" alt="icon align-left" width="20" height="20">
+                                </a>
+                                <a href="" v-on:click.stop.prevent="setAlignText(2)">
+                                    <img src="./icons/align-center-solid.svg" alt="icon align-center" width="20" height="20">
+                                </a>
+                                <a href="" v-on:click.stop.prevent="setAlignText(3)">
+                                    <img src="./icons/align-right-solid.svg" alt="icon align-right" width="20" height="20">
+                                </a>
+                            </div>
                         </div>
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">

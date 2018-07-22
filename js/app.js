@@ -28,6 +28,7 @@ var app = new Vue({
         inputColor: '',
         inputColorBlock: '',
         inputPreview: '',
+        textAlign: '',
         hasBlockText: false,
         isImage: false,
 
@@ -112,6 +113,7 @@ var app = new Vue({
                 vm.inputColor = vm.arrayObjField[valueArray].color
                 vm.inputColorBlock = vm.arrayObjField[valueArray].color_block
                 vm.inputPreview = vm.arrayObjField[valueArray].text
+                vm.textAlign = vm.arrayObjField[valueArray].text_align
                 vm.hasBlockText = vm.arrayObjField[valueArray].has_block_text
             }
         },
@@ -134,7 +136,7 @@ var app = new Vue({
                 text: vm.inputPreview,
                 has_block_text: has_block_text,
                 is_image: is_image,
-                
+                text_align: vm.textAlign
             })
         },
         addField: function() {
@@ -154,6 +156,7 @@ var app = new Vue({
                     color: '000000',
                     color_block: color_block,
                     is_image: 0,
+                    text_align: 'left',
                     has_block_text: 0
                 }
             )
@@ -179,6 +182,7 @@ var app = new Vue({
                 color: vm.inputColor,
                 color_block: vm.inputColorBlock,
                 text: text,
+                text_align:vm.textAlign,
                 has_block_text: has_block_text,
                 is_image: is_image
             }
@@ -196,6 +200,7 @@ var app = new Vue({
             vm.inputColorBlock = ''
             vm.inputFontUrl = ''
             vm.inputPreview = ''
+            vm.textAlign = ''
             vm.hasBlockText = false
             vm.isImage = false
             document.getElementById('preview-text').value = ''
@@ -277,6 +282,21 @@ var app = new Vue({
                 vm.getTemplates()
                 vm.showAlert('Template duplicado com sucesso!', 'alert-success')
             })
+        },
+        setAlignText: function(param) {
+            let vm = this
+            if(param == 1) {
+                vm.textAlign = 'left'
+                vm.reactiveField()
+            }
+            if(param == 2) {
+                vm.textAlign = 'center'
+                vm.reactiveField()
+            }
+            if(param == 3) {
+                vm.textAlign = 'right'
+                vm.reactiveField()
+            }
         },
         showAlert: function(message, type) {
             $('body').append('<div id="alert-message" class="alert '+ type +'">'+message+'</div>')

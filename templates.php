@@ -52,7 +52,7 @@
                             :style="{wordWrap: 'break-word',position: 'absolute',top:item.pos_y + 'px',
                                 left:item.pos_x + 'px',width:item.width + 'px', height:item.height + 'px',
                                 transform:'rotate(' + item.rotate + 'deg)', fontSize:item.font_size + 'px',
-                                fontFamily:item.font_family, color:'#' + item.color}">
+                                fontFamily:item.font_family, color:'#' + item.color, textAlign: item.text_align}">
                                 {{item.text}}
                             </div>
                         </div>
