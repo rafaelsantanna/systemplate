@@ -38,7 +38,7 @@
                     <h1>Upload banner</h1>
                 </div>
                 <div v-if="previewImage != ''" class="col-md-2 d-flex align-items-center">
-                    <a class="mr-2" href="/systemplate/admin.php">
+                    <a class="mr-2" href="/systemplate/view/admin.php">
                         <img src="../icons/home-solid.svg" alt="icon copy" width="30" height="30">
                     </a>
                 </div>
