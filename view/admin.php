@@ -39,7 +39,7 @@
                 </div>
                 <div v-if="previewImage != ''" class="col-md-2 d-flex align-items-center">
                     <a class="mr-2" href="/systemplate/admin.php">
-                        <img src="./icons/home-solid.svg" alt="icon copy" width="30" height="30">
+                        <img src="../icons/home-solid.svg" alt="icon copy" width="30" height="30">
                     </a>
                 </div>
             </div>
@@ -69,13 +69,13 @@
                                 {{item.name_template}}
                                 <div>
                                     <a class="mr-2" href="" v-on:click.stop.prevent="duplicateTemplate(item.id)">
-                                        <img src="./icons/copy-solid.svg" alt="icon copy" width="20" height="20">
+                                        <img src="../icons/copy-solid.svg" alt="icon copy" width="20" height="20">
                                     </a>
                                     <a class="mr-2" href="" v-on:click.stop.prevent="updateTemplate(item.id)">
-                                        <img src="./icons/edit-solid.svg" alt="icon edit" width="20" height="20">
+                                        <img src="../icons/edit-solid.svg" alt="icon edit" width="20" height="20">
                                     </a>
                                     <a href="" v-on:click.stop.prevent="showModalDelete(item.id)">
-                                        <img src="./icons/trash-solid.svg" alt="icon trash" width="20" height="20">
+                                        <img src="../icons/trash-solid.svg" alt="icon trash" width="20" height="20">
                                     </a>
                                 </div>
                             </li>
@@ -222,13 +222,13 @@
                             <input id="hasBlockText" type="checkbox" v-model="hasBlockText">
                             <div class="ml-auto">
                                 <a href="" v-on:click.stop.prevent="setAlignText(1)">
-                                    <img src="./icons/align-left-solid.svg" alt="icon align-left" width="20" height="20">
+                                    <img src="../icons/align-left-solid.svg" alt="icon align-left" width="20" height="20">
                                 </a>
                                 <a href="" v-on:click.stop.prevent="setAlignText(2)">
-                                    <img src="./icons/align-center-solid.svg" alt="icon align-center" width="20" height="20">
+                                    <img src="../icons/align-center-solid.svg" alt="icon align-center" width="20" height="20">
                                 </a>
                                 <a href="" v-on:click.stop.prevent="setAlignText(3)">
-                                    <img src="./icons/align-right-solid.svg" alt="icon align-right" width="20" height="20">
+                                    <img src="../icons/align-right-solid.svg" alt="icon align-right" width="20" height="20">
                                 </a>
                             </div>
                         </div>
@@ -274,7 +274,7 @@
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.17.1/axios.min.js"></script>
     <script src="https://unpkg.com/vue/dist/vue.js"></script>
-    <script src="./js/app.js"></script>
+    <script src="../js/app.js"></script>
 </body>
 
 </html>

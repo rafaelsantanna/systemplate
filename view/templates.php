@@ -53,7 +53,7 @@
                 </div>
                 <div v-if="hasTemplateSelected" class="col-md-1 d-flex align-items-center">
                     <a class="mr-2" href="/systemplate/templates.php">
-                        <img src="./icons/home-solid.svg" alt="icon copy" width="30" height="30">
+                        <img src="../icons/home-solid.svg" alt="icon copy" width="30" height="30">
                     </a>
                 </div>
             </div>
@@ -129,9 +129,9 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.17.1/axios.min.js"></script>
-    <script src="./js/html2canvas.min.js"></script>
+    <script src="../js/html2canvas.min.js"></script>
     <script src="https://unpkg.com/vue/dist/vue.js"></script>
-    <script src="./js/mountjpg.js"></script>
+    <script src="../js/mountjpg.js"></script>
     </script>
 </body>
 </html>

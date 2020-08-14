@@ -20,7 +20,7 @@ var mountjpg = new Vue({
     methods: {
         getTemplates: function() {
             let vm = this
-            axios.get('TemplateController.php?type_of_query=1')
+            axios.get('controller/TemplateController.php?type_of_query=1')
             .then(function (response) {
                 console.log(response)
                 let length = Object.keys(response.data).length
@@ -32,7 +32,7 @@ var mountjpg = new Vue({
         getSpecificTemplate: function(id) {
             let vm = this
             vm.objFields = []
-            axios.get('TemplateController.php?type_of_query=2&id=' + id)
+            axios.get('controller/TemplateController.php?type_of_query=2&id=' + id)
             .then(function (response) {
                 vm.renderTemplate = response.data[0].file_path
                 vm.objFields = []

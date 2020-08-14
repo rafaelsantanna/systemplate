@@ -1,5 +1,5 @@
 <?php
-require_once "conn.php";
+require_once "../conn.php";
 
 /*
     type_of_query

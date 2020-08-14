@@ -61,7 +61,7 @@ var app = new Vue({
                 data.append('type_of_query', 5) //Update
             }
 
-            axios.post('TemplateController.php', data)
+            axios.post('/systemplate/controller/TemplateController.php', data)
             .then(function (response) {
                 vm.nameTemplate = ''
                 vm.previewImage = ''
@@ -82,7 +82,7 @@ var app = new Vue({
             data.append('file', this.selectedFile, this.selectedFile.name)
             data.append('type_template', this.typeTemplate)
 
-            axios.post('preview.php', data)
+            axios.post('/systemplate/controller/PreviewController.php', data)
             .then(function (response) {
                 if (vm.typeTemplate == 1) {
                     vm.widthTemplate = '828'
@@ -220,7 +220,7 @@ var app = new Vue({
         },
         getTemplates: function() {
             let vm = this
-            axios.get('TemplateController.php?type_of_query=1')
+            axios.get('/systemplate/controller/TemplateController.php?type_of_query=1')
             .then(function (response) {
                 if (response.data.error) {
                     vm.listTemplates = []
@@ -242,7 +242,7 @@ var app = new Vue({
             const data = new URLSearchParams();
             data.append('id', id);
             data.append('type_of_query', 3)
-            axios.post('TemplateController.php', data)
+            axios.post('/systemplate/controller/TemplateController.php', data)
             .then(function(response) {
                 $('#modal-delete').modal('hide')
                 vm.showAlert('Template deletado com sucesso!', 'alert-success')
@@ -253,7 +253,7 @@ var app = new Vue({
         },
         updateTemplate: function(id) {
             let vm = this
-            axios.get('TemplateController.php?type_of_query=2&id=' + id)
+            axios.get('/systemplate/controller/TemplateController.php?type_of_query=2&id=' + id)
             .then(function (response) {
                 let data = response.data[0]
                 if(data.type_template == 1){
@@ -276,7 +276,7 @@ var app = new Vue({
         },
         duplicateTemplate: function(id) {
             let vm = this
-            axios.get('TemplateController.php?type_of_query=6&id=' + id)
+            axios.get('/systemplate/controller/TemplateController.php?type_of_query=6&id=' + id)
             .then(function (response) {
                 vm.listTemplates = []
                 vm.getTemplates()

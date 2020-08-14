@@ -19,7 +19,7 @@
   //make name image
   $extension = strtolower(substr($_FILES['file']['name'], -4));
   $hashName = md5(time()) . $extension;
-  $filename = 'upload/' . $hashName;
+  $filename = '../upload/' . $hashName;
 
   //copy and resize part of image ($params: img_final, img_upload, positions of img_final & upload, width & height)
   imagecopyresampled($tmp, $src, 0, 0, 0, 0, $width_type_template, $height_type_template, $width, $height);
