@@ -1,4 +1,4 @@
-# Commands to run the App  
+## Commands to run the App  
 
 ### React
 - npm run watch
