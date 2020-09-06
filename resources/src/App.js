@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import Login from '../src/pages/Login';
+import Templates from './pages/Templates';
 
 export default function App() {
     return (
-        <Login />
+        <Templates />
     );
 }
 
