@@ -65880,6 +65880,39 @@ if (document.getElementById('app')) {
 
 /***/ }),
 
+/***/ "./resources/src/assets/icons/align-center-solid.svg":
+/*!***********************************************************!*\
+  !*** ./resources/src/assets/icons/align-center-solid.svg ***!
+  \***********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/align-center-solid.svg?f8e6af23a078cd3201fc952f31b6ba3b";
+
+/***/ }),
+
+/***/ "./resources/src/assets/icons/align-left-solid.svg":
+/*!*********************************************************!*\
+  !*** ./resources/src/assets/icons/align-left-solid.svg ***!
+  \*********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/align-left-solid.svg?46c890bb025188994a59f0205ff7f494";
+
+/***/ }),
+
+/***/ "./resources/src/assets/icons/align-right-solid.svg":
+/*!**********************************************************!*\
+  !*** ./resources/src/assets/icons/align-right-solid.svg ***!
+  \**********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/align-right-solid.svg?12cedf36e86f5ec46880f612b3fd6892";
+
+/***/ }),
+
 /***/ "./resources/src/pages/Templates/index.js":
 /*!************************************************!*\
   !*** ./resources/src/pages/Templates/index.js ***!
@@ -65892,6 +65925,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Templates; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _assets_icons_align_left_solid_svg__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../assets/icons/align-left-solid.svg */ "./resources/src/assets/icons/align-left-solid.svg");
+/* harmony import */ var _assets_icons_align_left_solid_svg__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_assets_icons_align_left_solid_svg__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _assets_icons_align_center_solid_svg__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../assets/icons/align-center-solid.svg */ "./resources/src/assets/icons/align-center-solid.svg");
+/* harmony import */ var _assets_icons_align_center_solid_svg__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_assets_icons_align_center_solid_svg__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _assets_icons_align_right_solid_svg__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../assets/icons/align-right-solid.svg */ "./resources/src/assets/icons/align-right-solid.svg");
+/* harmony import */ var _assets_icons_align_right_solid_svg__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_assets_icons_align_right_solid_svg__WEBPACK_IMPORTED_MODULE_3__);
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -65903,6 +65948,9 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
 
 
 function Templates() {
@@ -65926,6 +65974,41 @@ function Templates() {
       styleTypeTemplate = _useState8[0],
       setStyleTypeTemplate = _useState8[1];
 
+  var _useState9 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]),
+      _useState10 = _slicedToArray(_useState9, 2),
+      listFields = _useState10[0],
+      setListFields = _useState10[1];
+
+  var _useState11 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({}),
+      _useState12 = _slicedToArray(_useState11, 2),
+      fields = _useState12[0],
+      setFields = _useState12[1];
+
+  var _useState13 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({}),
+      _useState14 = _slicedToArray(_useState13, 2),
+      nomeFields = _useState14[0],
+      setNomeFields = _useState14[1];
+
+  var _useState15 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({}),
+      _useState16 = _slicedToArray(_useState15, 2),
+      logoFields = _useState16[0],
+      setLogoFields = _useState16[1];
+
+  var _useState17 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({}),
+      _useState18 = _slicedToArray(_useState17, 2),
+      whatsappFields = _useState18[0],
+      setWhatsappFields = _useState18[1];
+
+  var _useState19 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(''),
+      _useState20 = _slicedToArray(_useState19, 2),
+      previewText = _useState20[0],
+      setPreviewText = _useState20[1];
+
+  var _useState21 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(''),
+      _useState22 = _slicedToArray(_useState21, 2),
+      selectField = _useState22[0],
+      setSelectField = _useState22[1];
+
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
     if (templateType === 1) setStyleTypeTemplate({
       width: '828px',
@@ -65935,9 +66018,10 @@ function Templates() {
       width: '800px',
       height: '800px'
     });
-    console.log(templateType);
-    console.log(styleTypeTemplate);
   }, [templateType]);
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    console.log(listFields);
+  }, [listFields]);
 
   function handleChangeImage(e) {
     var imageInput = e.target.files[0];
@@ -65949,6 +66033,47 @@ function Templates() {
 
     reader.readAsDataURL(imageInput);
     setShowPreviewImage(true);
+  }
+
+  function handleSelectField(value) {
+    if (value == 'whatsapp') setFields(whatsappFields);
+    if (value == 'nome') setFields(nomeFields);
+    if (value == 'logo') setFields(logoFields);
+    setSelectField(value);
+  }
+
+  function handleSetAlignText(e, align) {
+    e.preventDefault();
+    setFields(_objectSpread(_objectSpread({}, fields), {}, {
+      text_align: align
+    }));
+  }
+
+  function handleSaveFields() {
+    // Ficou pendente salvar os campos whatsapp/logo/nome em suas respectias posições do array
+    // let arrayFields = listFields;
+    // if(selectField == 'whatsapp') arrayFields[0] = {...fields, name_field: selectField};
+    // if(selectField == 'nome') arrayFields[1] = {...fields, name_field: selectField};
+    // if(selectField == 'logo') arrayFields[2] = {...fields, name_field: selectField};
+    // setListFields(arrayFields);
+    setSelectField('');
+    setFields({
+      pos_x: '',
+      pos_y: '',
+      width: '',
+      height: '',
+      rotate: '',
+      font_size: '',
+      font_family: '',
+      font_url: '',
+      color: '',
+      color_block: ''
+    });
+    setPreviewText('');
+  }
+
+  function handleSaveTemplate() {// Fazer requisição no servidor para salvar os dados.
+    // Redirecionar para a tela de listagem de templates.
   }
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -65984,8 +66109,10 @@ function Templates() {
     }
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
     className: "custom-file-label"
-  }, "Escolher arquivo"))), showPreviewImage && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "input-group"
+  }, "Escolher arquivo"))), showPreviewImage && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "d-flex mb-3"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "input-group mr-2"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     type: "text",
     className: "form-control",
@@ -66003,7 +66130,261 @@ function Templates() {
     src: imageTemplate,
     style: styleTypeTemplate,
     alt: "Imagem de fundo do template"
-  })))))));
+  })))), showPreviewImage && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    "v-show": "displayFieldsImage",
+    className: "mb-2 col-4 position-fixed",
+    style: {
+      right: 0
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Configura\xE7\xE3o Template"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+    className: "custom-select mb-2",
+    onChange: function onChange(e) {
+      return handleSelectField(e.target.value);
+    },
+    value: selectField
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+    value: ""
+  }, "Selecione um campo"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+    value: "nome"
+  }, "Nome"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+    value: "logo"
+  }, "Logo"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+    value: "whatsapp"
+  }, "Whatsapp")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "row"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "col-6"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "input-group mb-3"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "input-group-prepend"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "input-group-text"
+  }, "POS X")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "number",
+    className: "form-control",
+    onChange: function onChange(e) {
+      return setFields(_objectSpread(_objectSpread({}, fields), {}, {
+        pos_x: e.target.value
+      }));
+    },
+    value: fields.pos_x || ''
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "col-6"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "input-group mb-3"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "input-group-prepend"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "input-group-text"
+  }, "POS Y")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "number",
+    className: "form-control",
+    onChange: function onChange(e) {
+      return setFields(_objectSpread(_objectSpread({}, fields), {}, {
+        pos_y: e.target.value
+      }));
+    },
+    value: fields.pos_y || ''
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "col-6"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "input-group mb-3"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "input-group-prepend"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "input-group-text"
+  }, "Largura")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "number",
+    className: "form-control",
+    onChange: function onChange(e) {
+      return setFields(_objectSpread(_objectSpread({}, fields), {}, {
+        width: e.target.value
+      }));
+    },
+    value: fields.width || ''
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "col-6"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "input-group mb-3"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "input-group-prepend"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "input-group-text"
+  }, "Altura")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "number",
+    className: "form-control",
+    onChange: function onChange(e) {
+      return setFields(_objectSpread(_objectSpread({}, fields), {}, {
+        height: e.target.value
+      }));
+    },
+    value: fields.height || ''
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "col-6",
+    "v-show": "isImage == false"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "input-group mb-3"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "input-group-prepend"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "input-group-text"
+  }, "Tamanho Fonte")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "number",
+    className: "form-control",
+    onChange: function onChange(e) {
+      return setFields(_objectSpread(_objectSpread({}, fields), {}, {
+        font_size: e.target.value
+      }));
+    },
+    value: fields.font_size || ''
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "col-6"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "input-group mb-3"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "input-group-prepend"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "input-group-text"
+  }, "Rotacionar")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "number",
+    className: "form-control",
+    onChange: function onChange(e) {
+      return setFields(_objectSpread(_objectSpread({}, fields), {}, {
+        rotate: e.target.value
+      }));
+    },
+    value: fields.rotate || ''
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "col-12",
+    "v-show": "isImage == false"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "input-group mb-3"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "input-group-prepend"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "input-group-text"
+  }, "Font Family")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "text",
+    className: "form-control",
+    onChange: function onChange(e) {
+      return setFields(_objectSpread(_objectSpread({}, fields), {}, {
+        font_family: e.target.value
+      }));
+    },
+    value: fields.font_family || ''
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "col-12",
+    "v-show": "isImage == false"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "input-group mb-3"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "input-group-prepend"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "input-group-text"
+  }, "URL fonte Google")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "text",
+    className: "form-control",
+    onChange: function onChange(e) {
+      return setFields(_objectSpread(_objectSpread({}, fields), {}, {
+        font_url: e.target.value
+      }));
+    },
+    value: fields.font_url || ''
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "col-5",
+    "v-show": "isImage == false"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "input-group mb-3"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "input-group-prepend"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "input-group-text"
+  }, "Cor")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "text",
+    className: "form-control",
+    onChange: function onChange(e) {
+      return setFields(_objectSpread(_objectSpread({}, fields), {}, {
+        color: e.target.value
+      }));
+    },
+    value: fields.color || ''
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "col-7"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "input-group mb-3"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "input-group-prepend"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "input-group-text"
+  }, "Cor Bloco")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "text",
+    className: "form-control",
+    onChange: function onChange(e) {
+      return setFields(_objectSpread(_objectSpread({}, fields), {}, {
+        color_block: e.target.value
+      }));
+    },
+    value: fields.color_block || ''
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "col-12",
+    "v-show": "isImage == false"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "input-group align-items-center mb-1"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "ml-auto"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "",
+    onClick: function onClick(e) {
+      return handleSetAlignText(e, 'left');
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: _assets_icons_align_left_solid_svg__WEBPACK_IMPORTED_MODULE_1___default.a,
+    alt: "icon align-left",
+    width: "20",
+    height: "20"
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "",
+    onClick: function onClick(e) {
+      return handleSetAlignText(e, 'center');
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: _assets_icons_align_center_solid_svg__WEBPACK_IMPORTED_MODULE_2___default.a,
+    alt: "icon align-center",
+    width: "20",
+    height: "20"
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "",
+    onClick: function onClick(e) {
+      return handleSetAlignText(e, 'right');
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: _assets_icons_align_right_solid_svg__WEBPACK_IMPORTED_MODULE_3___default.a,
+    alt: "icon align-right",
+    width: "20",
+    height: "20"
+  })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "input-group mb-3"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "input-group-prepend"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "input-group-text"
+  }, "Preview Texto")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "text",
+    className: "form-control",
+    onChange: function onChange(e) {
+      return setPreviewText(e.target.value);
+    },
+    value: previewText
+  })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "input-group"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    className: "btn btn-success",
+    type: "button",
+    onClick: function onClick() {
+      return handleSaveFields();
+    }
+  }, "Salvar Campo"))))));
 }
 
 /***/ }),
