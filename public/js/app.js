@@ -66083,12 +66083,11 @@ function Templates() {
   }
 
   function handleSaveTemplate() {
-    // Fazer requisição no servidor para salvar os dados.
-    // Enviar Fields, Logo, TemplateType
-    // Redirecionar para a tela de listagem de templates.
     setListFields(_objectSpread(_objectSpread({}, listFields), {}, {
       template_name: templateName
-    }));
+    })); // Fazer requisição no servidor para salvar os dados.
+    // Enviar Fields, Logo, TemplateType
+    // Redirecionar para a tela de listagem de templates.
   }
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
