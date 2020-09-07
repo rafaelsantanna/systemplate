@@ -9,8 +9,9 @@ export default function Templates() {
     const [showPreviewImage, setShowPreviewImage ] = useState(false);
     const [imageTemplate, setImageTemplate] = useState('');
     const [styleTypeTemplate, setStyleTypeTemplate] = useState({});
+    const [templateName, setTemplateName] = useState('');
 
-    const [listFields, setListFields] = useState([]);
+    const [listFields, setListFields] = useState({});
     const [fields, setFields] = useState({});
     const [nomeFields, setNomeFields] = useState({});
     const [logoFields, setLogoFields] = useState({});
@@ -53,12 +54,10 @@ export default function Templates() {
 
     function handleSaveFields() {
         // Ficou pendente salvar os campos whatsapp/logo/nome em suas respectias posições do array
+        if(selectField == 'whatsapp') setListFields({...listFields, whatsapp: fields});
+        if(selectField == 'nome') setListFields({...listFields, nome: fields});
+        if(selectField == 'logo') setListFields({...listFields, logo: fields});
 
-        // let arrayFields = listFields;
-        // if(selectField == 'whatsapp') arrayFields[0] = {...fields, name_field: selectField};
-        // if(selectField == 'nome') arrayFields[1] = {...fields, name_field: selectField};
-        // if(selectField == 'logo') arrayFields[2] = {...fields, name_field: selectField};
-        // setListFields(arrayFields);
         setSelectField('');
         setFields({
             pos_x: '',
@@ -77,7 +76,9 @@ export default function Templates() {
 
     function handleSaveTemplate() {
         // Fazer requisição no servidor para salvar os dados.
+        // Enviar Fields, Logo, TemplateType
         // Redirecionar para a tela de listagem de templates.
+        setListFields({...listFields, template_name: templateName});
     }
 
     return (
@@ -109,11 +110,11 @@ export default function Templates() {
                         <>
                             <div className="d-flex mb-3">
                                 <div className="input-group mr-2">
-                                    <input type="text" className="form-control" v-model="nameTemplate"
+                                    <input type="text" className="form-control" onChange={(e) => setTemplateName(e.target.value)}
                                         placeholder="Nome do template" />
                                 </div>
                                 <div className="input-group">
-                                    <button onClick={null} className="btn btn-primary" type="button">Salvar Template</button>
+                                    <button onClick={() => handleSaveTemplate()} className="btn btn-primary" type="button">Salvar Template</button>
                                 </div>
                             </div>
 

@@ -65974,40 +65974,45 @@ function Templates() {
       styleTypeTemplate = _useState8[0],
       setStyleTypeTemplate = _useState8[1];
 
-  var _useState9 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]),
+  var _useState9 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(''),
       _useState10 = _slicedToArray(_useState9, 2),
-      listFields = _useState10[0],
-      setListFields = _useState10[1];
+      templateName = _useState10[0],
+      setTemplateName = _useState10[1];
 
   var _useState11 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({}),
       _useState12 = _slicedToArray(_useState11, 2),
-      fields = _useState12[0],
-      setFields = _useState12[1];
+      listFields = _useState12[0],
+      setListFields = _useState12[1];
 
   var _useState13 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({}),
       _useState14 = _slicedToArray(_useState13, 2),
-      nomeFields = _useState14[0],
-      setNomeFields = _useState14[1];
+      fields = _useState14[0],
+      setFields = _useState14[1];
 
   var _useState15 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({}),
       _useState16 = _slicedToArray(_useState15, 2),
-      logoFields = _useState16[0],
-      setLogoFields = _useState16[1];
+      nomeFields = _useState16[0],
+      setNomeFields = _useState16[1];
 
   var _useState17 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({}),
       _useState18 = _slicedToArray(_useState17, 2),
-      whatsappFields = _useState18[0],
-      setWhatsappFields = _useState18[1];
+      logoFields = _useState18[0],
+      setLogoFields = _useState18[1];
 
-  var _useState19 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(''),
+  var _useState19 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({}),
       _useState20 = _slicedToArray(_useState19, 2),
-      previewText = _useState20[0],
-      setPreviewText = _useState20[1];
+      whatsappFields = _useState20[0],
+      setWhatsappFields = _useState20[1];
 
   var _useState21 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(''),
       _useState22 = _slicedToArray(_useState21, 2),
-      selectField = _useState22[0],
-      setSelectField = _useState22[1];
+      previewText = _useState22[0],
+      setPreviewText = _useState22[1];
+
+  var _useState23 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(''),
+      _useState24 = _slicedToArray(_useState23, 2),
+      selectField = _useState24[0],
+      setSelectField = _useState24[1];
 
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
     if (templateType === 1) setStyleTypeTemplate({
@@ -66051,11 +66056,15 @@ function Templates() {
 
   function handleSaveFields() {
     // Ficou pendente salvar os campos whatsapp/logo/nome em suas respectias posições do array
-    // let arrayFields = listFields;
-    // if(selectField == 'whatsapp') arrayFields[0] = {...fields, name_field: selectField};
-    // if(selectField == 'nome') arrayFields[1] = {...fields, name_field: selectField};
-    // if(selectField == 'logo') arrayFields[2] = {...fields, name_field: selectField};
-    // setListFields(arrayFields);
+    if (selectField == 'whatsapp') setListFields(_objectSpread(_objectSpread({}, listFields), {}, {
+      whatsapp: fields
+    }));
+    if (selectField == 'nome') setListFields(_objectSpread(_objectSpread({}, listFields), {}, {
+      nome: fields
+    }));
+    if (selectField == 'logo') setListFields(_objectSpread(_objectSpread({}, listFields), {}, {
+      logo: fields
+    }));
     setSelectField('');
     setFields({
       pos_x: '',
@@ -66072,8 +66081,13 @@ function Templates() {
     setPreviewText('');
   }
 
-  function handleSaveTemplate() {// Fazer requisição no servidor para salvar os dados.
+  function handleSaveTemplate() {
+    // Fazer requisição no servidor para salvar os dados.
+    // Enviar Fields, Logo, TemplateType
     // Redirecionar para a tela de listagem de templates.
+    setListFields(_objectSpread(_objectSpread({}, listFields), {}, {
+      template_name: templateName
+    }));
   }
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -66116,12 +66130,16 @@ function Templates() {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     type: "text",
     className: "form-control",
-    "v-model": "nameTemplate",
+    onChange: function onChange(e) {
+      return setTemplateName(e.target.value);
+    },
     placeholder: "Nome do template"
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "input-group"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    onClick: null,
+    onClick: function onClick() {
+      return handleSaveTemplate();
+    },
     className: "btn btn-primary",
     type: "button"
   }, "Salvar Template"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
