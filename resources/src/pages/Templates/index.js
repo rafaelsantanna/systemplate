@@ -44,6 +44,7 @@ export default function Templates() {
         if(value == 'whatsapp') setFields(whatsappFields);
         if(value == 'nome') setFields(nomeFields);
         if(value == 'logo') setFields(logoFields);
+        if(value in listFields) setFields(listFields[value]);
         setSelectField(value);
     }
 
