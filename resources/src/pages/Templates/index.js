@@ -32,6 +32,7 @@ export default function Templates() {
         let imageInput = e.target.files[0];
         let reader = new FileReader();
 
+        // Show Image upload in memory
         reader.onload = (event) =>  {
             setImageTemplate(event.target.result);
         }
