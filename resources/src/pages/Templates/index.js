@@ -42,9 +42,7 @@ export default function Templates() {
     }
 
     function handleSelectField(value) {
-        if(value == 'whatsapp') setFields(whatsappFields);
-        if(value == 'nome') setFields(nomeFields);
-        if(value == 'logo') setFields(logoFields);
+        setFields({});
         if(value in listFields) setFields(listFields[value]);
         setSelectField(value);
     }
@@ -93,7 +91,7 @@ export default function Templates() {
                         </div>
 
                         <div className="input-group mb-3">
-                            <select className="custom-select" onChange={ (e)=> setTemplateType(parseInt(e.target.value)) }>
+                            <select className="custom-select" onChange={ (e) => setTemplateType(parseInt(e.target.value)) }>
                                 <option value="0">Selecione o tipo do banner</option>
                                 <option value="1">Capa</option>
                                 <option value="2">Post</option>

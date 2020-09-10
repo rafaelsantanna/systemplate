@@ -66030,7 +66030,7 @@ function Templates() {
 
   function handleChangeImage(e) {
     var imageInput = e.target.files[0];
-    var reader = new FileReader();
+    var reader = new FileReader(); // Show Image upload in memory
 
     reader.onload = function (event) {
       setImageTemplate(event.target.result);
@@ -66041,9 +66041,7 @@ function Templates() {
   }
 
   function handleSelectField(value) {
-    if (value == 'whatsapp') setFields(whatsappFields);
-    if (value == 'nome') setFields(nomeFields);
-    if (value == 'logo') setFields(logoFields);
+    setFields({});
     if (value in listFields) setFields(listFields[value]);
     setSelectField(value);
   }
