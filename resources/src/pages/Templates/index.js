@@ -10,15 +10,16 @@ export default function Templates() {
     const [templateType, setTemplateType] = useState(0);
     const [showPreviewImage, setShowPreviewImage ] = useState(false);
     const [imageTemplate, setImageTemplate] = useState('');
-    const [styleTypeTemplate, setStyleTypeTemplate] = useState({});
+    const [dimensionTemplate, setDimensionTemplate] = useState({});
     const [templateName, setTemplateName] = useState('');
 
     const [listFields, setListFields] = useState({});
+    const [selectField, setSelectField] = useState('');
     const [fields, setFields] = useState({});
+    
     const [nomeCss, setNomeCss] = useState({});
     const [logoCss, setLogoCss] = useState({});
     const [whatsappCss, setWhatsappCss] = useState({});
-    const [selectField, setSelectField] = useState('');
 
     const [previewText, setPreviewText] = useState('');
     const [nomeText, setNomeText] = useState('');
@@ -26,8 +27,8 @@ export default function Templates() {
     const [whatsappText, setWhatsappText] = useState('');
 
     useEffect(() => {
-        if(templateType === 1) setStyleTypeTemplate({width: '828px', height: '475px'});
-        if(templateType === 2) setStyleTypeTemplate({width: '800px', height: '800px'});
+        if(templateType === 1) setDimensionTemplate({width: '828px', height: '475px'});
+        if(templateType === 2) setDimensionTemplate({width: '800px', height: '800px'});
     },[templateType]);
 
     useEffect(() => {
@@ -159,7 +160,7 @@ export default function Templates() {
                             </div>
 
                             <div className="position-relative">
-                                <img src={imageTemplate} style={styleTypeTemplate} alt="Imagem de fundo do template" />
+                                <img src={imageTemplate} style={dimensionTemplate} alt="Imagem de fundo do template" />
                                 
                                 <div className="preview-custom-field" style={nomeCss}>{nomeText}</div>
                                 <div className="preview-custom-field" style={logoCss}>{logoText}</div>

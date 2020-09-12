@@ -66589,8 +66589,8 @@ function Templates() {
 
   var _useState7 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({}),
       _useState8 = _slicedToArray(_useState7, 2),
-      styleTypeTemplate = _useState8[0],
-      setStyleTypeTemplate = _useState8[1];
+      dimensionTemplate = _useState8[0],
+      setDimensionTemplate = _useState8[1];
 
   var _useState9 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(''),
       _useState10 = _slicedToArray(_useState9, 2),
@@ -66602,30 +66602,30 @@ function Templates() {
       listFields = _useState12[0],
       setListFields = _useState12[1];
 
-  var _useState13 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({}),
+  var _useState13 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(''),
       _useState14 = _slicedToArray(_useState13, 2),
-      fields = _useState14[0],
-      setFields = _useState14[1];
+      selectField = _useState14[0],
+      setSelectField = _useState14[1];
 
   var _useState15 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({}),
       _useState16 = _slicedToArray(_useState15, 2),
-      nomeCss = _useState16[0],
-      setNomeCss = _useState16[1];
+      fields = _useState16[0],
+      setFields = _useState16[1];
 
   var _useState17 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({}),
       _useState18 = _slicedToArray(_useState17, 2),
-      logoCss = _useState18[0],
-      setLogoCss = _useState18[1];
+      nomeCss = _useState18[0],
+      setNomeCss = _useState18[1];
 
   var _useState19 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({}),
       _useState20 = _slicedToArray(_useState19, 2),
-      whatsappCss = _useState20[0],
-      setWhatsappCss = _useState20[1];
+      logoCss = _useState20[0],
+      setLogoCss = _useState20[1];
 
-  var _useState21 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(''),
+  var _useState21 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({}),
       _useState22 = _slicedToArray(_useState21, 2),
-      selectField = _useState22[0],
-      setSelectField = _useState22[1];
+      whatsappCss = _useState22[0],
+      setWhatsappCss = _useState22[1];
 
   var _useState23 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(''),
       _useState24 = _slicedToArray(_useState23, 2),
@@ -66648,11 +66648,11 @@ function Templates() {
       setWhatsappText = _useState30[1];
 
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
-    if (templateType === 1) setStyleTypeTemplate({
+    if (templateType === 1) setDimensionTemplate({
       width: '828px',
       height: '475px'
     });
-    if (templateType === 2) setStyleTypeTemplate({
+    if (templateType === 2) setDimensionTemplate({
       width: '800px',
       height: '800px'
     });
@@ -66812,7 +66812,7 @@ function Templates() {
     className: "position-relative"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
     src: imageTemplate,
-    style: styleTypeTemplate,
+    style: dimensionTemplate,
     alt: "Imagem de fundo do template"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "preview-custom-field",
