@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
+import './style.scss';
+
 import alignLeft from '../../assets/icons/align-left-solid.svg';
 import alignCenter from '../../assets/icons/align-center-solid.svg';
 import alignRight from '../../assets/icons/align-right-solid.svg';
@@ -13,11 +15,15 @@ export default function Templates() {
 
     const [listFields, setListFields] = useState({});
     const [fields, setFields] = useState({});
-    const [nomeFields, setNomeFields] = useState({});
-    const [logoFields, setLogoFields] = useState({});
-    const [whatsappFields, setWhatsappFields] = useState({});
-    const [previewText, setPreviewText] = useState('');
+    const [nomeCss, setNomeCss] = useState({});
+    const [logoCss, setLogoCss] = useState({});
+    const [whatsappCss, setWhatsappCss] = useState({});
     const [selectField, setSelectField] = useState('');
+
+    const [previewText, setPreviewText] = useState('');
+    const [nomeText, setNomeText] = useState('');
+    const [logoText, setLogoText] = useState('');
+    const [whatsappText, setWhatsappText] = useState('');
 
     useEffect(() => {
         if(templateType === 1) setStyleTypeTemplate({width: '828px', height: '475px'});
@@ -25,8 +31,16 @@ export default function Templates() {
     },[templateType]);
 
     useEffect(() => {
-        console.log(listFields);
-    }, [listFields]);
+        if(selectField == 'nome') setNomeCss(setCssField(fields));
+        if(selectField == 'logo') setLogoCss(setCssField(fields));
+        if(selectField == 'whatsapp') setWhatsappCss(setCssField(fields));
+    }, [fields]);
+
+    useEffect(() => {
+        if(selectField == 'nome') setNomeText(previewText);
+        if(selectField == 'logo') setLogoText(previewText);
+        if(selectField == 'whatsapp') setWhatsappText(previewText);
+    }, [previewText]);
 
     function handleChangeImage(e) {
         let imageInput = e.target.files[0];
@@ -45,6 +59,10 @@ export default function Templates() {
         setFields({});
         if(value in listFields) setFields(listFields[value]);
         setSelectField(value);
+
+        if(value == 'nome') setPreviewText(nomeText); 
+        if(value == 'logo') setPreviewText(logoText);
+        if(value == 'whatsapp') setPreviewText(whatsappText);
     }
 
     function handleSetAlignText(e, align) {
@@ -52,16 +70,38 @@ export default function Templates() {
         setFields({...fields, text_align: align});
     }
 
+    function setCssField(field) {
+        return {
+            left: field.left+'px',
+            top: field.top+'px',
+            width: field.width+'px',
+            height: field.height+'px',
+            fontSize: field.font_size+'px',
+            transform: `rotate(${field.rotate}deg)`,
+            fontFamily: field.font_family,
+            color: '#'+field.color,
+            textAlign: field.text_align
+        }
+    }
+
     function handleSaveFields() {
-        // Ficou pendente salvar os campos whatsapp/logo/nome em suas respectias posições do array
-        if(selectField == 'whatsapp') setListFields({...listFields, whatsapp: fields});
-        if(selectField == 'nome') setListFields({...listFields, nome: fields});
-        if(selectField == 'logo') setListFields({...listFields, logo: fields});
+        if(selectField == 'whatsapp') {
+            setListFields({...listFields, whatsapp: fields}); 
+            setWhatsappText(previewText);
+        }
+        if(selectField == 'nome') {
+            setListFields({...listFields, nome: fields});
+            setNomeText(previewText);
+        }
+        if(selectField == 'logo'){
+            setListFields({...listFields, logo: fields});
+            setLogoText(previewText);
+        } 
 
         setSelectField('');
         setFields({
-            pos_x: '',
-            pos_y: '',
+            left: '',
+            top: '',
             width: '',
             height: '',
             rotate: '',
@@ -69,7 +109,7 @@ export default function Templates() {
             font_family: '',
             font_url: '',
             color: '',
-            color_block: '',
+            text_align: ''
         });
         setPreviewText('');
     }
@@ -118,15 +158,19 @@ export default function Templates() {
                                 </div>
                             </div>
 
-                            <div className="">
+                            <div className="position-relative">
                                 <img src={imageTemplate} style={styleTypeTemplate} alt="Imagem de fundo do template" />
+                                
+                                <div className="preview-custom-field" style={nomeCss}>{nomeText}</div>
+                                <div className="preview-custom-field" style={logoCss}>{logoText}</div>
+                                <div className="preview-custom-field" style={whatsappCss}>{whatsappText}</div>
                             </div>
                         </>
                         )}
                     </div>
                     
                     {showPreviewImage && (
-                        <div v-show="displayFieldsImage" className="mb-2 col-4 position-fixed" style={{right: 0}}>
+                        <div className="mb-2 col-4 position-fixed" style={{right: 0}}>
                             <h3>Configuração Template</h3>
                             
                             <select className="custom-select mb-2" onChange={(e) => handleSelectField(e.target.value)} value={selectField}>
@@ -142,7 +186,7 @@ export default function Templates() {
                                         <div className="input-group-prepend">
                                             <span className="input-group-text">POS X</span>
                                         </div>
-                                        <input type="number" className="form-control" onChange={(e) => setFields({...fields, pos_x: e.target.value})} value={fields.pos_x || ''}/>
+                                        <input type="number" className="form-control" onChange={(e) => setFields({...fields, left: e.target.value})} value={fields.left || ''}/>
                                     </div>
                                 </div>
                                 <div className="col-6">
@@ -150,7 +194,7 @@ export default function Templates() {
                                         <div className="input-group-prepend">
                                             <span className="input-group-text">POS Y</span>
                                         </div>
-                                        <input type="number" className="form-control" onChange={(e) => setFields({...fields, pos_y: e.target.value})} value={fields.pos_y || ''} />
+                                        <input type="number" className="form-control" onChange={(e) => setFields({...fields, top: e.target.value})} value={fields.top || ''} />
                                     </div>
                                 </div>
 
@@ -171,7 +215,7 @@ export default function Templates() {
                                     </div>
                                 </div>
 
-                                <div className="col-6" v-show="isImage == false">
+                                <div className="col-6">
                                     <div className="input-group mb-3">
                                         <div className="input-group-prepend">
                                             <span className="input-group-text">Tamanho Fonte</span>
@@ -189,7 +233,7 @@ export default function Templates() {
                                     </div>
                                 </div>
 
-                                <div className="col-12" v-show="isImage == false">
+                                <div className="col-12">
                                     <div className="input-group mb-3">
                                         <div className="input-group-prepend">
                                             <span className="input-group-text">Font Family</span>
@@ -198,7 +242,7 @@ export default function Templates() {
                                     </div>
                                 </div>
 
-                                <div className="col-12" v-show="isImage == false">
+                                <div className="col-12">
                                     <div className="input-group mb-3">
                                         <div className="input-group-prepend">
                                             <span className="input-group-text">URL fonte Google</span>
@@ -207,25 +251,15 @@ export default function Templates() {
                                     </div>
                                 </div>
 
-                                <div className="col-5" v-show="isImage == false">
-                                    <div className="input-group mb-3">
+                                <div className="col-12 d-flex mb-3">
+                                    <div className="input-group">
                                         <div className="input-group-prepend">
                                             <span className="input-group-text">Cor</span>
                                         </div>
                                         <input type="text" className="form-control" onChange={(e) => setFields({...fields, color: e.target.value})} value={fields.color || ''}/>
                                     </div>
-                                </div>
-                                <div className="col-7">
-                                    <div className="input-group mb-3">
-                                        <div className="input-group-prepend">
-                                            <span className="input-group-text">Cor Bloco</span>
-                                        </div>
-                                        <input type="text" className="form-control" onChange={(e) => setFields({...fields, color_block: e.target.value})} value={fields.color_block || ''}/>
-                                    </div>
-                                </div>
 
-                                <div className="col-12" v-show="isImage == false">
-                                    <div className="input-group align-items-center mb-1">
+                                    <div className="input-group align-items-center">
                                         <div className="ml-auto">
                                             <a href="" onClick={(e) => handleSetAlignText(e, 'left')}>
                                                 <img src={alignLeft} alt="icon align-left" width="20"
@@ -241,6 +275,8 @@ export default function Templates() {
                                             </a>
                                         </div>
                                     </div>
+                                </div>
+                                <div className="col-12">
                                     <div className="input-group mb-3">
                                         <div className="input-group-prepend">
                                             <span className="input-group-text">Preview Texto</span>
