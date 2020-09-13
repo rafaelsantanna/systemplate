@@ -195,7 +195,7 @@ export default function Templates() {
                         <div className="mb-2 col-4 position-fixed" style={{right: 0}}>
                             <h3>Configuração Template</h3>
                             
-                            <select className="custom-select mb-2" onChange={(e) => handleSelectField(e.target.value)} value={selectField}>
+                            <select className="custom-select mb-3" onChange={(e) => handleSelectField(e.target.value)} value={selectField}>
                                 <option value="">Selecione um campo</option>
                                 <option value="nome">Nome</option>
                                 <option value="logo">Logo</option>
@@ -203,6 +203,14 @@ export default function Templates() {
                             </select>
 
                             <div className="row">
+                                <div className="col-12 mb-3">
+                                    <div className="input-group">
+                                        <div className="input-group-prepend">
+                                            <span className="input-group-text">Preview Texto</span>
+                                        </div>
+                                        <input type="text" className="form-control" onChange={(e) => setPreviewText(e.target.value)} value={previewText}/>
+                                    </div>
+                                </div>
                                 <div className="col-6">
                                     <div className="input-group mb-3">
                                         <div className="input-group-prepend">
@@ -264,7 +272,7 @@ export default function Templates() {
                                     </div>
                                 </div>
 
-                                <div className="col-12 d-flex mb-3">
+                                <div className="col-12 d-flex">
                                     <div className="input-group">
                                         <div className="input-group-prepend">
                                             <span className="input-group-text">Cor</span>
@@ -287,14 +295,6 @@ export default function Templates() {
                                                     width="20" height="20" />
                                             </a>
                                         </div>
-                                    </div>
-                                </div>
-                                <div className="col-12">
-                                    <div className="input-group">
-                                        <div className="input-group-prepend">
-                                            <span className="input-group-text">Preview Texto</span>
-                                        </div>
-                                        <input type="text" className="form-control" onChange={(e) => setPreviewText(e.target.value)} value={previewText}/>
                                     </div>
                                 </div>
                             </div>
