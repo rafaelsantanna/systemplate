@@ -66760,7 +66760,7 @@ function Templates() {
   }
 
   function handleSaveTemplate() {// Fazer requisição no servidor para salvar os dados.
-    // Enviar fields, template_image, template_type, template_name
+    // Enviar template_name, template_type, template_image, fields
     // Redirecionar para a tela de listagem de templates.
   }
 
