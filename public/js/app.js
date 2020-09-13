@@ -66612,42 +66612,48 @@ function Templates() {
       fields = _useState16[0],
       setFields = _useState16[1];
 
-  var _useState17 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({}),
+  var _useState17 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]),
       _useState18 = _slicedToArray(_useState17, 2),
-      nomeCss = _useState18[0],
-      setNomeCss = _useState18[1];
+      googleFonts = _useState18[0],
+      setGoogleFonts = _useState18[1];
 
   var _useState19 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({}),
       _useState20 = _slicedToArray(_useState19, 2),
-      logoCss = _useState20[0],
-      setLogoCss = _useState20[1];
+      nomeFieldStyle = _useState20[0],
+      setNomeFieldStyle = _useState20[1];
 
   var _useState21 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({}),
       _useState22 = _slicedToArray(_useState21, 2),
-      whatsappCss = _useState22[0],
-      setWhatsappCss = _useState22[1];
+      logoFieldStyle = _useState22[0],
+      setLogoFieldStyle = _useState22[1];
 
-  var _useState23 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(''),
+  var _useState23 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({}),
       _useState24 = _slicedToArray(_useState23, 2),
-      previewText = _useState24[0],
-      setPreviewText = _useState24[1];
+      whatsappFieldStyle = _useState24[0],
+      setWhatsappFieldStyle = _useState24[1];
 
   var _useState25 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(''),
       _useState26 = _slicedToArray(_useState25, 2),
-      nomeText = _useState26[0],
-      setNomeText = _useState26[1];
+      previewText = _useState26[0],
+      setPreviewText = _useState26[1];
 
   var _useState27 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(''),
       _useState28 = _slicedToArray(_useState27, 2),
-      logoText = _useState28[0],
-      setLogoText = _useState28[1];
+      nomeText = _useState28[0],
+      setNomeText = _useState28[1];
 
   var _useState29 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(''),
       _useState30 = _slicedToArray(_useState29, 2),
-      whatsappText = _useState30[0],
-      setWhatsappText = _useState30[1];
+      logoText = _useState30[0],
+      setLogoText = _useState30[1];
+
+  var _useState31 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(''),
+      _useState32 = _slicedToArray(_useState31, 2),
+      whatsappText = _useState32[0],
+      setWhatsappText = _useState32[1];
 
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    // Listen change in temlateType for apply dimensions on template
     if (templateType === 1) setDimensionTemplate({
       width: '828px',
       height: '475px'
@@ -66658,11 +66664,13 @@ function Templates() {
     });
   }, [templateType]);
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
-    if (selectField == 'nome') setNomeCss(setCssField(fields));
-    if (selectField == 'logo') setLogoCss(setCssField(fields));
-    if (selectField == 'whatsapp') setWhatsappCss(setCssField(fields));
+    // Listen change in fields for apply Style in the corresponding Element
+    if (selectField == 'nome') setNomeFieldStyle(mountObjectStyle(fields));
+    if (selectField == 'logo') setLogoFieldStyle(mountObjectStyle(fields));
+    if (selectField == 'whatsapp') setWhatsappFieldStyle(mountObjectStyle(fields));
   }, [fields]);
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    // Listen to the change in previewText to record in the corresponding text field
     if (selectField == 'nome') setNomeText(previewText);
     if (selectField == 'logo') setLogoText(previewText);
     if (selectField == 'whatsapp') setWhatsappText(previewText);
@@ -66696,7 +66704,7 @@ function Templates() {
     }));
   }
 
-  function setCssField(field) {
+  function mountObjectStyle(field) {
     return {
       left: field.left + 'px',
       top: field.top + 'px',
@@ -66708,6 +66716,10 @@ function Templates() {
       color: '#' + field.color,
       textAlign: field.text_align
     };
+  }
+
+  function mountGoogleFontsImports() {
+    setGoogleFonts(listFields.google_fonts.split(','));
   }
 
   function handleSaveFields() {
@@ -66741,7 +66753,6 @@ function Templates() {
       rotate: '',
       font_size: '',
       font_family: '',
-      font_url: '',
       color: '',
       text_align: ''
     });
@@ -66756,7 +66767,13 @@ function Templates() {
     // Redirecionar para a tela de listagem de templates.
   }
 
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, googleFonts.length > 0 && googleFonts.map(function (font, index) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("link", {
+      key: index,
+      href: "https://fonts.googleapis.com/css2?family=".concat(font.trim(), "&display=swap"),
+      rel: "stylesheet"
+    });
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "container-fluid my-3"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "row"
@@ -66816,13 +66833,13 @@ function Templates() {
     alt: "Imagem de fundo do template"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "preview-custom-field",
-    style: nomeCss
+    style: nomeFieldStyle
   }, nomeText), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "preview-custom-field",
-    style: logoCss
+    style: logoFieldStyle
   }, logoText), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "preview-custom-field",
-    style: whatsappCss
+    style: whatsappFieldStyle
   }, whatsappText)))), showPreviewImage && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "mb-2 col-4 position-fixed",
     style: {
@@ -66964,23 +66981,6 @@ function Templates() {
     },
     value: fields.font_family || ''
   }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "col-12"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "input-group mb-3"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "input-group-prepend"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-    className: "input-group-text"
-  }, "URL fonte Google")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-    type: "text",
-    className: "form-control",
-    onChange: function onChange(e) {
-      return setFields(_objectSpread(_objectSpread({}, fields), {}, {
-        font_url: e.target.value
-      }));
-    },
-    value: fields.font_url || ''
-  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col-12 d-flex mb-3"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "input-group"
@@ -67034,7 +67034,7 @@ function Templates() {
   }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col-12"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "input-group mb-3"
+    className: "input-group"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "input-group-prepend"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
@@ -67046,7 +67046,31 @@ function Templates() {
       return setPreviewText(e.target.value);
     },
     value: previewText
-  })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "row mb-3"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "col-12"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "input-group"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "input-group-prepend"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "input-group-text"
+  }, "Fonts Google")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "text",
+    className: "form-control",
+    onChange: function onChange(e) {
+      return setListFields(_objectSpread(_objectSpread({}, listFields), {}, {
+        google_fonts: e.target.value
+      }));
+    },
+    value: listFields.google_fonts || ''
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    className: "btn btn-primary btn-sm ml-1",
+    onClick: function onClick() {
+      return mountGoogleFontsImports();
+    }
+  }, "Aplicar fonts")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "input-group"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     className: "btn btn-success",

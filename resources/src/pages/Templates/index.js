@@ -16,10 +16,11 @@ export default function Templates() {
     const [listFields, setListFields] = useState({});
     const [selectField, setSelectField] = useState('');
     const [fields, setFields] = useState({});
+    const [googleFonts, setGoogleFonts] = useState([]);
     
-    const [nomeCss, setNomeCss] = useState({});
-    const [logoCss, setLogoCss] = useState({});
-    const [whatsappCss, setWhatsappCss] = useState({});
+    const [nomeFieldStyle, setNomeFieldStyle] = useState({});
+    const [logoFieldStyle, setLogoFieldStyle] = useState({});
+    const [whatsappFieldStyle, setWhatsappFieldStyle] = useState({});
 
     const [previewText, setPreviewText] = useState('');
     const [nomeText, setNomeText] = useState('');
@@ -27,17 +28,20 @@ export default function Templates() {
     const [whatsappText, setWhatsappText] = useState('');
 
     useEffect(() => {
+        // Listen change in temlateType for apply dimensions on template
         if(templateType === 1) setDimensionTemplate({width: '828px', height: '475px'});
         if(templateType === 2) setDimensionTemplate({width: '800px', height: '800px'});
     },[templateType]);
 
     useEffect(() => {
-        if(selectField == 'nome') setNomeCss(setCssField(fields));
-        if(selectField == 'logo') setLogoCss(setCssField(fields));
-        if(selectField == 'whatsapp') setWhatsappCss(setCssField(fields));
+        // Listen change in fields for apply Style in the corresponding Element
+        if(selectField == 'nome') setNomeFieldStyle(mountObjectStyle(fields));
+        if(selectField == 'logo') setLogoFieldStyle(mountObjectStyle(fields));
+        if(selectField == 'whatsapp') setWhatsappFieldStyle(mountObjectStyle(fields));
     }, [fields]);
 
     useEffect(() => {
+        // Listen to the change in previewText to record in the corresponding text field
         if(selectField == 'nome') setNomeText(previewText);
         if(selectField == 'logo') setLogoText(previewText);
         if(selectField == 'whatsapp') setWhatsappText(previewText);
@@ -71,7 +75,7 @@ export default function Templates() {
         setFields({...fields, text_align: align});
     }
 
-    function setCssField(field) {
+    function mountObjectStyle(field) {
         return {
             left: field.left+'px',
             top: field.top+'px',
@@ -83,6 +87,10 @@ export default function Templates() {
             color: '#'+field.color,
             textAlign: field.text_align
         }
+    }
+
+    function mountGoogleFontsImports() {
+        setGoogleFonts(listFields.google_fonts.split(','));
     }
 
     function handleSaveFields() {
@@ -108,7 +116,6 @@ export default function Templates() {
             rotate: '',
             font_size: '',
             font_family: '',
-            font_url: '',
             color: '',
             text_align: ''
         });
@@ -124,6 +131,9 @@ export default function Templates() {
 
     return (
         <>
+            {googleFonts.length > 0 && googleFonts.map((font, index) => (
+                <link key={index} href={`https://fonts.googleapis.com/css2?family=${font.trim()}&display=swap`} rel="stylesheet"></link>
+            ))}
             <div className="container-fluid my-3">
                 <div className="row">
                     <div className="col-8">
@@ -162,9 +172,9 @@ export default function Templates() {
                             <div className="position-relative">
                                 <img src={imageTemplate} style={dimensionTemplate} alt="Imagem de fundo do template" />
                                 
-                                <div className="preview-custom-field" style={nomeCss}>{nomeText}</div>
-                                <div className="preview-custom-field" style={logoCss}>{logoText}</div>
-                                <div className="preview-custom-field" style={whatsappCss}>{whatsappText}</div>
+                                <div className="preview-custom-field" style={nomeFieldStyle}>{nomeText}</div>
+                                <div className="preview-custom-field" style={logoFieldStyle}>{logoText}</div>
+                                <div className="preview-custom-field" style={whatsappFieldStyle}>{whatsappText}</div>
                             </div>
                         </>
                         )}
@@ -243,15 +253,6 @@ export default function Templates() {
                                     </div>
                                 </div>
 
-                                <div className="col-12">
-                                    <div className="input-group mb-3">
-                                        <div className="input-group-prepend">
-                                            <span className="input-group-text">URL fonte Google</span>
-                                        </div>
-                                        <input type="text" className="form-control" onChange={(e) => setFields({...fields, font_url: e.target.value})} value={fields.font_url || ''}/>
-                                    </div>
-                                </div>
-
                                 <div className="col-12 d-flex mb-3">
                                     <div className="input-group">
                                         <div className="input-group-prepend">
@@ -278,11 +279,25 @@ export default function Templates() {
                                     </div>
                                 </div>
                                 <div className="col-12">
-                                    <div className="input-group mb-3">
+                                    <div className="input-group">
                                         <div className="input-group-prepend">
                                             <span className="input-group-text">Preview Texto</span>
                                         </div>
                                         <input type="text" className="form-control" onChange={(e) => setPreviewText(e.target.value)} value={previewText}/>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <hr/>
+
+                            <div className="row mb-3">
+                                <div className="col-12">
+                                    <div className="input-group">
+                                        <div className="input-group-prepend">
+                                            <span className="input-group-text">Fonts Google</span>
+                                        </div>
+                                        <input type="text" className="form-control" onChange={(e) => setListFields({...listFields, google_fonts: e.target.value})} value={listFields.google_fonts || ''}/>
+                                        <button className="btn btn-primary btn-sm ml-1" onClick={() => mountGoogleFontsImports()}>Aplicar fonts</button>
                                     </div>
                                 </div>
                             </div>
