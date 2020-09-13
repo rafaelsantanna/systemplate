@@ -128,12 +128,12 @@ export default function Templates() {
                 <div className="row">
                     <div className="col-8">
                         <div className="mb-3">
-                            <h1>Criação do Banner</h1>
+                            <h1>Criação do Template</h1>
                         </div>
 
                         <div className="input-group mb-3">
                             <select className="custom-select" onChange={ (e) => setTemplateType(parseInt(e.target.value)) }>
-                                <option value="0">Selecione o tipo do banner</option>
+                                <option value="0">Selecione o tipo de template</option>
                                 <option value="1">Capa</option>
                                 <option value="2">Post</option>
                             </select>
