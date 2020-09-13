@@ -66824,7 +66824,8 @@ function Templates() {
       return handleSaveTemplate();
     },
     className: "btn btn-primary",
-    type: "button"
+    type: "button",
+    disabled: templateName.length == 0
   }, "Salvar Template"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "position-relative"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
@@ -67069,7 +67070,8 @@ function Templates() {
     className: "btn btn-primary btn-sm ml-1",
     onClick: function onClick() {
       return mountGoogleFontsImports();
-    }
+    },
+    disabled: !listFields.google_fonts
   }, "Aplicar fonts")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "input-group"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
@@ -67077,7 +67079,8 @@ function Templates() {
     type: "button",
     onClick: function onClick() {
       return handleSaveFields();
-    }
+    },
+    disabled: selectField == ''
   }, "Salvar Campo"))))));
 }
 

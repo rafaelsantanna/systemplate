@@ -165,7 +165,7 @@ export default function Templates() {
                                         placeholder="Nome do template" />
                                 </div>
                                 <div className="input-group">
-                                    <button onClick={() => handleSaveTemplate()} className="btn btn-primary" type="button">Salvar Template</button>
+                                    <button onClick={() => handleSaveTemplate()} className="btn btn-primary" type="button" disabled={templateName.length == 0}>Salvar Template</button>
                                 </div>
                             </div>
 
@@ -297,13 +297,13 @@ export default function Templates() {
                                             <span className="input-group-text">Fonts Google</span>
                                         </div>
                                         <input type="text" className="form-control" onChange={(e) => setListFields({...listFields, google_fonts: e.target.value})} value={listFields.google_fonts || ''}/>
-                                        <button className="btn btn-primary btn-sm ml-1" onClick={() => mountGoogleFontsImports()}>Aplicar fonts</button>
+                                        <button className="btn btn-primary btn-sm ml-1" onClick={() => mountGoogleFontsImports()} disabled={!listFields.google_fonts}>Aplicar fonts</button>
                                     </div>
                                 </div>
                             </div>
 
                             <div className="input-group">
-                                <button className="btn btn-success" type="button" onClick={() => handleSaveFields()}>Salvar Campo</button>
+                                <button className="btn btn-success" type="button" onClick={() => handleSaveFields()} disabled={selectField == ''}>Salvar Campo</button>
                             </div>
                         </div>
                     )}
