@@ -66540,14 +66540,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Templates; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./style.scss */ "./resources/src/pages/Templates/style.scss");
-/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_style_scss__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _assets_icons_align_left_solid_svg__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../assets/icons/align-left-solid.svg */ "./resources/src/assets/icons/align-left-solid.svg");
-/* harmony import */ var _assets_icons_align_left_solid_svg__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_assets_icons_align_left_solid_svg__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _assets_icons_align_center_solid_svg__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../assets/icons/align-center-solid.svg */ "./resources/src/assets/icons/align-center-solid.svg");
-/* harmony import */ var _assets_icons_align_center_solid_svg__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_assets_icons_align_center_solid_svg__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _assets_icons_align_right_solid_svg__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../assets/icons/align-right-solid.svg */ "./resources/src/assets/icons/align-right-solid.svg");
-/* harmony import */ var _assets_icons_align_right_solid_svg__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_assets_icons_align_right_solid_svg__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _services_api__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../services/api */ "./resources/src/services/api.js");
+/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./style.scss */ "./resources/src/pages/Templates/style.scss");
+/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_style_scss__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _assets_icons_align_left_solid_svg__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../assets/icons/align-left-solid.svg */ "./resources/src/assets/icons/align-left-solid.svg");
+/* harmony import */ var _assets_icons_align_left_solid_svg__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_assets_icons_align_left_solid_svg__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _assets_icons_align_center_solid_svg__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../assets/icons/align-center-solid.svg */ "./resources/src/assets/icons/align-center-solid.svg");
+/* harmony import */ var _assets_icons_align_center_solid_svg__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_assets_icons_align_center_solid_svg__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _assets_icons_align_right_solid_svg__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../assets/icons/align-right-solid.svg */ "./resources/src/assets/icons/align-right-solid.svg");
+/* harmony import */ var _assets_icons_align_right_solid_svg__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_assets_icons_align_right_solid_svg__WEBPACK_IMPORTED_MODULE_5__);
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -66571,6 +66572,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
 function Templates() {
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(0),
       _useState2 = _slicedToArray(_useState, 2),
@@ -66584,73 +66586,78 @@ function Templates() {
 
   var _useState5 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(''),
       _useState6 = _slicedToArray(_useState5, 2),
-      imageTemplate = _useState6[0],
-      setImageTemplate = _useState6[1];
+      previewImage = _useState6[0],
+      setPreviewImage = _useState6[1];
 
-  var _useState7 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({}),
+  var _useState7 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]),
       _useState8 = _slicedToArray(_useState7, 2),
-      dimensionTemplate = _useState8[0],
-      setDimensionTemplate = _useState8[1];
+      templateImage = _useState8[0],
+      setTemplateImage = _useState8[1];
 
-  var _useState9 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(''),
+  var _useState9 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({}),
       _useState10 = _slicedToArray(_useState9, 2),
-      templateName = _useState10[0],
-      setTemplateName = _useState10[1];
+      dimensionTemplate = _useState10[0],
+      setDimensionTemplate = _useState10[1];
 
-  var _useState11 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({}),
+  var _useState11 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(''),
       _useState12 = _slicedToArray(_useState11, 2),
-      listFields = _useState12[0],
-      setListFields = _useState12[1];
+      templateName = _useState12[0],
+      setTemplateName = _useState12[1];
 
-  var _useState13 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(''),
+  var _useState13 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({}),
       _useState14 = _slicedToArray(_useState13, 2),
-      selectField = _useState14[0],
-      setSelectField = _useState14[1];
+      listFields = _useState14[0],
+      setListFields = _useState14[1];
 
-  var _useState15 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({}),
+  var _useState15 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(''),
       _useState16 = _slicedToArray(_useState15, 2),
-      fields = _useState16[0],
-      setFields = _useState16[1];
+      selectField = _useState16[0],
+      setSelectField = _useState16[1];
 
-  var _useState17 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]),
+  var _useState17 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({}),
       _useState18 = _slicedToArray(_useState17, 2),
-      googleFonts = _useState18[0],
-      setGoogleFonts = _useState18[1];
+      fields = _useState18[0],
+      setFields = _useState18[1];
 
-  var _useState19 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({}),
+  var _useState19 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]),
       _useState20 = _slicedToArray(_useState19, 2),
-      nomeFieldStyle = _useState20[0],
-      setNomeFieldStyle = _useState20[1];
+      googleFonts = _useState20[0],
+      setGoogleFonts = _useState20[1];
 
   var _useState21 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({}),
       _useState22 = _slicedToArray(_useState21, 2),
-      logoFieldStyle = _useState22[0],
-      setLogoFieldStyle = _useState22[1];
+      nomeFieldStyle = _useState22[0],
+      setNomeFieldStyle = _useState22[1];
 
   var _useState23 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({}),
       _useState24 = _slicedToArray(_useState23, 2),
-      whatsappFieldStyle = _useState24[0],
-      setWhatsappFieldStyle = _useState24[1];
+      logoFieldStyle = _useState24[0],
+      setLogoFieldStyle = _useState24[1];
 
-  var _useState25 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(''),
+  var _useState25 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({}),
       _useState26 = _slicedToArray(_useState25, 2),
-      previewText = _useState26[0],
-      setPreviewText = _useState26[1];
+      whatsappFieldStyle = _useState26[0],
+      setWhatsappFieldStyle = _useState26[1];
 
   var _useState27 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(''),
       _useState28 = _slicedToArray(_useState27, 2),
-      nomeText = _useState28[0],
-      setNomeText = _useState28[1];
+      previewText = _useState28[0],
+      setPreviewText = _useState28[1];
 
   var _useState29 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(''),
       _useState30 = _slicedToArray(_useState29, 2),
-      logoText = _useState30[0],
-      setLogoText = _useState30[1];
+      nomeText = _useState30[0],
+      setNomeText = _useState30[1];
 
   var _useState31 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(''),
       _useState32 = _slicedToArray(_useState31, 2),
-      whatsappText = _useState32[0],
-      setWhatsappText = _useState32[1];
+      logoText = _useState32[0],
+      setLogoText = _useState32[1];
+
+  var _useState33 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(''),
+      _useState34 = _slicedToArray(_useState33, 2),
+      whatsappText = _useState34[0],
+      setWhatsappText = _useState34[1];
 
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
     // Listen change in temlateType for apply dimensions on template
@@ -66681,10 +66688,11 @@ function Templates() {
     var reader = new FileReader(); // Show Image upload in memory
 
     reader.onload = function (event) {
-      setImageTemplate(event.target.result);
+      setPreviewImage(event.target.result);
     };
 
     reader.readAsDataURL(imageInput);
+    setTemplateImage(imageInput);
     setShowPreviewImage(true);
   }
 
@@ -66759,9 +66767,16 @@ function Templates() {
     setPreviewText('');
   }
 
-  function handleSaveTemplate() {// Fazer requisição no servidor para salvar os dados.
+  function handleSaveTemplate() {
+    // Fazer requisição no servidor para salvar os dados.
     // Enviar template_name, template_type, template_image, fields
     // Redirecionar para a tela de listagem de templates.
+    var data = new FormData();
+    data.append("image", templateImage);
+    data.append("name", templateName);
+    data.append("type", templateType);
+    data.append("fields", JSON.stringify(listFields));
+    _services_api__WEBPACK_IMPORTED_MODULE_1__["default"].post('/templates', data);
   }
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, googleFonts.length > 0 && googleFonts.map(function (font, index) {
@@ -66826,7 +66841,7 @@ function Templates() {
   }, "Salvar Template"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "position-relative"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-    src: imageTemplate,
+    src: previewImage,
     style: dimensionTemplate,
     alt: "Imagem de fundo do template"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -67005,7 +67020,7 @@ function Templates() {
       return handleSetAlignText(e, 'left');
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-    src: _assets_icons_align_left_solid_svg__WEBPACK_IMPORTED_MODULE_2___default.a,
+    src: _assets_icons_align_left_solid_svg__WEBPACK_IMPORTED_MODULE_3___default.a,
     alt: "icon align-left",
     width: "20",
     height: "20"
@@ -67015,7 +67030,7 @@ function Templates() {
       return handleSetAlignText(e, 'center');
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-    src: _assets_icons_align_center_solid_svg__WEBPACK_IMPORTED_MODULE_3___default.a,
+    src: _assets_icons_align_center_solid_svg__WEBPACK_IMPORTED_MODULE_4___default.a,
     alt: "icon align-center",
     width: "20",
     height: "20"
@@ -67025,7 +67040,7 @@ function Templates() {
       return handleSetAlignText(e, 'right');
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-    src: _assets_icons_align_right_solid_svg__WEBPACK_IMPORTED_MODULE_4___default.a,
+    src: _assets_icons_align_right_solid_svg__WEBPACK_IMPORTED_MODULE_5___default.a,
     alt: "icon align-right",
     width: "20",
     height: "20"
@@ -67110,6 +67125,25 @@ var update = __webpack_require__(/*! ../../../../node_modules/style-loader/lib/a
 if(content.locals) module.exports = content.locals;
 
 if(false) {}
+
+/***/ }),
+
+/***/ "./resources/src/services/api.js":
+/*!***************************************!*\
+  !*** ./resources/src/services/api.js ***!
+  \***************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+
+var api = axios__WEBPACK_IMPORTED_MODULE_0___default.a.create({
+  baseURL: 'http://localhost:8000'
+});
+/* harmony default export */ __webpack_exports__["default"] = (api);
 
 /***/ }),
 

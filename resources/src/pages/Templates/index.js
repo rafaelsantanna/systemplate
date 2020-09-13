@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
+import api from '../../services/api';
+
 import './style.scss';
 
 import alignLeft from '../../assets/icons/align-left-solid.svg';
@@ -9,7 +11,8 @@ import alignRight from '../../assets/icons/align-right-solid.svg';
 export default function Templates() {
     const [templateType, setTemplateType] = useState(0);
     const [showPreviewImage, setShowPreviewImage ] = useState(false);
-    const [imageTemplate, setImageTemplate] = useState('');
+    const [previewImage, setPreviewImage] = useState('');
+    const [templateImage, setTemplateImage] = useState([]);
     const [dimensionTemplate, setDimensionTemplate] = useState({});
     const [templateName, setTemplateName] = useState('');
 
@@ -53,10 +56,11 @@ export default function Templates() {
 
         // Show Image upload in memory
         reader.onload = (event) =>  {
-            setImageTemplate(event.target.result);
+            setPreviewImage(event.target.result);
         }
         reader.readAsDataURL(imageInput);
 
+        setTemplateImage(imageInput);
         setShowPreviewImage(true);
     }
 
@@ -126,6 +130,14 @@ export default function Templates() {
         // Fazer requisição no servidor para salvar os dados.
         // Enviar template_name, template_type, template_image, fields
         // Redirecionar para a tela de listagem de templates.
+
+        let data = new FormData();
+        data.append("image", templateImage);
+        data.append("name", templateName);
+        data.append("type", templateType);
+        data.append("fields", JSON.stringify(listFields));
+
+        api.post('/templates', data);
     }
 
     return (
@@ -169,7 +181,7 @@ export default function Templates() {
                             </div>
 
                             <div className="position-relative">
-                                <img src={imageTemplate} style={dimensionTemplate} alt="Imagem de fundo do template" />
+                                <img src={previewImage} style={dimensionTemplate} alt="Imagem de fundo do template" />
                                 
                                 <div className="preview-custom-field" style={nomeFieldStyle}>{nomeText}</div>
                                 <div className="preview-custom-field" style={logoFieldStyle}>{logoText}</div>
