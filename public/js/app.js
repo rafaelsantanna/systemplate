@@ -66759,11 +66759,8 @@ function Templates() {
     setPreviewText('');
   }
 
-  function handleSaveTemplate() {
-    setListFields(_objectSpread(_objectSpread({}, listFields), {}, {
-      template_name: templateName
-    })); // Fazer requisição no servidor para salvar os dados.
-    // Enviar Fields, Logo, TemplateType
+  function handleSaveTemplate() {// Fazer requisição no servidor para salvar os dados.
+    // Enviar fields, template_image, template_type, template_name
     // Redirecionar para a tela de listagem de templates.
   }
 

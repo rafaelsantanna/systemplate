@@ -123,9 +123,8 @@ export default function Templates() {
     }
 
     function handleSaveTemplate() {
-        setListFields({...listFields, template_name: templateName});
         // Fazer requisição no servidor para salvar os dados.
-        // Enviar Fields, Logo, TemplateType
+        // Enviar fields, template_image, template_type, template_name
         // Redirecionar para a tela de listagem de templates.
     }
 
