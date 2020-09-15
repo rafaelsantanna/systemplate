@@ -9,7 +9,7 @@ import alignCenter from '../../assets/icons/align-center-solid.svg';
 import alignRight from '../../assets/icons/align-right-solid.svg';
 
 export default function Templates() {
-    const [templateType, setTemplateType] = useState(0);
+    const [templateType, setTemplateType] = useState('');
     const [templateImage, setTemplateImage] = useState([]);
     const [templateName, setTemplateName] = useState('');
     const [showPreviewImage, setShowPreviewImage ] = useState(false);
@@ -32,8 +32,8 @@ export default function Templates() {
 
     useEffect(() => {
         // Listen change in temlateType for apply dimensions on template
-        if(templateType === 1) setDimensionTemplate({width: '828px', height: '475px'});
-        if(templateType === 2) setDimensionTemplate({width: '800px', height: '800px'});
+        if(templateType === 'cover') setDimensionTemplate({width: '828px', height: '475px'});
+        if(templateType === 'post') setDimensionTemplate({width: '800px', height: '800px'});
     },[templateType]);
 
     useEffect(() => {
@@ -139,8 +139,8 @@ export default function Templates() {
 
         api.post('/templates', data).then(() => {
             alert('Template salvo com sucesso!');
-            
-            setTemplateType(0);
+
+            setTemplateType('');
             setPreviewImage('');
             setTemplateImage([]);
             setDimensionTemplate({});
@@ -174,10 +174,10 @@ export default function Templates() {
                         </div>
 
                         <div className="input-group mb-3">
-                            <select className="custom-select" onChange={ (e) => setTemplateType(parseInt(e.target.value)) }>
-                                <option value="0">Selecione o tipo de template</option>
-                                <option value="1">Capa</option>
-                                <option value="2">Post</option>
+                            <select className="custom-select" onChange={ (e) => setTemplateType(e.target.value) } value={templateType}>
+                                <option>Selecione o tipo de template</option>
+                                <option value="cover">Capa</option>
+                                <option value="post">Post</option>
                             </select>
                         </div>
 

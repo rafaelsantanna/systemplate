@@ -66574,7 +66574,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 function Templates() {
-  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(0),
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(''),
       _useState2 = _slicedToArray(_useState, 2),
       templateType = _useState2[0],
       setTemplateType = _useState2[1];
@@ -66661,11 +66661,11 @@ function Templates() {
 
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
     // Listen change in temlateType for apply dimensions on template
-    if (templateType === 1) setDimensionTemplate({
+    if (templateType === 'cover') setDimensionTemplate({
       width: '828px',
       height: '475px'
     });
-    if (templateType === 2) setDimensionTemplate({
+    if (templateType === 'post') setDimensionTemplate({
       width: '800px',
       height: '800px'
     });
@@ -66778,7 +66778,7 @@ function Templates() {
     data.append("fields", JSON.stringify(listFields));
     _services_api__WEBPACK_IMPORTED_MODULE_1__["default"].post('/templates', data).then(function () {
       alert('Template salvo com sucesso!');
-      setTemplateType(0);
+      setTemplateType('');
       setPreviewImage('');
       setTemplateImage([]);
       setDimensionTemplate({});
@@ -66815,14 +66815,13 @@ function Templates() {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
     className: "custom-select",
     onChange: function onChange(e) {
-      return setTemplateType(parseInt(e.target.value));
-    }
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-    value: "0"
-  }, "Selecione o tipo de template"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-    value: "1"
+      return setTemplateType(e.target.value);
+    },
+    value: templateType
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "Selecione o tipo de template"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+    value: "cover"
   }, "Capa"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-    value: "2"
+    value: "post"
   }, "Post"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "input-group mb-3"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
