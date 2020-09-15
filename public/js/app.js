@@ -66579,40 +66579,40 @@ function Templates() {
       templateType = _useState2[0],
       setTemplateType = _useState2[1];
 
-  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]),
       _useState4 = _slicedToArray(_useState3, 2),
-      showPreviewImage = _useState4[0],
-      setShowPreviewImage = _useState4[1];
+      templateImage = _useState4[0],
+      setTemplateImage = _useState4[1];
 
   var _useState5 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(''),
       _useState6 = _slicedToArray(_useState5, 2),
-      previewImage = _useState6[0],
-      setPreviewImage = _useState6[1];
+      templateName = _useState6[0],
+      setTemplateName = _useState6[1];
 
-  var _useState7 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]),
+  var _useState7 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
       _useState8 = _slicedToArray(_useState7, 2),
-      templateImage = _useState8[0],
-      setTemplateImage = _useState8[1];
+      showPreviewImage = _useState8[0],
+      setShowPreviewImage = _useState8[1];
 
-  var _useState9 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({}),
+  var _useState9 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(''),
       _useState10 = _slicedToArray(_useState9, 2),
-      dimensionTemplate = _useState10[0],
-      setDimensionTemplate = _useState10[1];
+      previewImage = _useState10[0],
+      setPreviewImage = _useState10[1];
 
-  var _useState11 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(''),
+  var _useState11 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({}),
       _useState12 = _slicedToArray(_useState11, 2),
-      templateName = _useState12[0],
-      setTemplateName = _useState12[1];
+      dimensionTemplate = _useState12[0],
+      setDimensionTemplate = _useState12[1];
 
-  var _useState13 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({}),
+  var _useState13 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(''),
       _useState14 = _slicedToArray(_useState13, 2),
-      listFields = _useState14[0],
-      setListFields = _useState14[1];
+      selectField = _useState14[0],
+      setSelectField = _useState14[1];
 
-  var _useState15 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(''),
+  var _useState15 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({}),
       _useState16 = _slicedToArray(_useState15, 2),
-      selectField = _useState16[0],
-      setSelectField = _useState16[1];
+      listFields = _useState16[0],
+      setListFields = _useState16[1];
 
   var _useState17 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({}),
       _useState18 = _slicedToArray(_useState17, 2),
@@ -66776,7 +66776,24 @@ function Templates() {
     data.append("name", templateName);
     data.append("type", templateType);
     data.append("fields", JSON.stringify(listFields));
-    _services_api__WEBPACK_IMPORTED_MODULE_1__["default"].post('/templates', data);
+    _services_api__WEBPACK_IMPORTED_MODULE_1__["default"].post('/templates', data).then(function () {
+      alert('Template salvo com sucesso!');
+      setTemplateType(0);
+      setPreviewImage('');
+      setTemplateImage([]);
+      setDimensionTemplate({});
+      setShowPreviewImage(false);
+      setTemplateName('');
+      setListFields({});
+      setFields({});
+      setPreviewText('');
+      setNomeText('');
+      setLogoTextText('');
+      setWhatsappText('');
+      setLogoFieldStyle({});
+      setWhatsappFieldStyle({});
+      setNomeFieldStyle({});
+    });
   }
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, googleFonts.length > 0 && googleFonts.map(function (font, index) {
@@ -66828,7 +66845,8 @@ function Templates() {
     onChange: function onChange(e) {
       return setTemplateName(e.target.value);
     },
-    placeholder: "Nome do template"
+    placeholder: "Nome do template",
+    value: templateName
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "input-group"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {

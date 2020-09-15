@@ -10,14 +10,14 @@ import alignRight from '../../assets/icons/align-right-solid.svg';
 
 export default function Templates() {
     const [templateType, setTemplateType] = useState(0);
+    const [templateImage, setTemplateImage] = useState([]);
+    const [templateName, setTemplateName] = useState('');
     const [showPreviewImage, setShowPreviewImage ] = useState(false);
     const [previewImage, setPreviewImage] = useState('');
-    const [templateImage, setTemplateImage] = useState([]);
     const [dimensionTemplate, setDimensionTemplate] = useState({});
-    const [templateName, setTemplateName] = useState('');
 
-    const [listFields, setListFields] = useState({});
     const [selectField, setSelectField] = useState('');
+    const [listFields, setListFields] = useState({});
     const [fields, setFields] = useState({});
     const [googleFonts, setGoogleFonts] = useState([]);
     
@@ -137,7 +137,28 @@ export default function Templates() {
         data.append("type", templateType);
         data.append("fields", JSON.stringify(listFields));
 
-        api.post('/templates', data);
+        api.post('/templates', data).then(() => {
+            alert('Template salvo com sucesso!');
+            
+            setTemplateType(0);
+            setPreviewImage('');
+            setTemplateImage([]);
+            setDimensionTemplate({});
+
+            setShowPreviewImage(false);
+            setTemplateName('');
+            setListFields({});
+            setFields({});
+            
+            setPreviewText('');
+            setNomeText('');
+            setLogoTextText('');
+            setWhatsappText('');
+
+            setLogoFieldStyle({});
+            setWhatsappFieldStyle({});
+            setNomeFieldStyle({});
+        });
     }
 
     return (
@@ -173,7 +194,7 @@ export default function Templates() {
                             <div className="d-flex mb-3">
                                 <div className="input-group mr-2">
                                     <input type="text" className="form-control" onChange={(e) => setTemplateName(e.target.value)}
-                                        placeholder="Nome do template" />
+                                        placeholder="Nome do template" value={templateName}/>
                                 </div>
                                 <div className="input-group">
                                     <button onClick={() => handleSaveTemplate()} className="btn btn-primary" type="button" disabled={templateName.length == 0}>Salvar Template</button>
