@@ -62,6 +62,8 @@ export default function Templates() {
 
         setTemplateImage(imageInput);
         setShowPreviewImage(true);
+        
+        e.target.value = null;
     }
 
     function handleSelectField(value) {
@@ -152,7 +154,7 @@ export default function Templates() {
             
             setPreviewText('');
             setNomeText('');
-            setLogoTextText('');
+            setLogoText('');
             setWhatsappText('');
 
             setLogoFieldStyle({});
@@ -183,8 +185,7 @@ export default function Templates() {
 
                         <div className="input-group mb-3">
                             <div className="custom-file">
-                                <input className="custom-file-input" type="file" onChange={(e)=> handleChangeImage(e)}
-                                />
+                                <input className="custom-file-input" type="file" onChange={(e)=> handleChangeImage(e)}/>
                                 <label className="custom-file-label">Escolher arquivo</label>
                             </div>
                         </div>

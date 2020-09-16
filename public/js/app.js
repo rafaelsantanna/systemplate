@@ -66694,6 +66694,7 @@ function Templates() {
     reader.readAsDataURL(imageInput);
     setTemplateImage(imageInput);
     setShowPreviewImage(true);
+    e.target.value = null;
   }
 
   function handleSelectField(value) {
@@ -66788,7 +66789,7 @@ function Templates() {
       setFields({});
       setPreviewText('');
       setNomeText('');
-      setLogoTextText('');
+      setLogoText('');
       setWhatsappText('');
       setLogoFieldStyle({});
       setWhatsappFieldStyle({});
