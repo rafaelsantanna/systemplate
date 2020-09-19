@@ -53,8 +53,8 @@ export default function Templates() {
               <div className="template-body">
                 <span className="template-type">{template.type}</span>
                 <h3 className="template-name">{template.name}</h3>
-                <div className="template-choose">
-                  <button>Selecionar Template</button>
+                <div className="template-generate">
+                  <button>Gerar Image</button>
                 </div>
                 <div className="template-footer">
                   <a href="" onClick={(e) => handleDuplicateTemplate(e, template.id)}>
