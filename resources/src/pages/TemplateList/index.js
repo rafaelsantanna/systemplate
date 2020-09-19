@@ -11,31 +11,58 @@ export default function Templates() {
   const [templates, setTemplates] = useState([]);
   const [isAdmin, setIsAdmin] = useState(false);
 
+  useEffect(() => {
+    loadTemplates();
+  }, []);
+
+  async function loadTemplates() {
+    const response = await api.get('/templates');
+    setTemplates(response.data);
+  }
+
+  function handleCopyTemplate(e, id) {
+    e.preventDefault();
+  }
+  async function handleDeleteTemplate(e, id) {
+    e.preventDefault();
+    await api.delete(`/templates/${id}`).then((response) => {
+      console.log(response);
+      setTemplates(templates.filter((template) => {
+        return template.id !== id;
+      }));
+    });
+  }
+  function handleEditTemplate(e, id){
+    e.preventDefault();
+  }
+
   return (
     <div className="container mt-3">
       <div className="row justify-content-center mb-5">
-        <h1>Lista de tempaltes</h1>
+        <h1>Lista de Templates</h1>
       </div>
       <div className="row">
-        <div className="col-3">
-          <div className="template">
-            <img className="template-image" src="https://images4.alphacoders.com/936/936378.jpg"></img>
-            <div className="template-body">
-              <h3 className="template-name">teste</h3>
-              <div className="template-footer">
-                <a href="">
-                  <img src={copyIcon}></img>
-                </a>
-                <a href="">
-                  <img src={editIcon}></img>
-                </a>
-                <a href="">
-                  <img src={trashIcon}></img>
-                </a>
+        {templates.length > 0 && templates.map((template) => (
+          <div className="col-3 mb-3" key={template.id}>
+            <div className="template">
+              <img className="template-image" src={template.image}></img>
+              <div className="template-body">
+                <h3 className="template-name">{template.name}</h3>
+                <div className="template-footer">
+                  <a href="" onClick={(e) => handleCopyTemplate(e, template.id)}>
+                    <img src={copyIcon}></img>
+                  </a>
+                  <a href="" onClick={(e) => handleEditTemlplate(e, template.id)}>
+                    <img src={editIcon}></img>
+                  </a>
+                  <a href="" onClick={(e) => handleDeleteTemplate(e, template.id)}>
+                    <img src={trashIcon}></img>
+                  </a>
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        ))}
       </div>
     </div>
   )

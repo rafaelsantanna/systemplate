@@ -15,7 +15,13 @@ class TemplateController extends Controller
      */
     public function index()
     {
+        $templates = Template::all();
+
+        foreach($templates as $template) {
+            $template->image = "uploads/".$template->image;
+        }
         
+        return response()->json($templates);
     }
 
     /**
@@ -97,6 +103,9 @@ class TemplateController extends Controller
      */
     public function destroy(Template $template)
     {
-        //
+        $template = Template::find($template->id);
+        $template->delete();
+
+        return response()->json(['message' => 'successfully deleted']);
     }
 }

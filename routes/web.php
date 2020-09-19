@@ -11,11 +11,10 @@
 |
 */
 
-//Permite acessar a API de qualquer servidor.
 header('Access-Control-Allow-Origin:  *');
 header('Access-Control-Allow-Methods:  POST, GET, OPTIONS, PUT, DELETE');
 header('Access-Control-Allow-Headers:  Content-Type, X-Auth-Token, Origin, Authorization');
 
-Route::view('/{path?}', 'app'); // Redirect to React APP
+Route::view('/', 'app'); // Redirect to React APP
 
-Route::post('/templates', 'TemplateController@store');
+Route::resource('templates', 'TemplateController');
