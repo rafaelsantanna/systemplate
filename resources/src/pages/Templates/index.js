@@ -266,15 +266,16 @@ export default function Templates() {
                                         <input type="number" className="form-control" onChange={(e) => setFields({...fields, height: e.target.value})} value={fields.height || ''} />
                                     </div>
                                 </div>
-
-                                <div className="col-6">
-                                    <div className="input-group mb-3">
-                                        <div className="input-group-prepend">
-                                            <span className="input-group-text">Tamanho Fonte</span>
+                                {selectField != 'logo' && (
+                                    <div className="col-6">
+                                        <div className="input-group mb-3">
+                                            <div className="input-group-prepend">
+                                                <span className="input-group-text">Tamanho Fonte</span>
+                                            </div>
+                                            <input type="number" className="form-control" onChange={(e) => setFields({...fields, font_size: e.target.value})} value={fields.font_size || ''} />
                                         </div>
-                                        <input type="number" className="form-control" onChange={(e) => setFields({...fields, font_size: e.target.value})} value={fields.font_size || ''} />
                                     </div>
-                                </div>
+                                )}
 
                                 <div className="col-6">
                                     <div className="input-group mb-3">
@@ -285,55 +286,61 @@ export default function Templates() {
                                     </div>
                                 </div>
 
-                                <div className="col-12">
-                                    <div className="input-group mb-3">
-                                        <div className="input-group-prepend">
-                                            <span className="input-group-text">Font Family</span>
+                                {selectField != 'logo' && (
+                                    <div className="col-12">
+                                        <div className="input-group mb-3">
+                                            <div className="input-group-prepend">
+                                                <span className="input-group-text">Font Family</span>
+                                            </div>
+                                            <input type="text" className="form-control" onChange={(e) => setFields({...fields, font_family: e.target.value})} value={fields.font_family || ''} />
                                         </div>
-                                        <input type="text" className="form-control" onChange={(e) => setFields({...fields, font_family: e.target.value})} value={fields.font_family || ''} />
                                     </div>
-                                </div>
+                                )}
+                                
+                                {selectField != 'logo' && (
+                                    <div className="col-12 d-flex">
+                                        <div className="input-group">
+                                            <div className="input-group-prepend">
+                                                <span className="input-group-text">Cor</span>
+                                            </div>
+                                            <input type="text" className="form-control" onChange={(e) => setFields({...fields, color: e.target.value})} value={fields.color || ''}/>
+                                        </div>
 
-                                <div className="col-12 d-flex">
-                                    <div className="input-group">
-                                        <div className="input-group-prepend">
-                                            <span className="input-group-text">Cor</span>
-                                        </div>
-                                        <input type="text" className="form-control" onChange={(e) => setFields({...fields, color: e.target.value})} value={fields.color || ''}/>
-                                    </div>
-
-                                    <div className="input-group align-items-center">
-                                        <div className="ml-auto">
-                                            <a href="" onClick={(e) => handleSetAlignText(e, 'left')}>
-                                                <img src={alignLeft} alt="icon align-left" width="20"
-                                                    height="20" />
-                                            </a>
-                                            <a href="" onClick={(e) => handleSetAlignText(e, 'center')}>
-                                                <img src={alignCenter} alt="icon align-center"
-                                                    width="20" height="20" />
-                                            </a>
-                                            <a href="" onClick={(e) => handleSetAlignText(e, 'right')}>
-                                                <img src={alignRight} alt="icon align-right"
-                                                    width="20" height="20" />
-                                            </a>
+                                        <div className="input-group align-items-center">
+                                            <div className="ml-auto">
+                                                <a href="" onClick={(e) => handleSetAlignText(e, 'left')}>
+                                                    <img src={alignLeft} alt="icon align-left" width="20"
+                                                        height="20" />
+                                                </a>
+                                                <a href="" onClick={(e) => handleSetAlignText(e, 'center')}>
+                                                    <img src={alignCenter} alt="icon align-center"
+                                                        width="20" height="20" />
+                                                </a>
+                                                <a href="" onClick={(e) => handleSetAlignText(e, 'right')}>
+                                                    <img src={alignRight} alt="icon align-right"
+                                                        width="20" height="20" />
+                                                </a>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
+                                )}
                             </div>
 
                             <hr/>
 
-                            <div className="row mb-3">
-                                <div className="col-12">
-                                    <div className="input-group">
-                                        <div className="input-group-prepend">
-                                            <span className="input-group-text">Fonts Google</span>
+                            {selectField != 'logo' && (
+                                <div className="row mb-3">
+                                    <div className="col-12">
+                                        <div className="input-group">
+                                            <div className="input-group-prepend">
+                                                <span className="input-group-text">Fonts Google</span>
+                                            </div>
+                                            <input type="text" className="form-control" onChange={(e) => setListFields({...listFields, google_fonts: e.target.value})} value={listFields.google_fonts || ''}/>
+                                            <button className="btn btn-primary btn-sm ml-1" onClick={() => mountGoogleFontsImports()} disabled={!listFields.google_fonts}>Aplicar fonts</button>
                                         </div>
-                                        <input type="text" className="form-control" onChange={(e) => setListFields({...listFields, google_fonts: e.target.value})} value={listFields.google_fonts || ''}/>
-                                        <button className="btn btn-primary btn-sm ml-1" onClick={() => mountGoogleFontsImports()} disabled={!listFields.google_fonts}>Aplicar fonts</button>
                                     </div>
                                 </div>
-                            </div>
+                            )}
 
                             <div className="input-group">
                                 <button className="btn btn-success" type="button" onClick={() => handleSaveFields()} disabled={selectField == ''}>Salvar Campo</button>
