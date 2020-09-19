@@ -67997,6 +67997,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _assets_icons_trash_solid_svg__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_assets_icons_trash_solid_svg__WEBPACK_IMPORTED_MODULE_6__);
 
 
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
@@ -68062,27 +68070,20 @@ function Templates() {
     return _loadTemplates.apply(this, arguments);
   }
 
-  function handleCopyTemplate(e, id) {
-    e.preventDefault();
+  function handleDuplicateTemplate(_x, _x2) {
+    return _handleDuplicateTemplate.apply(this, arguments);
   }
 
-  function handleDeleteTemplate(_x, _x2) {
-    return _handleDeleteTemplate.apply(this, arguments);
-  }
-
-  function _handleDeleteTemplate() {
-    _handleDeleteTemplate = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2(e, id) {
+  function _handleDuplicateTemplate() {
+    _handleDuplicateTemplate = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2(e, id) {
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
         while (1) {
           switch (_context2.prev = _context2.next) {
             case 0:
               e.preventDefault();
               _context2.next = 3;
-              return _services_api__WEBPACK_IMPORTED_MODULE_2__["default"]["delete"]("/templates/".concat(id)).then(function (response) {
-                console.log(response);
-                setTemplates(templates.filter(function (template) {
-                  return template.id !== id;
-                }));
+              return _services_api__WEBPACK_IMPORTED_MODULE_2__["default"].post("/templates/duplicate/".concat(id)).then(function (response) {
+                setTemplates([].concat(_toConsumableArray(templates), [response.data.template]));
               });
 
             case 3:
@@ -68091,6 +68092,34 @@ function Templates() {
           }
         }
       }, _callee2);
+    }));
+    return _handleDuplicateTemplate.apply(this, arguments);
+  }
+
+  function handleDeleteTemplate(_x3, _x4) {
+    return _handleDeleteTemplate.apply(this, arguments);
+  }
+
+  function _handleDeleteTemplate() {
+    _handleDeleteTemplate = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3(e, id) {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+        while (1) {
+          switch (_context3.prev = _context3.next) {
+            case 0:
+              e.preventDefault();
+              _context3.next = 3;
+              return _services_api__WEBPACK_IMPORTED_MODULE_2__["default"]["delete"]("/templates/".concat(id)).then(function (response) {
+                setTemplates(templates.filter(function (template) {
+                  return template.id !== id;
+                }));
+              });
+
+            case 3:
+            case "end":
+              return _context3.stop();
+          }
+        }
+      }, _callee3);
     }));
     return _handleDeleteTemplate.apply(this, arguments);
   }
@@ -68113,7 +68142,7 @@ function Templates() {
       className: "template"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
       className: "template-image",
-      src: template.image
+      src: 'uploads/' + template.image
     }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
       className: "template-body"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("span", {
@@ -68127,7 +68156,7 @@ function Templates() {
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
       href: "",
       onClick: function onClick(e) {
-        return handleCopyTemplate(e, template.id);
+        return handleDuplicateTemplate(e, template.id);
       }
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
       src: _assets_icons_copy_solid_svg__WEBPACK_IMPORTED_MODULE_4___default.a

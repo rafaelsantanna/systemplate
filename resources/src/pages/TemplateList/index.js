@@ -20,18 +20,22 @@ export default function Templates() {
     setTemplates(response.data);
   }
 
-  function handleCopyTemplate(e, id) {
+  async function handleDuplicateTemplate(e, id) {
     e.preventDefault();
+    await api.post(`/templates/duplicate/${id}`).then((response) => {
+      setTemplates([...templates, response.data.template])
+    });
   }
+
   async function handleDeleteTemplate(e, id) {
     e.preventDefault();
     await api.delete(`/templates/${id}`).then((response) => {
-      console.log(response);
       setTemplates(templates.filter((template) => {
         return template.id !== id;
       }));
     });
   }
+
   function handleEditTemplate(e, id){
     e.preventDefault();
   }
@@ -45,7 +49,7 @@ export default function Templates() {
         {templates.length > 0 && templates.map((template) => (
           <div className="col-3 mb-3" key={template.id}>
             <div className="template">
-              <img className="template-image" src={template.image}></img>
+              <img className="template-image" src={'uploads/' + template.image}></img>
               <div className="template-body">
                 <span className="template-type">{template.type}</span>
                 <h3 className="template-name">{template.name}</h3>
@@ -53,7 +57,7 @@ export default function Templates() {
                   <button>Selecionar Template</button>
                 </div>
                 <div className="template-footer">
-                  <a href="" onClick={(e) => handleCopyTemplate(e, template.id)}>
+                  <a href="" onClick={(e) => handleDuplicateTemplate(e, template.id)}>
                     <img src={copyIcon}></img>
                   </a>
                   <a href="" onClick={(e) => handleEditTemlplate(e, template.id)}>

@@ -16,10 +16,6 @@ class TemplateController extends Controller
     public function index()
     {
         $templates = Template::all();
-
-        foreach($templates as $template) {
-            $template->image = "uploads/".$template->image;
-        }
         
         return response()->json($templates);
     }
@@ -106,6 +102,14 @@ class TemplateController extends Controller
         $template = Template::find($template->id);
         $template->delete();
 
-        return response()->json(['message' => 'successfully deleted']);
+        return response()->json(['message' => 'template successfully deleted']);
+    }
+
+    public function duplicate(Request $request) {
+        $template = Template::find($request->id);
+        $copyTemplate = $template->replicate();
+        $copyTemplate->save();
+
+        return response()->json(['message' => 'template successfully duplicated', 'template' => $copyTemplate]);
     }
 }

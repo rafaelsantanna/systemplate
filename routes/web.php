@@ -18,3 +18,4 @@ header('Access-Control-Allow-Headers:  Content-Type, X-Auth-Token, Origin, Autho
 Route::view('/', 'app'); // Redirect to React APP
 
 Route::resource('templates', 'TemplateController');
+Route::post('/templates/duplicate/{id}', 'TemplateController@duplicate');
