@@ -1,11 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import Templates from './pages/Templates';
+import Template from './pages/Template';
+import TemplateList from './pages/TemplateList';
 
 export default function App() {
     return (
-        <Templates />
+        // <Template />
+        <TemplateList />
     );
 }
 
