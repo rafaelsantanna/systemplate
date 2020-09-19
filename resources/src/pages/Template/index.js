@@ -32,7 +32,7 @@ export default function Templates() {
 
     useEffect(() => {
         // Listen change in temlateType for apply dimensions on template
-        if(templateType === 'cover') setDimensionTemplate({width: '828px', height: '475px'});
+        if(templateType === 'capa') setDimensionTemplate({width: '828px', height: '475px'});
         if(templateType === 'post') setDimensionTemplate({width: '800px', height: '800px'});
     },[templateType]);
 
@@ -174,7 +174,7 @@ export default function Templates() {
                         <div className="input-group mb-3">
                             <select className="custom-select" onChange={ (e) => setTemplateType(e.target.value) } value={templateType}>
                                 <option>Selecione o tipo de template</option>
-                                <option value="cover">Capa</option>
+                                <option value="capa">Capa</option>
                                 <option value="post">Post</option>
                             </select>
                         </div>

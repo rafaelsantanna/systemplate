@@ -67490,7 +67490,7 @@ function Templates() {
 
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
     // Listen change in temlateType for apply dimensions on template
-    if (templateType === 'cover') setDimensionTemplate({
+    if (templateType === 'capa') setDimensionTemplate({
       width: '828px',
       height: '475px'
     });
@@ -67646,7 +67646,7 @@ function Templates() {
     },
     value: templateType
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "Selecione o tipo de template"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-    value: "cover"
+    value: "capa"
   }, "Capa"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
     value: "post"
   }, "Post"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
