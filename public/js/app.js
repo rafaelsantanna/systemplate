@@ -68136,7 +68136,7 @@ function Templates() {
     className: "row"
   }, templates.length > 0 && templates.map(function (template) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-      className: "col-3 mb-3",
+      className: "col-3 mb-4",
       key: template.id
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
       className: "template"

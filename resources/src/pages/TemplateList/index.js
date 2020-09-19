@@ -47,7 +47,7 @@ export default function Templates() {
       </div>
       <div className="row">
         {templates.length > 0 && templates.map((template) => (
-          <div className="col-3 mb-3" key={template.id}>
+          <div className="col-3 mb-4" key={template.id}>
             <div className="template">
               <img className="template-image" src={'uploads/' + template.image}></img>
               <div className="template-body">
