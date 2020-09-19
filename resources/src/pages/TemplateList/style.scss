@@ -9,11 +9,41 @@
     height: 140px;
   }
   &-body {
-    padding: 10px 15px;
+    padding: 15px 15px 10px 15px;
+    position: relative;
+  }
+  &-type {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    line-height: 1;
+    background-color: #00adb5;
+    color: #fff;
+    padding: 3px 6px;
+    font-size: 14px;
+    font-weight: 600;
   }
   &-name {
     font-size: 24px;
     margin-bottom: 15px;
+  }
+  &-choose {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+    button {
+      border: none;
+      background-color: #222831;
+      color: #fff;
+      font-size: 18px;
+      padding: 7px 10px;
+      line-height: 1.2;
+      border-radius: 4px;
+      transition: all .6s;
+      &:hover {
+        opacity: .85;
+      }
+    }
   }
   &-footer {
     display: flex;

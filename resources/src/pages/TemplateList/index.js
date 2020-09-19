@@ -47,7 +47,11 @@ export default function Templates() {
             <div className="template">
               <img className="template-image" src={template.image}></img>
               <div className="template-body">
+                <span className="template-type">{template.type}</span>
                 <h3 className="template-name">{template.name}</h3>
+                <div className="template-choose">
+                  <button>Selecionar Template</button>
+                </div>
                 <div className="template-footer">
                   <a href="" onClick={(e) => handleCopyTemplate(e, template.id)}>
                     <img src={copyIcon}></img>
