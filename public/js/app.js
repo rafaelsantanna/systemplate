@@ -6319,10 +6319,10 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./resources/src/pages/Templates/style.scss":
-/*!*************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./resources/src/pages/Templates/style.scss ***!
-  \*************************************************************************************************************************************************************************/
+/***/ "./node_modules/css-loader/index.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./resources/src/pages/Template/style.scss":
+/*!************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./resources/src/pages/Template/style.scss ***!
+  \************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -66481,12 +66481,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _pages_Templates__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./pages/Templates */ "./resources/src/pages/Templates/index.js");
+/* harmony import */ var _pages_Template__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./pages/Template */ "./resources/src/pages/Template/index.js");
+/* harmony import */ var _pages_TemplateList__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./pages/TemplateList */ "./resources/src/pages/TemplateList/index.js");
+
 
 
 
 function App() {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_pages_Templates__WEBPACK_IMPORTED_MODULE_2__["default"], null);
+  return (
+    /*#__PURE__*/
+    // <Template />
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_pages_TemplateList__WEBPACK_IMPORTED_MODULE_4__["default"], null)
+  );
 }
 
 if (document.getElementById('app')) {
@@ -66528,10 +66534,10 @@ module.exports = "/images/align-right-solid.svg?12cedf36e86f5ec46880f612b3fd6892
 
 /***/ }),
 
-/***/ "./resources/src/pages/Templates/index.js":
-/*!************************************************!*\
-  !*** ./resources/src/pages/Templates/index.js ***!
-  \************************************************/
+/***/ "./resources/src/pages/Template/index.js":
+/*!***********************************************!*\
+  !*** ./resources/src/pages/Template/index.js ***!
+  \***********************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -66541,7 +66547,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _services_api__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../services/api */ "./resources/src/services/api.js");
-/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./style.scss */ "./resources/src/pages/Templates/style.scss");
+/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./style.scss */ "./resources/src/pages/Template/style.scss");
 /* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_style_scss__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _assets_icons_align_left_solid_svg__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../assets/icons/align-left-solid.svg */ "./resources/src/assets/icons/align-left-solid.svg");
 /* harmony import */ var _assets_icons_align_left_solid_svg__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_assets_icons_align_left_solid_svg__WEBPACK_IMPORTED_MODULE_3__);
@@ -66769,9 +66775,6 @@ function Templates() {
   }
 
   function handleSaveTemplate() {
-    // Fazer requisição no servidor para salvar os dados.
-    // Enviar template_name, template_type, template_image, fields
-    // Redirecionar para a tela de listagem de templates.
     var data = new FormData();
     data.append("image", templateImage);
     data.append("name", templateName);
@@ -67116,15 +67119,15 @@ function Templates() {
 
 /***/ }),
 
-/***/ "./resources/src/pages/Templates/style.scss":
-/*!**************************************************!*\
-  !*** ./resources/src/pages/Templates/style.scss ***!
-  \**************************************************/
+/***/ "./resources/src/pages/Template/style.scss":
+/*!*************************************************!*\
+  !*** ./resources/src/pages/Template/style.scss ***!
+  \*************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(/*! !../../../../node_modules/css-loader!../../../../node_modules/postcss-loader/src??ref--7-2!../../../../node_modules/sass-loader/dist/cjs.js??ref--7-3!./style.scss */ "./node_modules/css-loader/index.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./resources/src/pages/Templates/style.scss");
+var content = __webpack_require__(/*! !../../../../node_modules/css-loader!../../../../node_modules/postcss-loader/src??ref--7-2!../../../../node_modules/sass-loader/dist/cjs.js??ref--7-3!./style.scss */ "./node_modules/css-loader/index.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./resources/src/pages/Template/style.scss");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -67143,6 +67146,25 @@ var update = __webpack_require__(/*! ../../../../node_modules/style-loader/lib/a
 if(content.locals) module.exports = content.locals;
 
 if(false) {}
+
+/***/ }),
+
+/***/ "./resources/src/pages/TemplateList/index.js":
+/*!***************************************************!*\
+  !*** ./resources/src/pages/TemplateList/index.js ***!
+  \***************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Templates; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+function Templates() {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "teste");
+}
 
 /***/ }),
 
