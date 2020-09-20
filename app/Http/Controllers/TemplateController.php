@@ -97,9 +97,9 @@ class TemplateController extends Controller
      * @param  \App\Template  $template
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Template $template)
+    public function destroy(Request $request)
     {
-        $template = Template::find($template->id);
+        $template = Template::find($request->id);
         $template->delete();
 
         return response()->json(['message' => 'template successfully deleted']);

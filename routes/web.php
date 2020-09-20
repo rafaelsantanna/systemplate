@@ -21,5 +21,5 @@ Route::view('/{path?}', 'app'); // Redirect to React APP
 // API Calls
 Route::get('/api/templates', 'TemplateController@index');
 Route::post('/api/templates', 'TemplateController@store');
-Route::delete('/api/templates', 'TemplateController@destroy');
+Route::delete('/api/templates/{id}', 'TemplateController@destroy');
 Route::post('/api/templates/duplicate/{id}', 'TemplateController@duplicate');
