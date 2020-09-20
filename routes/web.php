@@ -15,7 +15,11 @@ header('Access-Control-Allow-Origin:  *');
 header('Access-Control-Allow-Methods:  POST, GET, OPTIONS, PUT, DELETE');
 header('Access-Control-Allow-Headers:  Content-Type, X-Auth-Token, Origin, Authorization');
 
-Route::view('/', 'app'); // Redirect to React APP
+Route::view('/{path?}', 'app'); // Redirect to React APP
 
-Route::resource('templates', 'TemplateController');
-Route::post('/templates/duplicate/{id}', 'TemplateController@duplicate');
+
+// API Calls
+Route::get('/api/templates', 'TemplateController@index');
+Route::post('/api/templates', 'TemplateController@store');
+Route::delete('/api/templates', 'TemplateController@destroy');
+Route::post('/api/templates/duplicate/{id}', 'TemplateController@duplicate');

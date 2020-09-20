@@ -1,13 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import Template from './pages/Template';
-import TemplateList from './pages/TemplateList';
+import Routes from './routes';
 
 export default function App() {
     return (
-        // <Template />
-        <TemplateList />
+        <Routes />
     );
 }
 
