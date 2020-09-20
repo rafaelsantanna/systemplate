@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Modal, Button } from 'react-bootstrap';
 import api from '../../services/api';
 
 import './style.scss';
@@ -9,8 +10,12 @@ import trashIcon from '../../assets/icons/trash-solid.svg';
 
 export default function Templates() {
   const [templates, setTemplates] = useState([]);
+  const [templateId, setTemplateId] = useState(0);
+  
   const [isAdmin, setIsAdmin] = useState(false);
-
+  
+  const [showModalDelete, setShowModalDelete] = useState(false);
+  
   useEffect(() => {
     loadTemplates();
   }, []);
@@ -20,28 +25,40 @@ export default function Templates() {
     setTemplates(response.data);
   }
 
-  async function handleDuplicateTemplate(e, id) {
+  function handleDuplicateTemplate(e, id) {
     e.preventDefault();
-    await api.post(`/templates/duplicate/${id}`).then((response) => {
+    api.post(`/templates/duplicate/${id}`).then((response) => {
       setTemplates([...templates, response.data.template])
     });
   }
 
-  async function handleDeleteTemplate(e, id) {
-    e.preventDefault();
-    await api.delete(`/templates/${id}`).then((response) => {
+  function handleDeleteTemplate() {
+    api.delete(`/templates/${templateId}`).then(() => {
       setTemplates(templates.filter((template) => {
-        return template.id !== id;
+        return template.id !== templateId;
       }));
+      setShowModalDelete(false);
     });
   }
 
-  function handleEditTemplate(e, id){
+  function handleEditTemplate(e, id) {
     e.preventDefault();
   }
 
+  function handleShowModalDelete(e, id) {
+    e.preventDefault();
+    setShowModalDelete(true);
+    setTemplateId(id);
+  }
+
+  function handleCloseModalDelete() {
+    setShowModalDelete(false);
+    setTemplateId(0);
+  }
+
   return (
-    <div className="container mt-3">
+    <>
+      <div className="container my-3">
       <div className="row justify-content-center mb-5">
         <h1>Lista de Templates</h1>
       </div>
@@ -63,7 +80,7 @@ export default function Templates() {
                   <a href="" onClick={(e) => handleEditTemlplate(e, template.id)}>
                     <img src={editIcon}></img>
                   </a>
-                  <a href="" onClick={(e) => handleDeleteTemplate(e, template.id)}>
+                  <a href="" onClick={(e) => handleShowModalDelete(e, template.id)}>
                     <img src={trashIcon}></img>
                   </a>
                 </div>
@@ -73,5 +90,17 @@ export default function Templates() {
         ))}
       </div>
     </div>
+
+      <Modal show={showModalDelete} onHide={handleCloseModalDelete} centered>
+        <Modal.Header>
+          <Modal.Title>Relamente deseja deletar o template?</Modal.Title>
+        </Modal.Header>
+
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleCloseModalDelete}>Fechar</Button>
+          <Button variant="danger" onClick={() => handleDeleteTemplate()}>Confirmar</Button>
+        </Modal.Footer>
+      </Modal>
+    </>
   )
 }
