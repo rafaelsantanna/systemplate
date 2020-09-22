@@ -106,7 +106,7 @@ class TemplateController extends Controller
 
         $template->save();
 
-        return response()->json(['message' => 'template successfully updated', 'req' => $request->image, 'db' => $template->image]);
+        return response()->json(['message' => 'template successfully updated']);
     }
 
     /**
