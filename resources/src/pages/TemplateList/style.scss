@@ -30,18 +30,24 @@
   &-generate {
     display: flex;
     justify-content: center;
+    align-items: center;
+    flex-direction: column;
     margin-bottom: 10px;
-    button {
-      border: none;
-      background-color: #222831;
-      color: #fff;
-      font-size: 18px;
-      padding: 7px 10px;
-      line-height: 1.2;
-      border-radius: 4px;
-      transition: all .6s;
+
+    a {
+      color: #222831;
+      border: 1px solid #222831;
+      border-radius: 2px;
+      padding: 5px 10px;
+      text-decoration: none;
+      transition: all .5s;
       &:hover {
-        opacity: .85;
+        background-color: #222831;
+        color: #fff;
+
+      }
+      &:first-child {
+        margin-bottom: 5px;
       }
     }
   }

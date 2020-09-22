@@ -9745,7 +9745,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".template {\n  background-color: #fff;\n  border-radius: 3px;\n  overflow: hidden;\n  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);\n  max-width: 300px;\n}\n.template-image {\n  width: 100%;\n  height: 140px;\n}\n.template-body {\n  padding: 15px 15px 10px 15px;\n  position: relative;\n}\n.template-type {\n  position: absolute;\n  right: 0px;\n  top: 0px;\n  line-height: 1;\n  background-color: #00adb5;\n  color: #fff;\n  padding: 3px 6px;\n  font-size: 14px;\n  font-weight: 600;\n}\n.template-name {\n  font-size: 24px;\n  margin-bottom: 15px;\n}\n.template-generate {\n  display: flex;\n  justify-content: center;\n  margin-bottom: 10px;\n}\n.template-generate button {\n  border: none;\n  background-color: #222831;\n  color: #fff;\n  font-size: 18px;\n  padding: 7px 10px;\n  line-height: 1.2;\n  border-radius: 4px;\n  transition: all 0.6s;\n}\n.template-generate button:hover {\n  opacity: 0.85;\n}\n.template-footer {\n  display: flex;\n  justify-content: space-between;\n}\n.template-footer img {\n  width: 18px;\n  height: 18px;\n}", ""]);
+exports.push([module.i, ".template {\n  background-color: #fff;\n  border-radius: 3px;\n  overflow: hidden;\n  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);\n  max-width: 300px;\n}\n.template-image {\n  width: 100%;\n  height: 140px;\n}\n.template-body {\n  padding: 15px 15px 10px 15px;\n  position: relative;\n}\n.template-type {\n  position: absolute;\n  right: 0px;\n  top: 0px;\n  line-height: 1;\n  background-color: #00adb5;\n  color: #fff;\n  padding: 3px 6px;\n  font-size: 14px;\n  font-weight: 600;\n}\n.template-name {\n  font-size: 24px;\n  margin-bottom: 15px;\n}\n.template-generate {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  flex-direction: column;\n  margin-bottom: 10px;\n}\n.template-generate a {\n  color: #222831;\n  border: 1px solid #222831;\n  border-radius: 2px;\n  padding: 5px 10px;\n  text-decoration: none;\n  transition: all 0.5s;\n}\n.template-generate a:hover {\n  background-color: #222831;\n  color: #fff;\n}\n.template-generate a:first-child {\n  margin-bottom: 5px;\n}\n.template-footer {\n  display: flex;\n  justify-content: space-between;\n}\n.template-footer img {\n  width: 18px;\n  height: 18px;\n}", ""]);
 
 // exports
 
@@ -87370,7 +87370,11 @@ function Templates(_ref) {
       className: "template-name"
     }, template.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
       className: "template-generate"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", null, "Gerar Image")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
+      href: ""
+    }, "Gerar Imagem"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
+      href: ""
+    }, "Visualizar Imagem")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
       className: "template-footer"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
       href: "",
