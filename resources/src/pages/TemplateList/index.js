@@ -83,13 +83,13 @@ export default function Templates({ history }) {
                 </div>
                 <div className="template-footer">
                   <a href="" onClick={(e) => handleDuplicateTemplate(e, template.id)}>
-                    <img src={copyIcon}></img>
+                    <img src={copyIcon} title="Copiar Template"></img>
                   </a>
                   <a href="" onClick={(e) => handleEditTemplate(e, template.id)}>
-                    <img src={editIcon}></img>
+                    <img src={editIcon} title="Editar Template"></img>
                   </a>
                   <a href="" onClick={(e) => handleShowModalDelete(e, template.id)}>
-                    <img src={trashIcon}></img>
+                    <img src={trashIcon} title="Deletar Template"></img>
                   </a>
                 </div>
               </div>
