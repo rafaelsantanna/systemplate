@@ -8,7 +8,7 @@ import copyIcon from '../../assets/icons/copy-solid.svg';
 import editIcon from '../../assets/icons/edit-solid.svg';
 import trashIcon from '../../assets/icons/trash-solid.svg';
 
-export default function Templates() {
+export default function Templates({ history }) {
   const [templates, setTemplates] = useState([]);
   const [templateId, setTemplateId] = useState(0);
   
@@ -43,6 +43,13 @@ export default function Templates() {
 
   function handleEditTemplate(e, id) {
     e.preventDefault();
+
+    let template = templates.filter((template) => {
+      return (template.id == id);
+    });
+    localStorage.setItem('template', JSON.stringify(template));
+
+    history.push('/template');
   }
 
   function handleShowModalDelete(e, id) {
@@ -77,7 +84,7 @@ export default function Templates() {
                   <a href="" onClick={(e) => handleDuplicateTemplate(e, template.id)}>
                     <img src={copyIcon}></img>
                   </a>
-                  <a href="" onClick={(e) => handleEditTemlplate(e, template.id)}>
+                  <a href="" onClick={(e) => handleEditTemplate(e, template.id)}>
                     <img src={editIcon}></img>
                   </a>
                   <a href="" onClick={(e) => handleShowModalDelete(e, template.id)}>

@@ -8,7 +8,8 @@ import alignLeft from '../../assets/icons/align-left-solid.svg';
 import alignCenter from '../../assets/icons/align-center-solid.svg';
 import alignRight from '../../assets/icons/align-right-solid.svg';
 
-export default function Templates() {
+export default function Templates({ history }) {
+    const [templateId, setTemplateId] = useState(0);
     const [templateType, setTemplateType] = useState('');
     const [templateImage, setTemplateImage] = useState([]);
     const [templateName, setTemplateName] = useState('');
@@ -49,6 +50,23 @@ export default function Templates() {
         if(selectField == 'logo') setLogoText(previewText);
         if(selectField == 'whatsapp') setWhatsappText(previewText);
     }, [previewText]);
+
+    useEffect(() => {
+        // check if has a localStorage template for edit the template
+        let arrTemplate = JSON.parse(localStorage.getItem('template'));
+        localStorage.removeItem('template');
+        
+        if(arrTemplate) {
+            let template = arrTemplate[0];
+            setTemplateType(template.type);
+            setShowPreviewImage(true);
+            setTemplateName(template.name);
+            setPreviewImage(`/uploads/${template.image}`);
+            setTemplateImage(`${template.image}`);
+            setListFields(JSON.parse(template.fields));
+            setTemplateId(template.id);
+        }
+    }, []);
 
     function handleChangeImage(e) {
         let imageInput = e.target.files[0];
@@ -128,35 +146,49 @@ export default function Templates() {
         setPreviewText('');
     }
 
-    function handleSaveTemplate() {
-        let data = new FormData();
-        data.append("image", templateImage);
-        data.append("name", templateName);
-        data.append("type", templateType);
-        data.append("fields", JSON.stringify(listFields));
+    function clearStates() {
+        setTemplateType('');
+        setPreviewImage('');
+        setTemplateImage([]);
+        setDimensionTemplate({});
 
-        api.post('/templates', data).then(() => {
-            alert('Template salvo com sucesso!');
+        setShowPreviewImage(false);
+        setTemplateName('');
+        setListFields({});
+        setFields({});
+        
+        setPreviewText('');
+        setNomeText('');
+        setLogoText('');
+        setWhatsappText('');
 
-            setTemplateType('');
-            setPreviewImage('');
-            setTemplateImage([]);
-            setDimensionTemplate({});
+        setLogoFieldStyle({});
+        setWhatsappFieldStyle({});
+        setNomeFieldStyle({});
+    }
 
-            setShowPreviewImage(false);
-            setTemplateName('');
-            setListFields({});
-            setFields({});
-            
-            setPreviewText('');
-            setNomeText('');
-            setLogoText('');
-            setWhatsappText('');
+    function handleSubmitTemplate() {
+        let form = new FormData();
+        form.append("image", templateImage);
+        form.append("name", templateName);
+        form.append("type", templateType);
+        form.append("fields", JSON.stringify(listFields));
 
-            setLogoFieldStyle({});
-            setWhatsappFieldStyle({});
-            setNomeFieldStyle({});
-        });
+        if(templateId == 0) {
+            api.post('/templates', form).then(() => {
+                alert('Template salvo com sucesso!');
+                clearStates();
+            });
+        }
+        
+        if(templateId > 0) {
+            form.append('_method', 'PUT');
+            api.post(`/templates/${templateId}`, form).then((response) => {
+                alert('template atualizado com sucesso!');
+                clearStates();
+                history.push('/templatelist');
+            });
+        }
     }
 
     return (
@@ -193,8 +225,11 @@ export default function Templates() {
                                     <input type="text" className="form-control" onChange={(e) => setTemplateName(e.target.value)}
                                         placeholder="Nome do template" value={templateName}/>
                                 </div>
-                                <div className="input-group">
-                                    <button onClick={() => handleSaveTemplate()} className="btn btn-primary" type="button" disabled={templateName.length == 0}>Salvar Template</button>
+                                <div className="input-group align-items-center">
+                                    <button onClick={() => handleSubmitTemplate()} className="btn btn-primary" type="button" disabled={templateName.length == 0}>Salvar Template</button>
+                                    {templateId > 0 && (
+                                        <span className="flag-editing">Editando</span>    
+                                    )}
                                 </div>
                             </div>
 

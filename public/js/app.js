@@ -9726,7 +9726,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".preview-custom-field {\n  position: absolute;\n  top: 0;\n  left: 0;\n  word-wrap: break-word;\n}", ""]);
+exports.push([module.i, ".preview-custom-field {\n  position: absolute;\n  top: 0;\n  left: 0;\n  word-wrap: break-word;\n}\n\n.flag-editing {\n  line-height: 1;\n  background-color: #00adb5;\n  color: #fff;\n  padding: 3px 6px;\n  font-size: 12px;\n  font-weight: 600;\n  margin-left: 10px;\n  border-radius: 2px;\n}", ""]);
 
 // exports
 
@@ -86588,91 +86588,98 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-function Templates() {
-  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(''),
+function Templates(_ref) {
+  var history = _ref.history;
+
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(0),
       _useState2 = _slicedToArray(_useState, 2),
-      templateType = _useState2[0],
-      setTemplateType = _useState2[1];
+      templateId = _useState2[0],
+      setTemplateId = _useState2[1];
 
-  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]),
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(''),
       _useState4 = _slicedToArray(_useState3, 2),
-      templateImage = _useState4[0],
-      setTemplateImage = _useState4[1];
+      templateType = _useState4[0],
+      setTemplateType = _useState4[1];
 
-  var _useState5 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(''),
+  var _useState5 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]),
       _useState6 = _slicedToArray(_useState5, 2),
-      templateName = _useState6[0],
-      setTemplateName = _useState6[1];
+      templateImage = _useState6[0],
+      setTemplateImage = _useState6[1];
 
-  var _useState7 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
+  var _useState7 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(''),
       _useState8 = _slicedToArray(_useState7, 2),
-      showPreviewImage = _useState8[0],
-      setShowPreviewImage = _useState8[1];
+      templateName = _useState8[0],
+      setTemplateName = _useState8[1];
 
-  var _useState9 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(''),
+  var _useState9 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
       _useState10 = _slicedToArray(_useState9, 2),
-      previewImage = _useState10[0],
-      setPreviewImage = _useState10[1];
+      showPreviewImage = _useState10[0],
+      setShowPreviewImage = _useState10[1];
 
-  var _useState11 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({}),
+  var _useState11 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(''),
       _useState12 = _slicedToArray(_useState11, 2),
-      dimensionTemplate = _useState12[0],
-      setDimensionTemplate = _useState12[1];
+      previewImage = _useState12[0],
+      setPreviewImage = _useState12[1];
 
-  var _useState13 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(''),
+  var _useState13 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({}),
       _useState14 = _slicedToArray(_useState13, 2),
-      selectField = _useState14[0],
-      setSelectField = _useState14[1];
+      dimensionTemplate = _useState14[0],
+      setDimensionTemplate = _useState14[1];
 
-  var _useState15 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({}),
+  var _useState15 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(''),
       _useState16 = _slicedToArray(_useState15, 2),
-      listFields = _useState16[0],
-      setListFields = _useState16[1];
+      selectField = _useState16[0],
+      setSelectField = _useState16[1];
 
   var _useState17 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({}),
       _useState18 = _slicedToArray(_useState17, 2),
-      fields = _useState18[0],
-      setFields = _useState18[1];
+      listFields = _useState18[0],
+      setListFields = _useState18[1];
 
-  var _useState19 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]),
+  var _useState19 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({}),
       _useState20 = _slicedToArray(_useState19, 2),
-      googleFonts = _useState20[0],
-      setGoogleFonts = _useState20[1];
+      fields = _useState20[0],
+      setFields = _useState20[1];
 
-  var _useState21 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({}),
+  var _useState21 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]),
       _useState22 = _slicedToArray(_useState21, 2),
-      nomeFieldStyle = _useState22[0],
-      setNomeFieldStyle = _useState22[1];
+      googleFonts = _useState22[0],
+      setGoogleFonts = _useState22[1];
 
   var _useState23 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({}),
       _useState24 = _slicedToArray(_useState23, 2),
-      logoFieldStyle = _useState24[0],
-      setLogoFieldStyle = _useState24[1];
+      nomeFieldStyle = _useState24[0],
+      setNomeFieldStyle = _useState24[1];
 
   var _useState25 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({}),
       _useState26 = _slicedToArray(_useState25, 2),
-      whatsappFieldStyle = _useState26[0],
-      setWhatsappFieldStyle = _useState26[1];
+      logoFieldStyle = _useState26[0],
+      setLogoFieldStyle = _useState26[1];
 
-  var _useState27 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(''),
+  var _useState27 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({}),
       _useState28 = _slicedToArray(_useState27, 2),
-      previewText = _useState28[0],
-      setPreviewText = _useState28[1];
+      whatsappFieldStyle = _useState28[0],
+      setWhatsappFieldStyle = _useState28[1];
 
   var _useState29 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(''),
       _useState30 = _slicedToArray(_useState29, 2),
-      nomeText = _useState30[0],
-      setNomeText = _useState30[1];
+      previewText = _useState30[0],
+      setPreviewText = _useState30[1];
 
   var _useState31 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(''),
       _useState32 = _slicedToArray(_useState31, 2),
-      logoText = _useState32[0],
-      setLogoText = _useState32[1];
+      nomeText = _useState32[0],
+      setNomeText = _useState32[1];
 
   var _useState33 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(''),
       _useState34 = _slicedToArray(_useState33, 2),
-      whatsappText = _useState34[0],
-      setWhatsappText = _useState34[1];
+      logoText = _useState34[0],
+      setLogoText = _useState34[1];
+
+  var _useState35 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(''),
+      _useState36 = _slicedToArray(_useState35, 2),
+      whatsappText = _useState36[0],
+      setWhatsappText = _useState36[1];
 
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
     // Listen change in temlateType for apply dimensions on template
@@ -86697,6 +86704,22 @@ function Templates() {
     if (selectField == 'logo') setLogoText(previewText);
     if (selectField == 'whatsapp') setWhatsappText(previewText);
   }, [previewText]);
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    // check if has a localStorage template for edit the template
+    var arrTemplate = JSON.parse(localStorage.getItem('template'));
+    localStorage.removeItem('template');
+
+    if (arrTemplate) {
+      var template = arrTemplate[0];
+      setTemplateType(template.type);
+      setShowPreviewImage(true);
+      setTemplateName(template.name);
+      setPreviewImage("/uploads/".concat(template.image));
+      setTemplateImage("".concat(template.image));
+      setListFields(JSON.parse(template.fields));
+      setTemplateId(template.id);
+    }
+  }, []);
 
   function handleChangeImage(e) {
     var imageInput = e.target.files[0];
@@ -86783,30 +86806,46 @@ function Templates() {
     setPreviewText('');
   }
 
-  function handleSaveTemplate() {
-    var data = new FormData();
-    data.append("image", templateImage);
-    data.append("name", templateName);
-    data.append("type", templateType);
-    data.append("fields", JSON.stringify(listFields));
-    _services_api__WEBPACK_IMPORTED_MODULE_1__["default"].post('/templates', data).then(function () {
-      alert('Template salvo com sucesso!');
-      setTemplateType('');
-      setPreviewImage('');
-      setTemplateImage([]);
-      setDimensionTemplate({});
-      setShowPreviewImage(false);
-      setTemplateName('');
-      setListFields({});
-      setFields({});
-      setPreviewText('');
-      setNomeText('');
-      setLogoText('');
-      setWhatsappText('');
-      setLogoFieldStyle({});
-      setWhatsappFieldStyle({});
-      setNomeFieldStyle({});
-    });
+  function clearStates() {
+    setTemplateType('');
+    setPreviewImage('');
+    setTemplateImage([]);
+    setDimensionTemplate({});
+    setShowPreviewImage(false);
+    setTemplateName('');
+    setListFields({});
+    setFields({});
+    setPreviewText('');
+    setNomeText('');
+    setLogoText('');
+    setWhatsappText('');
+    setLogoFieldStyle({});
+    setWhatsappFieldStyle({});
+    setNomeFieldStyle({});
+  }
+
+  function handleSubmitTemplate() {
+    var form = new FormData();
+    form.append("image", templateImage);
+    form.append("name", templateName);
+    form.append("type", templateType);
+    form.append("fields", JSON.stringify(listFields));
+
+    if (templateId == 0) {
+      _services_api__WEBPACK_IMPORTED_MODULE_1__["default"].post('/templates', form).then(function () {
+        alert('Template salvo com sucesso!');
+        clearStates();
+      });
+    }
+
+    if (templateId > 0) {
+      form.append('_method', 'PUT');
+      _services_api__WEBPACK_IMPORTED_MODULE_1__["default"].post("/templates/".concat(templateId), form).then(function (response) {
+        alert('template atualizado com sucesso!');
+        clearStates();
+        history.push('/templatelist');
+      });
+    }
   }
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, googleFonts.length > 0 && googleFonts.map(function (font, index) {
@@ -86860,15 +86899,17 @@ function Templates() {
     placeholder: "Nome do template",
     value: templateName
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "input-group"
+    className: "input-group align-items-center"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     onClick: function onClick() {
-      return handleSaveTemplate();
+      return handleSubmitTemplate();
     },
     className: "btn btn-primary",
     type: "button",
     disabled: templateName.length == 0
-  }, "Salvar Template"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, "Salvar Template"), templateId > 0 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "flag-editing"
+  }, "Editando"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "position-relative"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
     src: previewImage,
@@ -87215,7 +87256,9 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-function Templates() {
+function Templates(_ref) {
+  var history = _ref.history;
+
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])([]),
       _useState2 = _slicedToArray(_useState, 2),
       templates = _useState2[0],
@@ -87286,6 +87329,11 @@ function Templates() {
 
   function handleEditTemplate(e, id) {
     e.preventDefault();
+    var template = templates.filter(function (template) {
+      return template.id == id;
+    });
+    localStorage.setItem('template', JSON.stringify(template));
+    history.push('/template');
   }
 
   function handleShowModalDelete(e, id) {
@@ -87334,7 +87382,7 @@ function Templates() {
     })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
       href: "",
       onClick: function onClick(e) {
-        return handleEditTemlplate(e, template.id);
+        return handleEditTemplate(e, template.id);
       }
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
       src: _assets_icons_edit_solid_svg__WEBPACK_IMPORTED_MODULE_6___default.a

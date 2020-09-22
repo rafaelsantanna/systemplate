@@ -86,9 +86,27 @@ class TemplateController extends Controller
      * @param  \App\Template  $template
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Template $template)
+    public function update(Request $request)
     {
-        //
+        $template = Template::find($request->id);
+        $template->name = $request->name;
+        $template->type = $request->type;
+        $template->fields = $request->fields;
+
+        if($template->image != $request->image) {
+            $request->validate([
+                'file' => 'max:2048',
+            ]);
+    
+            $file = $request->file('image');
+            $filename = time() . '.' . $file->getClientOriginalExtension();
+            $file->move('uploads', $filename);
+            $template->image = $filename;
+        }
+
+        $template->save();
+
+        return response()->json(['message' => 'template successfully updated', 'req' => $request->image, 'db' => $template->image]);
     }
 
     /**
