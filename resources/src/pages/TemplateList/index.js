@@ -66,14 +66,15 @@ export default function Templates({ history }) {
   }
 
   function mountObjectStyle(field) {
+    console.log(field);
     let data = {
       left: field.left ? field.left + 'px' : undefined,
       top:  field.top ? field.top+'px' : undefined,
       width: field.width ? field.width+'px' : undefined,
       height: field.height ? field.height+'px' : undefined,
-      fontSize: field.fontSize ? field.font_size+'px' : undefined,
+      fontSize: field.font_size ? field.font_size+'px' : undefined,
       transform: field.transform ? `rotate(${field.rotate}deg)` : undefined,
-      fontFamily: field.fontFamily ? field.font_family : undefined,
+      fontFamily: field.font_family ? field.font_family : undefined,
       color: field.color ? '#'+field.color : undefined,
       textAlign: field.textAlign ? field.text_align : undefined,
     }
