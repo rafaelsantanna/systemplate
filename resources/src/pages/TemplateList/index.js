@@ -94,7 +94,7 @@ export default function Templates({ history }) {
     if(template.type === 'capa') setCssTemplateImage({width: '828px', height: '475px'});
     if(template.type === 'post') setCssTemplateImage({width: '800px', height: '800px'});
 
-    let objCssCompany = JSON.parse(template.fields).nome || {};
+    let objCssCompany = JSON.parse(template.fields).company || {};
     let objCssLogo = JSON.parse(template.fields).logo || {};
     let objCssTel = JSON.parse(template.fields).phone || {};
 

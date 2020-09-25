@@ -87445,8 +87445,8 @@ function Templates(_ref) {
 
   var _useState23 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({}),
       _useState24 = _slicedToArray(_useState23, 2),
-      nomeFieldStyle = _useState24[0],
-      setNomeFieldStyle = _useState24[1];
+      companyFieldStyle = _useState24[0],
+      setCompanyFieldStyle = _useState24[1];
 
   var _useState25 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({}),
       _useState26 = _slicedToArray(_useState25, 2),
@@ -87465,8 +87465,8 @@ function Templates(_ref) {
 
   var _useState31 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(''),
       _useState32 = _slicedToArray(_useState31, 2),
-      nomeText = _useState32[0],
-      setNomeText = _useState32[1];
+      companyText = _useState32[0],
+      setCompanyText = _useState32[1];
 
   var _useState33 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(''),
       _useState34 = _slicedToArray(_useState33, 2),
@@ -87491,13 +87491,13 @@ function Templates(_ref) {
   }, [templateType]);
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
     // Listen change in fields for apply Style in the corresponding Element
-    if (selectField == 'nome') setNomeFieldStyle(mountObjectStyle(fields));
+    if (selectField == 'company') setCompanyFieldStyle(mountObjectStyle(fields));
     if (selectField == 'logo') setLogoFieldStyle(mountObjectStyle(fields));
     if (selectField == 'phone') setPhoneFieldStyle(mountObjectStyle(fields));
   }, [fields]);
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
     // Listen to the change in previewText to record in the corresponding text field
-    if (selectField == 'nome') setNomeText(previewText);
+    if (selectField == 'company') setCompanyText(previewText);
     if (selectField == 'logo') setLogoText(previewText);
     if (selectField == 'phone') setPhoneText(previewText);
   }, [previewText]);
@@ -87536,7 +87536,7 @@ function Templates(_ref) {
     setFields({});
     if (value in listFields) setFields(listFields[value]);
     setSelectField(value);
-    if (value == 'nome') setPreviewText(nomeText);
+    if (value == 'company') setPreviewText(companyText);
     if (value == 'logo') setPreviewText(logoText);
     if (value == 'phone') setPreviewText(phoneText);
   }
@@ -87574,11 +87574,11 @@ function Templates(_ref) {
       setPhoneText(previewText);
     }
 
-    if (selectField == 'nome') {
+    if (selectField == 'company') {
       setListFields(_objectSpread(_objectSpread({}, listFields), {}, {
-        nome: fields
+        company: fields
       }));
-      setNomeText(previewText);
+      setCompanyText(previewText);
     }
 
     if (selectField == 'logo') {
@@ -87613,12 +87613,12 @@ function Templates(_ref) {
     setListFields({});
     setFields({});
     setPreviewText('');
-    setNomeText('');
+    setCompanyText('');
     setLogoText('');
     setPhoneText('');
     setLogoFieldStyle({});
     setPhoneFieldStyle({});
-    setNomeFieldStyle({});
+    setCompanyFieldStyle({});
   }
 
   function handleSubmitTemplate() {
@@ -87714,8 +87714,8 @@ function Templates(_ref) {
     alt: "Imagem de fundo do template"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "preview-custom-field",
-    style: nomeFieldStyle
-  }, nomeText), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    style: companyFieldStyle
+  }, companyText), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "preview-custom-field",
     style: logoFieldStyle
   }, logoText), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -87735,8 +87735,8 @@ function Templates(_ref) {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
     value: ""
   }, "Selecione um campo"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-    value: "nome"
-  }, "Nome"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+    value: "company"
+  }, "Nome da empresa"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
     value: "logo"
   }, "Logo"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
     value: "phone"
@@ -88203,7 +88203,7 @@ function Templates(_ref) {
       width: '800px',
       height: '800px'
     });
-    var objCssCompany = JSON.parse(template.fields).nome || {};
+    var objCssCompany = JSON.parse(template.fields).company || {};
     var objCssLogo = JSON.parse(template.fields).logo || {};
     var objCssTel = JSON.parse(template.fields).phone || {};
     setCssCompany(mountObjectStyle(objCssCompany));

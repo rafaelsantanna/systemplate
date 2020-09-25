@@ -22,12 +22,12 @@ export default function Templates({ history }) {
     const [fields, setFields] = useState({});
     const [googleFonts, setGoogleFonts] = useState([]);
     
-    const [nomeFieldStyle, setNomeFieldStyle] = useState({});
+    const [companyFieldStyle, setCompanyFieldStyle] = useState({});
     const [logoFieldStyle, setLogoFieldStyle] = useState({});
     const [phoneFieldStyle, setPhoneFieldStyle] = useState({});
 
     const [previewText, setPreviewText] = useState('');
-    const [nomeText, setNomeText] = useState('');
+    const [companyText, setCompanyText] = useState('');
     const [logoText, setLogoText] = useState('');
     const [phoneText, setPhoneText] = useState('');
 
@@ -39,14 +39,14 @@ export default function Templates({ history }) {
 
     useEffect(() => {
         // Listen change in fields for apply Style in the corresponding Element
-        if(selectField == 'nome') setNomeFieldStyle(mountObjectStyle(fields));
+        if(selectField == 'company') setCompanyFieldStyle(mountObjectStyle(fields));
         if(selectField == 'logo') setLogoFieldStyle(mountObjectStyle(fields));
         if(selectField == 'phone') setPhoneFieldStyle(mountObjectStyle(fields));
     }, [fields]);
 
     useEffect(() => {
         // Listen to the change in previewText to record in the corresponding text field
-        if(selectField == 'nome') setNomeText(previewText);
+        if(selectField == 'company') setCompanyText(previewText);
         if(selectField == 'logo') setLogoText(previewText);
         if(selectField == 'phone') setPhoneText(previewText);
     }, [previewText]);
@@ -89,7 +89,7 @@ export default function Templates({ history }) {
         if(value in listFields) setFields(listFields[value]);
         setSelectField(value);
 
-        if(value == 'nome') setPreviewText(nomeText); 
+        if(value == 'company') setPreviewText(companyText); 
         if(value == 'logo') setPreviewText(logoText);
         if(value == 'phone') setPreviewText(phoneText);
     }
@@ -122,9 +122,9 @@ export default function Templates({ history }) {
             setListFields({...listFields, phone: fields}); 
             setPhoneText(previewText);
         }
-        if(selectField == 'nome') {
-            setListFields({...listFields, nome: fields});
-            setNomeText(previewText);
+        if(selectField == 'company') {
+            setListFields({...listFields, company: fields});
+            setCompanyText(previewText);
         }
         if(selectField == 'logo'){
             setListFields({...listFields, logo: fields});
@@ -158,13 +158,13 @@ export default function Templates({ history }) {
         setFields({});
         
         setPreviewText('');
-        setNomeText('');
+        setCompanyText('');
         setLogoText('');
         setPhoneText('');
 
         setLogoFieldStyle({});
         setPhoneFieldStyle({});
-        setNomeFieldStyle({});
+        setCompanyFieldStyle({});
     }
 
     function handleSubmitTemplate() {
@@ -236,7 +236,7 @@ export default function Templates({ history }) {
                             <div className="position-relative">
                                 <img src={previewImage} style={dimensionTemplate} alt="Imagem de fundo do template" />
                                 
-                                <div className="preview-custom-field" style={nomeFieldStyle}>{nomeText}</div>
+                                <div className="preview-custom-field" style={companyFieldStyle}>{companyText}</div>
                                 <div className="preview-custom-field" style={logoFieldStyle}>{logoText}</div>
                                 <div className="preview-custom-field" style={phoneFieldStyle}>{phoneText}</div>
                             </div>
@@ -250,7 +250,7 @@ export default function Templates({ history }) {
                             
                             <select className="custom-select mb-3" onChange={(e) => handleSelectField(e.target.value)} value={selectField}>
                                 <option value="">Selecione um campo</option>
-                                <option value="nome">Nome</option>
+                                <option value="company">Nome da empresa</option>
                                 <option value="logo">Logo</option>
                                 <option value="phone">Telefone</option>
                             </select>
