@@ -87455,8 +87455,8 @@ function Templates(_ref) {
 
   var _useState27 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({}),
       _useState28 = _slicedToArray(_useState27, 2),
-      whatsappFieldStyle = _useState28[0],
-      setWhatsappFieldStyle = _useState28[1];
+      phoneFieldStyle = _useState28[0],
+      setPhoneFieldStyle = _useState28[1];
 
   var _useState29 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(''),
       _useState30 = _slicedToArray(_useState29, 2),
@@ -87475,8 +87475,8 @@ function Templates(_ref) {
 
   var _useState35 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(''),
       _useState36 = _slicedToArray(_useState35, 2),
-      whatsappText = _useState36[0],
-      setWhatsappText = _useState36[1];
+      phoneText = _useState36[0],
+      setPhoneText = _useState36[1];
 
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
     // Listen change in temlateType for apply dimensions on template
@@ -87493,13 +87493,13 @@ function Templates(_ref) {
     // Listen change in fields for apply Style in the corresponding Element
     if (selectField == 'nome') setNomeFieldStyle(mountObjectStyle(fields));
     if (selectField == 'logo') setLogoFieldStyle(mountObjectStyle(fields));
-    if (selectField == 'whatsapp') setWhatsappFieldStyle(mountObjectStyle(fields));
+    if (selectField == 'phone') setPhoneFieldStyle(mountObjectStyle(fields));
   }, [fields]);
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
     // Listen to the change in previewText to record in the corresponding text field
     if (selectField == 'nome') setNomeText(previewText);
     if (selectField == 'logo') setLogoText(previewText);
-    if (selectField == 'whatsapp') setWhatsappText(previewText);
+    if (selectField == 'phone') setPhoneText(previewText);
   }, [previewText]);
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
     // check if has a localStorage template for edit the template
@@ -87538,7 +87538,7 @@ function Templates(_ref) {
     setSelectField(value);
     if (value == 'nome') setPreviewText(nomeText);
     if (value == 'logo') setPreviewText(logoText);
-    if (value == 'whatsapp') setPreviewText(whatsappText);
+    if (value == 'phone') setPreviewText(phoneText);
   }
 
   function handleSetAlignText(e, align) {
@@ -87567,11 +87567,11 @@ function Templates(_ref) {
   }
 
   function handleSaveFields() {
-    if (selectField == 'whatsapp') {
+    if (selectField == 'phone') {
       setListFields(_objectSpread(_objectSpread({}, listFields), {}, {
-        whatsapp: fields
+        phone: fields
       }));
-      setWhatsappText(previewText);
+      setPhoneText(previewText);
     }
 
     if (selectField == 'nome') {
@@ -87615,9 +87615,9 @@ function Templates(_ref) {
     setPreviewText('');
     setNomeText('');
     setLogoText('');
-    setWhatsappText('');
+    setPhoneText('');
     setLogoFieldStyle({});
-    setWhatsappFieldStyle({});
+    setPhoneFieldStyle({});
     setNomeFieldStyle({});
   }
 
@@ -87720,8 +87720,8 @@ function Templates(_ref) {
     style: logoFieldStyle
   }, logoText), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "preview-custom-field",
-    style: whatsappFieldStyle
-  }, whatsappText)))), showPreviewImage && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    style: phoneFieldStyle
+  }, phoneText)))), showPreviewImage && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "mb-2 col-4 position-fixed",
     style: {
       right: 0
@@ -87739,8 +87739,8 @@ function Templates(_ref) {
   }, "Nome"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
     value: "logo"
   }, "Logo"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-    value: "whatsapp"
-  }, "Whatsapp")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    value: "phone"
+  }, "Telefone")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "row"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col-12 mb-3"
@@ -88205,7 +88205,7 @@ function Templates(_ref) {
     });
     var objCssCompany = JSON.parse(template.fields).nome || {};
     var objCssLogo = JSON.parse(template.fields).logo || {};
-    var objCssTel = JSON.parse(template.fields).whatsapp || {};
+    var objCssTel = JSON.parse(template.fields).phone || {};
     setCssCompany(mountObjectStyle(objCssCompany));
     setCssLogo(mountObjectStyle(objCssLogo));
     setCssTel(mountObjectStyle(objCssTel));

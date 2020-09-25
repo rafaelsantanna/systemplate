@@ -24,12 +24,12 @@ export default function Templates({ history }) {
     
     const [nomeFieldStyle, setNomeFieldStyle] = useState({});
     const [logoFieldStyle, setLogoFieldStyle] = useState({});
-    const [whatsappFieldStyle, setWhatsappFieldStyle] = useState({});
+    const [phoneFieldStyle, setPhoneFieldStyle] = useState({});
 
     const [previewText, setPreviewText] = useState('');
     const [nomeText, setNomeText] = useState('');
     const [logoText, setLogoText] = useState('');
-    const [whatsappText, setWhatsappText] = useState('');
+    const [phoneText, setPhoneText] = useState('');
 
     useEffect(() => {
         // Listen change in temlateType for apply dimensions on template
@@ -41,14 +41,14 @@ export default function Templates({ history }) {
         // Listen change in fields for apply Style in the corresponding Element
         if(selectField == 'nome') setNomeFieldStyle(mountObjectStyle(fields));
         if(selectField == 'logo') setLogoFieldStyle(mountObjectStyle(fields));
-        if(selectField == 'whatsapp') setWhatsappFieldStyle(mountObjectStyle(fields));
+        if(selectField == 'phone') setPhoneFieldStyle(mountObjectStyle(fields));
     }, [fields]);
 
     useEffect(() => {
         // Listen to the change in previewText to record in the corresponding text field
         if(selectField == 'nome') setNomeText(previewText);
         if(selectField == 'logo') setLogoText(previewText);
-        if(selectField == 'whatsapp') setWhatsappText(previewText);
+        if(selectField == 'phone') setPhoneText(previewText);
     }, [previewText]);
 
     useEffect(() => {
@@ -91,7 +91,7 @@ export default function Templates({ history }) {
 
         if(value == 'nome') setPreviewText(nomeText); 
         if(value == 'logo') setPreviewText(logoText);
-        if(value == 'whatsapp') setPreviewText(whatsappText);
+        if(value == 'phone') setPreviewText(phoneText);
     }
 
     function handleSetAlignText(e, align) {
@@ -118,9 +118,9 @@ export default function Templates({ history }) {
     }
 
     function handleSaveFields() {
-        if(selectField == 'whatsapp') {
-            setListFields({...listFields, whatsapp: fields}); 
-            setWhatsappText(previewText);
+        if(selectField == 'phone') {
+            setListFields({...listFields, phone: fields}); 
+            setPhoneText(previewText);
         }
         if(selectField == 'nome') {
             setListFields({...listFields, nome: fields});
@@ -160,10 +160,10 @@ export default function Templates({ history }) {
         setPreviewText('');
         setNomeText('');
         setLogoText('');
-        setWhatsappText('');
+        setPhoneText('');
 
         setLogoFieldStyle({});
-        setWhatsappFieldStyle({});
+        setPhoneFieldStyle({});
         setNomeFieldStyle({});
     }
 
@@ -238,7 +238,7 @@ export default function Templates({ history }) {
                                 
                                 <div className="preview-custom-field" style={nomeFieldStyle}>{nomeText}</div>
                                 <div className="preview-custom-field" style={logoFieldStyle}>{logoText}</div>
-                                <div className="preview-custom-field" style={whatsappFieldStyle}>{whatsappText}</div>
+                                <div className="preview-custom-field" style={phoneFieldStyle}>{phoneText}</div>
                             </div>
                         </>
                         )}
@@ -252,7 +252,7 @@ export default function Templates({ history }) {
                                 <option value="">Selecione um campo</option>
                                 <option value="nome">Nome</option>
                                 <option value="logo">Logo</option>
-                                <option value="whatsapp">Whatsapp</option>
+                                <option value="phone">Telefone</option>
                             </select>
 
                             <div className="row">

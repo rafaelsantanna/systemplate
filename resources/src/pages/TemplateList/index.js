@@ -96,7 +96,7 @@ export default function Templates({ history }) {
 
     let objCssCompany = JSON.parse(template.fields).nome || {};
     let objCssLogo = JSON.parse(template.fields).logo || {};
-    let objCssTel = JSON.parse(template.fields).whatsapp || {};
+    let objCssTel = JSON.parse(template.fields).phone || {};
 
     setCssCompany(mountObjectStyle(objCssCompany));
     setCssLogo(mountObjectStyle(objCssLogo));
