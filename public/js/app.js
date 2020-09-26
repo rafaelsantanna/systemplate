@@ -9726,7 +9726,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".preview-custom-field {\n  position: absolute;\n  top: 0;\n  left: 0;\n  word-wrap: break-word;\n}\n\n.flag-editing {\n  line-height: 1;\n  background-color: #00adb5;\n  color: #fff;\n  padding: 3px 6px;\n  font-size: 12px;\n  font-weight: 600;\n  margin-left: 10px;\n  border-radius: 2px;\n}", ""]);
+exports.push([module.i, ".preview-custom-field {\n  position: absolute;\n  top: 0;\n  left: 0;\n  word-wrap: break-word;\n}\n.preview-custom-field.field-image {\n  background-color: rgba(0, 0, 0, 0.3);\n}\n\n.flag-editing {\n  line-height: 1;\n  background-color: #00adb5;\n  color: #fff;\n  padding: 3px 6px;\n  font-size: 12px;\n  font-weight: 600;\n  margin-left: 10px;\n  border-radius: 2px;\n}", ""]);
 
 // exports
 
@@ -9745,7 +9745,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".template {\n  background-color: #fff;\n  border-radius: 3px;\n  overflow: hidden;\n  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);\n  max-width: 300px;\n}\n.template-image {\n  width: 100%;\n  height: 140px;\n}\n.template-body {\n  padding: 15px 15px 10px 15px;\n  position: relative;\n}\n.template-type {\n  position: absolute;\n  right: 0px;\n  top: 0px;\n  line-height: 1;\n  background-color: #00adb5;\n  color: #fff;\n  padding: 3px 6px;\n  font-size: 14px;\n  font-weight: 600;\n}\n.template-name {\n  font-size: 22px;\n  margin-bottom: 15px;\n}\n.template-generate {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  flex-direction: column;\n  margin-bottom: 10px;\n}\n.template-generate a {\n  color: #222831;\n  border: 1px solid #222831;\n  border-radius: 2px;\n  padding: 5px 10px;\n  text-decoration: none;\n  transition: all 0.5s;\n}\n.template-generate a:hover {\n  background-color: #222831;\n  color: #fff;\n}\n.template-generate a:first-child {\n  margin-bottom: 5px;\n}\n.template-footer {\n  display: flex;\n  justify-content: space-between;\n}\n.template-footer img {\n  width: 22px;\n  height: 22px;\n}", ""]);
+exports.push([module.i, ".template {\n  background-color: #fff;\n  border-radius: 3px;\n  overflow: hidden;\n  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);\n  max-width: 300px;\n}\n.template-image {\n  width: 100%;\n  height: 140px;\n}\n.template-body {\n  padding: 15px 15px 10px 15px;\n  position: relative;\n}\n.template-type {\n  position: absolute;\n  right: 0px;\n  top: 0px;\n  line-height: 1;\n  background-color: #00adb5;\n  color: #fff;\n  padding: 3px 6px;\n  font-size: 14px;\n  font-weight: 600;\n}\n.template-name {\n  font-size: 22px;\n  margin-bottom: 15px;\n}\n.template-generate {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  flex-direction: column;\n  margin-bottom: 10px;\n}\n.template-generate a {\n  color: #222831;\n  border: 1px solid #222831;\n  border-radius: 2px;\n  padding: 5px 10px;\n  text-decoration: none;\n  transition: all 0.5s;\n}\n.template-generate a:hover {\n  background-color: #222831;\n  color: #fff;\n}\n.template-generate a:first-child {\n  margin-bottom: 5px;\n}\n.template-footer {\n  display: flex;\n  justify-content: space-between;\n}\n.template-footer img {\n  width: 22px;\n  height: 22px;\n}\n\n.generate-container {\n  position: absolute;\n  top: 0;\n  left: 0;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  background-color: rgba(0, 0, 0, 0.3);\n  width: 100%;\n  height: 100%;\n}\n.generate-container .generate-content {\n  position: relative;\n}\n.generate-container .generate-fields {\n  position: absolute;\n}", ""]);
 
 // exports
 
@@ -87716,7 +87716,7 @@ function Templates(_ref) {
     className: "preview-custom-field",
     style: companyFieldStyle
   }, companyText), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "preview-custom-field",
+    className: "preview-custom-field field-image",
     style: logoFieldStyle
   }, logoText), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "preview-custom-field",
@@ -87742,7 +87742,7 @@ function Templates(_ref) {
     value: "phone"
   }, "Telefone")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "row"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, selectField != 'logo' && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col-12 mb-3"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "input-group"
@@ -88084,37 +88084,42 @@ function Templates(_ref) {
 
   var _useState9 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])({
     company: 'Astolfo Burguers',
-    logo: 'https://www.google.com/logos/google.jpg',
+    logo: 'uploads/1600525475.jpg',
     tel: '21 98083-1828'
   }),
       _useState10 = _slicedToArray(_useState9, 2),
       user = _useState10[0],
       setUser = _useState10[1];
 
-  var _useState11 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])({}),
+  var _useState11 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(false),
       _useState12 = _slicedToArray(_useState11, 2),
-      cssCompany = _useState12[0],
-      setCssCompany = _useState12[1];
+      showGenerateImage = _useState12[0],
+      setShowGenerateImage = _useState12[1];
 
   var _useState13 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])({}),
       _useState14 = _slicedToArray(_useState13, 2),
-      cssLogo = _useState14[0],
-      setCssLogo = _useState14[1];
+      cssCompany = _useState14[0],
+      setCssCompany = _useState14[1];
 
   var _useState15 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])({}),
       _useState16 = _slicedToArray(_useState15, 2),
-      cssTel = _useState16[0],
-      setCssTel = _useState16[1];
+      cssLogo = _useState16[0],
+      setCssLogo = _useState16[1];
 
-  var _useState17 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(false),
+  var _useState17 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])({}),
       _useState18 = _slicedToArray(_useState17, 2),
-      isAdmin = _useState18[0],
-      setIsAdmin = _useState18[1];
+      cssTel = _useState18[0],
+      setCssTel = _useState18[1];
 
   var _useState19 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(false),
       _useState20 = _slicedToArray(_useState19, 2),
-      showModalDelete = _useState20[0],
-      setShowModalDelete = _useState20[1];
+      isAdmin = _useState20[0],
+      setIsAdmin = _useState20[1];
+
+  var _useState21 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(false),
+      _useState22 = _slicedToArray(_useState21, 2),
+      showModalDelete = _useState22[0],
+      setShowModalDelete = _useState22[1];
 
   Object(react__WEBPACK_IMPORTED_MODULE_1__["useEffect"])(function () {
     loadTemplates();
@@ -88174,7 +88179,6 @@ function Templates(_ref) {
   }
 
   function mountObjectStyle(field) {
-    console.log(field);
     var data = {
       left: field.left ? field.left + 'px' : undefined,
       top: field.top ? field.top + 'px' : undefined,
@@ -88189,7 +88193,6 @@ function Templates(_ref) {
     Object.keys(data).map(function (item) {
       if (data[item] == undefined) delete data[item];
     });
-    console.log(data);
     return data;
   }
 
@@ -88209,13 +88212,17 @@ function Templates(_ref) {
     setCssCompany(mountObjectStyle(objCssCompany));
     setCssLogo(mountObjectStyle(objCssLogo));
     setCssTel(mountObjectStyle(objCssTel));
-    setTemplateImage("uploads/".concat(template.image)); // domtoimage.toBlob(document.querySelector('#generate-image'))
-    // .then((blob) => {
-    //   window.saveAs(blob, 'nome-banner.png');
-    // })
-    // .catch((error) => {
-    //   console.error('oops, something went wrong!', error);
-    // });
+    setTemplateImage("uploads/".concat(template.image));
+    setShowGenerateImage(true);
+    setTimeout(function () {
+      var generateImage = document.querySelector('#generate-content');
+      dom_to_image__WEBPACK_IMPORTED_MODULE_3___default.a.toBlob(generateImage).then(function (blob) {
+        window.saveAs(blob, template.name);
+        setShowGenerateImage(false);
+      })["catch"](function (error) {
+        console.error('oops, something went wrong!', error);
+      });
+    }, 100);
   }
 
   function handleShowModalDelete(e, id) {
@@ -88253,8 +88260,6 @@ function Templates(_ref) {
     }, template.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
       className: "template-generate"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
-      href: ""
-    }, "Visualizar Imagem"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
       href: "",
       onClick: function onClick(e) {
         return generateImage(e, template);
@@ -88286,21 +88291,26 @@ function Templates(_ref) {
       src: _assets_icons_trash_solid_svg__WEBPACK_IMPORTED_MODULE_9___default.a,
       title: "Deletar Template"
     }))))));
-  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-    id: "generate-image",
-    className: "generate-image",
+  }))), showGenerateImage && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+    className: "generate-container"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+    id: "generate-content",
+    className: "generate-content",
     style: cssTemplateImage
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
     src: templateImage,
     style: cssTemplateImage
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+    className: "generate-fields",
     style: cssCompany
   }, user.company), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+    className: "generate-fields",
     style: cssTel
   }, user.tel), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
+    className: "generate-fields",
     style: cssLogo,
     src: user.logo
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Modal"], {
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Modal"], {
     show: showModalDelete,
     onHide: handleCloseModalDelete,
     centered: true

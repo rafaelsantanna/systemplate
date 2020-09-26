@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Modal, Button } from 'react-bootstrap';
-import domtoimage from 'dom-to-image';
+import domToImage from 'dom-to-image';
 import 'file-saver';
 import api from '../../services/api';
 
@@ -18,9 +18,11 @@ export default function Templates({ history }) {
   const [cssTemplateImage, setCssTemplateImage] = useState({});
   const [user, setUser] = useState({
     company: 'Astolfo Burguers',
-    logo: 'https://www.google.com/logos/google.jpg', 
+    logo: 'uploads/1600525475.jpg', 
     tel: '21 98083-1828'
   });
+  const [showGenerateImage, setShowGenerateImage] = useState(false);
+
   const [cssCompany, setCssCompany] = useState({});
   const [cssLogo, setCssLogo] = useState({});
   const [cssTel, setCssTel] = useState({});
@@ -66,7 +68,6 @@ export default function Templates({ history }) {
   }
 
   function mountObjectStyle(field) {
-    console.log(field);
     let data = {
       left: field.left ? field.left + 'px' : undefined,
       top:  field.top ? field.top+'px' : undefined,
@@ -82,8 +83,6 @@ export default function Templates({ history }) {
     Object.keys(data).map((item) => {
       if (data[item] == undefined) delete data[item];
     });
-
-    console.log(data);
 
     return data;
   }
@@ -103,13 +102,20 @@ export default function Templates({ history }) {
     setCssTel(mountObjectStyle(objCssTel));
 
     setTemplateImage(`uploads/${template.image}`);
-    // domtoimage.toBlob(document.querySelector('#generate-image'))
-    // .then((blob) => {
-    //   window.saveAs(blob, 'nome-banner.png');
-    // })
-    // .catch((error) => {
-    //   console.error('oops, something went wrong!', error);
-    // });
+
+    setShowGenerateImage(true);
+
+    setTimeout(() => {
+      let generateImage = document.querySelector('#generate-content');
+      domToImage.toBlob(generateImage)
+      .then((blob) => {
+        window.saveAs(blob, template.name);
+        setShowGenerateImage(false);
+      })
+      .catch((error) => {
+        console.error('oops, something went wrong!', error);
+      });
+    }, 100);
   }
 
   function handleShowModalDelete(e, id) {
@@ -138,7 +144,6 @@ export default function Templates({ history }) {
                   <span className="template-type">{template.type}</span>
                   <h3 className="template-name">{template.name}</h3>
                   <div className="template-generate">
-                    <a href="">Visualizar Imagem</a>
                     <a href="" onClick={(e) => generateImage(e, template)}>Gerar Imagem</a>
                   </div>
                   <div className="template-footer">
@@ -158,13 +163,17 @@ export default function Templates({ history }) {
           ))}
         </div>
       </div>
-      
-      <div id="generate-image" className="generate-image" style={cssTemplateImage}>
-        <img src={templateImage} style={cssTemplateImage} />
-        <div style={cssCompany}>{user.company}</div>
-        <div style={cssTel}>{user.tel}</div>
-        <img style={cssLogo} src={user.logo} />
-      </div>
+  
+      {showGenerateImage && (
+        <div className="generate-container">
+          <div id="generate-content" className="generate-content" style={cssTemplateImage}>
+            <img src={templateImage} style={cssTemplateImage} />
+            <div className="generate-fields" style={cssCompany}>{user.company}</div>
+            <div className="generate-fields" style={cssTel}>{user.tel}</div>
+            <img className="generate-fields" style={cssLogo} src={user.logo} />
+          </div>
+        </div>
+      )}
 
       <Modal show={showModalDelete} onHide={handleCloseModalDelete} centered>
         <Modal.Header>

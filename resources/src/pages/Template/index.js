@@ -237,7 +237,7 @@ export default function Templates({ history }) {
                                 <img src={previewImage} style={dimensionTemplate} alt="Imagem de fundo do template" />
                                 
                                 <div className="preview-custom-field" style={companyFieldStyle}>{companyText}</div>
-                                <div className="preview-custom-field" style={logoFieldStyle}>{logoText}</div>
+                                <div className="preview-custom-field field-image" style={logoFieldStyle}>{logoText}</div>
                                 <div className="preview-custom-field" style={phoneFieldStyle}>{phoneText}</div>
                             </div>
                         </>
@@ -256,6 +256,7 @@ export default function Templates({ history }) {
                             </select>
 
                             <div className="row">
+                            {selectField != 'logo' && (
                                 <div className="col-12 mb-3">
                                     <div className="input-group">
                                         <div className="input-group-prepend">
@@ -264,6 +265,7 @@ export default function Templates({ history }) {
                                         <input type="text" className="form-control" onChange={(e) => setPreviewText(e.target.value)} value={previewText}/>
                                     </div>
                                 </div>
+                            )}
                                 <div className="col-6">
                                     <div className="input-group mb-3">
                                         <div className="input-group-prepend">

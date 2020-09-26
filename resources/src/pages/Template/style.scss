@@ -3,6 +3,10 @@
   top: 0;
   left: 0;
   word-wrap: break-word;
+
+  &.field-image {
+    background-color: rgba(0,0,0,.3);
+  }
 }
 
 .flag-editing {
