@@ -16,3 +16,10 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/templates', 'TemplateController@index');
+Route::post('/templates', 'TemplateController@store');
+Route::delete('/templates/{id}', 'TemplateController@destroy');
+Route::put('/templates/{id}', 'TemplateController@update');
+
+Route::post('/templates/duplicate/{id}', 'TemplateController@duplicate');
