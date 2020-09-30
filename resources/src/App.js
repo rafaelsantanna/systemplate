@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 
 import Routes from './routes';
 
+import './styles.scss';
+
 export default function App() {
     return (
         <Routes />

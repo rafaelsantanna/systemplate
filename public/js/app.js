@@ -9714,6 +9714,25 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
 
 /***/ }),
 
+/***/ "./node_modules/css-loader/index.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./resources/src/pages/Login/styles.scss":
+/*!**********************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./resources/src/pages/Login/styles.scss ***!
+  \**********************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".container-login {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  height: 100%;\n  padding: 0 20px;\n}\n\n.login {\n  background-color: #fff;\n  width: 100%;\n  max-width: 350px;\n  padding: 30px;\n  border-radius: 3px;\n  box-shadow: 0 0 20px rgba(0, 0, 0, 0.08);\n}\n.login h3 {\n  color: #3f395f;\n  font-size: 34px;\n  margin-bottom: 30px;\n  text-align: center;\n  text-transform: uppercase;\n  font-weight: bold;\n}\n.login form {\n  display: flex;\n  flex-direction: column;\n}\n.login input {\n  background-color: #e6e6e6;\n  border-radius: 5px;\n  border: none;\n  color: #9a99ab;\n  font-size: 20px;\n  padding: 20px 30px;\n  margin-bottom: 18px;\n}\n.login input:focus {\n  outline: none;\n  border: 1px dashed #9a99ab;\n}\n.login input::-moz-placeholder {\n  color: #9a99ab;\n  font-size: 20px;\n}\n.login input:-ms-input-placeholder {\n  color: #9a99ab;\n  font-size: 20px;\n}\n.login input::placeholder {\n  color: #9a99ab;\n  font-size: 20px;\n}\n.login button {\n  background-color: #7879f5;\n  border-radius: 3px;\n  border: none;\n  color: #fff;\n  font-size: 20px;\n  padding: 15px 0px;\n  transition: all 0.6s;\n}\n.login button:hover {\n  background-color: #6061f3;\n}", ""]);
+
+// exports
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/index.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./resources/src/pages/Template/style.scss":
 /*!************************************************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./resources/src/pages/Template/style.scss ***!
@@ -9746,6 +9765,25 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 // module
 exports.push([module.i, ".template {\n  background-color: #fff;\n  border-radius: 3px;\n  overflow: hidden;\n  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);\n  max-width: 300px;\n}\n.template-image {\n  width: 100%;\n  height: 140px;\n}\n.template-body {\n  padding: 15px 15px 10px 15px;\n  position: relative;\n}\n.template-type {\n  position: absolute;\n  right: 0px;\n  top: 0px;\n  line-height: 1;\n  background-color: #00adb5;\n  color: #fff;\n  padding: 3px 6px;\n  font-size: 14px;\n  font-weight: 600;\n}\n.template-name {\n  font-size: 22px;\n  margin-bottom: 15px;\n}\n.template-generate {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  flex-direction: column;\n  margin-bottom: 10px;\n}\n.template-generate a {\n  color: #222831;\n  border: 1px solid #222831;\n  border-radius: 2px;\n  padding: 5px 10px;\n  text-decoration: none;\n  transition: all 0.5s;\n}\n.template-generate a:hover {\n  background-color: #222831;\n  color: #fff;\n}\n.template-generate a:first-child {\n  margin-bottom: 5px;\n}\n.template-footer {\n  display: flex;\n  justify-content: space-between;\n}\n.template-footer img {\n  width: 22px;\n  height: 22px;\n}\n\n.generate-container {\n  position: absolute;\n  top: 0;\n  left: 0;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  background-color: rgba(0, 0, 0, 0.3);\n  width: 100%;\n  height: 100%;\n}\n.generate-container .generate-content {\n  position: relative;\n}\n.generate-container .generate-fields {\n  position: absolute;\n}", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./resources/src/styles.scss":
+/*!**********************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./resources/src/styles.scss ***!
+  \**********************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "html, body, #app {\n  height: 100%;\n}", ""]);
 
 // exports
 
@@ -87261,6 +87299,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _routes__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./routes */ "./resources/src/routes.js");
+/* harmony import */ var _styles_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./styles.scss */ "./resources/src/styles.scss");
+/* harmony import */ var _styles_scss__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_styles_scss__WEBPACK_IMPORTED_MODULE_3__);
+
 
 
 
@@ -87337,6 +87378,70 @@ module.exports = "/images/edit-solid.svg?ff0b1438bcea023a6cb231ec5ecc4b3e";
 /***/ (function(module, exports) {
 
 module.exports = "/images/trash-solid.svg?159646b181265ea147445056b7215921";
+
+/***/ }),
+
+/***/ "./resources/src/pages/Login/index.js":
+/*!********************************************!*\
+  !*** ./resources/src/pages/Login/index.js ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Login; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _styles_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./styles.scss */ "./resources/src/pages/Login/styles.scss");
+/* harmony import */ var _styles_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_styles_scss__WEBPACK_IMPORTED_MODULE_1__);
+
+
+function Login() {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "container-login"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "login"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Login"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+    action: ""
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "text",
+    placeholder: "Usu\xE1rio"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "password",
+    placeholder: "Senha"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "Login"))));
+}
+
+/***/ }),
+
+/***/ "./resources/src/pages/Login/styles.scss":
+/*!***********************************************!*\
+  !*** ./resources/src/pages/Login/styles.scss ***!
+  \***********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../node_modules/css-loader!../../../../node_modules/postcss-loader/src??ref--7-2!../../../../node_modules/sass-loader/dist/cjs.js??ref--7-3!./styles.scss */ "./node_modules/css-loader/index.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./resources/src/pages/Login/styles.scss");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
 
 /***/ }),
 
@@ -87652,7 +87757,7 @@ function Templates(_ref) {
       rel: "stylesheet"
     });
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "container-fluid my-3"
+    className: "container-fluid py-3"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "row"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -88237,7 +88342,7 @@ function Templates(_ref) {
   }
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_1___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-    className: "container my-3"
+    className: "container py-3"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
     className: "row justify-content-center mb-5"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h1", null, "Lista de Templates")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
@@ -88370,19 +88475,25 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var _pages_Template__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./pages/Template */ "./resources/src/pages/Template/index.js");
-/* harmony import */ var _pages_TemplateList__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./pages/TemplateList */ "./resources/src/pages/TemplateList/index.js");
+/* harmony import */ var _pages_Login__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./pages/Login */ "./resources/src/pages/Login/index.js");
+/* harmony import */ var _pages_Template__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./pages/Template */ "./resources/src/pages/Template/index.js");
+/* harmony import */ var _pages_TemplateList__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./pages/TemplateList */ "./resources/src/pages/TemplateList/index.js");
+
 
 
 
 
 function Routes() {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["BrowserRouter"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+    exact: true,
+    path: "/",
+    component: _pages_Login__WEBPACK_IMPORTED_MODULE_2__["default"]
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     path: "/template",
-    component: _pages_Template__WEBPACK_IMPORTED_MODULE_2__["default"]
+    component: _pages_Template__WEBPACK_IMPORTED_MODULE_3__["default"]
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     path: "/templatelist",
-    component: _pages_TemplateList__WEBPACK_IMPORTED_MODULE_3__["default"]
+    component: _pages_TemplateList__WEBPACK_IMPORTED_MODULE_4__["default"]
   }));
 }
 
@@ -88404,6 +88515,36 @@ var api = axios__WEBPACK_IMPORTED_MODULE_0___default.a.create({
   baseURL: 'http://localhost:8000/api'
 });
 /* harmony default export */ __webpack_exports__["default"] = (api);
+
+/***/ }),
+
+/***/ "./resources/src/styles.scss":
+/*!***********************************!*\
+  !*** ./resources/src/styles.scss ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../node_modules/css-loader!../../node_modules/postcss-loader/src??ref--7-2!../../node_modules/sass-loader/dist/cjs.js??ref--7-3!./styles.scss */ "./node_modules/css-loader/index.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./resources/src/styles.scss");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
 
 /***/ }),
 
