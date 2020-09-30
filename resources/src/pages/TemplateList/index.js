@@ -131,7 +131,7 @@ export default function Templates({ history }) {
 
   return (
     <>
-      <div className="container my-3">
+      <div className="container py-3">
         <div className="row justify-content-center mb-5">
           <h1>Lista de Templates</h1>
         </div>

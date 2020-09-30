@@ -196,7 +196,7 @@ export default function Templates({ history }) {
             {googleFonts.length > 0 && googleFonts.map((font, index) => (
                 <link key={index} href={`https://fonts.googleapis.com/css2?family=${font.trim()}&display=swap`} rel="stylesheet"></link>
             ))}
-            <div className="container-fluid my-3">
+            <div className="container-fluid py-3">
                 <div className="row">
                     <div className="col-8">
                         <div className="mb-3">
