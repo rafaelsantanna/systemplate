@@ -175,7 +175,11 @@ export default function Templates({ history }) {
         form.append("fields", JSON.stringify(listFields));
 
         if(templateId == 0) {
-            api.post('/templates', form).then(() => {
+            api.post('/templates', form, {
+                headers: {
+                  'Authorization' : 'Bearer ' + localStorage.getItem('access_token')
+                }
+              }).then(() => {
                 alert('Template salvo com sucesso!');
                 clearStates();
             });
@@ -183,7 +187,11 @@ export default function Templates({ history }) {
         
         if(templateId > 0) {
             form.append('_method', 'PUT');
-            api.post(`/templates/${templateId}`, form).then((response) => {
+            api.post(`/templates/${templateId}`, form, {
+                headers: {
+                  'Authorization' : 'Bearer ' + localStorage.getItem('access_token')
+                }
+              }).then((response) => {
                 alert('template atualizado com sucesso!');
                 clearStates();
                 history.push('/templatelist');

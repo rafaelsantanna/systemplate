@@ -27,9 +27,12 @@ Route::group([
     });
 });
 
-Route::get('/templates', 'TemplateController@index');
-Route::post('/templates', 'TemplateController@store');
-Route::delete('/templates/{id}', 'TemplateController@destroy');
-Route::put('/templates/{id}', 'TemplateController@update');
-
-Route::post('/templates/duplicate/{id}', 'TemplateController@duplicate');
+Route::group([
+    'middleware' => 'auth:api'
+  ], function() {
+    Route::get('/templates', 'TemplateController@index');
+    Route::post('/templates', 'TemplateController@store');
+    Route::put('/templates/{id}', 'TemplateController@update');
+    Route::delete('/templates/{id}', 'TemplateController@destroy');
+    Route::post('/templates/duplicate', 'TemplateController@duplicate');
+  });

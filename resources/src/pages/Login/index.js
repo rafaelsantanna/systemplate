@@ -3,9 +3,16 @@ import api from '../../services/api';
 
 import './styles.scss';
 
-export default function Login() {
+export default function Login({ history }) {
     const [user, setUser] = useState('');
     const [password, setPassword] = useState('');
+
+    useEffect(() => {
+        let tokenExists = localStorage.getItem('access_token');
+        if(tokenExists) {
+            history.push('/templatelist');
+        }
+    });
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -15,7 +22,9 @@ export default function Login() {
                 "X-Requested-With": "XMLHttpRequest"
             }
         }).then((response) => {
-            console.log(response);
+            let token = response.data.access_token;
+            localStorage.setItem('access_token', token);
+            history.push('/templatelist');
         });
     }
     return (

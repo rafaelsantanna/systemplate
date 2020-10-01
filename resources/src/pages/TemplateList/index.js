@@ -13,22 +13,21 @@ import trashIcon from '../../assets/icons/trash-solid.svg';
 export default function Templates({ history }) {
   const [templates, setTemplates] = useState([]);
   const [templateId, setTemplateId] = useState(0);
+
+  const [roles, setRoltes] = useState([]);
   
   const [templateImage, setTemplateImage] = useState('');
   const [cssTemplateImage, setCssTemplateImage] = useState({});
   const [user, setUser] = useState({
     company: 'Astolfo Burguers',
-    logo: 'uploads/1600525475.jpg', 
+    logo: 'uploads/1601512631.jpg', 
     tel: '21 98083-1828'
   });
   const [showGenerateImage, setShowGenerateImage] = useState(false);
-
   const [cssCompany, setCssCompany] = useState({});
   const [cssLogo, setCssLogo] = useState({});
   const [cssTel, setCssTel] = useState({});
-  
-  const [isAdmin, setIsAdmin] = useState(false);
-  
+
   const [showModalDelete, setShowModalDelete] = useState(false);
   
   useEffect(() => {
@@ -36,19 +35,31 @@ export default function Templates({ history }) {
   }, []);
 
   async function loadTemplates() {
-    const response = await api.get('/templates');
+    const response = await api.get('/templates', {
+      headers: {
+        'Authorization' : 'Bearer ' + localStorage.getItem('access_token')
+      }
+    });
     setTemplates(response.data);
   }
 
   function handleDuplicateTemplate(e, id) {
     e.preventDefault();
-    api.post(`/templates/duplicate/${id}`).then((response) => {
+    api.post(`/templates/duplicate`, { id }, {
+      headers: {
+        'Authorization' : 'Bearer ' + localStorage.getItem('access_token')
+      }
+    }).then((response) => {
       setTemplates([...templates, response.data.template])
     });
   }
 
   function handleDeleteTemplate() {
-    api.delete(`/templates/${templateId}`).then(() => {
+    api.delete(`/templates/${templateId}`, {
+      headers: {
+        'Authorization' : 'Bearer ' + localStorage.getItem('access_token')
+      }
+    }).then(() => {
       setTemplates(templates.filter((template) => {
         return template.id !== templateId;
       }));

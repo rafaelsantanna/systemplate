@@ -87411,7 +87411,9 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-function Login() {
+function Login(_ref) {
+  var history = _ref.history;
+
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(''),
       _useState2 = _slicedToArray(_useState, 2),
       user = _useState2[0],
@@ -87421,6 +87423,14 @@ function Login() {
       _useState4 = _slicedToArray(_useState3, 2),
       password = _useState4[0],
       setPassword = _useState4[1];
+
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    var tokenExists = localStorage.getItem('access_token');
+
+    if (tokenExists) {
+      history.push('/templatelist');
+    }
+  });
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -87433,7 +87443,9 @@ function Login() {
         "X-Requested-With": "XMLHttpRequest"
       }
     }).then(function (response) {
-      console.log(response);
+      var token = response.data.access_token;
+      localStorage.setItem('access_token', token);
+      history.push('/templatelist');
     });
   }
 
@@ -87779,7 +87791,11 @@ function Templates(_ref) {
     form.append("fields", JSON.stringify(listFields));
 
     if (templateId == 0) {
-      _services_api__WEBPACK_IMPORTED_MODULE_1__["default"].post('/templates', form).then(function () {
+      _services_api__WEBPACK_IMPORTED_MODULE_1__["default"].post('/templates', form, {
+        headers: {
+          'Authorization': 'Bearer ' + localStorage.getItem('access_token')
+        }
+      }).then(function () {
         alert('Template salvo com sucesso!');
         clearStates();
       });
@@ -87787,7 +87803,11 @@ function Templates(_ref) {
 
     if (templateId > 0) {
       form.append('_method', 'PUT');
-      _services_api__WEBPACK_IMPORTED_MODULE_1__["default"].post("/templates/".concat(templateId), form).then(function (response) {
+      _services_api__WEBPACK_IMPORTED_MODULE_1__["default"].post("/templates/".concat(templateId), form, {
+        headers: {
+          'Authorization': 'Bearer ' + localStorage.getItem('access_token')
+        }
+      }).then(function (response) {
         alert('template atualizado com sucesso!');
         clearStates();
         history.push('/templatelist');
@@ -88222,49 +88242,49 @@ function Templates(_ref) {
       templateId = _useState4[0],
       setTemplateId = _useState4[1];
 
-  var _useState5 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(''),
+  var _useState5 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])([]),
       _useState6 = _slicedToArray(_useState5, 2),
-      templateImage = _useState6[0],
-      setTemplateImage = _useState6[1];
+      roles = _useState6[0],
+      setRoltes = _useState6[1];
 
-  var _useState7 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])({}),
+  var _useState7 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(''),
       _useState8 = _slicedToArray(_useState7, 2),
-      cssTemplateImage = _useState8[0],
-      setCssTemplateImage = _useState8[1];
+      templateImage = _useState8[0],
+      setTemplateImage = _useState8[1];
 
-  var _useState9 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])({
+  var _useState9 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])({}),
+      _useState10 = _slicedToArray(_useState9, 2),
+      cssTemplateImage = _useState10[0],
+      setCssTemplateImage = _useState10[1];
+
+  var _useState11 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])({
     company: 'Astolfo Burguers',
-    logo: 'uploads/1600525475.jpg',
+    logo: 'uploads/1601512631.jpg',
     tel: '21 98083-1828'
   }),
-      _useState10 = _slicedToArray(_useState9, 2),
-      user = _useState10[0],
-      setUser = _useState10[1];
-
-  var _useState11 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(false),
       _useState12 = _slicedToArray(_useState11, 2),
-      showGenerateImage = _useState12[0],
-      setShowGenerateImage = _useState12[1];
+      user = _useState12[0],
+      setUser = _useState12[1];
 
-  var _useState13 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])({}),
+  var _useState13 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(false),
       _useState14 = _slicedToArray(_useState13, 2),
-      cssCompany = _useState14[0],
-      setCssCompany = _useState14[1];
+      showGenerateImage = _useState14[0],
+      setShowGenerateImage = _useState14[1];
 
   var _useState15 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])({}),
       _useState16 = _slicedToArray(_useState15, 2),
-      cssLogo = _useState16[0],
-      setCssLogo = _useState16[1];
+      cssCompany = _useState16[0],
+      setCssCompany = _useState16[1];
 
   var _useState17 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])({}),
       _useState18 = _slicedToArray(_useState17, 2),
-      cssTel = _useState18[0],
-      setCssTel = _useState18[1];
+      cssLogo = _useState18[0],
+      setCssLogo = _useState18[1];
 
-  var _useState19 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(false),
+  var _useState19 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])({}),
       _useState20 = _slicedToArray(_useState19, 2),
-      isAdmin = _useState20[0],
-      setIsAdmin = _useState20[1];
+      cssTel = _useState20[0],
+      setCssTel = _useState20[1];
 
   var _useState21 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(false),
       _useState22 = _slicedToArray(_useState21, 2),
@@ -88287,7 +88307,11 @@ function Templates(_ref) {
           switch (_context.prev = _context.next) {
             case 0:
               _context.next = 2;
-              return _services_api__WEBPACK_IMPORTED_MODULE_5__["default"].get('/templates');
+              return _services_api__WEBPACK_IMPORTED_MODULE_5__["default"].get('/templates', {
+                headers: {
+                  'Authorization': 'Bearer ' + localStorage.getItem('access_token')
+                }
+              });
 
             case 2:
               response = _context.sent;
@@ -88305,13 +88329,23 @@ function Templates(_ref) {
 
   function handleDuplicateTemplate(e, id) {
     e.preventDefault();
-    _services_api__WEBPACK_IMPORTED_MODULE_5__["default"].post("/templates/duplicate/".concat(id)).then(function (response) {
+    _services_api__WEBPACK_IMPORTED_MODULE_5__["default"].post("/templates/duplicate", {
+      id: id
+    }, {
+      headers: {
+        'Authorization': 'Bearer ' + localStorage.getItem('access_token')
+      }
+    }).then(function (response) {
       setTemplates([].concat(_toConsumableArray(templates), [response.data.template]));
     });
   }
 
   function handleDeleteTemplate() {
-    _services_api__WEBPACK_IMPORTED_MODULE_5__["default"]["delete"]("/templates/".concat(templateId)).then(function () {
+    _services_api__WEBPACK_IMPORTED_MODULE_5__["default"]["delete"]("/templates/".concat(templateId), {
+      headers: {
+        'Authorization': 'Bearer ' + localStorage.getItem('access_token')
+      }
+    }).then(function () {
       setTemplates(templates.filter(function (template) {
         return template.id !== templateId;
       }));
