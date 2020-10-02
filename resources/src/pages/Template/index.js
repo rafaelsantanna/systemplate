@@ -321,6 +321,8 @@ export default function Templates({ history }) {
                                         </div>
                                     </div>
                                 )}
+                                
+                                {selectField != 'logo' && (
 
                                 <div className="col-6">
                                     <div className="input-group mb-3">
@@ -330,6 +332,7 @@ export default function Templates({ history }) {
                                         <input type="number" className="form-control" onChange={(e) => setFields({...fields, rotate: e.target.value})} value={fields.rotate || ''}/>
                                     </div>
                                 </div>
+                                )}
 
                                 {selectField != 'logo' && (
                                     <div className="col-12">

@@ -9745,7 +9745,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".preview-custom-field {\n  position: absolute;\n  top: 0;\n  left: 0;\n  word-wrap: break-word;\n}\n.preview-custom-field.field-image {\n  background-color: rgba(0, 0, 0, 0.3);\n}\n\n.flag-editing {\n  line-height: 1;\n  background-color: #00adb5;\n  color: #fff;\n  padding: 3px 6px;\n  font-size: 12px;\n  font-weight: 600;\n  margin-left: 10px;\n  border-radius: 2px;\n}", ""]);
+exports.push([module.i, ".preview-custom-field {\n  position: absolute;\n  top: 0;\n  left: 0;\n  word-wrap: break-word;\n}\n.preview-custom-field.field-image {\n  background: linear-gradient(45deg, #0041d2, #ff0000);\n}\n\n.flag-editing {\n  line-height: 1;\n  background-color: #00adb5;\n  color: #fff;\n  padding: 3px 6px;\n  font-size: 12px;\n  font-weight: 600;\n  margin-left: 10px;\n  border-radius: 2px;\n}", ""]);
 
 // exports
 
@@ -88014,7 +88014,7 @@ function Templates(_ref) {
       }));
     },
     value: fields.font_size || ''
-  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }))), selectField != 'logo' && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col-6"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "input-group mb-3"
