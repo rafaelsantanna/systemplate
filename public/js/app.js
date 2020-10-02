@@ -87666,7 +87666,16 @@ function Templates(_ref) {
     if (selectField == 'phone') setPhoneText(previewText);
   }, [previewText]);
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
-    // check if has a localStorage template for edit the template
+    var token = localStorage.getItem('access_token');
+
+    if (!token) {
+      localStorage.removeItem('user');
+      localStorage.removeItem('access_token');
+      history.replace('/');
+      return;
+    } // check if has a localStorage template for edit the template
+
+
     var arrTemplate = JSON.parse(localStorage.getItem('template'));
     localStorage.removeItem('template');
 
