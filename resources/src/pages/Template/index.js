@@ -68,7 +68,7 @@ export default function Templates({ history }) {
         }
     }, []);
 
-    function handleChangeImage(e) {
+    function handleTemplateImage(e) {
         let imageInput = e.target.files[0];
         let reader = new FileReader();
 
@@ -221,7 +221,7 @@ export default function Templates({ history }) {
 
                         <div className="input-group mb-3">
                             <div className="custom-file">
-                                <input className="custom-file-input" type="file" onChange={(e)=> handleChangeImage(e)}/>
+                                <input className="custom-file-input" type="file" onChange={(e)=> handleTemplateImage(e)}/>
                                 <label className="custom-file-label">Escolher arquivo</label>
                             </div>
                         </div>
@@ -264,7 +264,7 @@ export default function Templates({ history }) {
                             </select>
 
                             <div className="row">
-                            {selectField != 'logo' && (
+                                {selectField != 'logo' && (
                                 <div className="col-12 mb-3">
                                     <div className="input-group">
                                         <div className="input-group-prepend">
@@ -273,7 +273,8 @@ export default function Templates({ history }) {
                                         <input type="text" className="form-control" onChange={(e) => setPreviewText(e.target.value)} value={previewText}/>
                                     </div>
                                 </div>
-                            )}
+                                )}
+
                                 <div className="col-6">
                                     <div className="input-group mb-3">
                                         <div className="input-group-prepend">
@@ -282,6 +283,7 @@ export default function Templates({ history }) {
                                         <input type="number" className="form-control" onChange={(e) => setFields({...fields, left: e.target.value})} value={fields.left || ''}/>
                                     </div>
                                 </div>
+
                                 <div className="col-6">
                                     <div className="input-group mb-3">
                                         <div className="input-group-prepend">
@@ -299,6 +301,7 @@ export default function Templates({ history }) {
                                         <input type="number" className="form-control" onChange={(e) => setFields({...fields, width: e.target.value})} value={fields.width || ''} />
                                     </div>
                                 </div>
+
                                 <div className="col-6">
                                     <div className="input-group mb-3">
                                         <div className="input-group-prepend">
@@ -307,6 +310,7 @@ export default function Templates({ history }) {
                                         <input type="number" className="form-control" onChange={(e) => setFields({...fields, height: e.target.value})} value={fields.height || ''} />
                                     </div>
                                 </div>
+
                                 {selectField != 'logo' && (
                                     <div className="col-6">
                                         <div className="input-group mb-3">

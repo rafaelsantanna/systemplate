@@ -87682,7 +87682,7 @@ function Templates(_ref) {
     }
   }, []);
 
-  function handleChangeImage(e) {
+  function handleTemplateImage(e) {
     var imageInput = e.target.files[0];
     var reader = new FileReader(); // Show Image upload in memory
 
@@ -87851,7 +87851,7 @@ function Templates(_ref) {
     className: "custom-file-input",
     type: "file",
     onChange: function onChange(e) {
-      return handleChangeImage(e);
+      return handleTemplateImage(e);
     }
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
     className: "custom-file-label"
