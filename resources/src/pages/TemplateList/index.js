@@ -13,24 +13,29 @@ import trashIcon from '../../assets/icons/trash-solid.svg';
 export default function Templates({ history }) {
   const [templates, setTemplates] = useState([]);
   const [templateId, setTemplateId] = useState(0);
-
-  const [roles, setRoltes] = useState([]);
   
   const [templateImage, setTemplateImage] = useState('');
   const [cssTemplateImage, setCssTemplateImage] = useState({});
-  const [user, setUser] = useState({
-    company: 'Astolfo Burguers',
-    logo: 'uploads/1601512631.jpg', 
-    tel: '21 98083-1828'
-  });
+  const [user, setUser] = useState({});
   const [showGenerateImage, setShowGenerateImage] = useState(false);
   const [cssCompany, setCssCompany] = useState({});
   const [cssLogo, setCssLogo] = useState({});
-  const [cssTel, setCssTel] = useState({});
+  const [cssPhone, setCssPhone] = useState({});
 
   const [showModalDelete, setShowModalDelete] = useState(false);
   
   useEffect(() => {
+    let authUser = localStorage.getItem('user');
+    let token = localStorage.getItem('access_token');
+
+    if(!token) {
+      localStorage.removeItem('user');
+      localStorage.removeItem('access_token');
+      history.replace('/');
+      return;
+    }
+
+    setUser(JSON.parse(authUser));
     loadTemplates();
   }, []);
 
@@ -106,11 +111,11 @@ export default function Templates({ history }) {
 
     let objCssCompany = JSON.parse(template.fields).company || {};
     let objCssLogo = JSON.parse(template.fields).logo || {};
-    let objCssTel = JSON.parse(template.fields).phone || {};
+    let objCssPhone = JSON.parse(template.fields).phone || {};
 
     setCssCompany(mountObjectStyle(objCssCompany));
     setCssLogo(mountObjectStyle(objCssLogo));
-    setCssTel(mountObjectStyle(objCssTel));
+    setCssPhone(mountObjectStyle(objCssPhone));
 
     setTemplateImage(`uploads/${template.image}`);
 
@@ -157,17 +162,19 @@ export default function Templates({ history }) {
                   <div className="template-generate">
                     <a href="" onClick={(e) => generateImage(e, template)}>Gerar Imagem</a>
                   </div>
-                  <div className="template-footer">
-                    <a href="" onClick={(e) => handleDuplicateTemplate(e, template.id)}>
-                      <img src={copyIcon} title="Copiar Template"></img>
-                    </a>
-                    <a href="" onClick={(e) => handleEditTemplate(e, template.id)}>
-                      <img src={editIcon} title="Editar Template"></img>
-                    </a>
-                    <a href="" onClick={(e) => handleShowModalDelete(e, template.id)}>
-                      <img src={trashIcon} title="Deletar Template"></img>
-                    </a>
-                  </div>
+                  {user.roles.includes('ADMIN') && (
+                    <div className="template-footer">
+                      <a href="" onClick={(e) => handleDuplicateTemplate(e, template.id)}>
+                        <img src={copyIcon} title="Copiar Template"></img>
+                      </a>
+                      <a href="" onClick={(e) => handleEditTemplate(e, template.id)}>
+                        <img src={editIcon} title="Editar Template"></img>
+                      </a>
+                      <a href="" onClick={(e) => handleShowModalDelete(e, template.id)}>
+                        <img src={trashIcon} title="Deletar Template"></img>
+                      </a>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
@@ -180,8 +187,8 @@ export default function Templates({ history }) {
           <div id="generate-content" className="generate-content" style={cssTemplateImage}>
             <img src={templateImage} style={cssTemplateImage} />
             <div className="generate-fields" style={cssCompany}>{user.company}</div>
-            <div className="generate-fields" style={cssTel}>{user.tel}</div>
-            <img className="generate-fields" style={cssLogo} src={user.logo} />
+            <div className="generate-fields" style={cssPhone}>{user.phone}</div>
+            {/* <img className="generate-fields" style={cssLogo} src={user.logo} /> */}
           </div>
         </div>
       )}

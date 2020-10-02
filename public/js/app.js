@@ -87444,7 +87444,9 @@ function Login(_ref) {
       }
     }).then(function (response) {
       var token = response.data.access_token;
+      var user = JSON.stringify(response.data.user);
       localStorage.setItem('access_token', token);
+      localStorage.setItem('user', user);
       history.push('/templatelist');
     });
   }
@@ -88242,56 +88244,58 @@ function Templates(_ref) {
       templateId = _useState4[0],
       setTemplateId = _useState4[1];
 
-  var _useState5 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])([]),
+  var _useState5 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(''),
       _useState6 = _slicedToArray(_useState5, 2),
-      roles = _useState6[0],
-      setRoltes = _useState6[1];
+      templateImage = _useState6[0],
+      setTemplateImage = _useState6[1];
 
-  var _useState7 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(''),
+  var _useState7 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])({}),
       _useState8 = _slicedToArray(_useState7, 2),
-      templateImage = _useState8[0],
-      setTemplateImage = _useState8[1];
+      cssTemplateImage = _useState8[0],
+      setCssTemplateImage = _useState8[1];
 
   var _useState9 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])({}),
       _useState10 = _slicedToArray(_useState9, 2),
-      cssTemplateImage = _useState10[0],
-      setCssTemplateImage = _useState10[1];
+      user = _useState10[0],
+      setUser = _useState10[1];
 
-  var _useState11 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])({
-    company: 'Astolfo Burguers',
-    logo: 'uploads/1601512631.jpg',
-    tel: '21 98083-1828'
-  }),
+  var _useState11 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(false),
       _useState12 = _slicedToArray(_useState11, 2),
-      user = _useState12[0],
-      setUser = _useState12[1];
+      showGenerateImage = _useState12[0],
+      setShowGenerateImage = _useState12[1];
 
-  var _useState13 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(false),
+  var _useState13 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])({}),
       _useState14 = _slicedToArray(_useState13, 2),
-      showGenerateImage = _useState14[0],
-      setShowGenerateImage = _useState14[1];
+      cssCompany = _useState14[0],
+      setCssCompany = _useState14[1];
 
   var _useState15 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])({}),
       _useState16 = _slicedToArray(_useState15, 2),
-      cssCompany = _useState16[0],
-      setCssCompany = _useState16[1];
+      cssLogo = _useState16[0],
+      setCssLogo = _useState16[1];
 
   var _useState17 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])({}),
       _useState18 = _slicedToArray(_useState17, 2),
-      cssLogo = _useState18[0],
-      setCssLogo = _useState18[1];
+      cssPhone = _useState18[0],
+      setCssPhone = _useState18[1];
 
-  var _useState19 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])({}),
+  var _useState19 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(false),
       _useState20 = _slicedToArray(_useState19, 2),
-      cssTel = _useState20[0],
-      setCssTel = _useState20[1];
-
-  var _useState21 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(false),
-      _useState22 = _slicedToArray(_useState21, 2),
-      showModalDelete = _useState22[0],
-      setShowModalDelete = _useState22[1];
+      showModalDelete = _useState20[0],
+      setShowModalDelete = _useState20[1];
 
   Object(react__WEBPACK_IMPORTED_MODULE_1__["useEffect"])(function () {
+    var authUser = localStorage.getItem('user');
+    var token = localStorage.getItem('access_token');
+
+    if (!token) {
+      localStorage.removeItem('user');
+      localStorage.removeItem('access_token');
+      history.replace('/');
+      return;
+    }
+
+    setUser(JSON.parse(authUser));
     loadTemplates();
   }, []);
 
@@ -88392,10 +88396,10 @@ function Templates(_ref) {
     });
     var objCssCompany = JSON.parse(template.fields).company || {};
     var objCssLogo = JSON.parse(template.fields).logo || {};
-    var objCssTel = JSON.parse(template.fields).phone || {};
+    var objCssPhone = JSON.parse(template.fields).phone || {};
     setCssCompany(mountObjectStyle(objCssCompany));
     setCssLogo(mountObjectStyle(objCssLogo));
-    setCssTel(mountObjectStyle(objCssTel));
+    setCssPhone(mountObjectStyle(objCssPhone));
     setTemplateImage("uploads/".concat(template.image));
     setShowGenerateImage(true);
     setTimeout(function () {
@@ -88448,7 +88452,7 @@ function Templates(_ref) {
       onClick: function onClick(e) {
         return generateImage(e, template);
       }
-    }, "Gerar Imagem")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+    }, "Gerar Imagem")), user.roles.includes('ADMIN') && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
       className: "template-footer"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
       href: "",
@@ -88489,12 +88493,8 @@ function Templates(_ref) {
     style: cssCompany
   }, user.company), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
     className: "generate-fields",
-    style: cssTel
-  }, user.tel), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
-    className: "generate-fields",
-    style: cssLogo,
-    src: user.logo
-  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Modal"], {
+    style: cssPhone
+  }, user.phone))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Modal"], {
     show: showModalDelete,
     onHide: handleCloseModalDelete,
     centered: true

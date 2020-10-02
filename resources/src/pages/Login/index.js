@@ -16,6 +16,7 @@ export default function Login({ history }) {
 
     function handleSubmit(e) {
         e.preventDefault();
+        
         api.post('/auth/login', {email: user, password}, {
             headers: {
                 "Content-Type": "application/json",
@@ -23,7 +24,11 @@ export default function Login({ history }) {
             }
         }).then((response) => {
             let token = response.data.access_token;
+            let user = JSON.stringify(response.data.user);
+            
             localStorage.setItem('access_token', token);
+            localStorage.setItem('user', user);
+
             history.push('/templatelist');
         });
     }
