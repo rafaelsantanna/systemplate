@@ -32,6 +32,7 @@ export default function Login({ history }) {
             history.push('/templatelist');
         });
     }
+
     return (
         <div className="container-login">
             <div className="login">
@@ -39,6 +40,7 @@ export default function Login({ history }) {
                 <form onSubmit={handleSubmit}>
                     <input type="text" placeholder="Usuário" onChange={(e) => setUser(e.target.value)}/>
                     <input type="password" placeholder="Senha" onChange={(e) => setPassword(e.target.value)}/>
+                    <a href="" onClick={() => history.push('signup')}>Criar conta</a>
                     <button>Login</button>
                 </form>
             </div>
