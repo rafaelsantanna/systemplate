@@ -9726,7 +9726,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".container-login {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  height: 100%;\n  padding: 0 20px;\n}\n\n.login {\n  background-color: #fff;\n  width: 100%;\n  max-width: 350px;\n  padding: 30px;\n  border-radius: 3px;\n  box-shadow: 0 0 20px rgba(0, 0, 0, 0.08);\n}\n.login h3 {\n  color: #3f395f;\n  font-size: 34px;\n  margin-bottom: 30px;\n  text-align: center;\n  text-transform: uppercase;\n  font-weight: bold;\n}\n.login form {\n  display: flex;\n  flex-direction: column;\n}\n.login input {\n  background-color: #e6e6e6;\n  border-radius: 5px;\n  border: none;\n  color: #9a99ab;\n  font-size: 20px;\n  padding: 10px 30px;\n  margin-bottom: 18px;\n}\n.login input:focus {\n  outline: none;\n  border: 1px dashed #9a99ab;\n}\n.login input::-moz-placeholder {\n  color: #9a99ab;\n  font-size: 20px;\n}\n.login input:-ms-input-placeholder {\n  color: #9a99ab;\n  font-size: 20px;\n}\n.login input::placeholder {\n  color: #9a99ab;\n  font-size: 20px;\n}\n.login a {\n  margin-bottom: 18px;\n  font-size: 18px;\n}\n.login button {\n  background-color: #7879f5;\n  border-radius: 3px;\n  border: none;\n  color: #fff;\n  font-size: 20px;\n  padding: 10px 0px;\n  transition: all 0.6s;\n}\n.login button:hover {\n  background-color: #6061f3;\n}", ""]);
+exports.push([module.i, ".container-login {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  height: 100%;\n  padding: 0 20px;\n}\n\n.login {\n  background-color: #fff;\n  width: 100%;\n  max-width: 350px;\n  padding: 30px;\n  border-radius: 3px;\n  box-shadow: 0 0 20px rgba(0, 0, 0, 0.08);\n}\n.login h3 {\n  color: #3f395f;\n  font-size: 34px;\n  margin-bottom: 30px;\n  text-align: center;\n  text-transform: uppercase;\n  font-weight: bold;\n}\n.login form {\n  display: flex;\n  flex-direction: column;\n}\n.login input {\n  background-color: #e6e6e6;\n  border-radius: 5px;\n  border: none;\n  color: #333;\n  font-size: 20px;\n  padding: 10px 30px;\n  margin-bottom: 18px;\n}\n.login input:focus {\n  outline: none;\n  border: 1px dashed #9a99ab;\n}\n.login input::-moz-placeholder {\n  color: #9a99ab;\n  font-size: 20px;\n}\n.login input:-ms-input-placeholder {\n  color: #9a99ab;\n  font-size: 20px;\n}\n.login input::placeholder {\n  color: #9a99ab;\n  font-size: 20px;\n}\n.login a {\n  margin-bottom: 18px;\n  font-size: 18px;\n}\n.login button {\n  background-color: #7879f5;\n  border-radius: 3px;\n  border: none;\n  color: #fff;\n  font-size: 20px;\n  padding: 10px 0px;\n  transition: all 0.6s;\n}\n.login button:hover {\n  background-color: #6061f3;\n}", ""]);
 
 // exports
 
@@ -9745,7 +9745,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".container-signup {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  height: 100%;\n  padding: 0 20px;\n}\n\n.signup {\n  background-color: #fff;\n  width: 100%;\n  max-width: 450px;\n  padding: 30px;\n  border-radius: 3px;\n  box-shadow: 0 0 20px rgba(0, 0, 0, 0.08);\n}\n.signup h3 {\n  color: #3f395f;\n  font-size: 34px;\n  margin-bottom: 30px;\n  text-align: center;\n  text-transform: uppercase;\n  font-weight: bold;\n}\n.signup form {\n  display: flex;\n  flex-direction: column;\n}\n.signup .text-input {\n  background-color: #e6e6e6;\n  border-radius: 5px;\n  border: none;\n  color: #9a99ab;\n  font-size: 20px;\n  padding: 10px 30px;\n  margin-bottom: 18px;\n}\n.signup .text-input:focus {\n  outline: none;\n  border: 1px dashed #9a99ab;\n}\n.signup .text-input::-moz-placeholder {\n  color: #9a99ab;\n  font-size: 20px;\n}\n.signup .text-input:-ms-input-placeholder {\n  color: #9a99ab;\n  font-size: 20px;\n}\n.signup .text-input::placeholder {\n  color: #9a99ab;\n  font-size: 20px;\n}\n.signup .upload {\n  margin-bottom: 30px;\n}\n.signup button {\n  background-color: #7879f5;\n  border-radius: 3px;\n  border: none;\n  color: #fff;\n  font-size: 20px;\n  padding: 10px 0px;\n  transition: all 0.6s;\n}\n.signup button:hover {\n  background-color: #6061f3;\n}", ""]);
+exports.push([module.i, ".container-signup {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  height: 100%;\n  padding: 0 20px;\n}\n\n.signup {\n  background-color: #fff;\n  width: 100%;\n  max-width: 450px;\n  padding: 30px;\n  border-radius: 3px;\n  box-shadow: 0 0 20px rgba(0, 0, 0, 0.08);\n}\n.signup h3 {\n  color: #3f395f;\n  font-size: 34px;\n  margin-bottom: 30px;\n  text-align: center;\n  text-transform: uppercase;\n  font-weight: bold;\n}\n.signup form {\n  display: flex;\n  flex-direction: column;\n}\n.signup .text-input {\n  background-color: #e6e6e6;\n  border-radius: 5px;\n  border: none;\n  color: #333;\n  font-size: 20px;\n  padding: 10px 30px;\n  margin-bottom: 18px;\n}\n.signup .text-input:focus {\n  outline: none;\n  border: 1px dashed #9a99ab;\n}\n.signup .text-input::-moz-placeholder {\n  color: #9a99ab;\n  font-size: 20px;\n}\n.signup .text-input:-ms-input-placeholder {\n  color: #9a99ab;\n  font-size: 20px;\n}\n.signup .text-input::placeholder {\n  color: #9a99ab;\n  font-size: 20px;\n}\n.signup .upload {\n  margin-bottom: 30px;\n}\n.signup button {\n  background-color: #7879f5;\n  border-radius: 3px;\n  border: none;\n  color: #fff;\n  font-size: 20px;\n  padding: 10px 0px;\n  transition: all 0.6s;\n}\n.signup button:hover {\n  background-color: #6061f3;\n}", ""]);
 
 // exports
 
@@ -87540,35 +87540,110 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Signup; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _styles_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./styles.scss */ "./resources/src/pages/Signup/styles.scss");
-/* harmony import */ var _styles_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_styles_scss__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _services_api__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../services/api */ "./resources/src/services/api.js");
+/* harmony import */ var _styles_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./styles.scss */ "./resources/src/pages/Signup/styles.scss");
+/* harmony import */ var _styles_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_styles_scss__WEBPACK_IMPORTED_MODULE_2__);
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
-function Signup() {
+
+
+function Signup(_ref) {
+  var history = _ref.history;
+
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({}),
+      _useState2 = _slicedToArray(_useState, 2),
+      form = _useState2[0],
+      setForm = _useState2[1];
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    _services_api__WEBPACK_IMPORTED_MODULE_1__["default"].post('/auth/signup', form, {
+      headers: {
+        "Content-Type": "application/json",
+        "X-Requested-With": "XMLHttpRequest"
+      }
+    }).then(function (response) {
+      console.log(response);
+    });
+  }
+
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "container-signup"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "signup"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Cadastro"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Cadastro"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+    onSubmit: handleSubmit
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     className: "text-input",
+    onChange: function onChange(e) {
+      return setForm(_objectSpread(_objectSpread({}, form), {}, {
+        email: e.target.value
+      }));
+    },
     type: "text",
     placeholder: "E-mail"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     className: "text-input",
+    onChange: function onChange(e) {
+      return setForm(_objectSpread(_objectSpread({}, form), {}, {
+        password: e.target.value
+      }));
+    },
     type: "password",
     placeholder: "Senha"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     className: "text-input",
+    onChange: function onChange(e) {
+      return setForm(_objectSpread(_objectSpread({}, form), {}, {
+        password_confirmation: e.target.value
+      }));
+    },
     type: "password",
     placeholder: "Repetir a senha"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     className: "text-input",
+    onChange: function onChange(e) {
+      return setForm(_objectSpread(_objectSpread({}, form), {}, {
+        name: e.target.value
+      }));
+    },
     type: "text",
     placeholder: "Nome"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     className: "text-input",
+    onChange: function onChange(e) {
+      return setForm(_objectSpread(_objectSpread({}, form), {}, {
+        company: e.target.value
+      }));
+    },
     type: "text",
     placeholder: "Sua marca"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    className: "text-input",
+    onChange: function onChange(e) {
+      return setForm(_objectSpread(_objectSpread({}, form), {}, {
+        phone: e.target.value
+      }));
+    },
+    type: "text",
+    placeholder: "Telefone"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     className: "upload",
     type: "file",
