@@ -46,7 +46,6 @@ class TemplateController extends Controller
         $filename = time() . '.' . $file->getClientOriginalExtension();
         $file->move('uploads', $filename);
 
-
         $template = new Template();
         $template->name = $request->name;
         $template->type = $request->type;

@@ -24,8 +24,14 @@ class AuthController extends Controller
             'email' => 'required|string|email|unique:users',
             'password' => 'required|string|confirmed',
             'company' => 'required|string',
-            'phone' => 'required|string'
+            'phone' => 'required|string',
+            'file' => 'max:2048',
         ]);
+
+        $logo = $request->file('logo');
+        $logoname = time() . '.' . $logo->getClientOriginalExtension();
+        $logo->move('uploads/logo', $logoname);
+
         $user = new User([
             'name' => $request->name,
             'email' => $request->email,
@@ -33,9 +39,11 @@ class AuthController extends Controller
             'roles' => 'USER',
             'company' => $request->company,
             'phone' => $request->phone,
-            // 'logo' => $logo
+            'logo' => $logoname
         ]);
+
         $user->save();
+
         return response()->json([
             'message' => 'Successfully created user!'
         ], 201);
