@@ -42,8 +42,14 @@
       font-size: 20px;
     }
   }
-  .upload {
-    margin-bottom: 30px;
+  .logo-upload {
+    @extend .text-input;
+    border:  2px dashed #9a99ab;
+    color: #9a99ab;
+    text-align: center;
+    input {
+      display: none;
+    }
   }
   button {
     background-color: #7879f5;

@@ -9745,7 +9745,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".container-signup {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  height: 100%;\n  padding: 0 20px;\n}\n\n.signup {\n  background-color: #fff;\n  width: 100%;\n  max-width: 450px;\n  padding: 30px;\n  border-radius: 3px;\n  box-shadow: 0 0 20px rgba(0, 0, 0, 0.08);\n}\n.signup h3 {\n  color: #3f395f;\n  font-size: 34px;\n  margin-bottom: 30px;\n  text-align: center;\n  text-transform: uppercase;\n  font-weight: bold;\n}\n.signup form {\n  display: flex;\n  flex-direction: column;\n}\n.signup .text-input {\n  background-color: #e6e6e6;\n  border-radius: 5px;\n  border: none;\n  color: #333;\n  font-size: 20px;\n  padding: 10px 30px;\n  margin-bottom: 18px;\n}\n.signup .text-input:focus {\n  outline: none;\n  border: 1px dashed #9a99ab;\n}\n.signup .text-input::-moz-placeholder {\n  color: #9a99ab;\n  font-size: 20px;\n}\n.signup .text-input:-ms-input-placeholder {\n  color: #9a99ab;\n  font-size: 20px;\n}\n.signup .text-input::placeholder {\n  color: #9a99ab;\n  font-size: 20px;\n}\n.signup .upload {\n  margin-bottom: 30px;\n}\n.signup button {\n  background-color: #7879f5;\n  border-radius: 3px;\n  border: none;\n  color: #fff;\n  font-size: 20px;\n  padding: 10px 0px;\n  transition: all 0.6s;\n}\n.signup button:hover {\n  background-color: #6061f3;\n}", ""]);
+exports.push([module.i, ".container-signup {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  height: 100%;\n  padding: 0 20px;\n}\n\n.signup {\n  background-color: #fff;\n  width: 100%;\n  max-width: 450px;\n  padding: 30px;\n  border-radius: 3px;\n  box-shadow: 0 0 20px rgba(0, 0, 0, 0.08);\n}\n.signup h3 {\n  color: #3f395f;\n  font-size: 34px;\n  margin-bottom: 30px;\n  text-align: center;\n  text-transform: uppercase;\n  font-weight: bold;\n}\n.signup form {\n  display: flex;\n  flex-direction: column;\n}\n.signup .text-input, .signup .logo-upload {\n  background-color: #e6e6e6;\n  border-radius: 5px;\n  border: none;\n  color: #333;\n  font-size: 20px;\n  padding: 10px 30px;\n  margin-bottom: 18px;\n}\n.signup .text-input:focus, .signup .logo-upload:focus {\n  outline: none;\n  border: 1px dashed #9a99ab;\n}\n.signup .text-input::-moz-placeholder, .signup .logo-upload::-moz-placeholder {\n  color: #9a99ab;\n  font-size: 20px;\n}\n.signup .text-input:-ms-input-placeholder, .signup .logo-upload:-ms-input-placeholder {\n  color: #9a99ab;\n  font-size: 20px;\n}\n.signup .text-input::placeholder, .signup .logo-upload::placeholder {\n  color: #9a99ab;\n  font-size: 20px;\n}\n.signup .logo-upload {\n  border: 2px dashed #9a99ab;\n  color: #9a99ab;\n  text-align: center;\n}\n.signup .logo-upload input {\n  display: none;\n}\n.signup button {\n  background-color: #7879f5;\n  border-radius: 3px;\n  border: none;\n  color: #fff;\n  font-size: 20px;\n  padding: 10px 0px;\n  transition: all 0.6s;\n}\n.signup button:hover {\n  background-color: #6061f3;\n}", ""]);
 
 // exports
 
@@ -87572,20 +87572,36 @@ function Signup(_ref) {
       form = _useState2[0],
       setForm = _useState2[1];
 
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])('Sua Logo'),
+      _useState4 = _slicedToArray(_useState3, 2),
+      logoText = _useState4[0],
+      setLogoText = _useState4[1];
+
   function handleSubmit(e) {
     e.preventDefault();
-    _services_api__WEBPACK_IMPORTED_MODULE_1__["default"].post('/auth/signup', form, {
+    var formData = new FormData();
+    Object.entries(form).map(function (item) {
+      formData.append(item[0], item[1]);
+    });
+    _services_api__WEBPACK_IMPORTED_MODULE_1__["default"].post('/auth/signup', formData, {
       headers: {
         "Content-Type": "application/json",
         "X-Requested-With": "XMLHttpRequest"
       }
     }).then(function () {
       setForm({});
-      alert('Usuário cadastrado com sucesso!');
-      setTimeout(function () {
-        history.push('/');
-      }, 2000);
+      Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+        console.log(form);
+      }, [form]);
     });
+  }
+
+  function handleLogoUpload(e) {
+    var logo = e.target.files[0];
+    setForm(_objectSpread(_objectSpread({}, form), {}, {
+      logo: logo
+    }));
+    setLogoText(e.target.files[0].name);
   }
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -87654,11 +87670,16 @@ function Signup(_ref) {
     value: form.phone || '',
     type: "text",
     placeholder: "Telefone"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-    className: "upload",
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    className: "logo-upload",
+    htmlFor: "logo-upload"
+  }, logoText, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    id: "logo-upload",
     type: "file",
-    placeholder: "Logo"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "Cadastrar"))));
+    onChange: function onChange(e) {
+      return handleLogoUpload(e);
+    }
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "Cadastrar"))));
 }
 
 /***/ }),
