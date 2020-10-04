@@ -14,8 +14,13 @@ export default function Signup({ history }) {
                 "Content-Type": "application/json",
                 "X-Requested-With": "XMLHttpRequest"
             }
-        }).then((response) => {
-            console.log(response);
+        }).then(() => {
+            setForm({});
+            alert('Usuário cadastrado com sucesso!');
+
+            setTimeout(() => {
+                history.push('/');
+            }, 2000);
         });
     }
 
@@ -24,12 +29,12 @@ export default function Signup({ history }) {
         <div className="signup">
             <h3>Cadastro</h3>
             <form onSubmit={handleSubmit}>
-                <input className="text-input" onChange={(e) => setForm({...form, email: e.target.value})} type="text" placeholder="E-mail" />
-                <input className="text-input" onChange={(e) => setForm({...form, password: e.target.value})} type="password" placeholder="Senha" />
-                <input className="text-input" onChange={(e) => setForm({...form, password_confirmation: e.target.value})} type="password" placeholder="Repetir a senha" />
-                <input className="text-input" onChange={(e) => setForm({...form, name: e.target.value})} type="text" placeholder="Nome" />
-                <input className="text-input" onChange={(e) => setForm({...form, company: e.target.value})} type="text" placeholder="Sua marca" />
-                <input className="text-input" onChange={(e) => setForm({...form, phone: e.target.value})} type="text" placeholder="Telefone" />
+                <input className="text-input" onChange={(e) => setForm({...form, email: e.target.value})} value={form.email || ''} type="text" placeholder="E-mail" />
+                <input className="text-input" onChange={(e) => setForm({...form, password: e.target.value})} value={form.password || ''} type="password" placeholder="Senha" />
+                <input className="text-input" onChange={(e) => setForm({...form, password_confirmation: e.target.value})} value={form.password_confirmation || ''} type="password" placeholder="Repetir a senha" />
+                <input className="text-input" onChange={(e) => setForm({...form, name: e.target.value})} value={form.name || ''} type="text" placeholder="Nome" />
+                <input className="text-input" onChange={(e) => setForm({...form, company: e.target.value})} value={form.company || ''} type="text" placeholder="Sua marca" />
+                <input className="text-input" onChange={(e) => setForm({...form, phone: e.target.value})} value={form.phone || ''} type="text" placeholder="Telefone" />
                 <input className="upload" type="file" placeholder="Logo" />
                 <button>Cadastrar</button>
             </form>

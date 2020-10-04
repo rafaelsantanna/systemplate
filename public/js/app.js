@@ -87579,8 +87579,12 @@ function Signup(_ref) {
         "Content-Type": "application/json",
         "X-Requested-With": "XMLHttpRequest"
       }
-    }).then(function (response) {
-      console.log(response);
+    }).then(function () {
+      setForm({});
+      alert('Usuário cadastrado com sucesso!');
+      setTimeout(function () {
+        history.push('/');
+      }, 2000);
     });
   }
 
@@ -87597,6 +87601,7 @@ function Signup(_ref) {
         email: e.target.value
       }));
     },
+    value: form.email || '',
     type: "text",
     placeholder: "E-mail"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
@@ -87606,6 +87611,7 @@ function Signup(_ref) {
         password: e.target.value
       }));
     },
+    value: form.password || '',
     type: "password",
     placeholder: "Senha"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
@@ -87615,6 +87621,7 @@ function Signup(_ref) {
         password_confirmation: e.target.value
       }));
     },
+    value: form.password_confirmation || '',
     type: "password",
     placeholder: "Repetir a senha"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
@@ -87624,6 +87631,7 @@ function Signup(_ref) {
         name: e.target.value
       }));
     },
+    value: form.name || '',
     type: "text",
     placeholder: "Nome"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
@@ -87633,6 +87641,7 @@ function Signup(_ref) {
         company: e.target.value
       }));
     },
+    value: form.company || '',
     type: "text",
     placeholder: "Sua marca"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
@@ -87642,6 +87651,7 @@ function Signup(_ref) {
         phone: e.target.value
       }));
     },
+    value: form.phone || '',
     type: "text",
     placeholder: "Telefone"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
