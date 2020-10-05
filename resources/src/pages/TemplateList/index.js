@@ -188,7 +188,7 @@ export default function Templates({ history }) {
             <img src={templateImage} style={cssTemplateImage} />
             <div className="generate-fields" style={cssCompany}>{user.company}</div>
             <div className="generate-fields" style={cssPhone}>{user.phone}</div>
-            {/* <img className="generate-fields" style={cssLogo} src={user.logo} /> */}
+            <img className="generate-fields" style={cssLogo} src={'uploads/' + user.logo} />
           </div>
         </div>
       )}

@@ -88713,7 +88713,11 @@ function Templates(_ref) {
   }, user.company), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
     className: "generate-fields",
     style: cssPhone
-  }, user.phone))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Modal"], {
+  }, user.phone), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
+    className: "generate-fields",
+    style: cssLogo,
+    src: 'uploads/' + user.logo
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Modal"], {
     show: showModalDelete,
     onHide: handleCloseModalDelete,
     centered: true
