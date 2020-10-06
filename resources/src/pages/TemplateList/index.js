@@ -36,10 +36,10 @@ export default function Templates({ history }) {
     }
 
     setUser(JSON.parse(authUser));
-    loadTemplates();
+    getTemplates();
   }, []);
 
-  async function loadTemplates() {
+  async function getTemplates() {
     const response = await api.get('/templates', {
       headers: {
         'Authorization' : 'Bearer ' + localStorage.getItem('access_token')
