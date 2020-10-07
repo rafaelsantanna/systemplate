@@ -28,7 +28,7 @@ export default function Admin() {
     }
 
     function handleEditUser(e, id) {
-        // Open edit Form
+        // Open Modal edit Form
         e.preventDefault();
     }
 
