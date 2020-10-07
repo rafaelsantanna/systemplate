@@ -36,5 +36,6 @@ Route::group([
     Route::delete('/templates/{id}', 'TemplateController@destroy');
     Route::post('/templates/duplicate', 'TemplateController@duplicate');
 
-    Route::resource('/users', 'UserController');
+    Route::get('/users', 'UserController@index');
+    Route::delete('/users/{id}', 'UserController@destroy');
   });
