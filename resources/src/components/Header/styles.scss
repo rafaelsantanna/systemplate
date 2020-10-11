@@ -32,15 +32,15 @@
       font-size: 16px;
       padding: 10px 15px;
       text-decoration: none;
-      &:hover {
-        background-color: rgba(120, 121, 245, .55);
-        color: #fff;
-        transition: all .7s;
-      }
       &.active {
         color: darken(#7879f5, 10);
         font-weight: bold;
         text-decoration: underline;
+      }
+      &:hover {
+        background-color: rgba(120, 121, 245, .55);
+        color: #fff;
+        transition: all .7s;
       }
     }
   }
