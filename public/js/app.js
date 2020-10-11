@@ -9764,7 +9764,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".container-signup {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  height: 100%;\n  padding: 0 20px;\n}\n\n.signup {\n  background-color: #fff;\n  width: 100%;\n  max-width: 450px;\n  padding: 30px;\n  border-radius: 3px;\n  box-shadow: 0 0 20px rgba(0, 0, 0, 0.08);\n}\n.signup h3 {\n  color: #3f395f;\n  font-size: 34px;\n  margin-bottom: 30px;\n  text-align: center;\n  text-transform: uppercase;\n  font-weight: bold;\n}\n.signup form {\n  display: flex;\n  flex-direction: column;\n}\n.signup .text-input, .signup .logo-upload {\n  background-color: #e6e6e6;\n  border-radius: 5px;\n  border: none;\n  color: #333;\n  font-size: 20px;\n  padding: 10px 30px;\n  margin-bottom: 18px;\n}\n.signup .text-input:focus, .signup .logo-upload:focus {\n  outline: none;\n  border: 1px dashed #9a99ab;\n}\n.signup .text-input::-moz-placeholder, .signup .logo-upload::-moz-placeholder {\n  color: #9a99ab;\n  font-size: 20px;\n}\n.signup .text-input:-ms-input-placeholder, .signup .logo-upload:-ms-input-placeholder {\n  color: #9a99ab;\n  font-size: 20px;\n}\n.signup .text-input::placeholder, .signup .logo-upload::placeholder {\n  color: #9a99ab;\n  font-size: 20px;\n}\n.signup .logo-upload {\n  border: 2px dashed #9a99ab;\n  color: #9a99ab;\n  text-align: center;\n}\n.signup .logo-upload input {\n  display: none;\n}\n.signup button {\n  background-color: #7879f5;\n  border-radius: 3px;\n  border: none;\n  color: #fff;\n  font-size: 20px;\n  padding: 10px 0px;\n  transition: all 0.6s;\n}\n.signup button:hover {\n  background-color: #6061f3;\n}", ""]);
+exports.push([module.i, ".container-signup {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  height: 100%;\n  padding: 0 20px;\n}\n\n.signup {\n  background-color: #fff;\n  width: 100%;\n  max-width: 450px;\n  padding: 30px;\n  border-radius: 3px;\n  box-shadow: 0 0 20px rgba(0, 0, 0, 0.08);\n}\n.signup h3 {\n  color: #3f395f;\n  font-size: 34px;\n  margin-bottom: 30px;\n  text-align: center;\n  text-transform: uppercase;\n  font-weight: bold;\n}\n.signup form {\n  display: flex;\n  flex-direction: column;\n}\n.signup .text-input, .signup .logo-upload {\n  background-color: #e6e6e6;\n  border-radius: 5px;\n  border: solid 1px #7879f5;\n  color: #333;\n  font-size: 20px;\n  padding: 10px 30px;\n  margin-bottom: 18px;\n}\n.signup .text-input:focus, .signup .logo-upload:focus {\n  outline: none;\n  border: 1px dashed #9a99ab;\n}\n.signup .text-input::-moz-placeholder, .signup .logo-upload::-moz-placeholder {\n  color: #9a99ab;\n  font-size: 20px;\n}\n.signup .text-input:-ms-input-placeholder, .signup .logo-upload:-ms-input-placeholder {\n  color: #9a99ab;\n  font-size: 20px;\n}\n.signup .text-input::placeholder, .signup .logo-upload::placeholder {\n  color: #9a99ab;\n  font-size: 20px;\n}\n.signup .text-input:disabled, .signup .logo-upload:disabled {\n  color: #999;\n  border: none;\n  cursor: not-allowed;\n}\n.signup .logo-upload {\n  border: 2px dashed #7879f5;\n  color: #9a99ab;\n  text-align: center;\n}\n.signup .logo-upload input {\n  display: none;\n}\n.signup button {\n  background-color: #7879f5;\n  border-radius: 3px;\n  border: none;\n  color: #fff;\n  font-size: 20px;\n  padding: 10px 0px;\n  transition: all 0.6s;\n}\n.signup button:hover {\n  background-color: #6061f3;\n}\n.signup button.btn--update {\n  background-color: #78f582;\n}\n.signup button.btn--update:hover {\n  background-color: #60f36c;\n}", ""]);
 
 // exports
 
@@ -87841,7 +87841,7 @@ function Signup(_ref) {
       setIsEditing = _useState6[1];
 
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
-    var user = history.location.state.user;
+    var user = history.location.state ? history.location.state.user : false;
 
     if (user) {
       setIsEditing(true);
@@ -87855,6 +87855,20 @@ function Signup(_ref) {
     Object.entries(form).map(function (item) {
       formData.append(item[0], item[1]);
     });
+
+    if (isEditing) {
+      formData.append('_method', 'PUT');
+      _services_api__WEBPACK_IMPORTED_MODULE_1__["default"].post("/users/".concat(formData.id), formData, {
+        headers: {
+          'Authorization': 'Bearer ' + localStorage.getItem('access_token')
+        }
+      }).then(function (response) {
+        alert('Usuário atualizado com sucesso!');
+        history.push('/admin');
+      });
+      return;
+    }
+
     _services_api__WEBPACK_IMPORTED_MODULE_1__["default"].post('/auth/signup', formData, {
       headers: {
         "Content-Type": "application/json",
@@ -87888,7 +87902,8 @@ function Signup(_ref) {
     },
     value: form.email || '',
     type: "text",
-    placeholder: "E-mail"
+    placeholder: "E-mail",
+    disabled: isEditing
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     className: "text-input",
     onChange: function onChange(e) {
@@ -87948,7 +87963,9 @@ function Signup(_ref) {
     onChange: function onChange(e) {
       return handleLogoUpload(e);
     }
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, isEditing ? "Atualizar" : "Cadastrar"))));
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    className: isEditing ? 'btn--update' : ''
+  }, isEditing ? "Atualizar" : "Cadastrar"))));
 }
 
 /***/ }),

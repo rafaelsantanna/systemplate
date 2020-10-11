@@ -28,7 +28,7 @@
   .text-input {
     background-color: #e6e6e6;
     border-radius: 5px;
-    border: none;
+    border: solid 1px #7879f5;
     color: #333;
     font-size: 20px;
     padding: 10px 30px;
@@ -41,10 +41,15 @@
       color: #9a99ab;
       font-size: 20px;
     }
+    &:disabled {
+      color: #999;
+      border: none;
+      cursor: not-allowed;
+    }
   }
   .logo-upload {
     @extend .text-input;
-    border:  2px dashed #9a99ab;
+    border:  2px dashed #7879f5;
     color: #9a99ab;
     text-align: center;
     input {
@@ -61,6 +66,13 @@
     transition: all .6s;
     &:hover {
       background-color: darken(#7879f5, 5);
+    }
+
+    &.btn--update {
+      background-color: #78f582;
+      &:hover {
+        background-color: darken(#78f582, 5);
+      }
     }
   }
 }

@@ -9,7 +9,7 @@ export default function Signup({ history }) {
     const [isEditing, setIsEditing] = useState(false);
 
     useEffect(() => {
-        let { user } = history.location.state;
+        let user = history.location.state ? history.location.state.user : false;
 
         if(user) {
             setIsEditing(true);
@@ -24,6 +24,20 @@ export default function Signup({ history }) {
         Object.entries(form).map((item) => {
             formData.append(item[0], item[1]);
         });
+
+        if(isEditing) {
+            formData.append('_method', 'PUT');
+            api.post(`/users/${formData.id}`, formData, {
+                headers: {
+                    'Authorization' : 'Bearer ' + localStorage.getItem('access_token')
+                }
+            }).then((response) => {
+                alert('Usuário atualizado com sucesso!');
+                history.push('/admin');
+            });
+            
+            return;
+        }
         
         api.post('/auth/signup', formData, {
             headers: {
@@ -47,7 +61,7 @@ export default function Signup({ history }) {
         <div className="signup">
             <h3>{isEditing ? 'Atualizar Usuário' : 'Cadastro'}</h3>
             <form onSubmit={handleSubmit}>
-                <input className="text-input" onChange={(e) => setForm({...form, email: e.target.value})} value={form.email || ''} type="text" placeholder="E-mail" />
+                <input className="text-input" onChange={(e) => setForm({...form, email: e.target.value})} value={form.email || ''} type="text" placeholder="E-mail" disabled={isEditing}/>
                 <input className="text-input" onChange={(e) => setForm({...form, password: e.target.value})} value={form.password || ''} type="password" placeholder="Senha" />
                 <input className="text-input" onChange={(e) => setForm({...form, password_confirmation: e.target.value})} value={form.password_confirmation || ''} type="password" placeholder="Repetir a senha" />
                 <input className="text-input" onChange={(e) => setForm({...form, name: e.target.value})} value={form.name || ''} type="text" placeholder="Nome" />
@@ -57,7 +71,7 @@ export default function Signup({ history }) {
                     {logoText}
                     <input id="logo-upload" type="file" onChange={(e)=> handleLogoUpload(e)} />
                 </label>
-                <button>{isEditing ? "Atualizar" : "Cadastrar"}</button>
+                <button className={isEditing ? 'btn--update' : ''}>{isEditing ? "Atualizar" : "Cadastrar"}</button>
             </form>
         </div>
     </div>

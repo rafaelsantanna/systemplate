@@ -69,9 +69,39 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'string',
+            'password' => 'string',
+            'company' => 'string',
+            'phone' => 'string',
+            'file' => 'max:2048',
+        ]);
+
+        $user = User::find($request->id);
+        $user->name = $request->name;
+        $user->company = $request->company;
+        $user->phone = $request->phone;
+
+        if($request->password) {
+            $user->password = bcrypt($request->password);
+        }
+
+        if($user->logo != $request->logo) {
+            $request->validate([
+                'file' => 'max:2048',
+            ]);
+    
+            $logo = $request->file('logo');
+            $logoname = time() . '.' . $logo->getClientOriginalExtension();
+            $logo->move('uploads/logo', $logoname);
+            $user->logo = $logoname;
+        }
+
+        $user->update();
+
+        return response()->json(['message' => 'User successfully updated']);
     }
 
     /**

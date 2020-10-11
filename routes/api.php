@@ -37,5 +37,6 @@ Route::group([
     Route::post('/templates/duplicate', 'TemplateController@duplicate');
 
     Route::get('/users', 'UserController@index');
+    Route::put('/users/{id}', 'UserController@update');
     Route::delete('/users/{id}', 'UserController@destroy');
   });
