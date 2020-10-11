@@ -1,6 +1,8 @@
 import React from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 
+import Header from './components/Header';
+
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Admin from './pages/Admin';
@@ -10,6 +12,7 @@ import TemplateList from './pages/TemplateList';
 export default function Routes() {
     return (
         <BrowserRouter>
+            <Header />
             <Route exact path="/" component={Login} />
             <Route path="/signup" component={Signup} />
             <Route path="/admin" component={Admin} />
