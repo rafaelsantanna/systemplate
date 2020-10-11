@@ -1,18 +1,22 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import api from '../../services/api';
+
+import { StoreContext } from '../../store';
 
 import './styles.scss';
 
 export default function Login({ history }) {
+    const [store, setStore] = useContext(StoreContext);
     const [user, setUser] = useState('');
     const [password, setPassword] = useState('');
 
     useEffect(() => {
         let tokenExists = localStorage.getItem('access_token');
         if(tokenExists) {
+            setStore({...store, logged: true});
             history.push('/templatelist');
         }
-    });
+    }, []);
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -28,6 +32,8 @@ export default function Login({ history }) {
             
             localStorage.setItem('access_token', token);
             localStorage.setItem('user', user);
+
+            setStore({...store, logged: true});
 
             history.push('/templatelist');
         }).catch((res) => {
