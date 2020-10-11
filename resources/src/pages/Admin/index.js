@@ -7,13 +7,22 @@ import './styles.scss';
 import editIcon from '../../assets/icons/edit-solid.svg';
 import trashIcon from '../../assets/icons/trash-solid.svg';
 
-export default function Admin() {
+export default function Admin({ history }) {
     const [users, setUsers] = useState([]);
     const [userId, setUserId] = useState(0);
     
     const [showModalDelete, setShowModalDelete] = useState(false);
 
     useEffect(() => {
+        let token = localStorage.getItem('access_token');
+    
+        if(!token) {
+          localStorage.removeItem('user');
+          localStorage.removeItem('access_token');
+          history.replace('/');
+          return;
+        }
+
         getUsers();
     }, []);
 
@@ -28,8 +37,16 @@ export default function Admin() {
     }
 
     function handleEditUser(e, id) {
-        // Open Modal edit Form
         e.preventDefault();
+
+        let user = users.filter((item) => {
+            return item.id === id
+        });
+        
+        history.push({
+            pathname: '/signup',
+            state: { user: user[0] }
+        });
     }
 
     function handleDeleteUser() {

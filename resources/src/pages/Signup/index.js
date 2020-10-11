@@ -6,6 +6,16 @@ import './styles.scss';
 export default function Signup({ history }) {
     const [form, setForm] = useState({});
     const [logoText, setLogoText] = useState('Sua Logo');
+    const [isEditing, setIsEditing] = useState(false);
+
+    useEffect(() => {
+        let { user } = history.location.state;
+
+        if(user) {
+            setIsEditing(true);
+            setForm({...user});
+        }
+    }, []);
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -21,9 +31,7 @@ export default function Signup({ history }) {
                 "X-Requested-With": "XMLHttpRequest"
             }
         }).then(() => {
-            setForm({});useEffect(() => {
-                console.log(form);
-            }, [form]);
+            setForm({});
         });
     }
 
@@ -37,7 +45,7 @@ export default function Signup({ history }) {
     return (
     <div className="container-signup">
         <div className="signup">
-            <h3>Cadastro</h3>
+            <h3>{isEditing ? 'Atualizar Usuário' : 'Cadastro'}</h3>
             <form onSubmit={handleSubmit}>
                 <input className="text-input" onChange={(e) => setForm({...form, email: e.target.value})} value={form.email || ''} type="text" placeholder="E-mail" />
                 <input className="text-input" onChange={(e) => setForm({...form, password: e.target.value})} value={form.password || ''} type="password" placeholder="Senha" />
@@ -49,7 +57,7 @@ export default function Signup({ history }) {
                     {logoText}
                     <input id="logo-upload" type="file" onChange={(e)=> handleLogoUpload(e)} />
                 </label>
-                <button>Cadastrar</button>
+                <button>{isEditing ? "Atualizar" : "Cadastrar"}</button>
             </form>
         </div>
     </div>

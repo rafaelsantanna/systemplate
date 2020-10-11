@@ -30,6 +30,8 @@ export default function Login({ history }) {
             localStorage.setItem('user', user);
 
             history.push('/templatelist');
+        }).catch((res) => {
+            alert('Usuário ou senha incorretos');
         });
     }
 

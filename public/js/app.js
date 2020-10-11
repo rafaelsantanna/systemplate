@@ -87465,7 +87465,9 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-function Admin() {
+function Admin(_ref) {
+  var history = _ref.history;
+
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])([]),
       _useState2 = _slicedToArray(_useState, 2),
       users = _useState2[0],
@@ -87482,6 +87484,15 @@ function Admin() {
       setShowModalDelete = _useState6[1];
 
   Object(react__WEBPACK_IMPORTED_MODULE_1__["useEffect"])(function () {
+    var token = localStorage.getItem('access_token');
+
+    if (!token) {
+      localStorage.removeItem('user');
+      localStorage.removeItem('access_token');
+      history.replace('/');
+      return;
+    }
+
     getUsers();
   }, []);
 
@@ -87518,8 +87529,16 @@ function Admin() {
   }
 
   function handleEditUser(e, id) {
-    // Open edit Form
     e.preventDefault();
+    var user = users.filter(function (item) {
+      return item.id === id;
+    });
+    history.push({
+      pathname: '/signup',
+      state: {
+        user: user[0]
+      }
+    });
   }
 
   function handleDeleteUser() {
@@ -87704,6 +87723,8 @@ function Login(_ref) {
       localStorage.setItem('access_token', token);
       localStorage.setItem('user', user);
       history.push('/templatelist');
+    })["catch"](function (res) {
+      alert('Usuário ou senha incorretos');
     });
   }
 
@@ -87814,6 +87835,20 @@ function Signup(_ref) {
       logoText = _useState4[0],
       setLogoText = _useState4[1];
 
+  var _useState5 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
+      _useState6 = _slicedToArray(_useState5, 2),
+      isEditing = _useState6[0],
+      setIsEditing = _useState6[1];
+
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    var user = history.location.state.user;
+
+    if (user) {
+      setIsEditing(true);
+      setForm(_objectSpread({}, user));
+    }
+  }, []);
+
   function handleSubmit(e) {
     e.preventDefault();
     var formData = new FormData();
@@ -87827,9 +87862,6 @@ function Signup(_ref) {
       }
     }).then(function () {
       setForm({});
-      Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
-        console.log(form);
-      }, [form]);
     });
   }
 
@@ -87845,7 +87877,7 @@ function Signup(_ref) {
     className: "container-signup"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "signup"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Cadastro"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, isEditing ? 'Atualizar Usuário' : 'Cadastro'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
     onSubmit: handleSubmit
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     className: "text-input",
@@ -87916,7 +87948,7 @@ function Signup(_ref) {
     onChange: function onChange(e) {
       return handleLogoUpload(e);
     }
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "Cadastrar"))));
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, isEditing ? "Atualizar" : "Cadastrar"))));
 }
 
 /***/ }),
