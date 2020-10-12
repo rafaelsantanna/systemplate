@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useContext } from 'react';
 import api from '../../services/api';
 import { isAuthenticated } from '../../auth';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import { StoreContext } from '../../store';
 
@@ -38,11 +40,20 @@ export default function Login({ history }) {
 
             history.push('/templatelist');
         }).catch((res) => {
-            alert('Usuário ou senha incorretos');
+            toast.dark('Usuário ou senha incorretos', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
         });
     }
 
     return (
+        <>
         <div className="container-login">
             <div className="login">
                 <h3>Login</h3>
@@ -54,5 +65,7 @@ export default function Login({ history }) {
                 </form>
             </div>
         </div>
+        <ToastContainer />
+        </>
     );
 }

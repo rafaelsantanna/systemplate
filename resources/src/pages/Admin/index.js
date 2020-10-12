@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { Modal, Button } from 'react-bootstrap';
 import api from '../../services/api';
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import './styles.scss';
 
 import editIcon from '../../assets/icons/edit-solid.svg';
@@ -50,6 +53,15 @@ export default function Admin({ history }) {
               return user.id !== userId;
             }));
             setShowModalDelete(false);
+            toast.dark('Usuário deletado com sucesso', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
         });
     }
 
@@ -63,7 +75,6 @@ export default function Admin({ history }) {
         setShowModalDelete(false);
         setUserId(0);
     }
-
 
     return (
         <>
@@ -114,6 +125,7 @@ export default function Admin({ history }) {
             <Button variant="danger" onClick={() => handleDeleteUser()}>Confirmar</Button>
             </Modal.Footer>
         </Modal>
+        <ToastContainer />
         </>
     );
 }
