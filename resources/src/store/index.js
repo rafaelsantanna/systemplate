@@ -7,7 +7,10 @@ export default function Store(props) {
   const [store, setStore] = useState({});
 
   useEffect(() => {
-    isAuthenticated() ? setStore({...store, authenticated: true}) : setStore({...store, authenticated: false})
+    if (isAuthenticated()) { 
+      let authenticatedUser = JSON.parse(localStorage.getItem('authenticated_user'));
+      setStore({...store, authenticated: true, authenticatedUser: authenticatedUser});
+    }
   }, []);
 
   return (

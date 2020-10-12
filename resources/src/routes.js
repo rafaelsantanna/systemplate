@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect, useContext, useState } from 'react';
 import { isAuthenticated } from './auth';
+import { StoreContext } from './store';
 
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 
@@ -24,9 +25,18 @@ const PrivateRoute = ({ component: Component, ...rest}) => (
 )
 
 export default function Routes() {
+    const [store, setStore] = useContext(StoreContext);
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+    useEffect(() => {
+        setIsAuthenticated(store.authenticated);
+    }, [store.authenticated]);
+
     return (
         <BrowserRouter>
-            <Header />
+            {isAuthenticated  && (
+                <Header />
+            )}
             <Switch>
                 <Route exact path="/" component={Login} />
                 <Route path="/signup" component={Signup} />

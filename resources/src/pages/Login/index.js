@@ -28,13 +28,13 @@ export default function Login({ history }) {
             }
         }).then((response) => {
             let token = response.data.access_token;
-            let user = JSON.stringify(response.data.user);
+            let authenticatedUser = response.data.user;
             
             localStorage.setItem('access_token', token);
-            localStorage.setItem('user', user);
+            localStorage.setItem('authenticated_user', JSON.stringify(authenticatedUser));
             localStorage.setItem('authenticated', true);
 
-            setStore({...store, authenticated: true});
+            setStore({...store, authenticated: true, authenticatedUser: authenticatedUser});
 
             history.push('/templatelist');
         }).catch((res) => {

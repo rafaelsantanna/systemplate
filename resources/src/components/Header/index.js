@@ -5,33 +5,26 @@ import { StoreContext } from '../../store';
 
 import './styles.scss';
 
-export default function Header({history}) {
+export default function Header({}) {
   const [store, setStore] = useContext(StoreContext);
   const [name, setName] = useState('');
-  const [logged, setLogged] = useState(false);
 
   useEffect(() => {
-    let user = JSON.parse(localStorage.getItem('user'));
-    if(user) {
-      setName(user.name);
-    }
+    setName(store.authenticatedUser.name);
   }, []);
-
-  useEffect(() => {
-    setLogged(store.logged);
-  }, [store.logged]);
 
   function logout(e) {
     e.preventDefault();
     localStorage.removeItem('user');
     localStorage.removeItem('access_token');
-    setStore({...store, logged: false});
+    localStorage.removeItem('authenticated');
+    localStorage.removeItem('authenticated_user');
+    setStore({...store, authenticated: false});
     window.location.reload(); // Tentar redirecionar com o componente de rotas
   }
 
   return (
     <>
-    {logged && (
       <header className="header">
         <div className="welcome">
           <div>Bem vindo(a), <span>{name}</span></div>
@@ -43,7 +36,6 @@ export default function Header({history}) {
           <NavLink activeClassName="active" to="/admin">Admin</NavLink>
         </nav>
       </header>
-    )}
     </>
   );
 }

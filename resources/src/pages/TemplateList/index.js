@@ -25,9 +25,9 @@ export default function Templates({ history }) {
   const [showModalDelete, setShowModalDelete] = useState(false);
   
   useEffect(() => {
-    let authUser = localStorage.getItem('user');
+    let authenticatedUser = localStorage.getItem('authenticated_user');
 
-    setUser(JSON.parse(authUser));
+    setUser(JSON.parse(authenticatedUser));
     getTemplates();
   }, []);
 
