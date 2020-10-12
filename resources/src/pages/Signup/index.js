@@ -29,7 +29,7 @@ export default function Signup({ history }) {
             formData.append('_method', 'PUT');
             api.post(`/users/${formData.id}`, formData, {
                 headers: {
-                    'Authorization' : 'Bearer ' + localStorage.getItem('access_token')
+                    'Authorization' : 'Bearer ' + localStorage.getItem('jwt')
                 }
             }).then((response) => {
                 alert('Usuário atualizado com sucesso!');

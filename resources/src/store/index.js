@@ -9,7 +9,8 @@ export default function Store(props) {
   useEffect(() => {
     if (isAuthenticated()) { 
       let authenticatedUser = JSON.parse(localStorage.getItem('authenticated_user'));
-      setStore({...store, authenticated: true, authenticatedUser: authenticatedUser});
+      let jwt = localStorage.getItem('jwt');
+      setStore({...store, authenticated: true, authenticatedUser: authenticatedUser, jwt: jwt});
     }
   }, []);
 

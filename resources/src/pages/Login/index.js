@@ -27,14 +27,14 @@ export default function Login({ history }) {
                 "X-Requested-With": "XMLHttpRequest"
             }
         }).then((response) => {
-            let token = response.data.access_token;
+            let jwt = response.data.access_token;
             let authenticatedUser = response.data.user;
             
-            localStorage.setItem('access_token', token);
+            localStorage.setItem('jwt', jwt);
             localStorage.setItem('authenticated_user', JSON.stringify(authenticatedUser));
             localStorage.setItem('authenticated', true);
 
-            setStore({...store, authenticated: true, authenticatedUser: authenticatedUser});
+            setStore({...store, authenticated: true, authenticatedUser: authenticatedUser, jwt});
 
             history.push('/templatelist');
         }).catch((res) => {

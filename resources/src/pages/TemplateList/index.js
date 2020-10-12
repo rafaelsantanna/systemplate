@@ -34,7 +34,7 @@ export default function Templates({ history }) {
   async function getTemplates() {
     const response = await api.get('/templates', {
       headers: {
-        'Authorization' : 'Bearer ' + localStorage.getItem('access_token')
+        'Authorization' : 'Bearer ' + localStorage.getItem('jwt')
       }
     });
     setTemplates(response.data);
@@ -44,7 +44,7 @@ export default function Templates({ history }) {
     e.preventDefault();
     api.post(`/templates/duplicate`, { id }, {
       headers: {
-        'Authorization' : 'Bearer ' + localStorage.getItem('access_token')
+        'Authorization' : 'Bearer ' + localStorage.getItem('jwt')
       }
     }).then((response) => {
       setTemplates([...templates, response.data.template])
@@ -54,7 +54,7 @@ export default function Templates({ history }) {
   function handleDeleteTemplate() {
     api.delete(`/templates/${templateId}`, {
       headers: {
-        'Authorization' : 'Bearer ' + localStorage.getItem('access_token')
+        'Authorization' : 'Bearer ' + localStorage.getItem('jwt')
       }
     }).then(() => {
       setTemplates(templates.filter((template) => {

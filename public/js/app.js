@@ -87517,7 +87517,7 @@ function Header(_ref) {
   function logout(e) {
     e.preventDefault();
     localStorage.removeItem('user');
-    localStorage.removeItem('access_token');
+    localStorage.removeItem('jwt');
     localStorage.removeItem('authenticated');
     localStorage.removeItem('authenticated_user');
     setStore(_objectSpread(_objectSpread({}, store), {}, {
@@ -87663,7 +87663,7 @@ function Admin(_ref) {
               _context.next = 2;
               return _services_api__WEBPACK_IMPORTED_MODULE_3__["default"].get('/users', {
                 headers: {
-                  'Authorization': 'Bearer ' + localStorage.getItem('access_token')
+                  'Authorization': 'Bearer ' + localStorage.getItem('jwt')
                 }
               });
 
@@ -87697,7 +87697,7 @@ function Admin(_ref) {
   function handleDeleteUser() {
     _services_api__WEBPACK_IMPORTED_MODULE_3__["default"]["delete"]("/users/".concat(userId), {
       headers: {
-        'Authorization': 'Bearer ' + localStorage.getItem('access_token')
+        'Authorization': 'Bearer ' + localStorage.getItem('jwt')
       }
     }).then(function () {
       setUsers(users.filter(function (user) {
@@ -87887,14 +87887,15 @@ function Login(_ref) {
         "X-Requested-With": "XMLHttpRequest"
       }
     }).then(function (response) {
-      var token = response.data.access_token;
+      var jwt = response.data.access_token;
       var authenticatedUser = response.data.user;
-      localStorage.setItem('access_token', token);
+      localStorage.setItem('jwt', jwt);
       localStorage.setItem('authenticated_user', JSON.stringify(authenticatedUser));
       localStorage.setItem('authenticated', true);
       setStore(_objectSpread(_objectSpread({}, store), {}, {
         authenticated: true,
-        authenticatedUser: authenticatedUser
+        authenticatedUser: authenticatedUser,
+        jwt: jwt
       }));
       history.push('/templatelist');
     })["catch"](function (res) {
@@ -88034,7 +88035,7 @@ function Signup(_ref) {
       formData.append('_method', 'PUT');
       _services_api__WEBPACK_IMPORTED_MODULE_1__["default"].post("/users/".concat(formData.id), formData, {
         headers: {
-          'Authorization': 'Bearer ' + localStorage.getItem('access_token')
+          'Authorization': 'Bearer ' + localStorage.getItem('jwt')
         }
       }).then(function (response) {
         alert('Usuário atualizado com sucesso!');
@@ -88465,7 +88466,7 @@ function Templates(_ref) {
     if (templateId == 0) {
       _services_api__WEBPACK_IMPORTED_MODULE_1__["default"].post('/templates', form, {
         headers: {
-          'Authorization': 'Bearer ' + localStorage.getItem('access_token')
+          'Authorization': 'Bearer ' + localStorage.getItem('jwt')
         }
       }).then(function () {
         alert('Template salvo com sucesso!');
@@ -88477,7 +88478,7 @@ function Templates(_ref) {
       form.append('_method', 'PUT');
       _services_api__WEBPACK_IMPORTED_MODULE_1__["default"].post("/templates/".concat(templateId), form, {
         headers: {
-          'Authorization': 'Bearer ' + localStorage.getItem('access_token')
+          'Authorization': 'Bearer ' + localStorage.getItem('jwt')
         }
       }).then(function (response) {
         alert('template atualizado com sucesso!');
@@ -88974,7 +88975,7 @@ function Templates(_ref) {
               _context.next = 2;
               return _services_api__WEBPACK_IMPORTED_MODULE_5__["default"].get('/templates', {
                 headers: {
-                  'Authorization': 'Bearer ' + localStorage.getItem('access_token')
+                  'Authorization': 'Bearer ' + localStorage.getItem('jwt')
                 }
               });
 
@@ -88998,7 +88999,7 @@ function Templates(_ref) {
       id: id
     }, {
       headers: {
-        'Authorization': 'Bearer ' + localStorage.getItem('access_token')
+        'Authorization': 'Bearer ' + localStorage.getItem('jwt')
       }
     }).then(function (response) {
       setTemplates([].concat(_toConsumableArray(templates), [response.data.template]));
@@ -89008,7 +89009,7 @@ function Templates(_ref) {
   function handleDeleteTemplate() {
     _services_api__WEBPACK_IMPORTED_MODULE_5__["default"]["delete"]("/templates/".concat(templateId), {
       headers: {
-        'Authorization': 'Bearer ' + localStorage.getItem('access_token')
+        'Authorization': 'Bearer ' + localStorage.getItem('jwt')
       }
     }).then(function () {
       setTemplates(templates.filter(function (template) {
@@ -89372,9 +89373,11 @@ function Store(props) {
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
     if (Object(_auth__WEBPACK_IMPORTED_MODULE_1__["isAuthenticated"])()) {
       var authenticatedUser = JSON.parse(localStorage.getItem('authenticated_user'));
+      var jwt = localStorage.getItem('jwt');
       setStore(_objectSpread(_objectSpread({}, store), {}, {
         authenticated: true,
-        authenticatedUser: authenticatedUser
+        authenticatedUser: authenticatedUser,
+        jwt: jwt
       }));
     }
   }, []);

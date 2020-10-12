@@ -20,7 +20,7 @@ export default function Admin({ history }) {
     async function getUsers() {
         const response = await api.get('/users', {
           headers: {
-            'Authorization' : 'Bearer ' + localStorage.getItem('access_token')
+            'Authorization' : 'Bearer ' + localStorage.getItem('jwt')
           }
         });
 
@@ -43,7 +43,7 @@ export default function Admin({ history }) {
     function handleDeleteUser() {
         api.delete(`/users/${userId}`, {
             headers: {
-              'Authorization' : 'Bearer ' + localStorage.getItem('access_token')
+              'Authorization' : 'Bearer ' + localStorage.getItem('jwt')
             }
         }).then(() => {
             setUsers(users.filter((user) => {

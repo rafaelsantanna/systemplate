@@ -16,7 +16,7 @@ export default function Header({}) {
   function logout(e) {
     e.preventDefault();
     localStorage.removeItem('user');
-    localStorage.removeItem('access_token');
+    localStorage.removeItem('jwt');
     localStorage.removeItem('authenticated');
     localStorage.removeItem('authenticated_user');
     setStore({...store, authenticated: false});

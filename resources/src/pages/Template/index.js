@@ -178,7 +178,7 @@ export default function Templates({ history }) {
         if(templateId == 0) {
             api.post('/templates', form, {
                 headers: {
-                  'Authorization' : 'Bearer ' + localStorage.getItem('access_token')
+                  'Authorization' : 'Bearer ' + localStorage.getItem('jwt')
                 }
               }).then(() => {
                 alert('Template salvo com sucesso!');
@@ -190,7 +190,7 @@ export default function Templates({ history }) {
             form.append('_method', 'PUT');
             api.post(`/templates/${templateId}`, form, {
                 headers: {
-                  'Authorization' : 'Bearer ' + localStorage.getItem('access_token')
+                  'Authorization' : 'Bearer ' + localStorage.getItem('jwt')
                 }
               }).then((response) => {
                 alert('template atualizado com sucesso!');
