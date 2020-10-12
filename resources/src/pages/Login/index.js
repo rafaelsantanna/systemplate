@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import api from '../../services/api';
+import { isAuthenticated } from '../../auth';
 
 import { StoreContext } from '../../store';
 
@@ -11,9 +12,8 @@ export default function Login({ history }) {
     const [password, setPassword] = useState('');
 
     useEffect(() => {
-        let tokenExists = localStorage.getItem('access_token');
-        if(tokenExists) {
-            setStore({...store, logged: true});
+        if(isAuthenticated()) {
+            setStore({...store, authenticated: true});
             history.push('/templatelist');
         }
     }, []);
@@ -32,8 +32,9 @@ export default function Login({ history }) {
             
             localStorage.setItem('access_token', token);
             localStorage.setItem('user', user);
+            localStorage.setItem('authenticated', true);
 
-            setStore({...store, logged: true});
+            setStore({...store, authenticated: true});
 
             history.push('/templatelist');
         }).catch((res) => {

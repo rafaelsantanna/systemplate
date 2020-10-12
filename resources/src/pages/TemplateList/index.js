@@ -26,14 +26,6 @@ export default function Templates({ history }) {
   
   useEffect(() => {
     let authUser = localStorage.getItem('user');
-    let token = localStorage.getItem('access_token');
-
-    if(!token) {
-      localStorage.removeItem('user');
-      localStorage.removeItem('access_token');
-      history.replace('/');
-      return;
-    }
 
     setUser(JSON.parse(authUser));
     getTemplates();

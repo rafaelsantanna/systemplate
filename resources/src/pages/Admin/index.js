@@ -14,15 +14,6 @@ export default function Admin({ history }) {
     const [showModalDelete, setShowModalDelete] = useState(false);
 
     useEffect(() => {
-        let token = localStorage.getItem('access_token');
-    
-        if(!token) {
-          localStorage.removeItem('user');
-          localStorage.removeItem('access_token');
-          history.replace('/');
-          return;
-        }
-
         getUsers();
     }, []);
 

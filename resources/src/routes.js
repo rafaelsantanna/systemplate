@@ -1,5 +1,7 @@
 import React from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { isAuthenticated } from './auth';
+
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 
 import Header from './components/Header';
 
@@ -9,15 +11,29 @@ import Admin from './pages/Admin';
 import Template from './pages/Template';
 import TemplateList from './pages/TemplateList';
 
+const PrivateRoute = ({ component: Component, ...rest}) => (
+    <Route
+        {...rest}
+        render={props =>
+            isAuthenticated() ? (
+                <Component {...props} />
+            ) : (
+                <Redirect to={{ pathname: "/", state: { from: props.location } }}/>
+            )}
+    />
+)
+
 export default function Routes() {
     return (
         <BrowserRouter>
             <Header />
-            <Route exact path="/" component={Login} />
-            <Route path="/signup" component={Signup} />
-            <Route path="/admin" component={Admin} />
-            <Route path="/template" component={Template} />
-            <Route path="/templatelist" component={TemplateList} />
+            <Switch>
+                <Route exact path="/" component={Login} />
+                <Route path="/signup" component={Signup} />
+                <PrivateRoute path="/admin" component={Admin} />
+                <PrivateRoute path="/template" component={Template} />
+                <PrivateRoute path="/templatelist" component={TemplateList} />
+            </Switch>
         </BrowserRouter>
     );
 }

@@ -53,15 +53,6 @@ export default function Templates({ history }) {
 
     useEffect(() => {
 
-        let token = localStorage.getItem('access_token');
-    
-        if(!token) {
-          localStorage.removeItem('user');
-          localStorage.removeItem('access_token');
-          history.replace('/');
-          return;
-        }
-
         // check if has a localStorage template for edit the template
         let arrTemplate = JSON.parse(localStorage.getItem('template'));
         localStorage.removeItem('template');
