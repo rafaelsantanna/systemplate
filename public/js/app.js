@@ -90748,6 +90748,7 @@ function Signup(_ref) {
       }
     }).then(function () {
       setForm({});
+      setLogoText('Sua Logo');
     });
   }
 

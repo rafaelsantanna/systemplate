@@ -46,6 +46,7 @@ export default function Signup({ history }) {
             }
         }).then(() => {
             setForm({});
+            setLogoText('Sua Logo');
         });
     }
 
