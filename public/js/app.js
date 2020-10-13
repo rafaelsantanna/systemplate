@@ -91995,6 +91995,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _pages_Admin__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./pages/Admin */ "./resources/src/pages/Admin/index.js");
 /* harmony import */ var _pages_Template__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./pages/Template */ "./resources/src/pages/Template/index.js");
 /* harmony import */ var _pages_TemplateList__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./pages/TemplateList */ "./resources/src/pages/TemplateList/index.js");
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -92006,8 +92008,6 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
-function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
 
@@ -92026,11 +92026,41 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
 
 var PrivateRoute = function PrivateRoute(_ref) {
   var Component = _ref.component,
-      rest = _objectWithoutProperties(_ref, ["component"]);
+      admin = _ref.admin,
+      rest = _objectWithoutProperties(_ref, ["component", "admin"]);
+
+  var _useContext = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_store__WEBPACK_IMPORTED_MODULE_2__["StoreContext"]),
+      _useContext2 = _slicedToArray(_useContext, 2),
+      store = _useContext2[0],
+      setStore = _useContext2[1];
+
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]),
+      _useState2 = _slicedToArray(_useState, 2),
+      roles = _useState2[0],
+      setRoles = _useState2[1];
+
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    if (store.authenticatedUser) setRoles([store.authenticatedUser.roles]);
+  }, []);
+
+  if (admin) {
+    if (!roles.includes('ADMIN')) return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Route"], {
+      render: function render(props) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Redirect"], {
+          to: {
+            pathname: "/templatelist",
+            state: {
+              from: props.location
+            }
+          }
+        });
+      }
+    });
+  }
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Route"], _extends({}, rest, {
     render: function render(props) {
-      return Object(_auth__WEBPACK_IMPORTED_MODULE_1__["isAuthenticated"])() ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Component, props) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Redirect"], {
+      return Object(_auth__WEBPACK_IMPORTED_MODULE_1__["isAuthenticated"])(_pages_Admin__WEBPACK_IMPORTED_MODULE_7__["default"]) ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Component, props) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Redirect"], {
         to: {
           pathname: "/",
           state: {
@@ -92043,15 +92073,15 @@ var PrivateRoute = function PrivateRoute(_ref) {
 };
 
 function Routes() {
-  var _useContext = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_store__WEBPACK_IMPORTED_MODULE_2__["StoreContext"]),
-      _useContext2 = _slicedToArray(_useContext, 2),
-      store = _useContext2[0],
-      setStore = _useContext2[1];
+  var _useContext3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_store__WEBPACK_IMPORTED_MODULE_2__["StoreContext"]),
+      _useContext4 = _slicedToArray(_useContext3, 2),
+      store = _useContext4[0],
+      setStore = _useContext4[1];
 
-  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
-      _useState2 = _slicedToArray(_useState, 2),
-      isAuthenticated = _useState2[0],
-      setIsAuthenticated = _useState2[1];
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
+      _useState4 = _slicedToArray(_useState3, 2),
+      isAuthenticated = _useState4[0],
+      setIsAuthenticated = _useState4[1];
 
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
     setIsAuthenticated(store.authenticated);
@@ -92065,10 +92095,12 @@ function Routes() {
     component: _pages_Signup__WEBPACK_IMPORTED_MODULE_6__["default"]
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(PrivateRoute, {
     path: "/admin",
-    component: _pages_Admin__WEBPACK_IMPORTED_MODULE_7__["default"]
+    component: _pages_Admin__WEBPACK_IMPORTED_MODULE_7__["default"],
+    admin: true
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(PrivateRoute, {
     path: "/template",
-    component: _pages_Template__WEBPACK_IMPORTED_MODULE_8__["default"]
+    component: _pages_Template__WEBPACK_IMPORTED_MODULE_8__["default"],
+    admin: true
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(PrivateRoute, {
     path: "/templatelist",
     component: _pages_TemplateList__WEBPACK_IMPORTED_MODULE_9__["default"]

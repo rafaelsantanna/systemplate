@@ -12,17 +12,36 @@ import Admin from './pages/Admin';
 import Template from './pages/Template';
 import TemplateList from './pages/TemplateList';
 
-const PrivateRoute = ({ component: Component, ...rest}) => (
-    <Route
-        {...rest}
-        render={props =>
-            isAuthenticated() ? (
-                <Component {...props} />
-            ) : (
-                <Redirect to={{ pathname: "/", state: { from: props.location } }}/>
+const PrivateRoute = ({ component: Component,admin, ...rest}) => {
+    const [store, setStore] = useContext(StoreContext);
+    const [roles, setRoles] = useState([]);
+
+    useEffect(() => {
+        if(store.authenticatedUser) setRoles([store.authenticatedUser.roles]);
+    }, []);
+
+    if(admin) {
+        if(!roles.includes('ADMIN'))
+        return (
+            <Route render={props => (
+                <Redirect to={{ pathname: "/templatelist", state: { from: props.location } }}/>
             )}
-    />
-)
+            />
+        )
+    }
+
+    return (
+        <Route
+            {...rest}
+            render={props =>
+            isAuthenticated(Admin) ? (
+                <Component {...props} />
+                ) : (
+                    <Redirect to={{ pathname: "/", state: { from: props.location } }}/>
+                )}
+        />
+    )
+}
 
 export default function Routes() {
     const [store, setStore] = useContext(StoreContext);
@@ -40,8 +59,8 @@ export default function Routes() {
             <Switch>
                 <Route exact path="/" component={Login} />
                 <Route path="/signup" component={Signup} />
-                <PrivateRoute path="/admin" component={Admin} />
-                <PrivateRoute path="/template" component={Template} />
+                <PrivateRoute path="/admin" component={Admin} admin />
+                <PrivateRoute path="/template" component={Template} admin />
                 <PrivateRoute path="/templatelist" component={TemplateList} />
             </Switch>
         </BrowserRouter>
