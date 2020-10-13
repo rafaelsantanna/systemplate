@@ -90614,7 +90614,7 @@ function Login(_ref) {
     onSubmit: handleSubmit
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     type: "text",
-    placeholder: "Usu\xE1rio",
+    placeholder: "Email",
     onChange: function onChange(e) {
       return setUser(e.target.value);
     }

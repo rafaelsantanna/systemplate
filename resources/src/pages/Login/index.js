@@ -58,7 +58,7 @@ export default function Login({ history }) {
             <div className="login">
                 <h3>Login</h3>
                 <form onSubmit={handleSubmit}>
-                    <input type="text" placeholder="Usuário" onChange={(e) => setUser(e.target.value)}/>
+                    <input type="text" placeholder="Email" onChange={(e) => setUser(e.target.value)}/>
                     <input type="password" placeholder="Senha" onChange={(e) => setPassword(e.target.value)}/>
                     <a href="" onClick={() => history.push('signup')}>Criar conta</a>
                     <button>Login</button>
