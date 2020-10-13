@@ -90381,7 +90381,7 @@ function Admin(_ref) {
       setShowModalDelete(false);
       react_toastify__WEBPACK_IMPORTED_MODULE_4__["toast"].dark('Usuário deletado com sucesso', {
         position: "top-right",
-        autoClose: 5000,
+        autoClose: 3000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
@@ -90590,7 +90590,7 @@ function Login(_ref) {
     })["catch"](function (res) {
       react_toastify__WEBPACK_IMPORTED_MODULE_3__["toast"].dark('Usuário ou senha incorretos', {
         position: "top-right",
-        autoClose: 5000,
+        autoClose: 3000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,

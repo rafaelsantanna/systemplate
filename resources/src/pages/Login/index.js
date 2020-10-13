@@ -42,7 +42,7 @@ export default function Login({ history }) {
         }).catch((res) => {
             toast.dark('Usuário ou senha incorretos', {
                 position: "top-right",
-                autoClose: 5000,
+                autoClose: 3000,
                 hideProgressBar: false,
                 closeOnClick: true,
                 pauseOnHover: true,
