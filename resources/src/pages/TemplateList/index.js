@@ -107,7 +107,7 @@ export default function Templates({ history }) {
       transform: field.transform ? `rotate(${field.rotate}deg)` : undefined,
       fontFamily: field.font_family ? field.font_family : undefined,
       color: field.color ? '#'+field.color : undefined,
-      textAlign: field.textAlign ? field.text_align : undefined,
+      textAlign: field.text_align ? field.text_align : undefined,
     }
     
     Object.keys(data).map((item) => {
@@ -202,7 +202,7 @@ export default function Templates({ history }) {
             <img src={templateImage} style={cssTemplateImage} />
             <div className="generate-fields" style={cssCompany}>{user.company}</div>
             <div className="generate-fields" style={cssPhone}>{user.phone}</div>
-            <img className="generate-fields" style={cssLogo} src={'uploads/' + user.logo} />
+            <img className="generate-fields" style={cssLogo} src={'uploads/logo/' + user.logo} />
           </div>
         </div>
       )}

@@ -91805,7 +91805,7 @@ function Templates(_ref) {
       transform: field.transform ? "rotate(".concat(field.rotate, "deg)") : undefined,
       fontFamily: field.font_family ? field.font_family : undefined,
       color: field.color ? '#' + field.color : undefined,
-      textAlign: field.textAlign ? field.text_align : undefined
+      textAlign: field.text_align ? field.text_align : undefined
     };
     Object.keys(data).map(function (item) {
       if (data[item] == undefined) delete data[item];
@@ -91926,7 +91926,7 @@ function Templates(_ref) {
   }, user.phone), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
     className: "generate-fields",
     style: cssLogo,
-    src: 'uploads/' + user.logo
+    src: 'uploads/logo/' + user.logo
   }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Modal"], {
     show: showModalDelete,
     onHide: handleCloseModalDelete,
