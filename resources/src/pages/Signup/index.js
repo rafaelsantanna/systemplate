@@ -37,14 +37,16 @@ export default function Signup({ history }) {
             }).then((response) => {
                 toast.dark('Usuário atualizado com sucesso!', {
                     position: "top-right",
-                    autoClose: 5000,
+                    autoClose: 3000,
                     hideProgressBar: false,
                     closeOnClick: true,
                     pauseOnHover: true,
                     draggable: true,
                     progress: undefined,
                 });
-                history.push('/admin');
+                setTimeout(() => {
+                    history.push('/admin');     
+                }, 3000);
             });
             
             return;

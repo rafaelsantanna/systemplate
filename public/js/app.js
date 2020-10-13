@@ -90742,14 +90742,16 @@ function Signup(_ref) {
       }).then(function (response) {
         react_toastify__WEBPACK_IMPORTED_MODULE_2__["toast"].dark('Usuário atualizado com sucesso!', {
           position: "top-right",
-          autoClose: 5000,
+          autoClose: 3000,
           hideProgressBar: false,
           closeOnClick: true,
           pauseOnHover: true,
           draggable: true,
           progress: undefined
         });
-        history.push('/admin');
+        setTimeout(function () {
+          history.push('/admin');
+        }, 3000);
       });
       return;
     }
