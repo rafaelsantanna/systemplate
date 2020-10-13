@@ -91584,14 +91584,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var file_saver__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! file-saver */ "./node_modules/file-saver/dist/FileSaver.min.js");
 /* harmony import */ var file_saver__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(file_saver__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var _services_api__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../services/api */ "./resources/src/services/api.js");
-/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./style.scss */ "./resources/src/pages/TemplateList/style.scss");
-/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_style_scss__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var _assets_icons_copy_solid_svg__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../assets/icons/copy-solid.svg */ "./resources/src/assets/icons/copy-solid.svg");
-/* harmony import */ var _assets_icons_copy_solid_svg__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_assets_icons_copy_solid_svg__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var _assets_icons_edit_solid_svg__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../assets/icons/edit-solid.svg */ "./resources/src/assets/icons/edit-solid.svg");
-/* harmony import */ var _assets_icons_edit_solid_svg__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_assets_icons_edit_solid_svg__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var _assets_icons_trash_solid_svg__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../assets/icons/trash-solid.svg */ "./resources/src/assets/icons/trash-solid.svg");
-/* harmony import */ var _assets_icons_trash_solid_svg__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_assets_icons_trash_solid_svg__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var react_toastify__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-toastify */ "./node_modules/react-toastify/dist/react-toastify.esm.js");
+/* harmony import */ var react_toastify_dist_ReactToastify_css__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-toastify/dist/ReactToastify.css */ "./node_modules/react-toastify/dist/ReactToastify.css");
+/* harmony import */ var react_toastify_dist_ReactToastify_css__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(react_toastify_dist_ReactToastify_css__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./style.scss */ "./resources/src/pages/TemplateList/style.scss");
+/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_style_scss__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var _assets_icons_copy_solid_svg__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../assets/icons/copy-solid.svg */ "./resources/src/assets/icons/copy-solid.svg");
+/* harmony import */ var _assets_icons_copy_solid_svg__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_assets_icons_copy_solid_svg__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var _assets_icons_edit_solid_svg__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../assets/icons/edit-solid.svg */ "./resources/src/assets/icons/edit-solid.svg");
+/* harmony import */ var _assets_icons_edit_solid_svg__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(_assets_icons_edit_solid_svg__WEBPACK_IMPORTED_MODULE_10__);
+/* harmony import */ var _assets_icons_trash_solid_svg__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../assets/icons/trash-solid.svg */ "./resources/src/assets/icons/trash-solid.svg");
+/* harmony import */ var _assets_icons_trash_solid_svg__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(_assets_icons_trash_solid_svg__WEBPACK_IMPORTED_MODULE_11__);
 
 
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
@@ -91617,6 +91620,8 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
 
 
 
@@ -91728,6 +91733,15 @@ function Templates(_ref) {
       }
     }).then(function (response) {
       setTemplates([].concat(_toConsumableArray(templates), [response.data.template]));
+      react_toastify__WEBPACK_IMPORTED_MODULE_6__["toast"].dark('Template duplicado com sucesso!', {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined
+      });
     });
   }
 
@@ -91741,6 +91755,15 @@ function Templates(_ref) {
         return template.id !== templateId;
       }));
       setShowModalDelete(false);
+      react_toastify__WEBPACK_IMPORTED_MODULE_6__["toast"].dark('Template deletado com sucesso!', {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined
+      });
     });
   }
 
@@ -91847,7 +91870,7 @@ function Templates(_ref) {
         return handleDuplicateTemplate(e, template.id);
       }
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
-      src: _assets_icons_copy_solid_svg__WEBPACK_IMPORTED_MODULE_7___default.a,
+      src: _assets_icons_copy_solid_svg__WEBPACK_IMPORTED_MODULE_9___default.a,
       title: "Copiar Template"
     })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
       href: "",
@@ -91855,7 +91878,7 @@ function Templates(_ref) {
         return handleEditTemplate(e, template.id);
       }
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
-      src: _assets_icons_edit_solid_svg__WEBPACK_IMPORTED_MODULE_8___default.a,
+      src: _assets_icons_edit_solid_svg__WEBPACK_IMPORTED_MODULE_10___default.a,
       title: "Editar Template"
     })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
       href: "",
@@ -91863,7 +91886,7 @@ function Templates(_ref) {
         return handleShowModalDelete(e, template.id);
       }
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
-      src: _assets_icons_trash_solid_svg__WEBPACK_IMPORTED_MODULE_9___default.a,
+      src: _assets_icons_trash_solid_svg__WEBPACK_IMPORTED_MODULE_11___default.a,
       title: "Deletar Template"
     }))))));
   }))), showGenerateImage && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
@@ -91897,7 +91920,7 @@ function Templates(_ref) {
     onClick: function onClick() {
       return handleDeleteTemplate();
     }
-  }, "Confirmar"))));
+  }, "Confirmar"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_toastify__WEBPACK_IMPORTED_MODULE_6__["ToastContainer"], null));
 }
 
 /***/ }),

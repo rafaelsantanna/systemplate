@@ -4,6 +4,9 @@ import domToImage from 'dom-to-image';
 import 'file-saver';
 import api from '../../services/api';
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import './style.scss';
 
 import copyIcon from '../../assets/icons/copy-solid.svg';
@@ -47,7 +50,16 @@ export default function Templates({ history }) {
         'Authorization' : 'Bearer ' + localStorage.getItem('jwt')
       }
     }).then((response) => {
-      setTemplates([...templates, response.data.template])
+      setTemplates([...templates, response.data.template]);
+      toast.dark('Template duplicado com sucesso!', {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     });
   }
 
@@ -61,6 +73,16 @@ export default function Templates({ history }) {
         return template.id !== templateId;
       }));
       setShowModalDelete(false);
+
+      toast.dark('Template deletado com sucesso!', {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     });
   }
 
@@ -195,6 +217,8 @@ export default function Templates({ history }) {
           <Button variant="danger" onClick={() => handleDeleteTemplate()}>Confirmar</Button>
         </Modal.Footer>
       </Modal>
+
+      <ToastContainer />
     </>
   )
 }
