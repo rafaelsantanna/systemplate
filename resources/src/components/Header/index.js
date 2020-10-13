@@ -7,10 +7,12 @@ import './styles.scss';
 
 export default function Header({}) {
   const [store, setStore] = useContext(StoreContext);
+  const [roles, setRoles] = useState([]);
   const [name, setName] = useState('');
 
   useEffect(() => {
     setName(store.authenticatedUser.name);
+    setRoles([store.authenticatedUser.roles]);
   }, []);
 
   function logout(e) {
@@ -30,11 +32,13 @@ export default function Header({}) {
           <div>Bem vindo(a), <span>{name}</span></div>
           <small><a href="" onClick={(e) => logout(e)}>Sair</a></small>
         </div>
-        <nav className="navigation">
-          <NavLink activeClassName="active" to="/template">Template</NavLink>
-          <NavLink activeClassName="active" to="/templatelist">Lista de Templates</NavLink>
-          <NavLink activeClassName="active" to="/admin">Admin</NavLink>
-        </nav>
+        {roles.includes('ADMIN') && (
+          <nav className="navigation">
+            <NavLink activeClassName="active" to="/template">Template</NavLink>
+            <NavLink activeClassName="active" to="/templatelist">Lista de Templates</NavLink>
+            <NavLink activeClassName="active" to="/admin">Admin</NavLink>
+          </nav>
+        )}
       </header>
     </>
   );
