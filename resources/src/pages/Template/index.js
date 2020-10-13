@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 
 import api from '../../services/api';
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import './style.scss';
 
 import alignLeft from '../../assets/icons/align-left-solid.svg';
@@ -181,7 +184,15 @@ export default function Templates({ history }) {
                   'Authorization' : 'Bearer ' + localStorage.getItem('jwt')
                 }
               }).then(() => {
-                alert('Template salvo com sucesso!');
+                toast.dark('Template salvo com sucesso!', {
+                    position: "top-right",
+                    autoClose: 3000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                  });
                 clearStates();
             });
         }
@@ -398,6 +409,7 @@ export default function Templates({ history }) {
                     )}
                 </div>
             </div>
+            <ToastContainer />
         </>
     );
 }
