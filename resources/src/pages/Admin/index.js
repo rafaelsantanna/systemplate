@@ -13,12 +13,23 @@ import trashIcon from '../../assets/icons/trash-solid.svg';
 export default function Admin({ history }) {
     const [users, setUsers] = useState([]);
     const [userId, setUserId] = useState(0);
+    const [templates, setTemplates] = useState([]);
     
     const [showModalDelete, setShowModalDelete] = useState(false);
 
     useEffect(() => {
         getUsers();
+        getTemplates();
     }, []);
+
+    async function getTemplates() {
+        const response = await api.get('/templates', {
+          headers: {
+            'Authorization' : 'Bearer ' + localStorage.getItem('jwt')
+          }
+        });
+        setTemplates(response.data);
+      }
 
     async function getUsers() {
         const response = await api.get('/users', {
@@ -80,6 +91,14 @@ export default function Admin({ history }) {
         <>
         <div className="container py-5">
             <div className="row">
+                <div className="col-12 mb-3">
+                    <select>
+                        <option>Selecione um template</option>
+                    {templates.length > 0 && templates.map((template) => (
+                        <option key={template.id} value={template.id}>{template.name}</option>
+                    ))}
+                    </select>
+                </div>
                 <div className="col-12">
                     <table className="table table-striped">
                         <thead className="thead-dark">

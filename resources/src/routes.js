@@ -24,7 +24,7 @@ const PrivateRoute = ({ component: Component,admin, ...rest}) => {
         if(!roles.includes('ADMIN'))
         return (
             <Route render={props => (
-                <Redirect to={{ pathname: "/templatelist", state: { from: props.location } }}/>
+                <Redirect to={{ pathname: "/", state: { from: props.location } }}/>
             )}
             />
         )

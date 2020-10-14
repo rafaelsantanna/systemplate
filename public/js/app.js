@@ -90321,28 +90321,34 @@ function Admin(_ref) {
       userId = _useState4[0],
       setUserId = _useState4[1];
 
-  var _useState5 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(false),
+  var _useState5 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])([]),
       _useState6 = _slicedToArray(_useState5, 2),
-      showModalDelete = _useState6[0],
-      setShowModalDelete = _useState6[1];
+      templates = _useState6[0],
+      setTemplates = _useState6[1];
+
+  var _useState7 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(false),
+      _useState8 = _slicedToArray(_useState7, 2),
+      showModalDelete = _useState8[0],
+      setShowModalDelete = _useState8[1];
 
   Object(react__WEBPACK_IMPORTED_MODULE_1__["useEffect"])(function () {
     getUsers();
+    getTemplates();
   }, []);
 
-  function getUsers() {
-    return _getUsers.apply(this, arguments);
+  function getTemplates() {
+    return _getTemplates.apply(this, arguments);
   }
 
-  function _getUsers() {
-    _getUsers = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+  function _getTemplates() {
+    _getTemplates = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
       var response;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
               _context.next = 2;
-              return _services_api__WEBPACK_IMPORTED_MODULE_3__["default"].get('/users', {
+              return _services_api__WEBPACK_IMPORTED_MODULE_3__["default"].get('/templates', {
                 headers: {
                   'Authorization': 'Bearer ' + localStorage.getItem('jwt')
                 }
@@ -90350,7 +90356,7 @@ function Admin(_ref) {
 
             case 2:
               response = _context.sent;
-              setUsers(response.data);
+              setTemplates(response.data);
 
             case 4:
             case "end":
@@ -90358,6 +90364,38 @@ function Admin(_ref) {
           }
         }
       }, _callee);
+    }));
+    return _getTemplates.apply(this, arguments);
+  }
+
+  function getUsers() {
+    return _getUsers.apply(this, arguments);
+  }
+
+  function _getUsers() {
+    _getUsers = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+      var response;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              _context2.next = 2;
+              return _services_api__WEBPACK_IMPORTED_MODULE_3__["default"].get('/users', {
+                headers: {
+                  'Authorization': 'Bearer ' + localStorage.getItem('jwt')
+                }
+              });
+
+            case 2:
+              response = _context2.sent;
+              setUsers(response.data);
+
+            case 4:
+            case "end":
+              return _context2.stop();
+          }
+        }
+      }, _callee2);
     }));
     return _getUsers.apply(this, arguments);
   }
@@ -90413,6 +90451,13 @@ function Admin(_ref) {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
     className: "row"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+    className: "col-12 mb-3"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("select", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", null, "Selecione um template"), templates.length > 0 && templates.map(function (template) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", {
+      key: template.id,
+      value: template.id
+    }, template.name);
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
     className: "col-12"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("table", {
     className: "table table-striped"
@@ -92048,7 +92093,7 @@ var PrivateRoute = function PrivateRoute(_ref) {
       render: function render(props) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Redirect"], {
           to: {
-            pathname: "/templatelist",
+            pathname: "/",
             state: {
               from: props.location
             }
