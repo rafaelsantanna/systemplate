@@ -7,6 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import './styles.scss';
 
+import whatsappIcon from '../../assets/icons/whatsapp.svg';
 import editIcon from '../../assets/icons/edit-solid.svg';
 import trashIcon from '../../assets/icons/trash-solid.svg';
 
@@ -14,6 +15,7 @@ export default function Admin({ history }) {
     const [users, setUsers] = useState([]);
     const [userId, setUserId] = useState(0);
     const [templates, setTemplates] = useState([]);
+    const [selectedTemplate, setSelectedTemplate] = useState(0);
     
     const [showModalDelete, setShowModalDelete] = useState(false);
 
@@ -39,6 +41,22 @@ export default function Admin({ history }) {
         });
 
         setUsers(response.data);
+    }
+
+    function handleSentToWhats(e, id) {
+        e.preventDefault();
+        if(selectedTemplate == 0)  {
+            toast.dark('Selecione um template', {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
+            return;
+        }
     }
 
     function handleEditUser(e, id) {
@@ -92,11 +110,11 @@ export default function Admin({ history }) {
         <div className="container py-5">
             <div className="row">
                 <div className="col-12 mb-3">
-                    <select>
-                        <option>Selecione um template</option>
-                    {templates.length > 0 && templates.map((template) => (
+                    <select onChange={(e) => setSelectedTemplate(e.target.value)}>
+                        <option value={0}>Selecione um template</option>
+                        {templates.length > 0 && templates.map((template) => (
                         <option key={template.id} value={template.id}>{template.name}</option>
-                    ))}
+                        ))}
                     </select>
                 </div>
                 <div className="col-12">
@@ -120,11 +138,14 @@ export default function Admin({ history }) {
                                 <td>{user.logo}</td>
                                 <td>{user.phone}</td>
                                 <td className="table-actions">
+                                    <a href="" onClick={(e) => handleSentToWhats(e, user.id)}>
+                                        <img src={whatsappIcon} title="Whatsapp Icon"></img>
+                                    </a>
                                     <a href="" onClick={(e) => handleEditUser(e, user.id)}>
-                                        <img src={editIcon} title="Editar Usuário"></img>
+                                        <img src={editIcon} title="Edit Icon"></img>
                                     </a>
                                     <a href="" onClick={(e) => handleShowModalDelete(e, user.id)}>
-                                        <img src={trashIcon} title="Deletar Usuário"></img>
+                                        <img src={trashIcon} title="Delete Icon"></img>
                                     </a>
                                 </td>
                             </tr>

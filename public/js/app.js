@@ -90110,6 +90110,17 @@ module.exports = "/images/trash-solid.svg?159646b181265ea147445056b7215921";
 
 /***/ }),
 
+/***/ "./resources/src/assets/icons/whatsapp.svg":
+/*!*************************************************!*\
+  !*** ./resources/src/assets/icons/whatsapp.svg ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/whatsapp.svg?a881270183c6e504d3d92cae4e9a097f";
+
+/***/ }),
+
 /***/ "./resources/src/auth.js":
 /*!*******************************!*\
   !*** ./resources/src/auth.js ***!
@@ -90278,10 +90289,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_toastify_dist_ReactToastify_css__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react_toastify_dist_ReactToastify_css__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var _styles_scss__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./styles.scss */ "./resources/src/pages/Admin/styles.scss");
 /* harmony import */ var _styles_scss__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_styles_scss__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var _assets_icons_edit_solid_svg__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../assets/icons/edit-solid.svg */ "./resources/src/assets/icons/edit-solid.svg");
-/* harmony import */ var _assets_icons_edit_solid_svg__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_assets_icons_edit_solid_svg__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var _assets_icons_trash_solid_svg__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../assets/icons/trash-solid.svg */ "./resources/src/assets/icons/trash-solid.svg");
-/* harmony import */ var _assets_icons_trash_solid_svg__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_assets_icons_trash_solid_svg__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var _assets_icons_whatsapp_svg__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../assets/icons/whatsapp.svg */ "./resources/src/assets/icons/whatsapp.svg");
+/* harmony import */ var _assets_icons_whatsapp_svg__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_assets_icons_whatsapp_svg__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _assets_icons_edit_solid_svg__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../assets/icons/edit-solid.svg */ "./resources/src/assets/icons/edit-solid.svg");
+/* harmony import */ var _assets_icons_edit_solid_svg__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_assets_icons_edit_solid_svg__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var _assets_icons_trash_solid_svg__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../assets/icons/trash-solid.svg */ "./resources/src/assets/icons/trash-solid.svg");
+/* harmony import */ var _assets_icons_trash_solid_svg__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_assets_icons_trash_solid_svg__WEBPACK_IMPORTED_MODULE_9__);
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -90299,6 +90312,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 
 
 
@@ -90326,10 +90340,15 @@ function Admin(_ref) {
       templates = _useState6[0],
       setTemplates = _useState6[1];
 
-  var _useState7 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(false),
+  var _useState7 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(0),
       _useState8 = _slicedToArray(_useState7, 2),
-      showModalDelete = _useState8[0],
-      setShowModalDelete = _useState8[1];
+      selectedTemplate = _useState8[0],
+      setSelectedTemplate = _useState8[1];
+
+  var _useState9 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(false),
+      _useState10 = _slicedToArray(_useState9, 2),
+      showModalDelete = _useState10[0],
+      setShowModalDelete = _useState10[1];
 
   Object(react__WEBPACK_IMPORTED_MODULE_1__["useEffect"])(function () {
     getUsers();
@@ -90400,6 +90419,23 @@ function Admin(_ref) {
     return _getUsers.apply(this, arguments);
   }
 
+  function handleSentToWhats(e, id) {
+    e.preventDefault();
+
+    if (selectedTemplate == 0) {
+      react_toastify__WEBPACK_IMPORTED_MODULE_4__["toast"].dark('Selecione um template', {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined
+      });
+      return;
+    }
+  }
+
   function handleEditUser(e, id) {
     e.preventDefault();
     var user = users.filter(function (item) {
@@ -90452,7 +90488,13 @@ function Admin(_ref) {
     className: "row"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
     className: "col-12 mb-3"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("select", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", null, "Selecione um template"), templates.length > 0 && templates.map(function (template) {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("select", {
+    onChange: function onChange(e) {
+      return setSelectedTemplate(e.target.value);
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", {
+    value: 0
+  }, "Selecione um template"), templates.length > 0 && templates.map(function (template) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", {
       key: template.id,
       value: template.id
@@ -90483,19 +90525,27 @@ function Admin(_ref) {
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
       href: "",
       onClick: function onClick(e) {
+        return handleSentToWhats(e, user.id);
+      }
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
+      src: _assets_icons_whatsapp_svg__WEBPACK_IMPORTED_MODULE_7___default.a,
+      title: "Whatsapp Icon"
+    })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
+      href: "",
+      onClick: function onClick(e) {
         return handleEditUser(e, user.id);
       }
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
-      src: _assets_icons_edit_solid_svg__WEBPACK_IMPORTED_MODULE_7___default.a,
-      title: "Editar Usu\xE1rio"
+      src: _assets_icons_edit_solid_svg__WEBPACK_IMPORTED_MODULE_8___default.a,
+      title: "Edit Icon"
     })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
       href: "",
       onClick: function onClick(e) {
         return handleShowModalDelete(e, user.id);
       }
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
-      src: _assets_icons_trash_solid_svg__WEBPACK_IMPORTED_MODULE_8___default.a,
-      title: "Deletar Usu\xE1rio"
+      src: _assets_icons_trash_solid_svg__WEBPACK_IMPORTED_MODULE_9___default.a,
+      title: "Delete Icon"
     }))));
   })))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Modal"], {
     show: showModalDelete,
