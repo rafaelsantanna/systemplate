@@ -6,6 +6,7 @@ import api from '../../services/api';
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Alert } from '../../helpers/Alert';
 
 import './style.scss';
 
@@ -51,15 +52,7 @@ export default function Templates({ history }) {
       }
     }).then((response) => {
       setTemplates([...templates, response.data.template]);
-      toast.dark('Template duplicado com sucesso!', {
-        position: "top-right",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      });
+      Alert(toast, 'Template duplicado com sucesso!');
     });
   }
 
@@ -74,15 +67,7 @@ export default function Templates({ history }) {
       }));
       setShowModalDelete(false);
 
-      toast.dark('Template deletado com sucesso!', {
-        position: "top-right",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      });
+      Alert(toast, 'Template deletado com sucesso!');
     });
   }
 

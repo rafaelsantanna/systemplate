@@ -4,6 +4,7 @@ import api from '../../services/api';
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Alert } from '../../helpers/Alert';
 
 import './style.scss';
 
@@ -184,15 +185,7 @@ export default function Templates({ history }) {
                   'Authorization' : 'Bearer ' + localStorage.getItem('jwt')
                 }
               }).then(() => {
-                toast.dark('Template salvo com sucesso!', {
-                    position: "top-right",
-                    autoClose: 3000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                  });
+                Alert(toast, 'Template salvo com sucesso!');
                 clearStates();
             });
         }
@@ -204,7 +197,7 @@ export default function Templates({ history }) {
                   'Authorization' : 'Bearer ' + localStorage.getItem('jwt')
                 }
               }).then((response) => {
-                alert('template atualizado com sucesso!');
+                Alert(toast, 'Template atualizado com sucesso!');
                 clearStates();
                 history.push('/templatelist');
             });

@@ -3,6 +3,7 @@ import api from '../../services/api';
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Alert } from '../../helpers/Alert';
 
 import './styles.scss';
 
@@ -35,15 +36,7 @@ export default function Signup({ history }) {
                     'Authorization' : 'Bearer ' + localStorage.getItem('jwt')
                 }
             }).then((response) => {
-                toast.dark('Usuário atualizado com sucesso!', {
-                    position: "top-right",
-                    autoClose: 3000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                });
+                Alert(toast, 'Usuário atualizado com sucesso!');
                 setTimeout(() => {
                     history.push('/admin');     
                 }, 3000);
@@ -60,15 +53,7 @@ export default function Signup({ history }) {
         }).then(() => {
             setForm({});
             setLogoText('Sua Logo');
-            toast.dark('Usuário criado com sucesso!', {
-                position: "top-right",
-                autoClose: 3000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-            });
+            Alert(toast, 'Usuário criado com sucesso!');
             setTimeout(() => {
                 history.push('/');
             }, 3000);

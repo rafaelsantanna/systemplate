@@ -4,6 +4,7 @@ import api from '../../services/api';
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Alert } from '../../helpers/Alert';
 
 import './styles.scss';
 
@@ -46,15 +47,7 @@ export default function Admin({ history }) {
     function handleSentToWhats(e, id) {
         e.preventDefault();
         if(selectedTemplate == 0)  {
-            toast.dark('Selecione um template', {
-                position: "top-right",
-                autoClose: 3000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-            });
+            Alert(toast, 'Selecione um template');
             return;
         }
     }
@@ -82,15 +75,7 @@ export default function Admin({ history }) {
               return user.id !== userId;
             }));
             setShowModalDelete(false);
-            toast.dark('Usuário deletado com sucesso', {
-                position: "top-right",
-                autoClose: 3000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-            });
+            Alert(toast, 'Usuário deletado com sucesso');
         });
     }
 
