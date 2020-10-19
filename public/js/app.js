@@ -90445,7 +90445,7 @@ function Admin(_ref) {
     return _getUsers.apply(this, arguments);
   }
 
-  function handleSentToWhats(e, id) {
+  function handleSentToWhats(e, id, phone) {
     e.preventDefault();
 
     if (selectedTemplate == 0) {
@@ -90453,11 +90453,9 @@ function Admin(_ref) {
       return;
     }
 
-    console.log(selectedTemplate);
-    console.log(id);
-    var telephone = '5521975270148';
-    var message = 'Hello my friend, how are you? access this link: https://google.com.br';
-    window.open("https://api.whatsapp.com/send?phone=".concat(telephone, "&text=").concat(message));
+    var tel = "55".concat(phone.replace(/\s/g, '').replace('-', ''));
+    var message = "Ol\xE1! Segue o link do post da semana! \xC9 s\xF3 clicar e baixar. https://localhost:8000/template/".concat(selectedTemplate, "_").concat(id);
+    window.open("https://api.whatsapp.com/send?phone=".concat(tel, "&text=").concat(message));
   }
 
   function handleEditUser(e, id) {
@@ -90541,7 +90539,7 @@ function Admin(_ref) {
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
       href: "",
       onClick: function onClick(e) {
-        return handleSentToWhats(e, user.id);
+        return handleSentToWhats(e, user.id, user.phone);
       }
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
       src: _assets_icons_whatsapp_svg__WEBPACK_IMPORTED_MODULE_8___default.a,

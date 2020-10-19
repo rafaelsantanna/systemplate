@@ -44,17 +44,16 @@ export default function Admin({ history }) {
         setUsers(response.data);
     }
 
-    function handleSentToWhats(e, id) {
+    function handleSentToWhats(e, id, phone) {
         e.preventDefault();
         if(selectedTemplate == 0)  {
             Alert(toast, 'Selecione um template');
             return;
         }
-        console.log(selectedTemplate);
-        console.log(id);
-        let telephone = '5521975270148';
-        let message = 'Hello my friend, how are you? access this link: https://google.com.br'
-        window.open(`Olá! Segue o link do post da semana! É só clicar e baixar. https://api.whatsapp.com/send?phone=${telephone}&text=${message}`);
+
+        let tel = `55${phone.replace(/\s/g, '').replace('-', '')}`;
+        let message = `Olá! Segue o link do post da semana! É só clicar e baixar. https://localhost:8000/template/${selectedTemplate}_${id}`;
+        window.open(`https://api.whatsapp.com/send?phone=${tel}&text=${message}`);
     }
 
     function handleEditUser(e, id) {
@@ -128,7 +127,7 @@ export default function Admin({ history }) {
                                 <td>{user.logo}</td>
                                 <td>{user.phone}</td>
                                 <td className="table-actions">
-                                    <a href="" onClick={(e) => handleSentToWhats(e, user.id)}>
+                                    <a href="" onClick={(e) => handleSentToWhats(e, user.id, user.phone)}>
                                         <img src={whatsappIcon} title="Whatsapp Icon"></img>
                                     </a>
                                     <a href="" onClick={(e) => handleEditUser(e, user.id)}>
