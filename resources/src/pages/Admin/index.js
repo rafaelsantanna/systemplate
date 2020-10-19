@@ -54,7 +54,7 @@ export default function Admin({ history }) {
         console.log(id);
         let telephone = '5521975270148';
         let message = 'Hello my friend, how are you? access this link: https://google.com.br'
-        window.open(`https://api.whatsapp.com/send?phone=${telephone}&text=${message}`);
+        window.open(`Olá! Segue o link do post da semana! É só clicar e baixar. https://api.whatsapp.com/send?phone=${telephone}&text=${message}`);
     }
 
     function handleEditUser(e, id) {
