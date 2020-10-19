@@ -50,6 +50,11 @@ export default function Admin({ history }) {
             Alert(toast, 'Selecione um template');
             return;
         }
+        console.log(selectedTemplate);
+        console.log(id);
+        let telephone = '5521975270148';
+        let message = 'Hello my friend, how are you? access this link: https://google.com.br'
+        window.open(`https://api.whatsapp.com/send?phone=${telephone}&text=${message}`);
     }
 
     function handleEditUser(e, id) {

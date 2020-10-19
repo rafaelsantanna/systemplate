@@ -90452,6 +90452,12 @@ function Admin(_ref) {
       Object(_helpers_Alert__WEBPACK_IMPORTED_MODULE_6__["Alert"])(react_toastify__WEBPACK_IMPORTED_MODULE_4__["toast"], 'Selecione um template');
       return;
     }
+
+    console.log(selectedTemplate);
+    console.log(id);
+    var telephone = '5521975270148';
+    var message = 'Hello my friend, how are you? access this link: https://google.com.br';
+    window.open("https://api.whatsapp.com/send?phone=".concat(telephone, "&text=").concat(message));
   }
 
   function handleEditUser(e, id) {
