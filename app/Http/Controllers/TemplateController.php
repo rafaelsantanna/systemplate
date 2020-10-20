@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Template;
+use App\User;
 use Illuminate\Http\Request;
 
 class TemplateController extends Controller
@@ -128,5 +129,12 @@ class TemplateController extends Controller
         $copyTemplate->save();
 
         return response()->json(['message' => 'template successfully duplicated', 'template' => $copyTemplate]);
+    }
+
+    public function download(Request $request) {
+        $array = explode("_", $request->id);
+        $template = Template::find($array[0]);
+        $user = User::find($array[1]);
+        return response()->json(['template' => $template, 'user' => $user]);
     }
 }

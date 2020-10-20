@@ -40,3 +40,6 @@ Route::group([
     Route::put('/users/{id}', 'UserController@update');
     Route::delete('/users/{id}', 'UserController@destroy');
   });
+
+// Public Routes
+Route::get('/templates/download/{id}', 'TemplateController@download');
