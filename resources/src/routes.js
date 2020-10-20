@@ -11,6 +11,7 @@ import Signup from './pages/Signup';
 import Admin from './pages/Admin';
 import Template from './pages/Template';
 import TemplateList from './pages/TemplateList';
+import TemplateDownload from './pages/TemplateDownload';
 
 const PrivateRoute = ({ component: Component,admin, ...rest}) => {
     const [store, setStore] = useContext(StoreContext);
@@ -59,6 +60,7 @@ export default function Routes() {
             <Switch>
                 <Route exact path="/" component={Login} />
                 <Route path="/signup" component={Signup} />
+                <Route path="/template-download/:id" component={TemplateDownload} />
                 <PrivateRoute path="/admin" component={Admin} admin />
                 <PrivateRoute path="/template" component={Template} admin />
                 <PrivateRoute path="/templatelist" component={TemplateList} />

@@ -1,0 +1,28 @@
+.download-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  padding: 30px 0;
+
+  .download-button {
+    background-color: #7879f5;
+    border-radius: 3px;
+    border: none;
+    color: #fff;
+    font-size: 20px;
+    padding: 10px 15px;
+    transition: all .6s;
+    margin-bottom: 15px;
+    &:hover {
+      background-color: darken(#7879f5, 5);
+    }
+  }
+  .download-content {
+    position: relative;
+  }
+  .download-fields {
+    position: absolute;
+  }
+}
