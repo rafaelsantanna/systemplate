@@ -90520,8 +90520,9 @@ function Admin(_ref) {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
     className: "row"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-    className: "col-12 mb-3"
+    className: "col-4 mb-3"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("select", {
+    className: "custom-select",
     onChange: function onChange(e) {
       return setSelectedTemplate(e.target.value);
     }

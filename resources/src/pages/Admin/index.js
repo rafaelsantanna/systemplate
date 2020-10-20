@@ -98,8 +98,8 @@ export default function Admin({ history }) {
         <>
         <div className="container py-5">
             <div className="row">
-                <div className="col-12 mb-3">
-                    <select onChange={(e) => setSelectedTemplate(e.target.value)}>
+                <div className="col-4 mb-3">
+                    <select className="custom-select" onChange={(e) => setSelectedTemplate(e.target.value)}>
                         <option value={0}>Selecione um template</option>
                         {templates.length > 0 && templates.map((template) => (
                         <option key={template.id} value={template.id}>{template.name}</option>
