@@ -17,7 +17,7 @@ export default function TemplateDownload() {
   const [cssLogo, setCssLogo] = useState({});
   const [cssPhone, setCssPhone] = useState({});
 
-  const URL_API_UPLOADS = 'http://localhost:8000/uploads/';
+  const URL_API_UPLOADS = process.env.REACT_APP_API_URL + '/uploads/';
   
   useEffect(() => {
     api.get('templates/download/' + id).then((res) => {

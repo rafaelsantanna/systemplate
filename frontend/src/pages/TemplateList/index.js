@@ -28,7 +28,7 @@ export default function Templates({ history }) {
 
   const [showModalDelete, setShowModalDelete] = useState(false);
 
-  const URL_API_UPLOADS = 'http://localhost:8000/uploads/';
+  const URL_API_UPLOADS = process.env.REACT_APP_API_URL + '/uploads/';
   
   useEffect(() => {
     let authenticatedUser = localStorage.getItem('authenticated_user');

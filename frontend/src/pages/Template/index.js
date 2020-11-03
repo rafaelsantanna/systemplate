@@ -35,7 +35,7 @@ export default function Templates({ history }) {
     const [logoText, setLogoText] = useState('');
     const [phoneText, setPhoneText] = useState('');
 
-    const URL_API_UPLOADS = 'http://localhost:8000/uploads/';
+    const URL_API_UPLOADS = process.env.REACT_APP_API_URL + '/uploads/';
 
     useEffect(() => {
         // Listen change in temlateType for apply dimensions on template
