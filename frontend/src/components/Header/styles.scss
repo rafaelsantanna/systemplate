@@ -1,0 +1,47 @@
+.header {
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0,0,0, .15);
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+
+  .welcome {
+    font-size: 16px;
+    position: relative;
+    span {
+      color: #7879f5;
+      font-weight: bold;
+    }
+    small {
+      position: absolute;
+      top: 18px;
+      left: 0;
+      font-size: 12px;
+      a {
+        color: #333;
+      }
+    }
+  }
+
+  .navigation {
+    a {
+      color: #7879f5;
+      font-size: 16px;
+      padding: 10px 15px;
+      text-decoration: none;
+      &.active {
+        color: darken(#7879f5, 10);
+        font-weight: bold;
+        text-decoration: underline;
+      }
+      &:hover {
+        background-color: rgba(120, 121, 245, .55);
+        color: #fff;
+        transition: all .7s;
+      }
+    }
+  }
+}
