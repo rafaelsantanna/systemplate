@@ -27,6 +27,8 @@ export default function Templates({ history }) {
   const [cssPhone, setCssPhone] = useState({});
 
   const [showModalDelete, setShowModalDelete] = useState(false);
+
+  const URL_API_UPLOADS = 'http://localhost:8000/uploads/';
   
   useEffect(() => {
     let authenticatedUser = localStorage.getItem('authenticated_user');
@@ -116,7 +118,7 @@ export default function Templates({ history }) {
     setCssLogo(mountObjectStyle(objCssLogo));
     setCssPhone(mountObjectStyle(objCssPhone));
 
-    setTemplateImage(`uploads/${template.image}`);
+    setTemplateImage(URL_API_UPLOADS + template.image);
 
     setShowGenerateImage(true);
 
@@ -154,7 +156,7 @@ export default function Templates({ history }) {
           {templates.length > 0 && templates.map((template) => (
             <div className="col-3 mb-4" key={template.id}>
               <div className="template">
-                <img className="template-image" src={'uploads/' + template.image}></img>
+                <img className="template-image" src={URL_API_UPLOADS + template.image}></img>
                 <div className="template-body">
                   <span className="template-type">{template.type}</span>
                   <h3 className="template-name">{template.name}</h3>
@@ -187,7 +189,7 @@ export default function Templates({ history }) {
             <img src={templateImage} style={cssTemplateImage} />
             <div className="generate-fields" style={cssCompany}>{user.company}</div>
             <div className="generate-fields" style={cssPhone}>{user.phone}</div>
-            <img className="generate-fields" style={cssLogo} src={'uploads/logo/' + user.logo} />
+            <img className="generate-fields" style={cssLogo} src={`${URL_API_UPLOADS}logo/` + user.logo} />
           </div>
         </div>
       )}

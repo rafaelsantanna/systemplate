@@ -16,6 +16,8 @@ export default function TemplateDownload() {
   const [cssCompany, setCssCompany] = useState({});
   const [cssLogo, setCssLogo] = useState({});
   const [cssPhone, setCssPhone] = useState({});
+
+  const URL_API_UPLOADS = 'http://localhost:8000/uploads/';
   
   useEffect(() => {
     api.get('templates/download/' + id).then((res) => {
@@ -75,10 +77,10 @@ export default function TemplateDownload() {
       <div className="download-container">
         <button className="download-button" onClick={() => downloadTemplate()}>Download</button>
         <div id="download-content" className="download-content" style={cssTemplateImage}>
-          <img src={`/uploads/${template.image}`} style={cssTemplateImage} />
+          <img src={URL_API_UPLOADS + template.image} style={cssTemplateImage} />
           <div className="download-fields" style={cssCompany}>{user.company}</div>
           <div className="download-fields" style={cssPhone}>{user.phone}</div>
-          <img className="download-fields" style={cssLogo} src={'/uploads/logo/' + user.logo} />
+          <img className="download-fields" style={cssLogo} src={`${URL_API_UPLOADS}logo/` + user.logo} />
         </div>
       </div>
     </>

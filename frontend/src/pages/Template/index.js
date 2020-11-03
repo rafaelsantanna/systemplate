@@ -35,6 +35,8 @@ export default function Templates({ history }) {
     const [logoText, setLogoText] = useState('');
     const [phoneText, setPhoneText] = useState('');
 
+    const URL_API_UPLOADS = 'http://localhost:8000/uploads/';
+
     useEffect(() => {
         // Listen change in temlateType for apply dimensions on template
         if(templateType === 'capa') setDimensionTemplate({width: '828px', height: '475px'});
@@ -66,7 +68,7 @@ export default function Templates({ history }) {
             setTemplateType(template.type);
             setShowPreviewImage(true);
             setTemplateName(template.name);
-            setPreviewImage(`/uploads/${template.image}`);
+            setPreviewImage(URL_API_UPLOADS + template.image);
             setTemplateImage(`${template.image}`);
             setListFields(JSON.parse(template.fields));
             setTemplateId(template.id);
