@@ -52,7 +52,7 @@ export default function Admin({ history }) {
         }
 
         let tel = `55${phone.replace(/\s/g, '').replace('-', '')}`;
-        let message = `Olá! Segue o link do post da semana! É só clicar e baixar. ${process.env.REACT_APP_API_URL}/template-download/${selectedTemplate}_${id}`;
+        let message = `Olá! Segue o link do post da semana! É só clicar e baixar. ${process.env.REACT_APP_BASE_URL}/template-download/${selectedTemplate}_${id}`;
         window.open(`https://api.whatsapp.com/send?phone=${tel}&text=${message}`);
     }
 
