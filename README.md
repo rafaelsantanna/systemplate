@@ -1,8 +1,8 @@
 ## Commands to run the App  
 
 ### React
-- npm run watch
-- npm run build
+- yarn start
+- yarn build 
 
 ### Laravel  
 - php artisan serve
