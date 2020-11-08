@@ -46,7 +46,7 @@ export default function Admin({ history }) {
 
     function handleSentToWhats(e, id, phone) {
         e.preventDefault();
-        if(selectedTemplate == 0)  {
+        if(selectedTemplate === 0)  {
             Alert(toast, 'Selecione um template');
             return;
         }
@@ -127,14 +127,14 @@ export default function Admin({ history }) {
                                 <td>{user.logo}</td>
                                 <td>{user.phone}</td>
                                 <td className="table-actions">
-                                    <a href="" onClick={(e) => handleSentToWhats(e, user.id, user.phone)}>
-                                        <img src={whatsappIcon} title="Whatsapp Icon"></img>
+                                    <a href="/#" onClick={(e) => handleSentToWhats(e, user.id, user.phone)}>
+                                        <img src={whatsappIcon} alt="Whatsapp Icon"></img>
                                     </a>
-                                    <a href="" onClick={(e) => handleEditUser(e, user.id)}>
-                                        <img src={editIcon} title="Edit Icon"></img>
+                                    <a href="/#" onClick={(e) => handleEditUser(e, user.id)}>
+                                        <img src={editIcon} alt="Edit Icon"></img>
                                     </a>
-                                    <a href="" onClick={(e) => handleShowModalDelete(e, user.id)}>
-                                        <img src={trashIcon} title="Delete Icon"></img>
+                                    <a href="/#" onClick={(e) => handleShowModalDelete(e, user.id)}>
+                                        <img src={trashIcon} alt="Delete Icon"></img>
                                     </a>
                                 </td>
                             </tr>

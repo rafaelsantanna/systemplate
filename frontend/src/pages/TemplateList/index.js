@@ -77,7 +77,7 @@ export default function Templates({ history }) {
     e.preventDefault();
 
     let template = templates.filter((template) => {
-      return (template.id == id);
+      return (template.id === id);
     });
     localStorage.setItem('template', JSON.stringify(template));
 
@@ -97,8 +97,8 @@ export default function Templates({ history }) {
       textAlign: field.text_align ? field.text_align : undefined,
     }
     
-    Object.keys(data).map((item) => {
-      if (data[item] == undefined) delete data[item];
+    Object.keys(data).forEach((item) => {
+      if (data[item] === undefined) delete data[item];
     });
 
     return data;
@@ -156,23 +156,23 @@ export default function Templates({ history }) {
           {templates.length > 0 && templates.map((template) => (
             <div className="col-3 mb-4" key={template.id}>
               <div className="template">
-                <img className="template-image" src={URL_API_UPLOADS + template.image}></img>
+                <img className="template-image" src={URL_API_UPLOADS + template.image} alt="Template background" />
                 <div className="template-body">
                   <span className="template-type">{template.type}</span>
                   <h3 className="template-name">{template.name}</h3>
                   <div className="template-generate">
-                    <a href="" onClick={(e) => generateImage(e, template)}>Gerar Imagem</a>
+                    <a href="/#" onClick={(e) => generateImage(e, template)}>Gerar Imagem</a>
                   </div>
                   {user.roles.includes('ADMIN') && (
                     <div className="template-footer">
-                      <a href="" onClick={(e) => handleDuplicateTemplate(e, template.id)}>
-                        <img src={copyIcon} title="Copiar Template"></img>
+                      <a href="/#" onClick={(e) => handleDuplicateTemplate(e, template.id)}>
+                        <img src={copyIcon} alt="Copiar Template"></img>
                       </a>
-                      <a href="" onClick={(e) => handleEditTemplate(e, template.id)}>
-                        <img src={editIcon} title="Editar Template"></img>
+                      <a href="/#" onClick={(e) => handleEditTemplate(e, template.id)}>
+                        <img src={editIcon} alt="Editar Template"></img>
                       </a>
-                      <a href="" onClick={(e) => handleShowModalDelete(e, template.id)}>
-                        <img src={trashIcon} title="Deletar Template"></img>
+                      <a href="/#" onClick={(e) => handleShowModalDelete(e, template.id)}>
+                        <img src={trashIcon} alt="Deletar Template"></img>
                       </a>
                     </div>
                   )}
@@ -186,10 +186,10 @@ export default function Templates({ history }) {
       {showGenerateImage && (
         <div className="generate-container">
           <div id="generate-content" className="generate-content" style={cssTemplateImage}>
-            <img src={templateImage} style={cssTemplateImage} />
+            <img src={templateImage} style={cssTemplateImage} alt="Template Background" />
             <div className="generate-fields" style={cssCompany}>{user.company}</div>
             <div className="generate-fields" style={cssPhone}>{user.phone}</div>
-            <img className="generate-fields" style={cssLogo} src={`${URL_API_UPLOADS}logo/` + user.logo} />
+            <img className="generate-fields" style={cssLogo} src={`${URL_API_UPLOADS}logo/` + user.logo} alt="Logo" />
           </div>
         </div>
       )}

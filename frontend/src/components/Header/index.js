@@ -5,7 +5,7 @@ import { StoreContext } from '../../store';
 
 import './styles.scss';
 
-export default function Header({}) {
+export default function Header() {
   const [store, setStore] = useContext(StoreContext);
   const [roles, setRoles] = useState([]);
   const [name, setName] = useState('');
@@ -30,7 +30,7 @@ export default function Header({}) {
       <header className="header">
         <div className="welcome">
           <div>Bem vindo(a), <span>{name}</span></div>
-          <small><a href="" onClick={(e) => logout(e)}>Sair</a></small>
+          <small><a href="/#" onClick={(e) => logout(e)}>Sair</a></small>
         </div>
         {roles.includes('ADMIN') && (
           <nav className="navigation">

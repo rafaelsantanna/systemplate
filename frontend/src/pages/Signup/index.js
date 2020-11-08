@@ -25,7 +25,7 @@ export default function Signup({ history }) {
         e.preventDefault();
 
         let formData = new FormData();
-        Object.entries(form).map((item) => {
+        Object.entries(form).forEach((item) => {
             formData.append(item[0], item[1]);
         });
 

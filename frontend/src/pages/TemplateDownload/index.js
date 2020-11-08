@@ -27,7 +27,7 @@ export default function TemplateDownload() {
   }, []);
 
   useEffect(() => {
-    if(template.length == 0) return;
+    if(template.length === 0) return;
 
     if(template.type === 'capa') setCssTemplateImage({width: '828px', height: '475px'});
     if(template.type === 'post') setCssTemplateImage({width: '800px', height: '800px'});
@@ -54,8 +54,8 @@ export default function TemplateDownload() {
       textAlign: field.text_align ? field.text_align : undefined,
     }
     
-    Object.keys(data).map((item) => {
-      if (data[item] == undefined) delete data[item];
+    Object.keys(data).forEach((item) => {
+      if (data[item] === undefined) delete data[item];
     });
 
     return data;
@@ -77,10 +77,10 @@ export default function TemplateDownload() {
       <div className="download-container">
         <button className="download-button" onClick={() => downloadTemplate()}>Download</button>
         <div id="download-content" className="download-content" style={cssTemplateImage}>
-          <img src={URL_API_UPLOADS + template.image} style={cssTemplateImage} />
+          <img src={URL_API_UPLOADS + template.image} style={cssTemplateImage} alt="Template background" />
           <div className="download-fields" style={cssCompany}>{user.company}</div>
           <div className="download-fields" style={cssPhone}>{user.phone}</div>
-          <img className="download-fields" style={cssLogo} src={`${URL_API_UPLOADS}logo/` + user.logo} />
+          <img className="download-fields" style={cssLogo} src={`${URL_API_UPLOADS}logo/` + user.logo} alt="Logo"/>
         </div>
       </div>
     </>

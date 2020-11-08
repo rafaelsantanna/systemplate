@@ -45,16 +45,16 @@ export default function Templates({ history }) {
 
     useEffect(() => {
         // Listen change in fields for apply Style in the corresponding Element
-        if(selectField == 'company') setCompanyFieldStyle(mountObjectStyle(fields));
-        if(selectField == 'logo') setLogoFieldStyle(mountObjectStyle(fields));
-        if(selectField == 'phone') setPhoneFieldStyle(mountObjectStyle(fields));
+        if(selectField === 'company') setCompanyFieldStyle(mountObjectStyle(fields));
+        if(selectField === 'logo') setLogoFieldStyle(mountObjectStyle(fields));
+        if(selectField === 'phone') setPhoneFieldStyle(mountObjectStyle(fields));
     }, [fields]);
 
     useEffect(() => {
         // Listen to the change in previewText to record in the corresponding text field
-        if(selectField == 'company') setCompanyText(previewText);
-        if(selectField == 'logo') setLogoText(previewText);
-        if(selectField == 'phone') setPhoneText(previewText);
+        if(selectField === 'company') setCompanyText(previewText);
+        if(selectField === 'logo') setLogoText(previewText);
+        if(selectField === 'phone') setPhoneText(previewText);
     }, [previewText]);
 
     useEffect(() => {
@@ -96,9 +96,9 @@ export default function Templates({ history }) {
         if(value in listFields) setFields(listFields[value]);
         setSelectField(value);
 
-        if(value == 'company') setPreviewText(companyText); 
-        if(value == 'logo') setPreviewText(logoText);
-        if(value == 'phone') setPreviewText(phoneText);
+        if(value === 'company') setPreviewText(companyText); 
+        if(value === 'logo') setPreviewText(logoText);
+        if(value === 'phone') setPreviewText(phoneText);
     }
 
     function handleSetAlignText(e, align) {
@@ -125,15 +125,15 @@ export default function Templates({ history }) {
     }
 
     function handleSaveFields() {
-        if(selectField == 'phone') {
+        if(selectField === 'phone') {
             setListFields({...listFields, phone: fields}); 
             setPhoneText(previewText);
         }
-        if(selectField == 'company') {
+        if(selectField === 'company') {
             setListFields({...listFields, company: fields});
             setCompanyText(previewText);
         }
-        if(selectField == 'logo'){
+        if(selectField === 'logo'){
             setListFields({...listFields, logo: fields});
             setLogoText(previewText);
         } 
@@ -181,7 +181,7 @@ export default function Templates({ history }) {
         form.append("type", templateType);
         form.append("fields", JSON.stringify(listFields));
 
-        if(templateId == 0) {
+        if(templateId === 0) {
             api.post('/templates', form, {
                 headers: {
                   'Authorization' : 'Bearer ' + localStorage.getItem('jwt')
@@ -241,7 +241,7 @@ export default function Templates({ history }) {
                                         placeholder="Nome do template" value={templateName}/>
                                 </div>
                                 <div className="input-group align-items-center">
-                                    <button onClick={() => handleSubmitTemplate()} className="btn btn-primary" type="button" disabled={templateName.length == 0}>Salvar Template</button>
+                                    <button onClick={() => handleSubmitTemplate()} className="btn btn-primary" type="button" disabled={templateName.length === 0}>Salvar Template</button>
                                     {templateId > 0 && (
                                         <span className="flag-editing">Editando</span>    
                                     )}
@@ -271,7 +271,7 @@ export default function Templates({ history }) {
                             </select>
 
                             <div className="row">
-                                {selectField != 'logo' && (
+                                {selectField !== 'logo' && (
                                 <div className="col-12 mb-3">
                                     <div className="input-group">
                                         <div className="input-group-prepend">
@@ -318,7 +318,7 @@ export default function Templates({ history }) {
                                     </div>
                                 </div>
 
-                                {selectField != 'logo' && (
+                                {selectField !== 'logo' && (
                                     <div className="col-6">
                                         <div className="input-group mb-3">
                                             <div className="input-group-prepend">
@@ -329,7 +329,7 @@ export default function Templates({ history }) {
                                     </div>
                                 )}
                                 
-                                {selectField != 'logo' && (
+                                {selectField !== 'logo' && (
 
                                 <div className="col-6">
                                     <div className="input-group mb-3">
@@ -341,7 +341,7 @@ export default function Templates({ history }) {
                                 </div>
                                 )}
 
-                                {selectField != 'logo' && (
+                                {selectField !== 'logo' && (
                                     <div className="col-12">
                                         <div className="input-group mb-3">
                                             <div className="input-group-prepend">
@@ -352,7 +352,7 @@ export default function Templates({ history }) {
                                     </div>
                                 )}
                                 
-                                {selectField != 'logo' && (
+                                {selectField !== 'logo' && (
                                     <div className="col-12 d-flex">
                                         <div className="input-group">
                                             <div className="input-group-prepend">
@@ -363,15 +363,15 @@ export default function Templates({ history }) {
 
                                         <div className="input-group align-items-center">
                                             <div className="ml-auto">
-                                                <a href="" onClick={(e) => handleSetAlignText(e, 'left')}>
+                                                <a href="/#" onClick={(e) => handleSetAlignText(e, 'left')}>
                                                     <img src={alignLeft} alt="icon align-left" width="20"
                                                         height="20" />
                                                 </a>
-                                                <a href="" onClick={(e) => handleSetAlignText(e, 'center')}>
+                                                <a href="/#" onClick={(e) => handleSetAlignText(e, 'center')}>
                                                     <img src={alignCenter} alt="icon align-center"
                                                         width="20" height="20" />
                                                 </a>
-                                                <a href="" onClick={(e) => handleSetAlignText(e, 'right')}>
+                                                <a href="/#" onClick={(e) => handleSetAlignText(e, 'right')}>
                                                     <img src={alignRight} alt="icon align-right"
                                                         width="20" height="20" />
                                                 </a>
@@ -383,7 +383,7 @@ export default function Templates({ history }) {
 
                             <hr/>
 
-                            {selectField != 'logo' && (
+                            {selectField !== 'logo' && (
                                 <div className="row mb-3">
                                     <div className="col-12">
                                         <div className="input-group">
@@ -398,7 +398,7 @@ export default function Templates({ history }) {
                             )}
 
                             <div className="input-group">
-                                <button className="btn btn-success" type="button" onClick={() => handleSaveFields()} disabled={selectField == ''}>Salvar Campo</button>
+                                <button className="btn btn-success" type="button" onClick={() => handleSaveFields()} disabled={selectField === ''}>Salvar Campo</button>
                             </div>
                         </div>
                     )}
