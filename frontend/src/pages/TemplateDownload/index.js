@@ -77,10 +77,14 @@ export default function TemplateDownload() {
       <div className="download-container">
         <button className="download-button" onClick={() => downloadTemplate()}>Download</button>
         <div id="download-content" className="download-content" style={cssTemplateImage}>
-          <img src={URL_API_UPLOADS + template.image} style={cssTemplateImage} alt="Template background" />
+          {template.image && (
+            <img src={URL_API_UPLOADS + template.image} style={cssTemplateImage} alt="Template background" />
+          )}
           <div className="download-fields" style={cssCompany}>{user.company}</div>
           <div className="download-fields" style={cssPhone}>{user.phone}</div>
-          <img className="download-fields" style={cssLogo} src={`${URL_API_UPLOADS}logo/` + user.logo} alt="Logo"/>
+          {user.logo && (
+            <img className="download-fields" style={cssLogo} src={`${URL_API_UPLOADS}logo/` + user.logo} alt="Logo"/>
+          )}
         </div>
       </div>
     </>
