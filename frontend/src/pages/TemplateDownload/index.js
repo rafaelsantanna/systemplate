@@ -27,6 +27,17 @@ export default function TemplateDownload() {
   }, []);
 
   useEffect(() => {
+    let downloadImage = document.querySelector('#download-content');
+    domToImage.toBlob(downloadImage)
+    .then((blob) => {
+      window.saveAs(blob, template.name);
+    })
+    .catch((error) => {
+      console.error('oops, something went wrong!', error);
+    });
+  }, [template]);
+
+  useEffect(() => {
     if(template.length === 0) return;
 
     if(template.type === 'capa') setCssTemplateImage({width: '828px', height: '475px'});
@@ -61,21 +72,9 @@ export default function TemplateDownload() {
     return data;
   }
 
-  function downloadTemplate() {
-    let downloadImage = document.querySelector('#download-content');
-    domToImage.toBlob(downloadImage)
-    .then((blob) => {
-      window.saveAs(blob, template.name);
-    })
-    .catch((error) => {
-      console.error('oops, something went wrong!', error);
-    });
-  }
-
   return (
     <>
       <div className="download-container">
-        <button className="download-button" onClick={() => downloadTemplate()}>Download</button>
         <div id="download-content" className="download-content" style={cssTemplateImage}>
           {template.image && (
             <img src={URL_API_UPLOADS + template.image} style={cssTemplateImage} alt="Template background" />
