@@ -16,6 +16,7 @@ export default function TemplateDownload() {
   const [cssCompany, setCssCompany] = useState({});
   const [cssLogo, setCssLogo] = useState({});
   const [cssPhone, setCssPhone] = useState({});
+  const [googleFonts, setGoogleFonts] = useState([]);
 
   const URL_API_UPLOADS = process.env.REACT_APP_API_URL + '/uploads/';
   
@@ -27,14 +28,22 @@ export default function TemplateDownload() {
   }, []);
 
   useEffect(() => {
-    let downloadImage = document.querySelector('#download-content');
-    domToImage.toBlob(downloadImage)
-    .then((blob) => {
-      window.saveAs(blob, template.name);
-    })
-    .catch((error) => {
-      console.error('oops, something went wrong!', error);
-    });
+    if(template.length == 0) return;
+    setGoogleFonts(JSON.parse(template.fields).google_fonts.split(','));
+  }, [template]);
+
+  useEffect(() => {
+    if(template.length == 0) return;
+    setTimeout(() => {  
+      let downloadImage = document.querySelector('#download-content');
+      domToImage.toBlob(downloadImage)
+      .then((blob) => {
+        window.saveAs(blob, template.name);
+      })
+      .catch((error) => {
+        console.error('oops, something went wrong!', error);
+      });
+    }, 1000);
   }, [template]);
 
   useEffect(() => {
@@ -74,6 +83,9 @@ export default function TemplateDownload() {
 
   return (
     <>
+      {googleFonts.length > 0 && googleFonts.map((font, index) => (
+          <link key={index} href={`https://fonts.googleapis.com/css2?family=${font.trim()}&display=swap`} rel="stylesheet" crossOrigin="anonymous"></link>
+      ))}
       <div className="download-container">
         <div id="download-content" className="download-content" style={cssTemplateImage}>
           {template.image && (

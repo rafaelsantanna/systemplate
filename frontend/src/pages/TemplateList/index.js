@@ -25,6 +25,7 @@ export default function Templates({ history }) {
   const [cssCompany, setCssCompany] = useState({});
   const [cssLogo, setCssLogo] = useState({});
   const [cssPhone, setCssPhone] = useState({});
+  const [googleFonts, setGoogleFonts] = useState([]);
 
   const [showModalDelete, setShowModalDelete] = useState(false);
 
@@ -120,6 +121,8 @@ export default function Templates({ history }) {
 
     setTemplateImage(URL_API_UPLOADS + template.image);
 
+    setGoogleFonts(JSON.parse(template.fields).google_fonts.split(','));
+
     setShowGenerateImage(true);
 
     setTimeout(() => {
@@ -148,6 +151,9 @@ export default function Templates({ history }) {
 
   return (
     <>
+      {googleFonts.length > 0 && googleFonts.map((font, index) => (
+          <link key={index} href={`https://fonts.googleapis.com/css2?family=${font.trim()}&display=swap`} rel="stylesheet" crossOrigin="anonymous"></link>
+      ))}
       <div className="container py-3">
         <div className="row justify-content-center mb-5">
           <h1>Lista de Templates</h1>
