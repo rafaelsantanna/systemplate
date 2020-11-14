@@ -127,13 +127,13 @@ export default function Admin({ history }) {
                                 <td>{user.logo}</td>
                                 <td>{user.phone}</td>
                                 <td className="table-actions">
-                                    <a href="/#" onClick={(e) => handleSentToWhats(e, user.id, user.phone)}>
+                                    <a href="" onClick={(e) => handleSentToWhats(e, user.id, user.phone)}>
                                         <img src={whatsappIcon} alt="Whatsapp Icon"></img>
                                     </a>
-                                    <a href="/#" onClick={(e) => handleEditUser(e, user.id)}>
+                                    <a href="" onClick={(e) => handleEditUser(e, user.id)}>
                                         <img src={editIcon} alt="Edit Icon"></img>
                                     </a>
-                                    <a href="/#" onClick={(e) => handleShowModalDelete(e, user.id)}>
+                                    <a href="" onClick={(e) => handleShowModalDelete(e, user.id)}>
                                         <img src={trashIcon} alt="Delete Icon"></img>
                                     </a>
                                 </td>

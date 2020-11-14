@@ -161,17 +161,17 @@ export default function Templates({ history }) {
                   <span className="template-type">{template.type}</span>
                   <h3 className="template-name">{template.name}</h3>
                   <div className="template-generate">
-                    <a href="/#" onClick={(e) => generateImage(e, template)}>Gerar Imagem</a>
+                    <a href="" onClick={(e) => generateImage(e, template)}>Gerar Imagem</a>
                   </div>
                   {user.roles.includes('ADMIN') && (
                     <div className="template-footer">
-                      <a href="/#" onClick={(e) => handleDuplicateTemplate(e, template.id)}>
+                      <a href="" onClick={(e) => handleDuplicateTemplate(e, template.id)}>
                         <img src={copyIcon} alt="Copiar Template"></img>
                       </a>
-                      <a href="/#" onClick={(e) => handleEditTemplate(e, template.id)}>
+                      <a href="" onClick={(e) => handleEditTemplate(e, template.id)}>
                         <img src={editIcon} alt="Editar Template"></img>
                       </a>
-                      <a href="/#" onClick={(e) => handleShowModalDelete(e, template.id)}>
+                      <a href="" onClick={(e) => handleShowModalDelete(e, template.id)}>
                         <img src={trashIcon} alt="Deletar Template"></img>
                       </a>
                     </div>

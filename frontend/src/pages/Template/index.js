@@ -363,15 +363,15 @@ export default function Templates({ history }) {
 
                                         <div className="input-group align-items-center">
                                             <div className="ml-auto">
-                                                <a href="/#" onClick={(e) => handleSetAlignText(e, 'left')}>
+                                                <a href="" onClick={(e) => handleSetAlignText(e, 'left')}>
                                                     <img src={alignLeft} alt="icon align-left" width="20"
                                                         height="20" />
                                                 </a>
-                                                <a href="/#" onClick={(e) => handleSetAlignText(e, 'center')}>
+                                                <a href="" onClick={(e) => handleSetAlignText(e, 'center')}>
                                                     <img src={alignCenter} alt="icon align-center"
                                                         width="20" height="20" />
                                                 </a>
-                                                <a href="/#" onClick={(e) => handleSetAlignText(e, 'right')}>
+                                                <a href="" onClick={(e) => handleSetAlignText(e, 'right')}>
                                                     <img src={alignRight} alt="icon align-right"
                                                         width="20" height="20" />
                                                 </a>

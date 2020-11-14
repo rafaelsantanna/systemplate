@@ -30,7 +30,7 @@ export default function Header() {
       <header className="header">
         <div className="welcome">
           <div>Bem vindo(a), <span>{name}</span></div>
-          <small><a href="/#" onClick={(e) => logout(e)}>Sair</a></small>
+          <small><a href="" onClick={(e) => logout(e)}>Sair</a></small>
         </div>
         {roles.includes('ADMIN') && (
           <nav className="navigation">
