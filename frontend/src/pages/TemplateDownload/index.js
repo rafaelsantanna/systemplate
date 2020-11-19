@@ -29,7 +29,9 @@ export default function TemplateDownload() {
 
   useEffect(() => {
     if(template.length == 0) return;
-    setGoogleFonts(JSON.parse(template.fields).google_fonts.split(','));
+    let fonts = JSON.parse(template.fields).google_fonts;
+    if(!fonts) return;
+    setGoogleFonts(fonts.split(','));
   }, [template]);
 
   useEffect(() => {
