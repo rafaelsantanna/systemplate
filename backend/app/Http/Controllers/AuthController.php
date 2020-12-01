@@ -39,7 +39,8 @@ class AuthController extends Controller
             'roles' => 'USER',
             'company' => $request->company,
             'phone' => $request->phone,
-            'logo' => $logoname
+            'logo' => $logoname,
+            'template_category_id' => $request->template_category_id
         ]);
 
         $user->save();
@@ -48,7 +49,7 @@ class AuthController extends Controller
             'message' => 'Successfully created user!'
         ], 201);
     }
-  
+
     /**
      * Login user and create token
      *
@@ -90,7 +91,7 @@ class AuthController extends Controller
             )->toDateTimeString()
         ]);
     }
-  
+
     /**
      * Logout user (Revoke the token)
      *
@@ -103,7 +104,7 @@ class AuthController extends Controller
             'message' => 'Successfully logged out'
         ]);
     }
-  
+
     /**
      * Get the authenticated User
      *
