@@ -15,6 +15,8 @@ import alignRight from '../../assets/icons/align-right-solid.svg';
 export default function Templates({ history }) {
     const [templateId, setTemplateId] = useState(0);
     const [templateType, setTemplateType] = useState('');
+    const [templateCategories, setTemplateCategories] = useState([]);
+    const [templateCategory, setTemplateCategory] = useState(0);
     const [templateImage, setTemplateImage] = useState([]);
     const [templateName, setTemplateName] = useState('');
     const [showPreviewImage, setShowPreviewImage ] = useState(false);
@@ -38,6 +40,12 @@ export default function Templates({ history }) {
     const URL_API_UPLOADS = process.env.REACT_APP_API_URL + '/uploads/';
 
     useEffect(() => {
+        api.get('/template-categories').then((response) => {
+            setTemplateCategories(response.data);
+        });
+    }, []);
+
+    useEffect(() => {
         // Listen change in temlateType for apply dimensions on template
         if(templateType === 'capa') setDimensionTemplate({width: '828px', height: '475px'});
         if(templateType === 'post') setDimensionTemplate({width: '800px', height: '800px'});
@@ -58,7 +66,6 @@ export default function Templates({ history }) {
     }, [previewText]);
 
     useEffect(() => {
-
         // check if has a localStorage template for edit the template
         let arrTemplate = JSON.parse(localStorage.getItem('template'));
         localStorage.removeItem('template');
@@ -179,6 +186,7 @@ export default function Templates({ history }) {
         form.append("image", templateImage);
         form.append("name", templateName);
         form.append("type", templateType);
+        form.append('template_category_id', templateCategory);
         form.append("fields", JSON.stringify(listFields));
 
         if(templateId === 0) {
@@ -223,6 +231,15 @@ export default function Templates({ history }) {
                                 <option>Selecione o tipo de template</option>
                                 <option value="capa">Capa</option>
                                 <option value="post">Post</option>
+                            </select>
+                        </div>
+
+                        <div className="input-group mb-3">
+                            <select className="custom-select" onChange={ (e) => setTemplateCategory(e.target.value)} value={templateCategory}>
+                                <option value="0">Selecione o tipo do seu negócio</option>
+                                {templateCategories.length > 0 && templateCategories.map(item => (
+                                    <option key={item.id} value={item.id}>{item.name}</option>
+                                ))}
                             </select>
                         </div>
 
