@@ -17,7 +17,7 @@ class TemplateController extends Controller
     public function index()
     {
         $templates = Template::all();
-        
+
         return response()->json($templates);
     }
 
@@ -52,6 +52,7 @@ class TemplateController extends Controller
         $template->type = $request->type;
         $template->image = $filename;
         $template->fields = $request->fields;
+        $template->template_category_id = $request->template_category_id;
         $template->save();
 
         return response()->json($request, 201);
@@ -92,12 +93,13 @@ class TemplateController extends Controller
         $template->name = $request->name;
         $template->type = $request->type;
         $template->fields = $request->fields;
+        $template->template_category_id = $request->template_category_id;
 
         if($template->image != $request->image) {
             $request->validate([
                 'file' => 'max:2048',
             ]);
-    
+
             $file = $request->file('image');
             $filename = time() . '.' . $file->getClientOriginalExtension();
             $file->move('uploads', $filename);
