@@ -18,7 +18,7 @@ Route::group([
 ], function () {
     Route::post('login', 'AuthController@login');
     Route::post('signup', 'AuthController@signup');
-  
+
     Route::group([
       'middleware' => 'auth:api'
     ], function() {
@@ -43,3 +43,4 @@ Route::group([
 
 // Public Routes
 Route::get('/templates/download/{id}', 'TemplateController@download');
+Route::get('/template-categories', 'TemplateCategory@index');
