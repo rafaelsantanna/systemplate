@@ -43,4 +43,4 @@ Route::group([
 
 // Public Routes
 Route::get('/templates/download/{id}', 'TemplateController@download');
-Route::get('/template-categories', 'TemplateCategory@index');
+Route::get('/template-categories', 'TemplateCategoryController@index');
