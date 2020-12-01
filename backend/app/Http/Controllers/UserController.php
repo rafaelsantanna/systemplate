@@ -15,7 +15,7 @@ class UserController extends Controller
     public function index()
     {
         $users = User::all();
-        
+
         return response()->json($users);
     }
 
@@ -83,6 +83,7 @@ class UserController extends Controller
         $user->name = $request->name;
         $user->company = $request->company;
         $user->phone = $request->phone;
+        $user->template_category_id = $request->template_category_id;
 
         if($request->password) {
             $user->password = bcrypt($request->password);
@@ -92,7 +93,7 @@ class UserController extends Controller
             $request->validate([
                 'file' => 'max:2048',
             ]);
-    
+
             $logo = $request->file('logo');
             $logoname = time() . '.' . $logo->getClientOriginalExtension();
             $logo->move('uploads/logo', $logoname);
