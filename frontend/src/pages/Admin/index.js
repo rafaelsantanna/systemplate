@@ -98,7 +98,7 @@ export default function Admin({ history }) {
         <>
         <div className="container py-5">
             <div className="row">
-                <div className="col-4 mb-3">
+                <div className="col-12 col-md-4 mb-3">
                     <select className="custom-select" onChange={(e) => setSelectedTemplate(e.target.value)}>
                         <option value={0}>Selecione um template</option>
                         {templates.length > 0 && templates.map((template) => (
@@ -106,7 +106,7 @@ export default function Admin({ history }) {
                         ))}
                     </select>
                 </div>
-                <div className="col-12">
+                <div className="col-12 responsive-table">
                     <table className="table table-striped">
                         <thead className="thead-dark">
                             <tr>
