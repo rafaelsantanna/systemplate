@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { Modal, Button } from 'react-bootstrap';
 import api from '../../services/api';
 
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import 'react-tabs/style/react-tabs.css';
+
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Alert } from '../../helpers/Alert';
@@ -17,12 +20,14 @@ export default function Admin({ history }) {
     const [userId, setUserId] = useState(0);
     const [templates, setTemplates] = useState([]);
     const [selectedTemplate, setSelectedTemplate] = useState(0);
+    const [templateCategories, setTemplateCategories] = useState([]);
     
     const [showModalDelete, setShowModalDelete] = useState(false);
 
     useEffect(() => {
         getUsers();
         getTemplates();
+        getCategories();
     }, []);
 
     async function getTemplates() {
@@ -42,6 +47,11 @@ export default function Admin({ history }) {
         });
 
         setUsers(response.data);
+    }
+
+    async function getCategories() {
+        const response = await api.get('/template-categories');
+        setTemplateCategories(response.data);
     }
 
     function handleSentToWhats(e, id, phone) {
@@ -94,55 +104,104 @@ export default function Admin({ history }) {
         setUserId(0);
     }
 
+    function handleDeleteCategory(e, id) {
+        e.preventDefault();
+
+        alert('delete');
+    }
+
     return (
         <>
         <div className="container py-5">
-            <div className="row">
-                <div className="col-12 col-md-4 mb-3">
-                    <select className="custom-select" onChange={(e) => setSelectedTemplate(e.target.value)}>
-                        <option value={0}>Selecione um template</option>
-                        {templates.length > 0 && templates.map((template) => (
-                        <option key={template.id} value={template.id}>{template.name}</option>
-                        ))}
-                    </select>
-                </div>
-                <div className="col-12 responsive-table">
-                    <table className="table table-striped">
-                        <thead className="thead-dark">
-                            <tr>
-                                <th scope="col">Email</th>
-                                <th scope="col">Nome</th>
-                                <th scope="col">Empresa</th>
-                                <th scope="col">Logo</th>
-                                <th scope="col">Telefone</th>
-                                <th scope="col">Ações</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {users.map(user => (
-                            <tr key={user.id}>
-                                <td>{user.email}</td>
-                                <td>{user.name}</td>
-                                <td>{user.company}</td>
-                                <td>{user.logo}</td>
-                                <td>{user.phone}</td>
-                                <td className="table-actions">
-                                    <a href="" onClick={(e) => handleSentToWhats(e, user.id, user.phone)}>
-                                        <img src={whatsappIcon} alt="Whatsapp Icon"></img>
-                                    </a>
-                                    <a href="" onClick={(e) => handleEditUser(e, user.id)}>
-                                        <img src={editIcon} alt="Edit Icon"></img>
-                                    </a>
-                                    <a href="" onClick={(e) => handleShowModalDelete(e, user.id)}>
-                                        <img src={trashIcon} alt="Delete Icon"></img>
-                                    </a>
-                                </td>
-                            </tr>
-                            ))}
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+            <Tabs>
+                <TabList>
+                    <Tab>Usuários</Tab>
+                    <Tab>Categorias</Tab>
+                </TabList>
+                <TabPanel> 
+                        <div className="row">
+                            <div className="col-12 col-md-4 mb-3">
+                                <select className="custom-select" onChange={(e) => setSelectedTemplate(e.target.value)}>
+                                    <option value={0}>Selecione um template</option>
+                                    {templates.length > 0 && templates.map((template) => (
+                                    <option key={template.id} value={template.id}>{template.name}</option>
+                                    ))}
+                                </select>
+                            </div>
+                            <div className="col-12 responsive-table">
+                                <table className="table table-striped">
+                                    <thead className="thead-dark">
+                                        <tr>
+                                            <th scope="col">Email</th>
+                                            <th scope="col">Nome</th>
+                                            <th scope="col">Empresa</th>
+                                            <th scope="col">Logo</th>
+                                            <th scope="col">Telefone</th>
+                                            <th scope="col">Ações</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {users.map(user => (
+                                        <tr key={user.id}>
+                                            <td>{user.email}</td>
+                                            <td>{user.name}</td>
+                                            <td>{user.company}</td>
+                                            <td>{user.logo}</td>
+                                            <td>{user.phone}</td>
+                                            <td className="table-actions">
+                                                <a href="" onClick={(e) => handleSentToWhats(e, user.id, user.phone)}>
+                                                    <img src={whatsappIcon} alt="Whatsapp Icon"></img>
+                                                </a>
+                                                <a href="" onClick={(e) => handleEditUser(e, user.id)}>
+                                                    <img src={editIcon} alt="Edit Icon"></img>
+                                                </a>
+                                                <a href="" onClick={(e) => handleShowModalDelete(e, user.id)}>
+                                                    <img src={trashIcon} alt="Delete Icon"></img>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        ))}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                </TabPanel>
+                <TabPanel>
+                    <div className="row">
+                        <div className="col-6">
+                            <table className="table table-striped">
+                                <thead className="thead-dark">
+                                    <tr>
+                                        <th scope="col">Categoria</th>
+                                        <th scope="col">Ações</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {templateCategories.map(category => (
+                                    <tr key={category.id}>
+                                        <td>{category.name}</td>
+                                        <td className="table-actions">
+                                            <a href="" onClick={(e) => handleDeleteCategory(e, category.id)}>
+                                                <img src={trashIcon} alt="Delete Icon"></img>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    ))}
+                                </tbody>
+                            </table>
+                        </div>
+                        <div className="col-6">
+                            <div className="input-group mb-3">
+                                <div className="input-group-prepend">
+                                    <span className="input-group-text">Categoria</span>
+                                </div>
+                                <input type="text" className="form-control mr-3" />
+                                <button className="btn btn-primary">Adicionar Categoria</button>
+                            </div>
+                        </div>
+                    </div>
+                </TabPanel>
+            </Tabs>
         </div>
         <Modal show={showModalDelete} onHide={handleCloseModalDelete} centered>
             <Modal.Header>
