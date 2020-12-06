@@ -79,6 +79,7 @@ export default function Templates({ history }) {
             setTemplateImage(`${template.image}`);
             setListFields(JSON.parse(template.fields));
             setTemplateId(template.id);
+            setTemplateCategory(template.template_category_id);
         }
     }, []);
 

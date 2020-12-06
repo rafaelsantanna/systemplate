@@ -44,7 +44,16 @@ export default function Templates({ history }) {
         'Authorization' : 'Bearer ' + localStorage.getItem('jwt')
       }
     });
-    setTemplates(response.data);
+
+    let authenticatedUser = JSON.parse(localStorage.getItem('authenticated_user'));
+    
+    if(authenticatedUser.roles == 'ADMIN') {
+      setTemplates(response.data);
+    } else {
+      setTemplates(response.data.filter(item => {
+        return authenticatedUser.template_category_id == item.template_category_id;
+      }));
+    }
   }
 
   function handleDuplicateTemplate(e, id) {
