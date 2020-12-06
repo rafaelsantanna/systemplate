@@ -9,6 +9,7 @@ import './styles.scss';
 
 export default function Signup({ history }) {
     const [form, setForm] = useState({});
+    const [templateCategories, setTemplateCategories] = useState([]);
     const [logoText, setLogoText] = useState('Sua Logo');
     const [isEditing, setIsEditing] = useState(false);
 
@@ -19,6 +20,10 @@ export default function Signup({ history }) {
             setIsEditing(true);
             setForm({...user});
         }
+
+        api.get('/template-categories').then((response) => {
+            setTemplateCategories(response.data);
+        });
     }, []);
 
     function handleSubmit(e) {
@@ -79,6 +84,12 @@ export default function Signup({ history }) {
                     <input className="text-input" onChange={(e) => setForm({...form, name: e.target.value})} value={form.name || ''} type="text" placeholder="Nome" />
                     <input className="text-input" onChange={(e) => setForm({...form, company: e.target.value})} value={form.company || ''} type="text" placeholder="Sua marca" />
                     <input className="text-input" onChange={(e) => setForm({...form, phone: e.target.value})} value={form.phone || ''} type="text" placeholder="Telefone" />
+                    <select className="custom-select mb-3" onChange={ (e) => setForm({...form, template_category_id: e.target.value})} value={form.template_category_id || 0}>
+                        <option value="0">Selecione o tipo do seu negócio</option>
+                        {templateCategories.length > 0 && templateCategories.map(item => (
+                            <option key={item.id} value={item.id}>{item.name}</option>
+                        ))}
+                    </select>
                     <label className="logo-upload" htmlFor="logo-upload">
                         {logoText}
                         <input id="logo-upload" type="file" onChange={(e)=> handleLogoUpload(e)} />

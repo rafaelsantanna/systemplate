@@ -29,16 +29,16 @@
     background-color: #e6e6e6;
     border-radius: 5px;
     border: solid 1px #7879f5;
-    color: #333;
+    color: #555;
     font-size: 20px;
     padding: 6px 20px;
-    margin-bottom: 18px;
+    margin-bottom: 12px;
     &:focus {
       outline: none;
       border:  1px dashed #9a99ab;
     }
     &::placeholder {
-      color: #9a99ab;
+      color: #555;
       font-size: 20px;
     }
     &:disabled {
@@ -50,7 +50,7 @@
   .logo-upload {
     @extend .text-input;
     border:  2px dashed #7879f5;
-    color: #9a99ab;
+    color: #555;
     text-align: center;
     input {
       display: none;
@@ -74,5 +74,14 @@
         background-color: darken(#78f582, 5);
       }
     }
+  }
+
+  .custom-select {
+    background-color: #e6e6e6;
+    border-color: #7879f5;
+    color: #555;
+    height: 44px;
+    padding: 6px 20px;
+    font-size: 20px;
   }
 }
