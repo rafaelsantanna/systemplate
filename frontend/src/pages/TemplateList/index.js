@@ -130,7 +130,8 @@ export default function Templates({ history }) {
 
     setTemplateImage(URL_API_UPLOADS + template.image);
 
-    setGoogleFonts(JSON.parse(template.fields).google_fonts.split(','));
+    let fonts = JSON.parse(template.fields).google_fonts;
+    if(fonts) setGoogleFonts(fonts.split(','));
 
     setShowGenerateImage(true);
 
