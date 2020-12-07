@@ -37,7 +37,12 @@ class TemplateCategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $category = new TemplateCategory();
+        $category->name = $request->name;
+
+        $category->save();
+
+        return response()->json($request, 201);
     }
 
     /**
@@ -80,8 +85,11 @@ class TemplateCategoryController extends Controller
      * @param  \App\TemplateCategory  $templateCategory
      * @return \Illuminate\Http\Response
      */
-    public function destroy(TemplateCategory $templateCategory)
+    public function destroy(Request $request)
     {
-        //
+        $category = TemplateCategory::find($request->id);
+        $category->delete();
+
+        return response()->json(['message' => 'category successfully deleted']);
     }
 }

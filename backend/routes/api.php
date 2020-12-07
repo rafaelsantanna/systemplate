@@ -39,6 +39,9 @@ Route::group([
     Route::get('/users', 'UserController@index');
     Route::put('/users/{id}', 'UserController@update');
     Route::delete('/users/{id}', 'UserController@destroy');
+
+    Route::post('/template-categories', 'TemplateCategoryController@store');
+    Route::delete('/template-categories/{id}', 'TemplateCategoryController@destroy');
   });
 
 // Public Routes

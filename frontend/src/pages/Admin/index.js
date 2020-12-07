@@ -21,6 +21,7 @@ export default function Admin({ history }) {
     const [templates, setTemplates] = useState([]);
     const [selectedTemplate, setSelectedTemplate] = useState(0);
     const [templateCategories, setTemplateCategories] = useState([]);
+    const [templateCategory, setTemplateCategory] = useState('');
     
     const [showModalDelete, setShowModalDelete] = useState(false);
 
@@ -104,10 +105,30 @@ export default function Admin({ history }) {
         setUserId(0);
     }
 
+    function handleAddCategory(e) {
+        e.preventDefault();
+        let form = {name: templateCategory};
+        api.post('/template-categories', form, {
+            headers: {
+            'Authorization' : 'Bearer ' + localStorage.getItem('jwt')
+            }
+        }).then(() => {
+            Alert(toast, 'Categoria criada com sucesso');
+            setTemplateCategory('');
+            getCategories();
+        });
+    }
+
     function handleDeleteCategory(e, id) {
         e.preventDefault();
-
-        alert('delete');
+        api.delete(`/template-categories/${id}`, {
+            headers: {
+              'Authorization' : 'Bearer ' + localStorage.getItem('jwt')
+            }
+        }).then(() => {
+            Alert(toast, 'Categoria deletada com sucesso');
+            getCategories();
+        });
     }
 
     return (
@@ -195,8 +216,10 @@ export default function Admin({ history }) {
                                 <div className="input-group-prepend">
                                     <span className="input-group-text">Categoria</span>
                                 </div>
-                                <input type="text" className="form-control mr-3" />
-                                <button className="btn btn-primary">Adicionar Categoria</button>
+                                <input type="text" className="form-control" onChange={(e) => setTemplateCategory(e.target.value)} value={templateCategory}/>
+                                <div className="input-group-append">
+                                    <button className="btn btn-outline-primary" type="button" onClick={(e) => handleAddCategory(e)}>Adicionar Categoria</button>
+                                </div>
                             </div>
                         </div>
                     </div>
