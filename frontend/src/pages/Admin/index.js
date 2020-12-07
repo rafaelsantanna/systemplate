@@ -189,7 +189,7 @@ export default function Admin({ history }) {
                 </TabPanel>
                 <TabPanel>
                     <div className="row">
-                        <div className="col-6">
+                        <div className="col-12 col-md-6">
                             <table className="table table-striped">
                                 <thead className="thead-dark">
                                     <tr>
@@ -211,7 +211,7 @@ export default function Admin({ history }) {
                                 </tbody>
                             </table>
                         </div>
-                        <div className="col-6">
+                        <div className="col-12 col-md-6">
                             <div className="input-group mb-3">
                                 <div className="input-group-prepend">
                                     <span className="input-group-text">Categoria</span>
