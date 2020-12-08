@@ -84,7 +84,7 @@ export default function Signup({ history }) {
                     <input className="text-input" onChange={(e) => setForm({...form, name: e.target.value})} value={form.name || ''} type="text" placeholder="Nome" />
                     <input className="text-input" onChange={(e) => setForm({...form, company: e.target.value})} value={form.company || ''} type="text" placeholder="Sua marca" />
                     <input className="text-input" onChange={(e) => setForm({...form, phone: e.target.value})} value={form.phone || ''} type="text" placeholder="Telefone" />
-                    <select className="custom-select mb-3" onChange={ (e) => setForm({...form, template_category_id: e.target.value})} value={form.template_category_id || 0}>
+                    <select className="custom-select mb-3" onChange={ (e) => setForm({...form, food_categories: e.target.value})} value={form.food_categories || 0}>
                         <option value="0">Selecione o tipo do seu negócio</option>
                         {templateCategories.length > 0 && templateCategories.map(item => (
                             <option key={item.id} value={item.id}>{item.name}</option>
