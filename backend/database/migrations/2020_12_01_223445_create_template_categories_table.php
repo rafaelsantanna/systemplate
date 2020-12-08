@@ -24,12 +24,6 @@ class CreateTemplateCategoriesTable extends Migration
 
             $table->foreign('template_category_id')->references('id')->on('template_categories');
         });
-
-        Schema::table('users', function (Blueprint $table) {
-            $table->unsignedBigInteger('template_category_id');
-
-            $table->foreign('template_category_id')->references('id')->on('template_categories');
-        });
     }
 
     /**
