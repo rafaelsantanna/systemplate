@@ -25,6 +25,7 @@ class AuthController extends Controller
             'password' => 'required|string|confirmed',
             'company' => 'required|string',
             'phone' => 'required|string',
+            'food_categories' => 'required|string',
             'file' => 'max:2048',
         ]);
 
@@ -40,7 +41,7 @@ class AuthController extends Controller
             'company' => $request->company,
             'phone' => $request->phone,
             'logo' => $logoname,
-            'template_category_id' => $request->template_category_id
+            'food_categories' => $request->food_categories
         ]);
 
         $user->save();

@@ -83,7 +83,7 @@ class UserController extends Controller
         $user->name = $request->name;
         $user->company = $request->company;
         $user->phone = $request->phone;
-        $user->template_category_id = $request->template_category_id;
+        $user->food_categories = $request->food_categories;
 
         if($request->password) {
             $user->password = bcrypt($request->password);
