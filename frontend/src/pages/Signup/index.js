@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Select from 'react-select';
 import api from '../../services/api';
 
 import { ToastContainer, toast } from 'react-toastify';
@@ -10,6 +11,7 @@ import './styles.scss';
 export default function Signup({ history }) {
     const [form, setForm] = useState({});
     const [templateCategories, setTemplateCategories] = useState([]);
+    const [categorySelected, setCategorySelected] = useState(null);
     const [logoText, setLogoText] = useState('Sua Logo');
     const [isEditing, setIsEditing] = useState(false);
 
@@ -22,7 +24,12 @@ export default function Signup({ history }) {
         }
 
         api.get('/template-categories').then((response) => {
-            setTemplateCategories(response.data);
+            let categories = [];
+            response.data.map((item) => {
+                categories.push({value: item.id, label: item.name});
+            });
+
+            setTemplateCategories(categories);
         });
     }, []);
 
@@ -33,6 +40,7 @@ export default function Signup({ history }) {
         Object.entries(form).forEach((item) => {
             formData.append(item[0], item[1]);
         });
+        formData.append('food_categories', JSON.stringify(categorySelected));
 
         if(isEditing) {
             formData.append('_method', 'PUT');
@@ -84,12 +92,14 @@ export default function Signup({ history }) {
                     <input className="text-input" onChange={(e) => setForm({...form, name: e.target.value})} value={form.name || ''} type="text" placeholder="Nome" />
                     <input className="text-input" onChange={(e) => setForm({...form, company: e.target.value})} value={form.company || ''} type="text" placeholder="Sua marca" />
                     <input className="text-input" onChange={(e) => setForm({...form, phone: e.target.value})} value={form.phone || ''} type="text" placeholder="Telefone" />
-                    <select className="custom-select mb-3" onChange={ (e) => setForm({...form, food_categories: e.target.value})} value={form.food_categories || 0}>
-                        <option value="0">Selecione o tipo do seu negócio</option>
-                        {templateCategories.length > 0 && templateCategories.map(item => (
-                            <option key={item.id} value={item.id}>{item.name}</option>
-                        ))}
-                    </select>
+                    <Select 
+                        className="mb-3" 
+                        isMulti
+                        placeholder="Selecione o tipo do seu negócio"
+                        defaultValue={categorySelected}
+                        onChange={setCategorySelected}
+                        options={templateCategories} 
+                    />
                     <label className="logo-upload" htmlFor="logo-upload">
                         {logoText}
                         <input id="logo-upload" type="file" onChange={(e)=> handleLogoUpload(e)} />

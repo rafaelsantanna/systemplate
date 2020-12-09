@@ -46,13 +46,14 @@ export default function Templates({ history }) {
     });
 
     let authenticatedUser = JSON.parse(localStorage.getItem('authenticated_user'));
-    let foodCategories = authenticatedUser.food_categories.split(',').map(n => parseInt(n, 10));
+    let foodCategories = JSON.parse(authenticatedUser.food_categories);
+    let categoriesId = foodCategories.map(food => food.value);
     
     if(authenticatedUser.roles == 'ADMIN') {
       setTemplates(response.data);
     } else {
       let filteredTemplates = response.data.filter(item => {
-        return foodCategories.includes(item.template_category_id);
+        return categoriesId.includes(item.template_category_id);
       });
       setTemplates(filteredTemplates);
     }
