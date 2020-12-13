@@ -11,9 +11,10 @@ import './styles.scss';
 export default function Signup({ history }) {
     const [form, setForm] = useState({});
     const [templateCategories, setTemplateCategories] = useState([]);
-    const [categorySelected, setCategorySelected] = useState(null);
+    const [categorySelected, setCategorySelected] = useState([]);
     const [logoText, setLogoText] = useState('Sua Logo');
     const [isEditing, setIsEditing] = useState(false);
+    const [hasUser, setHasUser] = useState(false);
 
     useEffect(() => {
         let user = history.location.state ? history.location.state.user : false;
@@ -21,6 +22,8 @@ export default function Signup({ history }) {
         if(user) {
             setIsEditing(true);
             setForm({...user});
+            setHasUser(true);
+            setCategorySelected(JSON.parse(user.food_categories));
         }
 
         api.get('/template-categories').then((response) => {
@@ -92,14 +95,27 @@ export default function Signup({ history }) {
                     <input className="text-input" onChange={(e) => setForm({...form, name: e.target.value})} value={form.name || ''} type="text" placeholder="Nome" />
                     <input className="text-input" onChange={(e) => setForm({...form, company: e.target.value})} value={form.company || ''} type="text" placeholder="Sua marca" />
                     <input className="text-input" onChange={(e) => setForm({...form, phone: e.target.value})} value={form.phone || ''} type="text" placeholder="Telefone" />
-                    <Select 
-                        className="mb-3" 
-                        isMulti
-                        placeholder="Selecione o tipo do seu negócio"
-                        defaultValue={categorySelected}
-                        onChange={setCategorySelected}
-                        options={templateCategories} 
-                    />
+                    {hasUser && (
+                        // Condição necessária para carregar as opções quando tem usuário, sem ela não está carregando
+                        <Select 
+                            className="mb-3" 
+                            isMulti
+                            placeholder="Selecione o tipo do seu negócio"
+                            defaultValue={categorySelected}
+                            onChange={setCategorySelected}
+                            options={templateCategories} 
+                        />
+                    )}
+                    {!hasUser && (
+                        <Select 
+                            className="mb-3" 
+                            isMulti
+                            placeholder="Selecione o tipo do seu negócio"
+                            defaultValue={categorySelected}
+                            onChange={setCategorySelected}
+                            options={templateCategories} 
+                        />
+                    )}
                     <label className="logo-upload" htmlFor="logo-upload">
                         {logoText}
                         <input id="logo-upload" type="file" onChange={(e)=> handleLogoUpload(e)} />
