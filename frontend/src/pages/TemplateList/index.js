@@ -172,7 +172,7 @@ export default function Templates({ history }) {
           <h1>Lista de Templates</h1>
         </div>
         <div className="row">
-          {templates.length > 0 && templates.map((template) => (
+          {templates.length > 0 && templates.slice(0).reverse().map((template) => (
             <div className="col-12 col-sm-6 col-md-4 col-lg-3 mb-4" key={template.id}>
               <div className="template">
                 <img className="template-image" src={URL_API_UPLOADS + template.image} alt="Template background" />
